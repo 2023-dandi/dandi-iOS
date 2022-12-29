@@ -1,0 +1,5 @@
+--swiftversion 5.0
+--commas inline
+--self init-only
+--trimwhitespace nonblank-lines
+--exclude Pods
