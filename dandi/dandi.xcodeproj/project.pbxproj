@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
-		DD2398E3295D7C8700A898B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E2295D7C8700A898B2 /* ViewController.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
 		DD2398EB295D7C8800A898B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD2398EA295D7C8800A898B2 /* Assets.xcassets */; };
 		DD2398EE295D7C8800A898B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2398EC295D7C8800A898B2 /* LaunchScreen.storyboard */; };
@@ -31,6 +30,14 @@
 		DD9B06CA295EC67800A98041 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06C9295EC67800A98041 /* Kingfisher */; };
 		DD9B06CD295EC6B600A98041 /* YDS in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06CC295EC6B600A98041 /* YDS */; };
 		DD9B06D0295EC6E100A98041 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06CF295EC6E100A98041 /* RxGesture */; };
+		DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06D3295EC72E00A98041 /* HomeViewController.swift */; };
+		DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06D6295EC75500A98041 /* MainTabBarController.swift */; };
+		DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06DF295EC80E00A98041 /* FeedViewController.swift */; };
+		DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06E2295EC83100A98041 /* MyPageViewController.swift */; };
+		DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06E4295EC8A600A98041 /* ModuleFactory.swift */; };
+		DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06E9295ECDC800A98041 /* BaseViewController.swift */; };
+		DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06EC295ECF4F00A98041 /* DandiLog.swift */; };
+		DD9B06F2295ED31100A98041 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F1295ED31100A98041 /* Tab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +61,6 @@
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DD2398E2295D7C8700A898B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DD2398E8295D7C8700A898B2 /* dandi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dandi.xcdatamodel; sourceTree = "<group>"; };
 		DD2398EA295D7C8800A898B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD2398ED295D7C8800A898B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +74,14 @@
 		DD23991E295D86C600A898B2 /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
 		DD239920295D86CE00A898B2 /* domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = domain.swift; sourceTree = "<group>"; };
 		DD239924295D86FC00A898B2 /* network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = network.swift; sourceTree = "<group>"; };
+		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		DD9B06E2295EC83100A98041 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		DD9B06E4295EC8A600A98041 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		DD9B06E9295ECDC800A98041 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DD9B06EC295ECF4F00A98041 /* DandiLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DandiLog.swift; sourceTree = "<group>"; };
+		DD9B06F1295ED31100A98041 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,9 +173,8 @@
 		DD239913295D827E00A898B2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DD2398EF295D7C8800A898B2 /* Info.plist */,
-				DD2398DE295D7C8700A898B2 /* AppDelegate.swift */,
-				DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */,
+				DD9B06EE295ECF9000A98041 /* Support */,
+				DD9B06EF295ECFA400A98041 /* Config */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -169,8 +182,11 @@
 		DD239914295D828B00A898B2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				DD239918295D83E400A898B2 /* RootSwitcher.swift */,
-				DD2398E2295D7C8700A898B2 /* ViewController.swift */,
+				DD9B06E8295ECDC100A98041 /* Base */,
+				DD9B06D5295EC74800A98041 /* Tab */,
+				DD9B06D2295EC71900A98041 /* Home */,
+				DD9B06DE295EC80400A98041 /* Feed */,
+				DD9B06E1295EC81F00A98041 /* MyPage */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -196,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				DD239915295D829300A898B2 /* Resource */,
+				DD9B06EB295ECF0100A98041 /* Util */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -223,6 +240,98 @@
 				DD239924295D86FC00A898B2 /* network.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		DD9B06D2295EC71900A98041 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06D3295EC72E00A98041 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DD9B06D5295EC74800A98041 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06F1295ED31100A98041 /* Tab.swift */,
+				DD9B06D6295EC75500A98041 /* MainTabBarController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		DD9B06DE295EC80400A98041 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06DF295EC80E00A98041 /* FeedViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		DD9B06E1295EC81F00A98041 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06E2295EC83100A98041 /* MyPageViewController.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		DD9B06E6295ECC3F00A98041 /* ModuleFactory */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06E4295EC8A600A98041 /* ModuleFactory.swift */,
+			);
+			path = ModuleFactory;
+			sourceTree = "<group>";
+		};
+		DD9B06E7295ECCC300A98041 /* RootSwitcher */ = {
+			isa = PBXGroup;
+			children = (
+				DD239918295D83E400A898B2 /* RootSwitcher.swift */,
+			);
+			path = RootSwitcher;
+			sourceTree = "<group>";
+		};
+		DD9B06E8295ECDC100A98041 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06E9295ECDC800A98041 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		DD9B06EB295ECF0100A98041 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06F0295ECFE000A98041 /* Log */,
+				DD9B06E7295ECCC300A98041 /* RootSwitcher */,
+				DD9B06E6295ECC3F00A98041 /* ModuleFactory */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		DD9B06EE295ECF9000A98041 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DD2398DE295D7C8700A898B2 /* AppDelegate.swift */,
+				DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		DD9B06EF295ECFA400A98041 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				DD2398EF295D7C8800A898B2 /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		DD9B06F0295ECFE000A98041 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06EC295ECF4F00A98041 /* DandiLog.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,12 +528,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
 				DD239925295D86FC00A898B2 /* network.swift in Sources */,
+				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
+				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
+				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
-				DD2398E3295D7C8700A898B2 /* ViewController.swift in Sources */,
+				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
+				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
+				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
+				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 			);
@@ -597,7 +713,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PBLH2V4923;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = dandi/Application/Info.plist;
+				INFOPLIST_FILE = dandi/Application/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "단디";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -628,7 +744,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PBLH2V4923;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = dandi/Application/Info.plist;
+				INFOPLIST_FILE = dandi/Application/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "단디";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

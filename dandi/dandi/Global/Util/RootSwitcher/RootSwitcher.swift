@@ -9,6 +9,7 @@ import UIKit
 
 final class RootSwitcher {
     enum Destination {
+        case main
         case custom(UIViewController)
     }
 
@@ -18,6 +19,8 @@ final class RootSwitcher {
             return
         }
         switch destination {
+        case .main:
+            delegate.window?.rootViewController = ModuleFactory.shared.makeTabBarViewController()
         // 테스트에만 사용할것
         case let .custom(viewController):
             delegate.window?.rootViewController = viewController
