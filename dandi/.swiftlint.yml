@@ -4,6 +4,7 @@ disabled_rules:
 - todo
 - function_body_length
 - function_parameter_count
+- identifier_name
 
 excluded:
 - Pods
