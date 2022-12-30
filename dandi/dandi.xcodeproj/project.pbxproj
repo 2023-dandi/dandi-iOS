@@ -20,16 +20,17 @@
 		DD23991F295D86C600A898B2 /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD23991E295D86C600A898B2 /* data.swift */; };
 		DD239921295D86CE00A898B2 /* domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239920295D86CE00A898B2 /* domain.swift */; };
 		DD239925295D86FC00A898B2 /* network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239924295D86FC00A898B2 /* network.swift */; };
-		DD8A04B9295D8CD3001CAC6A /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04B8295D8CD3001CAC6A /* SnapKit-Dynamic */; };
-		DD8A04C3295D8D31001CAC6A /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04C2295D8D31001CAC6A /* RxGesture */; };
-		DD8A04C6295D8E85001CAC6A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04C5295D8E85001CAC6A /* Then */; };
-		DD8A04C9295D8F09001CAC6A /* YDS in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04C8295D8F09001CAC6A /* YDS */; };
-		DD8A04CD295D8FB1001CAC6A /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04CC295D8FB1001CAC6A /* Moya */; };
-		DD8A04CF295D8FB1001CAC6A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04CE295D8FB1001CAC6A /* RxMoya */; };
-		DD8A04D7295D901D001CAC6A /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04D6295D901D001CAC6A /* RxCocoa-Dynamic */; };
-		DD8A04D9295D901D001CAC6A /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04D8295D901D001CAC6A /* RxRelay-Dynamic */; };
-		DD8A04DB295D901D001CAC6A /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04DA295D901D001CAC6A /* RxSwift-Dynamic */; };
-		DD8A04DE295D903A001CAC6A /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD8A04DD295D903A001CAC6A /* ReactorKit */; };
+		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
+		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
+		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
+		DD9B06BD295EC63F00A98041 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06BC295EC63F00A98041 /* RxCocoa */; };
+		DD9B06BF295EC63F00A98041 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06BE295EC63F00A98041 /* RxRelay */; };
+		DD9B06C1295EC63F00A98041 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06C0295EC63F00A98041 /* RxSwift */; };
+		DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06C3295EC65500A98041 /* SnapKit */; };
+		DD9B06C7295EC66500A98041 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06C6295EC66500A98041 /* Then */; };
+		DD9B06CA295EC67800A98041 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06C9295EC67800A98041 /* Kingfisher */; };
+		DD9B06CD295EC6B600A98041 /* YDS in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06CC295EC6B600A98041 /* YDS */; };
+		DD9B06D0295EC6E100A98041 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06CF295EC6E100A98041 /* RxGesture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,16 +75,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD8A04D9295D901D001CAC6A /* RxRelay-Dynamic in Frameworks */,
-				DD8A04DB295D901D001CAC6A /* RxSwift-Dynamic in Frameworks */,
-				DD8A04CF295D8FB1001CAC6A /* RxMoya in Frameworks */,
-				DD8A04D7295D901D001CAC6A /* RxCocoa-Dynamic in Frameworks */,
-				DD8A04C6295D8E85001CAC6A /* Then in Frameworks */,
-				DD8A04C3295D8D31001CAC6A /* RxGesture in Frameworks */,
-				DD8A04B9295D8CD3001CAC6A /* SnapKit-Dynamic in Frameworks */,
-				DD8A04CD295D8FB1001CAC6A /* Moya in Frameworks */,
-				DD8A04DE295D903A001CAC6A /* ReactorKit in Frameworks */,
-				DD8A04C9295D8F09001CAC6A /* YDS in Frameworks */,
+				DD9B06C1295EC63F00A98041 /* RxSwift in Frameworks */,
+				DD9B06CD295EC6B600A98041 /* YDS in Frameworks */,
+				DD9B06BF295EC63F00A98041 /* RxRelay in Frameworks */,
+				DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */,
+				DD9B06CA295EC67800A98041 /* Kingfisher in Frameworks */,
+				DD9B06C7295EC66500A98041 /* Then in Frameworks */,
+				DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */,
+				DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */,
+				DD9B06D0295EC6E100A98041 /* RxGesture in Frameworks */,
+				DD9B06BD295EC63F00A98041 /* RxCocoa in Frameworks */,
+				DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,16 +244,17 @@
 			);
 			name = dandi;
 			packageProductDependencies = (
-				DD8A04B8295D8CD3001CAC6A /* SnapKit-Dynamic */,
-				DD8A04C2295D8D31001CAC6A /* RxGesture */,
-				DD8A04C5295D8E85001CAC6A /* Then */,
-				DD8A04C8295D8F09001CAC6A /* YDS */,
-				DD8A04CC295D8FB1001CAC6A /* Moya */,
-				DD8A04CE295D8FB1001CAC6A /* RxMoya */,
-				DD8A04D6295D901D001CAC6A /* RxCocoa-Dynamic */,
-				DD8A04D8295D901D001CAC6A /* RxRelay-Dynamic */,
-				DD8A04DA295D901D001CAC6A /* RxSwift-Dynamic */,
-				DD8A04DD295D903A001CAC6A /* ReactorKit */,
+				DD9B06B4295EC5DD00A98041 /* Moya */,
+				DD9B06B6295EC5DD00A98041 /* RxMoya */,
+				DD9B06B9295EC5F300A98041 /* ReactorKit */,
+				DD9B06BC295EC63F00A98041 /* RxCocoa */,
+				DD9B06BE295EC63F00A98041 /* RxRelay */,
+				DD9B06C0295EC63F00A98041 /* RxSwift */,
+				DD9B06C3295EC65500A98041 /* SnapKit */,
+				DD9B06C6295EC66500A98041 /* Then */,
+				DD9B06C9295EC67800A98041 /* Kingfisher */,
+				DD9B06CC295EC6B600A98041 /* YDS */,
+				DD9B06CF295EC6E100A98041 /* RxGesture */,
 			);
 			productName = dandi;
 			productReference = DD2398DB295D7C8700A898B2 /* dandi.app */;
@@ -326,13 +329,14 @@
 			);
 			mainGroup = DD2398D2295D7C8700A898B2;
 			packageReferences = (
-				DD8A04B7295D8CD3001CAC6A /* XCRemoteSwiftPackageReference "SnapKit" */,
-				DD8A04C1295D8D31001CAC6A /* XCRemoteSwiftPackageReference "RxGesture" */,
-				DD8A04C4295D8E85001CAC6A /* XCRemoteSwiftPackageReference "Then" */,
-				DD8A04C7295D8F09001CAC6A /* XCRemoteSwiftPackageReference "YDS-iOS" */,
-				DD8A04CB295D8FB1001CAC6A /* XCRemoteSwiftPackageReference "Moya" */,
-				DD8A04D5295D901D001CAC6A /* XCRemoteSwiftPackageReference "RxSwift" */,
-				DD8A04DC295D903A001CAC6A /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */,
+				DD9B06B8295EC5F300A98041 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				DD9B06BB295EC63F00A98041 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				DD9B06C2295EC65500A98041 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				DD9B06C5295EC66400A98041 /* XCRemoteSwiftPackageReference "Then" */,
+				DD9B06C8295EC67800A98041 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DD9B06CB295EC6B600A98041 /* XCRemoteSwiftPackageReference "YDS-iOS" */,
+				DD9B06CE295EC6E100A98041 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = DD2398DC295D7C8700A898B2 /* Products */;
 			projectDirPath = "";
@@ -764,31 +768,55 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DD8A04B7295D8CD3001CAC6A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = exactVersion;
+				version = 15.0.3;
+			};
+		};
+		DD9B06B8295EC5F300A98041 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = exactVersion;
+				version = 3.2.0;
+			};
+		};
+		DD9B06BB295EC63F00A98041 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
+		DD9B06C2295EC65500A98041 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.6.0;
+				kind = exactVersion;
+				version = 5.6.0;
 			};
 		};
-		DD8A04C1295D8D31001CAC6A /* XCRemoteSwiftPackageReference "RxGesture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		DD8A04C4295D8E85001CAC6A /* XCRemoteSwiftPackageReference "Then" */ = {
+		DD9B06C5295EC66400A98041 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 3.0.0;
+				kind = exactVersion;
+				version = 3.0.0;
 			};
 		};
-		DD8A04C7295D8F09001CAC6A /* XCRemoteSwiftPackageReference "YDS-iOS" */ = {
+		DD9B06C8295EC67800A98041 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = exactVersion;
+				version = 7.4.1;
+			};
+		};
+		DD9B06CB295EC6B600A98041 /* XCRemoteSwiftPackageReference "YDS-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/2023-dandi/YDS-iOS";
 			requirement = {
@@ -796,82 +824,71 @@
 				kind = branch;
 			};
 		};
-		DD8A04CB295D8FB1001CAC6A /* XCRemoteSwiftPackageReference "Moya" */ = {
+		DD9B06CE295EC6E100A98041 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya";
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
 			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		DD8A04D5295D901D001CAC6A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 6.5.0;
-			};
-		};
-		DD8A04DC295D903A001CAC6A /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 3.2.0;
+				kind = exactVersion;
+				version = 4.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DD8A04B8295D8CD3001CAC6A /* SnapKit-Dynamic */ = {
+		DD9B06B4295EC5DD00A98041 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DD8A04B7295D8CD3001CAC6A /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
-		DD8A04C2295D8D31001CAC6A /* RxGesture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD8A04C1295D8D31001CAC6A /* XCRemoteSwiftPackageReference "RxGesture" */;
-			productName = RxGesture;
-		};
-		DD8A04C5295D8E85001CAC6A /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD8A04C4295D8E85001CAC6A /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
-		DD8A04C8295D8F09001CAC6A /* YDS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD8A04C7295D8F09001CAC6A /* XCRemoteSwiftPackageReference "YDS-iOS" */;
-			productName = YDS;
-		};
-		DD8A04CC295D8FB1001CAC6A /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD8A04CB295D8FB1001CAC6A /* XCRemoteSwiftPackageReference "Moya" */;
+			package = DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		DD8A04CE295D8FB1001CAC6A /* RxMoya */ = {
+		DD9B06B6295EC5DD00A98041 /* RxMoya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DD8A04CB295D8FB1001CAC6A /* XCRemoteSwiftPackageReference "Moya" */;
+			package = DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
 		};
-		DD8A04D6295D901D001CAC6A /* RxCocoa-Dynamic */ = {
+		DD9B06B9295EC5F300A98041 /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DD8A04D5295D901D001CAC6A /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxCocoa-Dynamic";
-		};
-		DD8A04D8295D901D001CAC6A /* RxRelay-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD8A04D5295D901D001CAC6A /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxRelay-Dynamic";
-		};
-		DD8A04DA295D901D001CAC6A /* RxSwift-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD8A04D5295D901D001CAC6A /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxSwift-Dynamic";
-		};
-		DD8A04DD295D903A001CAC6A /* ReactorKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD8A04DC295D903A001CAC6A /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			package = DD9B06B8295EC5F300A98041 /* XCRemoteSwiftPackageReference "ReactorKit" */;
 			productName = ReactorKit;
+		};
+		DD9B06BC295EC63F00A98041 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06BB295EC63F00A98041 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		DD9B06BE295EC63F00A98041 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06BB295EC63F00A98041 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		DD9B06C0295EC63F00A98041 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06BB295EC63F00A98041 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		DD9B06C3295EC65500A98041 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06C2295EC65500A98041 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		DD9B06C6295EC66500A98041 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06C5295EC66400A98041 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		DD9B06C9295EC67800A98041 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06C8295EC67800A98041 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		DD9B06CC295EC6B600A98041 /* YDS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06CB295EC6B600A98041 /* XCRemoteSwiftPackageReference "YDS-iOS" */;
+			productName = YDS;
+		};
+		DD9B06CF295EC6E100A98041 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9B06CE295EC6E100A98041 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 /* End XCSwiftPackageProductDependency section */
 
