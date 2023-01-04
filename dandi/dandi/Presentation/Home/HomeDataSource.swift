@@ -16,6 +16,8 @@ final class HomeDataSource {
     typealias CardCell = CardCollectionViewCell
     typealias CellProvider = (UICollectionView, IndexPath, Item) -> UICollectionViewCell?
     typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
+    typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
+
     typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
 
@@ -67,10 +69,27 @@ final class HomeDataSource {
         }
     }
 
+    private func configureHeader(titles: [String]) {
+        let headerRegistration = SectionHeaderRegistration<CardHeaderView>(
+            elementKind: UICollectionView.elementKindSectionHeader
+        ) { headerView, _, indexPath in
+            headerView.configure(title: titles[indexPath.section])
+        }
+
+        dataSource.supplementaryViewProvider = { [weak self] _, _, indexPath in
+            let header = self?.collectionView.dequeueConfiguredReusableSupplementary(
+                using: headerRegistration,
+                for: indexPath
+            )
+            return header
+        }
+    }
+
     func update(
         same: [Post],
         recommendation: [Post]
     ) {
+        configureHeader(titles: ["오늘 같은 날에는 이렇게  입었어요.", "이런 옷을 입으면 어떨까요?"])
         var snapshot = Snapshot()
         snapshot.appendSections([.same, .recommendation])
 

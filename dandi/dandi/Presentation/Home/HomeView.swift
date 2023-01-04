@@ -19,7 +19,7 @@ final class HomeView: UIView {
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(1 / 2 * 331 / 166)
+            heightDimension: .fractionalWidth(318 / 375)
         )
 
         let group = NSCollectionLayoutGroup.horizontal(
@@ -27,28 +27,25 @@ final class HomeView: UIView {
             subitem: item,
             count: 2
         )
-        group.interItemSpacing = .fixed(12)
+        group.interItemSpacing = .fixed(10)
+        group.contentInsets = .init(top: .zero, leading: 16, bottom: .zero, trailing: 16)
 
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 12
-        section.contentInsets = .init(
-            top: 10,
-            leading: 16,
-            bottom: .zero,
-            trailing: 16
-        )
 
-//        let headerSize = NSCollectionLayoutSize(
-//            widthDimension: .fractionalWidth(1.0),
-//            heightDimension: .estimated(80)
-//        )
-//        let header = NSCollectionLayoutBoundarySupplementaryItem(
-//            layoutSize: headerSize,
-//            elementKind: UICollectionView.elementKindSectionHeader,
-//            alignment: .top
-//        )
-//        header.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: -30)
-//        section.boundarySupplementaryItems = [header]
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(62)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        header.pinToVisibleBounds = true
+
+        section.boundarySupplementaryItems = [header]
+
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }()
@@ -57,6 +54,7 @@ final class HomeView: UIView {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
         return collectionView
     }()
 
@@ -75,7 +73,7 @@ extension HomeView {
     private func setLayouts() {
         addSubviews(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(safeAreaLayoutGuide)
         }
     }
 }
