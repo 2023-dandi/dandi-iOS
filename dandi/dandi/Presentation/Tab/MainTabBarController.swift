@@ -38,6 +38,7 @@ extension MainTabBarController {
             image: Tab.home.image,
             selectedImage: Tab.home.selectedImage
         )
+        homeNavigationController.navigationBar.isHidden = true
 
         let feedVC = factory.makeFeedViewContontoller()
         let feedNavigationController = YDSNavigationController(rootViewController: feedVC)
