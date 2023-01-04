@@ -38,6 +38,14 @@
 		DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06E9295ECDC800A98041 /* BaseViewController.swift */; };
 		DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06EC295ECF4F00A98041 /* DandiLog.swift */; };
 		DD9B06F2295ED31100A98041 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F1295ED31100A98041 /* Tab.swift */; };
+		DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F3295EDA1300A98041 /* HomeView.swift */; };
+		DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */; };
+		DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F9295EDCE600A98041 /* UIView+.swift */; };
+		DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE329641AFF006FBE00 /* HomeReactor.swift */; };
+		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
+		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
+		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
+		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +90,14 @@
 		DD9B06E9295ECDC800A98041 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DD9B06EC295ECF4F00A98041 /* DandiLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DandiLog.swift; sourceTree = "<group>"; };
 		DD9B06F1295ED31100A98041 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		DD9B06F3295EDA1300A98041 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD9B06F9295EDCE600A98041 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		DDA38FE329641AFF006FBE00 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
+		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
+		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +227,8 @@
 		DD239917295D83CE00A898B2 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				DD9B06F8295EDCC900A98041 /* Extension */,
+				DD9B06F5295EDABD00A98041 /* Component */,
 				DD239915295D829300A898B2 /* Resource */,
 				DD9B06EB295ECF0100A98041 /* Util */,
 			);
@@ -229,6 +247,7 @@
 		DD23991D295D86B600A898B2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				DDA38FE729641CB0006FBE00 /* Entities */,
 				DD239920295D86CE00A898B2 /* domain.swift */,
 			);
 			path = Domain;
@@ -245,7 +264,10 @@
 		DD9B06D2295EC71900A98041 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */,
+				DD9B06F3295EDA1300A98041 /* HomeView.swift */,
 				DD9B06D3295EC72E00A98041 /* HomeViewController.swift */,
+				DDA38FE329641AFF006FBE00 /* HomeReactor.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -334,6 +356,32 @@
 			path = Log;
 			sourceTree = "<group>";
 		};
+		DD9B06F5295EDABD00A98041 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		DD9B06F8295EDCC900A98041 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06F9295EDCE600A98041 /* UIView+.swift */,
+				DDF636FD2960457A007427BD /* UIStackView+.swift */,
+				DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DDA38FE729641CB0006FBE00 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				DDA38FE829641CCB006FBE00 /* Post.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,10 +390,10 @@
 			buildConfigurationList = DD239908295D7C8800A898B2 /* Build configuration list for PBXNativeTarget "dandi" */;
 			buildPhases = (
 				DD2398D7295D7C8700A898B2 /* Sources */,
-				DD2398D8295D7C8700A898B2 /* Frameworks */,
-				DD2398D9295D7C8700A898B2 /* Resources */,
 				DD239912295D7D0000A898B2 /* SwiftLint Script */,
 				DD239911295D7CE500A898B2 /* SwiftFormat Script */,
+				DD2398D8295D7C8700A898B2 /* Frameworks */,
+				DD2398D9295D7C8700A898B2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -530,17 +578,25 @@
 			files = (
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
+				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DD239925295D86FC00A898B2 /* network.swift in Sources */,
+				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
+				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
+				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
+				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
+				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
+				DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */,
+				DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 			);

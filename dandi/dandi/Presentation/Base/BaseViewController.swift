@@ -7,11 +7,16 @@
 
 import UIKit
 
+import RxSwift
+import YDS
+
 class BaseViewController: UIViewController {
     public var factory: ModulFactoryInterface!
+    public var disposeBag: DisposeBag = .init()
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = YDSColor.bgNormal
     }
 
     @available(*, unavailable)
