@@ -52,6 +52,7 @@ extension WeatherBannerCollectionViewCell {
         mainImageView.do {
             $0.contentMode = .scaleAspectFill
             $0.alpha = 0.3
+            $0.clipsToBounds = true
         }
         contentLabel.do {
             $0.textColor = YDSColor.textSecondary

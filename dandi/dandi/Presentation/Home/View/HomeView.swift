@@ -15,6 +15,8 @@ final class HomeView: UIView {
             switch index {
             case 0:
                 return self?.createWeatherBannerSectionLayout()
+            case 1:
+                return self?.createWeatherDetailSectionLayout()
             default:
                 return self?.createCardSectionLayout()
             }
@@ -71,6 +73,30 @@ extension HomeView {
         return section
     }
 
+    private func createWeatherDetailSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(56),
+            heightDimension: .absolute(96)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        group.interItemSpacing = .fixed(20)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: 12, leading: 20, bottom: 12, trailing: 20)
+
+        return section
+    }
+
     private func createCardSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.5),
@@ -89,7 +115,7 @@ extension HomeView {
             count: 2
         )
         group.interItemSpacing = .fixed(10)
-        group.contentInsets = .init(top: .zero, leading: 16, bottom: .zero, trailing: 16)
+        group.contentInsets = .init(top: .zero, leading: 12, bottom: .zero, trailing: 12)
 
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 12

@@ -54,6 +54,58 @@ final class HomeViewController: BaseViewController {
                 )
 
             ],
+            timeWeathers: [
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                ),
+                TimeWeatherInfo(
+                    image: .add,
+                    time: "17시",
+                    temperature: "17도"
+                )
+            ],
             same: [
                 Post(
                     id: 1,

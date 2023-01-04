@@ -47,6 +47,8 @@
 		DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */; };
 		DDA38FEF29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */; };
 		DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */; };
+		DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF529657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift */; };
+		DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +104,8 @@
 		DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeaderView.swift; sourceTree = "<group>"; };
 		DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherInfo.swift; sourceTree = "<group>"; };
+		DDA38FF529657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWeatherInfo.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -386,6 +390,7 @@
 			children = (
 				DDA38FE829641CCB006FBE00 /* Post.swift */,
 				DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */,
+				DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 			children = (
 				DD9B06F3295EDA1300A98041 /* HomeView.swift */,
 				DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */,
+				DDA38FF529657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
+				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DD239925295D86FC00A898B2 /* network.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
@@ -617,6 +624,7 @@
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
+				DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */,
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
