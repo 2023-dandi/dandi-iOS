@@ -45,6 +45,8 @@
 		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
 		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
 		DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */; };
+		DDA38FEF29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */; };
+		DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +100,8 @@
 		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeaderView.swift; sourceTree = "<group>"; };
+		DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherInfo.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -266,10 +270,10 @@
 		DD9B06D2295EC71900A98041 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */,
-				DD9B06F3295EDA1300A98041 /* HomeView.swift */,
-				DD9B06D3295EC72E00A98041 /* HomeViewController.swift */,
+				DDA38FEC29655B0A006FBE00 /* View */,
+				DDA38FED29655B17006FBE00 /* DataSource */,
 				DDA38FE329641AFF006FBE00 /* HomeReactor.swift */,
+				DD9B06D3295EC72E00A98041 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -381,8 +385,26 @@
 			isa = PBXGroup;
 			children = (
 				DDA38FE829641CCB006FBE00 /* Post.swift */,
+				DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		DDA38FEC29655B0A006FBE00 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B06F3295EDA1300A98041 /* HomeView.swift */,
+				DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDA38FED29655B17006FBE00 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -579,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA38FEF29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
@@ -589,6 +612,7 @@
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
+				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
