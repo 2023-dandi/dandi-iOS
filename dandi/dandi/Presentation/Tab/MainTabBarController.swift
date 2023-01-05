@@ -47,6 +47,7 @@ extension MainTabBarController {
             image: Tab.feed.image,
             selectedImage: Tab.feed.selectedImage
         )
+        feedNavigationController.navigationBar.isHidden = true
 
         let myPageVC = factory.makeMyPageViewController()
         let myPageNavigationController = YDSNavigationController(rootViewController: myPageVC)

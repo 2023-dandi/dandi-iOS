@@ -26,10 +26,10 @@ final class HomeDataSource {
     typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
 
-    let collectionView: UICollectionView
-    var presentingViewController: HomeViewController?
+    private let collectionView: UICollectionView
+    private var presentingViewController: HomeViewController?
 
-    lazy var dataSource = createDataSource()
+    private lazy var dataSource = createDataSource()
 
     enum Section {
         case dayWeather
