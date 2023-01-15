@@ -92,7 +92,7 @@ extension HomeView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: 12, leading: 20, bottom: 12, trailing: 20)
+        section.contentInsets = .init(top: 12, leading: 12, bottom: 12, trailing: 12)
 
         return section
     }
@@ -106,7 +106,7 @@ extension HomeView {
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(318 / 375)
+            heightDimension: .fractionalWidth(302 / 375)
         )
 
         let group = NSCollectionLayoutGroup.horizontal(

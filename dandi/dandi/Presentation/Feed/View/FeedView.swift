@@ -26,7 +26,7 @@ final class FeedView: UIView {
 
             let groupSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalWidth(318 / 375)
+                heightDimension: .fractionalWidth(302 / 375)
             )
 
             let group = NSCollectionLayoutGroup.horizontal(
@@ -38,6 +38,7 @@ final class FeedView: UIView {
             group.contentInsets = .init(top: .zero, leading: 12, bottom: .zero, trailing: 12)
 
             let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = 12
 
             return section
         }

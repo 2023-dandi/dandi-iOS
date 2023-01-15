@@ -52,6 +52,8 @@
 		DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF92965B055006FBE00 /* FeedView.swift */; };
 		DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FFD2965B0BD006FBE00 /* FeedDataSource.swift */; };
 		DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FFF2965BA33006FBE00 /* UIImage+.swift */; };
+		DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */; };
+		DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390062966BE51006FBE00 /* LocationSettingView.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 /* End PBXBuildFile section */
@@ -112,6 +114,8 @@
 		DDA38FF92965B055006FBE00 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		DDA38FFD2965B0BD006FBE00 /* FeedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDataSource.swift; sourceTree = "<group>"; };
 		DDA38FFF2965BA33006FBE00 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingViewController.swift; sourceTree = "<group>"; };
+		DDA390062966BE51006FBE00 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +223,7 @@
 				DD9B06D2295EC71900A98041 /* Home */,
 				DD9B06DE295EC80400A98041 /* Feed */,
 				DD9B06E1295EC81F00A98041 /* MyPage */,
+				DDA390032966BE2C006FBE00 /* Location */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -438,6 +443,15 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		DDA390032966BE2C006FBE00 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */,
+				DDA390062966BE51006FBE00 /* LocationSettingView.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -643,6 +657,7 @@
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
+				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
 				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
@@ -652,6 +667,7 @@
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
 				DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */,
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
+				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
