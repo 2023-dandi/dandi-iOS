@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 final class HomeViewController: BaseViewController {
     private let homeView: HomeView = .init()
     private lazy var homeDataSource: HomeDataSource = .init(
@@ -20,6 +23,7 @@ final class HomeViewController: BaseViewController {
 
     override init() {
         super.init()
+        bindTapAction()
         homeDataSource.update(
             dayWeathers: [
                 DayWeatherInfo(
@@ -136,5 +140,14 @@ final class HomeViewController: BaseViewController {
                 )
             ]
         )
+    }
+
+    private func bindTapAction() {
+        homeView.addButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.navigationController?.pushViewController(ClosetViewController(), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }

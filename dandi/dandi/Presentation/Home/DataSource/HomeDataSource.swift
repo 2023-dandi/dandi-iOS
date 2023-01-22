@@ -50,6 +50,34 @@ final class HomeDataSource {
         self.presentingViewController = presentingViewController
     }
 
+    func update(
+        dayWeathers: [DayWeatherInfo],
+        timeWeathers: [TimeWeatherInfo],
+        same: [Post]
+    ) {
+        configureHeader(title: "오늘 같은 날에는 이렇게  입었어요.")
+
+        var snapshot = Snapshot()
+        snapshot.appendSections([.dayWeather, .timeWeather, .same])
+
+        let timeWeatherItems = timeWeathers.map { Item.timeWeatherInfo($0) }
+        snapshot.appendItems(timeWeatherItems, toSection: .timeWeather)
+
+        let dayWeatherItems = dayWeathers.map { Item.dayWeatherInfo($0) }
+        snapshot.appendItems(dayWeatherItems, toSection: .dayWeather)
+
+        let sameItems = same.map { Item.post($0) }
+        snapshot.appendItems(sameItems, toSection: .same)
+
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+
+    func itemIdentifier(for indexPath: IndexPath) -> Item? {
+        return dataSource.itemIdentifier(for: indexPath)
+    }
+}
+
+extension HomeDataSource {
     private func createDataSource() -> DiffableDataSource {
         let cardRegistration: CardCellRegistration<CardCell> = configureCardCellRegistration()
         let weatherBannerRegistration: WeatherBannerCellRegistration<WeatherBannerCell> = configureWeatherBannerCellRegistration()
@@ -77,7 +105,10 @@ final class HomeDataSource {
                 )
             }
         }
-        return DiffableDataSource(collectionView: collectionView, cellProvider: cellProvider)
+        return DiffableDataSource(
+            collectionView: collectionView,
+            cellProvider: cellProvider
+        )
     }
 
     private func configureCardCellRegistration<Cell: CardCell>() -> CardCellRegistration<Cell> {
@@ -132,31 +163,5 @@ final class HomeDataSource {
             )
             return header
         }
-    }
-
-    func update(
-        dayWeathers: [DayWeatherInfo],
-        timeWeathers: [TimeWeatherInfo],
-        same: [Post]
-    ) {
-        configureHeader(title: "오늘 같은 날에는 이렇게  입었어요.")
-
-        var snapshot = Snapshot()
-        snapshot.appendSections([.dayWeather, .timeWeather, .same])
-
-        let timeWeatherItems = timeWeathers.map { Item.timeWeatherInfo($0) }
-        snapshot.appendItems(timeWeatherItems, toSection: .timeWeather)
-
-        let dayWeatherItems = dayWeathers.map { Item.dayWeatherInfo($0) }
-        snapshot.appendItems(dayWeatherItems, toSection: .dayWeather)
-
-        let sameItems = same.map { Item.post($0) }
-        snapshot.appendItems(sameItems, toSection: .same)
-
-        dataSource.apply(snapshot, animatingDifferences: false)
-    }
-
-    func itemIdentifier(for indexPath: IndexPath) -> Item? {
-        return dataSource.itemIdentifier(for: indexPath)
     }
 }

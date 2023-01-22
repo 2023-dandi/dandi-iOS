@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import Then
+import YDS
 
 final class HomeView: UIView {
     private lazy var collectionViewLayout: UICollectionViewLayout = {
@@ -32,8 +34,11 @@ final class HomeView: UIView {
         return collectionView
     }()
 
+    private(set) lazy var addButton: UIButton = .init()
+
     init() {
         super.init(frame: .zero)
+        setProperties()
         setLayouts()
     }
 
@@ -44,10 +49,21 @@ final class HomeView: UIView {
 }
 
 extension HomeView {
+    private func setProperties() {
+        addButton.do {
+            $0.cornerRadius = 30
+            $0.backgroundColor = YDSColor.buttonPoint
+        }
+    }
+
     private func setLayouts() {
-        addSubviews(collectionView)
+        addSubviews(collectionView, addButton)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
+        }
+        addButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+            make.size.equalTo(60)
         }
     }
 
