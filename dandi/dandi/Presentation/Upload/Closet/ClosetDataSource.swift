@@ -50,6 +50,10 @@ final class ClosetDataSource {
 
         dataSource.apply(snapshot, animatingDifferences: false)
     }
+
+    func itemIdentifier(for indexPath: IndexPath) -> Item? {
+        return dataSource.itemIdentifier(for: indexPath)
+    }
 }
 
 extension ClosetDataSource {
@@ -78,7 +82,8 @@ extension ClosetDataSource {
     }
 
     private func configureButtonCellRegistration<Cell: ButtonCell>() -> ButtonCellRegistration<Cell> {
-        return ButtonCellRegistration<Cell> { _, _, _ in
+        return ButtonCellRegistration<Cell> { cell, _, _ in
+            cell.configure(type: .add)
         }
     }
 

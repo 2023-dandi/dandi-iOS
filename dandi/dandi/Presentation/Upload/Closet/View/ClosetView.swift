@@ -45,7 +45,6 @@ final class ClosetView: UIView {
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
-        collectionView.backgroundColor = YDSColor.bgDimDark
         return collectionView
     }()
 

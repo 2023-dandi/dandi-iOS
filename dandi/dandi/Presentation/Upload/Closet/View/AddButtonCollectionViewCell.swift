@@ -11,12 +11,29 @@ import SnapKit
 import YDS
 
 final class AddButtonCollectionViewCell: UICollectionViewCell {
+    enum IconType {
+        case add
+        case camera
+
+        var image: UIImage {
+            switch self {
+            case .add:
+                return YDSIcon.plusLine
+            case .camera:
+                return YDSIcon.cameraFilled
+            }
+        }
+    }
+
     private let addImageView: UIImageView = .init()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setProperties()
         setLayouts()
+    }
+
+    func configure(type: IconType) {
+        addImageView.image = type.image
     }
 
     @available(*, unavailable)
@@ -26,10 +43,6 @@ final class AddButtonCollectionViewCell: UICollectionViewCell {
 }
 
 extension AddButtonCollectionViewCell {
-    private func setProperties() {
-        addImageView.image = YDSIcon.plusLine
-    }
-
     private func setLayouts() {
         contentView.addSubview(addImageView)
         addImageView.snp.makeConstraints { make in

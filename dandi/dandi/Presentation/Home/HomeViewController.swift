@@ -146,7 +146,10 @@ final class HomeViewController: BaseViewController {
         homeView.addButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.navigationController?.pushViewController(ClosetViewController(), animated: true)
+                owner.navigationController?.pushViewController(
+                    owner.factory.makeClosetViewController(),
+                    animated: true
+                )
             })
             .disposed(by: disposeBag)
     }

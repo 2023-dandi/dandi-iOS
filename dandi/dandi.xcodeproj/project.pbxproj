@@ -63,6 +63,9 @@
 		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
+		DDF78D6A297CDBFB00817925 /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D69297CDBFB00817925 /* PhotoLibraryView.swift */; };
+		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
+		DDF78D6F297CDC3200817925 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6E297CDC3200817925 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +135,9 @@
 		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
+		DDF78D69297CDBFB00817925 /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
+		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		DDF78D6E297CDC3200817925 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				DDDBD43F29740B8800452F01 /* Closet */,
+				DDF78D68297CDBE300817925 /* PhotoLibrary */,
 			);
 			path = Upload;
 			sourceTree = "<group>";
@@ -493,6 +500,24 @@
 				DDDBD44429740DEA00452F01 /* ClosetView.swift */,
 				DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */,
 				DDDBD44B29792CEB00452F01 /* ImageCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDF78D68297CDBE300817925 /* PhotoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				DDF78D6D297CDC2600817925 /* View */,
+				DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */,
+			);
+			path = PhotoLibrary;
+			sourceTree = "<group>";
+		};
+		DDF78D6D297CDC2600817925 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDF78D69297CDBFB00817925 /* PhotoLibraryView.swift */,
+				DDF78D6E297CDC3200817925 /* PhotoCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -705,6 +730,7 @@
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
+				DDF78D6A297CDBFB00817925 /* PhotoLibraryView.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DDDBD44C29792CEB00452F01 /* ImageCollectionViewCell.swift in Sources */,
@@ -716,6 +742,7 @@
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
+				DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */,
 				DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */,
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
@@ -730,6 +757,7 @@
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
 				DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
+				DDF78D6F297CDC3200817925 /* PhotoCollectionViewCell.swift in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
