@@ -12,6 +12,8 @@ protocol ModulFactoryInterface {
     func makeHomeViewController() -> HomeViewController
     func makeMyPageViewController() -> MyPageViewController
     func makeFeedViewContontoller() -> FeedViewController
+    func makeClosetViewController() -> ClosetViewController
+    func makePhotoLibraryViewController() -> PhotoLibraryViewController
 }
 
 final class ModuleFactory {
@@ -39,6 +41,18 @@ extension ModuleFactory: ModulFactoryInterface {
 
     func makeFeedViewContontoller() -> FeedViewController {
         let vc = FeedViewController()
+        vc.factory = self
+        return vc
+    }
+
+    func makeClosetViewController() -> ClosetViewController {
+        let vc = ClosetViewController()
+        vc.factory = self
+        return vc
+    }
+
+    func makePhotoLibraryViewController() -> PhotoLibraryViewController {
+        let vc = PhotoLibraryViewController()
         vc.factory = self
         return vc
     }
