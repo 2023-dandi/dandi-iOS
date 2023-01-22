@@ -54,6 +54,13 @@
 		DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FFF2965BA33006FBE00 /* UIImage+.swift */; };
 		DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */; };
 		DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390062966BE51006FBE00 /* LocationSettingView.swift */; };
+		DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44029740DD900452F01 /* ClosetViewController.swift */; };
+		DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44229740DE300452F01 /* ClosetReactor.swift */; };
+		DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44429740DEA00452F01 /* ClosetView.swift */; };
+		DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44629792BF400452F01 /* ClosetDataSource.swift */; };
+		DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */; };
+		DDDBD44C29792CEB00452F01 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44B29792CEB00452F01 /* ImageCollectionViewCell.swift */; };
+		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 /* End PBXBuildFile section */
@@ -116,6 +123,13 @@
 		DDA38FFF2965BA33006FBE00 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingViewController.swift; sourceTree = "<group>"; };
 		DDA390062966BE51006FBE00 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
+		DDDBD44029740DD900452F01 /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
+		DDDBD44229740DE300452F01 /* ClosetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetReactor.swift; sourceTree = "<group>"; };
+		DDDBD44429740DEA00452F01 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
+		DDDBD44629792BF400452F01 /* ClosetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetDataSource.swift; sourceTree = "<group>"; };
+		DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDDBD44B29792CEB00452F01 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +238,7 @@
 				DD9B06DE295EC80400A98041 /* Feed */,
 				DD9B06E1295EC81F00A98041 /* MyPage */,
 				DDA390032966BE2C006FBE00 /* Location */,
+				DDDBD43E29740AE800452F01 /* Upload */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -405,6 +420,7 @@
 				DDA38FE829641CCB006FBE00 /* Post.swift */,
 				DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */,
 				DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */,
+				DDDBD44D2979338800452F01 /* ClosetImage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -452,6 +468,35 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		DDDBD43E29740AE800452F01 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBD43F29740B8800452F01 /* Closet */,
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		DDDBD43F29740B8800452F01 /* Closet */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBD44829792C2E00452F01 /* View */,
+				DDDBD44029740DD900452F01 /* ClosetViewController.swift */,
+				DDDBD44229740DE300452F01 /* ClosetReactor.swift */,
+				DDDBD44629792BF400452F01 /* ClosetDataSource.swift */,
+			);
+			path = Closet;
+			sourceTree = "<group>";
+		};
+		DDDBD44829792C2E00452F01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBD44429740DEA00452F01 /* ClosetView.swift */,
+				DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */,
+				DDDBD44B29792CEB00452F01 /* ImageCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -459,11 +504,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD239908295D7C8800A898B2 /* Build configuration list for PBXNativeTarget "dandi" */;
 			buildPhases = (
-				DD2398D7295D7C8700A898B2 /* Sources */,
-				DD239912295D7D0000A898B2 /* SwiftLint Script */,
 				DD239911295D7CE500A898B2 /* SwiftFormat Script */,
+				DD2398D7295D7C8700A898B2 /* Sources */,
 				DD2398D8295D7C8700A898B2 /* Frameworks */,
 				DD2398D9295D7C8700A898B2 /* Resources */,
+				DD239912295D7D0000A898B2 /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -647,29 +692,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift in Sources */,
+				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
+				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DD239925295D86FC00A898B2 /* network.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
+				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
+				DDDBD44C29792CEB00452F01 /* ImageCollectionViewCell.swift in Sources */,
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
 				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
+				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
+				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
 				DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */,
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
+				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
