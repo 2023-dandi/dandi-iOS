@@ -33,6 +33,8 @@ final class FeedDataSource {
         case post(Post)
     }
 
+    // MARK: - Initialize
+
     init(collectionView: UICollectionView, presentingViewController: UIViewController) {
         self.collectionView = collectionView
         self.presentingViewController = presentingViewController

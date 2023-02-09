@@ -118,13 +118,9 @@ extension FeedView {
 extension FeedView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollViewTranslationY = scrollView.panGestureRecognizer.translation(in: scrollView).y
-        let height = scrollViewTranslationY < 0 ? 45 : 108
-        let navigationTitle = scrollViewTranslationY < 0
-            ? "상도동 18도"
-            : "현재 상도동은 18도입니다.\n가디건을 걸치고 나가면 어떨까요?"
-        navigationTitleLabel.text = navigationTitle
+        let height = scrollViewTranslationY < 0 ? 0 : 108
         layoutIfNeeded()
-        UIView.animate(withDuration: 0.2) { [weak self] in
+        UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self = self else { return }
             self.navigationBar.snp.updateConstraints {
                 $0.height.equalTo(height)
