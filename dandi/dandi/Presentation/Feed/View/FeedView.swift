@@ -119,12 +119,14 @@ extension FeedView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollViewTranslationY = scrollView.panGestureRecognizer.translation(in: scrollView).y
         let height = scrollViewTranslationY < 0 ? 0 : 108
+        let alpha: CGFloat = scrollViewTranslationY < 0 ? 0 : 1
         layoutIfNeeded()
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.6) { [weak self] in
             guard let self = self else { return }
             self.navigationBar.snp.updateConstraints {
                 $0.height.equalTo(height)
             }
+            self.navigationTitleLabel.alpha = alpha
             self.layoutIfNeeded()
         }
     }

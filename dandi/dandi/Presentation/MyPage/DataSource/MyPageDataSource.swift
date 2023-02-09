@@ -104,7 +104,7 @@ extension MyPageDataSource {
     private func configurePostCellRegistration<Cell: PostCell>() -> PostCellRegistration<Cell> {
         return PostCellRegistration<Cell> { cell, _, post in
             cell.configure(
-                contentMode: .scaleAspectFit,
+                contentMode: .scaleAspectFill,
                 imageURL: post.mainImageURL
             )
             cell.cornerRadius = 4

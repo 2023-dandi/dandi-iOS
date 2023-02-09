@@ -54,6 +54,33 @@ final class MyPageViewController: BaseViewController {
                     date: "2000.11.26",
                     content: "아으 추워요!!",
                     isLiked: true
+                ),
+                Post(
+                    id: 4,
+                    mainImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                    nickname: "김윤서",
+                    date: "2000.11.26",
+                    content: "아으 추워요!!",
+                    isLiked: true
+                ),
+                Post(
+                    id: 5,
+                    mainImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                    nickname: "김윤서",
+                    date: "2000.11.26",
+                    content: "아으 추워요!!",
+                    isLiked: true
+                ),
+                Post(
+                    id: 6,
+                    mainImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                    nickname: "김윤서",
+                    date: "2000.11.26",
+                    content: "아으 추워요!!",
+                    isLiked: true
                 )
             ]
         )

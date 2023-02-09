@@ -18,6 +18,7 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell {
     private let closetLabel: UILabel = .init()
     private let locationLabel: UILabel = .init()
     private let arrowImageView: UIImageView = .init()
+    private let separatorView: UIView = .init()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,13 +69,17 @@ extension MyPageProfileCollectionViewCell {
         arrowImageView.do {
             $0.image = YDSIcon.arrowRightLine
         }
+        separatorView.do {
+            $0.backgroundColor = YDSColor.borderNormal
+        }
     }
 
     private func setLayouts() {
         contentView.addSubviews(
             profileImageView,
             contentStackView,
-            arrowImageView
+            arrowImageView,
+            separatorView
         )
         contentStackView.addArrangedSubviews(
             nicknameLabel,
@@ -95,6 +100,10 @@ extension MyPageProfileCollectionViewCell {
             make.size.equalTo(24)
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(8)
+        }
+        separatorView.snp.makeConstraints { make in
+            make.height.equalTo(8)
+            make.leading.bottom.trailing.equalToSuperview()
         }
     }
 }

@@ -92,6 +92,7 @@ extension MyPageView {
         group.interItemSpacing = .fixed(2)
 
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 2
         return section
     }
 }
