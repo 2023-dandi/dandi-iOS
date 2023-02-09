@@ -89,7 +89,10 @@ extension ClosetDataSource {
 
     private func configureImageCellRegistration<Cell: ImageCell>() -> ImageCellRegistration<Cell> {
         return ImageCellRegistration<Cell> { cell, _, image in
-            cell.configure(imageURL: image.imageURL)
+            cell.configure(
+                contentMode: .scaleAspectFit,
+                imageURL: image.imageURL
+            )
         }
     }
 }

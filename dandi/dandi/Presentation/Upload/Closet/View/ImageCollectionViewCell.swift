@@ -15,11 +15,11 @@ final class ImageCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setProperties()
         setLayouts()
     }
 
-    func configure(imageURL: String) {
+    func configure(contentMode: UIView.ContentMode, imageURL: String) {
+        imageView.contentMode = contentMode
         imageView.image(url: imageURL)
     }
 
@@ -30,12 +30,8 @@ final class ImageCollectionViewCell: UICollectionViewCell {
 }
 
 extension ImageCollectionViewCell {
-    private func setProperties() {
-        contentView.backgroundColor = .blue
-        imageView.contentMode = .scaleAspectFit
-    }
-
     private func setLayouts() {
+        contentView.backgroundColor = .cyan
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
