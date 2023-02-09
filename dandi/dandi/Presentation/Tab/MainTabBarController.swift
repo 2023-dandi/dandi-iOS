@@ -42,15 +42,16 @@ extension MainTabBarController {
 
         let feedVC = factory.makeFeedViewContontoller()
         let feedNavigationController = YDSNavigationController(rootViewController: feedVC)
+        feedNavigationController.title = "둘러보기"
         feedNavigationController.tabBarItem = UITabBarItem(
             title: nil,
             image: Tab.feed.image,
             selectedImage: Tab.feed.selectedImage
         )
-        feedNavigationController.navigationBar.isHidden = true
 
         let myPageVC = factory.makeMyPageViewController()
         let myPageNavigationController = YDSNavigationController(rootViewController: myPageVC)
+        myPageNavigationController.title = "마이페이지"
         myPageNavigationController.tabBarItem = UITabBarItem(
             title: nil,
             image: Tab.my.image,
