@@ -55,7 +55,10 @@ final class HomeDataSource {
         timeWeathers: [TimeWeatherInfo],
         same: [Post]
     ) {
-        configureHeader(title: "오늘 같은 날에는 이렇게  입었어요.")
+        configureHeader(
+            title: "13도의 내 기록",
+            subtitle: "이전에 오늘 같은 날씨에는 이렇게 입었어요."
+        )
 
         var snapshot = Snapshot()
         snapshot.appendSections([.dayWeather, .timeWeather, .same])
@@ -144,13 +147,13 @@ extension HomeDataSource {
         }
     }
 
-    private func configureHeader(title: String) {
+    private func configureHeader(title: String, subtitle: String) {
         let headerRegistration = SectionHeaderRegistration<CardHeaderView>(
             elementKind: UICollectionView.elementKindSectionHeader
         ) { headerView, _, indexPath in
             switch indexPath.section {
             case 2:
-                headerView.configure(title: title)
+                headerView.configure(title: title, subtitle: subtitle)
             default:
                 return
             }

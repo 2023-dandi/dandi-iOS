@@ -93,6 +93,17 @@ extension MyPageView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 2
+
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(62)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [header]
         return section
     }
 }

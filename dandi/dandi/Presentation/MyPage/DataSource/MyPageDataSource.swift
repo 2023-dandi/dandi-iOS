@@ -15,6 +15,7 @@ final class MyPageDataSource {
 
     typealias ProfileCell = MyPageProfileCollectionViewCell
     typealias PostCell = ImageCollectionViewCell
+    typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
 
     typealias ProfileCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, UserProfile>
     typealias PostCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
@@ -24,7 +25,7 @@ final class MyPageDataSource {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
 
     private let collectionView: UICollectionView
-    private var presentingViewController: UIViewController?
+    private let presentingViewController: UIViewController?
     private lazy var dataSource = createDataSource()
 
     enum Section {
@@ -47,6 +48,8 @@ final class MyPageDataSource {
     // MARK: - Update DataSource
 
     func update(user: UserProfile, feed: [Post]) {
+        configureHeader(title: "내가 올린 게시물")
+
         var snapshot = Snapshot()
         snapshot.appendSections([.profile, .feed])
 
@@ -108,6 +111,29 @@ extension MyPageDataSource {
                 imageURL: post.mainImageURL
             )
             cell.cornerRadius = 4
+        }
+    }
+}
+
+extension MyPageDataSource {
+    private func configureHeader(title: String) {
+        let headerRegistration = SectionHeaderRegistration<CardHeaderView>(
+            elementKind: UICollectionView.elementKindSectionHeader
+        ) { headerView, _, indexPath in
+            switch indexPath.section {
+            case 1:
+                headerView.configure(title: title)
+            default:
+                return
+            }
+        }
+
+        dataSource.supplementaryViewProvider = { [weak self] _, _, indexPath in
+            let header = self?.collectionView.dequeueConfiguredReusableSupplementary(
+                using: headerRegistration,
+                for: indexPath
+            )
+            return header
         }
     }
 }
