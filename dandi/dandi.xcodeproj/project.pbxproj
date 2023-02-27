@@ -54,12 +54,15 @@
 		DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FFF2965BA33006FBE00 /* UIImage+.swift */; };
 		DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */; };
 		DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390062966BE51006FBE00 /* LocationSettingView.swift */; };
+		DDA8164929AC94D300963776 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164829AC94D300963776 /* ProfileView.swift */; };
+		DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */; };
+		DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */; };
+		DDA8164F29ACAD6800963776 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164E29ACAD6800963776 /* Comment.swift */; };
 		DDB23BA42993954A000735FB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA32993954A000735FB /* MyPageView.swift */; };
 		DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA629939561000735FB /* MyPageDataSource.swift */; };
 		DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */; };
 		DDC52200299520E500E2845F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC521FF299520E500E2845F /* UserProfile.swift */; };
 		DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */; };
-		DDC522102995E71000E2845F /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5220F2995E71000E2845F /* PostDetailView.swift */; };
 		DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */; };
 		DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44029740DD900452F01 /* ClosetViewController.swift */; };
 		DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44229740DE300452F01 /* ClosetReactor.swift */; };
@@ -131,12 +134,15 @@
 		DDA38FFF2965BA33006FBE00 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingViewController.swift; sourceTree = "<group>"; };
 		DDA390062966BE51006FBE00 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
+		DDA8164829AC94D300963776 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDA8164E29ACAD6800963776 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DDB23BA32993954A000735FB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		DDB23BA629939561000735FB /* MyPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDataSource.swift; sourceTree = "<group>"; };
 		DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionView.swift; sourceTree = "<group>"; };
 		DDC521FF299520E500E2845F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
-		DDC5220F2995E71000E2845F /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDataSource.swift; sourceTree = "<group>"; };
 		DDDBD44029740DD900452F01 /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		DDDBD44229740DE300452F01 /* ClosetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetReactor.swift; sourceTree = "<group>"; };
@@ -441,6 +447,7 @@
 				DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */,
 				DDDBD44D2979338800452F01 /* ClosetImage.swift */,
 				DDC521FF299520E500E2845F /* UserProfile.swift */,
+				DDA8164E29ACAD6800963776 /* Comment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -526,7 +533,9 @@
 		DDC522112995EA5100E2845F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DDC5220F2995E71000E2845F /* PostDetailView.swift */,
+				DDA8164829AC94D300963776 /* ProfileView.swift */,
+				DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */,
+				DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -805,7 +814,10 @@
 				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
+				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
+				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
 				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
+				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
 				DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */,
@@ -817,12 +829,12 @@
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
-				DDC522102995E71000E2845F /* PostDetailView.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DDB23BA42993954A000735FB /* MyPageView.swift in Sources */,
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
 				DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */,
+				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
 				DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
