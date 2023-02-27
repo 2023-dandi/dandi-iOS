@@ -106,7 +106,7 @@ extension CardCollectionViewCell {
         contentStackView.snp.makeConstraints { make in
             make.top.equalTo(profileInfoView.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(8)
-            make.height.equalTo(28)
+            make.height.equalTo(28).priority(.high)
         }
         heartButton.snp.makeConstraints { make in
             make.size.equalTo(20).priority(.high)
