@@ -45,7 +45,7 @@
 		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
 		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
 		DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */; };
-		DDA38FEF29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */; };
+		DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FEE29655B2C006FBE00 /* WeatherBannerView.swift */; };
 		DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */; };
 		DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF529657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift */; };
 		DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */; };
@@ -58,6 +58,9 @@
 		DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA629939561000735FB /* MyPageDataSource.swift */; };
 		DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */; };
 		DDC52200299520E500E2845F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC521FF299520E500E2845F /* UserProfile.swift */; };
+		DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */; };
+		DDC522102995E71000E2845F /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5220F2995E71000E2845F /* PostDetailView.swift */; };
+		DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */; };
 		DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44029740DD900452F01 /* ClosetViewController.swift */; };
 		DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44229740DE300452F01 /* ClosetReactor.swift */; };
 		DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44429740DEA00452F01 /* ClosetView.swift */; };
@@ -119,7 +122,7 @@
 		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeaderView.swift; sourceTree = "<group>"; };
-		DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDA38FEE29655B2C006FBE00 /* WeatherBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBannerView.swift; sourceTree = "<group>"; };
 		DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherInfo.swift; sourceTree = "<group>"; };
 		DDA38FF529657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWeatherInfo.swift; sourceTree = "<group>"; };
@@ -132,6 +135,9 @@
 		DDB23BA629939561000735FB /* MyPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDataSource.swift; sourceTree = "<group>"; };
 		DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionView.swift; sourceTree = "<group>"; };
 		DDC521FF299520E500E2845F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		DDC5220F2995E71000E2845F /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDataSource.swift; sourceTree = "<group>"; };
 		DDDBD44029740DD900452F01 /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		DDDBD44229740DE300452F01 /* ClosetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetReactor.swift; sourceTree = "<group>"; };
 		DDDBD44429740DEA00452F01 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 				DD9B06DE295EC80400A98041 /* Feed */,
 				DD9B06E1295EC81F00A98041 /* MyPage */,
 				DDA390032966BE2C006FBE00 /* Location */,
+				DDC522092995E69C00E2845F /* Post */,
 				DDDBD43E29740AE800452F01 /* Upload */,
 			);
 			path = Presentation;
@@ -442,7 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				DD9B06F3295EDA1300A98041 /* HomeView.swift */,
-				DDA38FEE29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift */,
+				DDA38FEE29655B2C006FBE00 /* WeatherBannerView.swift */,
 				DDA38FF529657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift */,
 			);
 			path = View;
@@ -498,6 +505,48 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		DDC522092995E69C00E2845F /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				DDC5220A2995E6D400E2845F /* Detail */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		DDC5220A2995E6D400E2845F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DDC522132995EC8100E2845F /* DataSource */,
+				DDC522112995EA5100E2845F /* View */,
+				DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		DDC522112995EA5100E2845F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDC5220F2995E71000E2845F /* PostDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDC522122995EB0A00E2845F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBD44629792BF400452F01 /* ClosetDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		DDC522132995EC8100E2845F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		DDDBD43E29740AE800452F01 /* Upload */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,10 +559,10 @@
 		DDDBD43F29740B8800452F01 /* Closet */ = {
 			isa = PBXGroup;
 			children = (
+				DDC522122995EB0A00E2845F /* DataSource */,
 				DDDBD44829792C2E00452F01 /* View */,
 				DDDBD44029740DD900452F01 /* ClosetViewController.swift */,
 				DDDBD44229740DE300452F01 /* ClosetReactor.swift */,
-				DDDBD44629792BF400452F01 /* ClosetDataSource.swift */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -730,7 +779,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA38FEF29655B2C006FBE00 /* WeatherBannerCollectionViewCell.swift in Sources */,
+				DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
@@ -739,6 +788,7 @@
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DD239925295D86FC00A898B2 /* network.swift in Sources */,
+				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
@@ -755,6 +805,7 @@
 				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
+				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
 				DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */,
@@ -766,6 +817,7 @@
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
+				DDC522102995E71000E2845F /* PostDetailView.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DDB23BA42993954A000735FB /* MyPageView.swift in Sources */,
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
