@@ -13,6 +13,7 @@ final class PostDetailViewController: BaseViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: createLayout())
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = self
         return collectionView
     }()
 
@@ -21,7 +22,8 @@ final class PostDetailViewController: BaseViewController {
     )
 
     private let moreButton: UIButton = .init()
-    private let textView: PostCommentTextView = .init()
+    private let commentBottomTextView: PostCommentTextView = .init()
+    private var isKeyboardPresented = false
 
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
@@ -32,6 +34,7 @@ final class PostDetailViewController: BaseViewController {
         super.init()
         setLayout()
         setProperties()
+        bind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +44,7 @@ final class PostDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         dataSource.update(
             post: Post(
                 id: 2,
@@ -92,19 +96,97 @@ final class PostDetailViewController: BaseViewController {
         navigationController?.navigationBar.isHidden = true
     }
 
+    private func bind() {
+        bindKeyboard()
+    }
+
     private func setProperties() {
+        commentBottomTextView.configure(profileImageURL: nil)
+        commentBottomTextView.innerTextView.delegate = self
         moreButton.setImage(YDSIcon.dotsVerticalLine.withRenderingMode(.alwaysTemplate), for: .normal)
         moreButton.tintColor = YDSColor.buttonNormal
         navigationItem.setRightBarButton(UIBarButtonItem(customView: moreButton), animated: false)
     }
 
-    private func setLayout() {
-        view.addSubviews(collectionView, textView)
-        collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+    private func bindKeyboard() {
+        NotificationCenter.default.rx
+            .notification(UIResponder.keyboardWillShowNotification)
+            .compactMap { $0.userInfo }
+            .map { userInfo -> CGFloat in
+                (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0
+            }
+            .subscribe(onNext: { [weak self] height in
+                guard let self = self else { return }
+                self.isKeyboardPresented = true
+                self.commentBottomTextView.snp.updateConstraints {
+                    $0.bottom.equalToSuperview().offset(-height)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        NotificationCenter.default.rx
+            .notification(UIResponder.keyboardWillHideNotification)
+            .compactMap { $0.userInfo }
+            .map { userInfo -> CGFloat in
+                (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0
+            }
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.isKeyboardPresented = false
+                self.commentBottomTextView.snp.updateConstraints {
+                    $0.bottom.equalToSuperview().offset(-12)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+extension PostDetailViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        commentBottomTextView.placeholderLabel.isHidden = !textView.text.isEmpty
+        commentBottomTextView.uploadButton.isEnabled = !textView.text.isEmpty
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension PostDetailViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard isKeyboardPresented == false else { return }
+        let scrollViewTranslationY = scrollView.panGestureRecognizer.translation(in: scrollView).y
+        let offsetY = scrollViewTranslationY < 0 ? 90 : -12
+        view.layoutSubviews()
+        UIView.animate(withDuration: 0.4) { [weak self] in
+            guard let self = self else { return }
+            self.commentBottomTextView.snp.updateConstraints {
+                $0.bottom.equalToSuperview().offset(offsetY)
+            }
+            if scrollViewTranslationY < 0 {
+                self.collectionView.snp.remakeConstraints {
+                    $0.edges.equalToSuperview()
+                }
+            } else {
+                self.collectionView.snp.remakeConstraints {
+                    $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+                }
+            }
+            self.view.layoutSubviews()
         }
-        textView.snp.makeConstraints {
-            $0.leading.bottom.trailing.equalTo(view.safeAreaLayoutGuide)
+    }
+}
+
+// MARK: - Layout
+
+extension PostDetailViewController {
+    private func setLayout() {
+        view.addSubviews(collectionView, commentBottomTextView)
+        collectionView.snp.makeConstraints {
+            $0.leading.top.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        commentBottomTextView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-12)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.greaterThanOrEqualTo(53)
         }
     }

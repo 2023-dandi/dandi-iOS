@@ -59,6 +59,8 @@
 		DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */; };
 		DDA8164F29ACAD6800963776 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164E29ACAD6800963776 /* Comment.swift */; };
 		DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */; };
+		DDA8165329ACD42800963776 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165229ACD42800963776 /* UIViewController.swift */; };
+		DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165429ACD5B000963776 /* UIButton+.swift */; };
 		DDB23BA42993954A000735FB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA32993954A000735FB /* MyPageView.swift */; };
 		DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA629939561000735FB /* MyPageDataSource.swift */; };
 		DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */; };
@@ -140,6 +142,8 @@
 		DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8164E29ACAD6800963776 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentTextView.swift; sourceTree = "<group>"; };
+		DDA8165229ACD42800963776 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		DDA8165429ACD5B000963776 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		DDB23BA32993954A000735FB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		DDB23BA629939561000735FB /* MyPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDataSource.swift; sourceTree = "<group>"; };
 		DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionView.swift; sourceTree = "<group>"; };
@@ -437,6 +441,8 @@
 				DDF636FD2960457A007427BD /* UIStackView+.swift */,
 				DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */,
 				DDA38FFF2965BA33006FBE00 /* UIImage+.swift */,
+				DDA8165229ACD42800963776 /* UIViewController.swift */,
+				DDA8165429ACD5B000963776 /* UIButton+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -817,10 +823,12 @@
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD23991F295D86C600A898B2 /* data.swift in Sources */,
+				DDA8165329ACD42800963776 /* UIViewController.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
 				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
+				DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */,
 				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,

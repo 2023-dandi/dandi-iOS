@@ -24,6 +24,10 @@ final class PostCommentTextView: UIView {
         setLayouts()
     }
 
+    func configure(profileImageURL: String?) {
+        profileImageView.image(url: profileImageURL, defaultImage: .actions)
+    }
+
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -33,8 +37,6 @@ final class PostCommentTextView: UIView {
         backgroundColor = YDSColor.bgNormal
         profileImageView.size = .small
         innerTextView.do {
-            $0.borderWidth = YDSConstant.Border.thin
-            $0.borderColor = YDSColor.borderThin
             $0.backgroundColor = .clear
             $0.textColor = YDSColor.textPrimary
             $0.font = YDSFont.body2
@@ -47,11 +49,21 @@ final class PostCommentTextView: UIView {
             $0.font = YDSFont.caption0
         }
         uploadButton.do {
+            $0.isEnabled = false
+
             $0.cornerRadius = YDSConstant.Rounding.r4
-            $0.backgroundColor = YDSColor.buttonBG
+
             $0.setTitle("등록", for: .normal)
-            $0.setTitleColor(YDSColor.buttonNormal, for: .normal)
             $0.titleLabel?.font = YDSFont.button4
+
+            $0.setTitleColor(YDSColor.buttonNormal, for: .disabled)
+            $0.setBackgroundColor(YDSColor.buttonBG, for: .disabled)
+
+            $0.setTitleColor(YDSColor.buttonPoint, for: .normal)
+            $0.setBackgroundColor(YDSColor.buttonPointBG, for: .normal)
+
+            $0.setTitleColor(YDSColor.buttonPoint.withAlphaComponent(0.6), for: .normal)
+            $0.setBackgroundColor(YDSColor.buttonPointBG.withAlphaComponent(0.6), for: .highlighted)
         }
     }
 
@@ -62,23 +74,23 @@ final class PostCommentTextView: UIView {
         }
         profileImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview().inset(12)
         }
         innerTextView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(64)
-            $0.bottom.equalToSuperview().inset(8)
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(10)
+            $0.top.bottom.equalToSuperview().inset(8)
             $0.trailing.equalToSuperview().inset(68)
             $0.height.greaterThanOrEqualTo(32)
         }
         placeholderLabel.snp.makeConstraints {
-            $0.leading.equalTo(innerTextView.snp.leading)
-            $0.centerY.equalTo(innerTextView.snp.centerY)
+            $0.leading.equalTo(innerTextView.snp.leading).offset(4)
+            $0.centerY.equalTo(profileImageView.snp.centerY)
         }
         uploadButton.snp.makeConstraints {
             $0.height.equalTo(33)
             $0.width.equalTo(37)
-            $0.bottom.equalToSuperview().inset(8)
             $0.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalTo(profileImageView.snp.centerY)
         }
     }
 }
