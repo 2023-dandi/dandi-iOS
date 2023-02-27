@@ -62,8 +62,8 @@ final class PostCommentTextView: UIView {
             $0.setTitleColor(YDSColor.buttonPoint, for: .normal)
             $0.setBackgroundColor(YDSColor.buttonPointBG, for: .normal)
 
-            $0.setTitleColor(YDSColor.buttonPoint.withAlphaComponent(0.6), for: .normal)
-            $0.setBackgroundColor(YDSColor.buttonPointBG.withAlphaComponent(0.6), for: .highlighted)
+            $0.setTitleColor(YDSColor.buttonPointPressed, for: .highlighted)
+            $0.setBackgroundColor(YDSColor.buttonPointBG, for: .highlighted)
         }
     }
 
