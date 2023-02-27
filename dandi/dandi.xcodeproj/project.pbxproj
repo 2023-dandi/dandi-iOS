@@ -61,6 +61,8 @@
 		DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */; };
 		DDA8165329ACD42800963776 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165229ACD42800963776 /* UIViewController.swift */; };
 		DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165429ACD5B000963776 /* UIButton+.swift */; };
+		DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165629ACDA1900963776 /* MyInformationViewController.swift */; };
+		DDA8165929ACEA0000963776 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165829ACEA0000963776 /* PaddingLabel.swift */; };
 		DDB23BA42993954A000735FB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA32993954A000735FB /* MyPageView.swift */; };
 		DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA629939561000735FB /* MyPageDataSource.swift */; };
 		DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */; };
@@ -144,6 +146,8 @@
 		DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentTextView.swift; sourceTree = "<group>"; };
 		DDA8165229ACD42800963776 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		DDA8165429ACD5B000963776 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		DDA8165629ACDA1900963776 /* MyInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationViewController.swift; sourceTree = "<group>"; };
+		DDA8165829ACEA0000963776 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		DDB23BA32993954A000735FB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		DDB23BA629939561000735FB /* MyPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDataSource.swift; sourceTree = "<group>"; };
 		DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionView.swift; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 				DDB23BA529939553000735FB /* DataSource */,
 				DDB23BA22993953C000735FB /* View */,
 				DD9B06E2295EC83100A98041 /* MyPageViewController.swift */,
+				DDA8165629ACDA1900963776 /* MyInformationViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 			children = (
 				DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */,
 				DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */,
+				DDA8165829ACEA0000963776 /* PaddingLabel.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -827,11 +833,13 @@
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
+				DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */,
 				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
 				DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */,
 				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
+				DDA8165929ACEA0000963776 /* PaddingLabel.swift in Sources */,
 				DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */,
 				DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */,
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
