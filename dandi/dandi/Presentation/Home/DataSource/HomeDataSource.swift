@@ -13,13 +13,12 @@ import RxSwift
 final class HomeDataSource {
     // MARK: - typealias
 
-    typealias WeatherBannerCell = WeatherBannerCollectionViewCell
     typealias WeatherDetailCell = WeatherDetailCollectionViewCell
     typealias CardCell = CardCollectionViewCell
 
-    typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
-    typealias WeatherBannerCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, DayWeatherInfo>
     typealias WeahterDetailCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, TimeWeatherInfo>
+    typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
+
     typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
 
     typealias CellProvider = (UICollectionView, IndexPath, Item) -> UICollectionViewCell?
@@ -32,16 +31,12 @@ final class HomeDataSource {
     private lazy var dataSource = createDataSource()
 
     enum Section {
-        case dayWeather
         case timeWeather
-        case banner
         case same
-        case recommendation
     }
 
     enum Item: Hashable {
         case timeWeatherInfo(TimeWeatherInfo)
-        case dayWeatherInfo(DayWeatherInfo)
         case post(Post)
     }
 
@@ -51,7 +46,7 @@ final class HomeDataSource {
     }
 
     func update(
-        dayWeathers: [DayWeatherInfo],
+        dayWeathers _: [DayWeatherInfo],
         timeWeathers: [TimeWeatherInfo],
         same: [Post]
     ) {
@@ -61,13 +56,10 @@ final class HomeDataSource {
         )
 
         var snapshot = Snapshot()
-        snapshot.appendSections([.dayWeather, .timeWeather, .same])
+        snapshot.appendSections([.timeWeather, .same])
 
         let timeWeatherItems = timeWeathers.map { Item.timeWeatherInfo($0) }
         snapshot.appendItems(timeWeatherItems, toSection: .timeWeather)
-
-        let dayWeatherItems = dayWeathers.map { Item.dayWeatherInfo($0) }
-        snapshot.appendItems(dayWeatherItems, toSection: .dayWeather)
 
         let sameItems = same.map { Item.post($0) }
         snapshot.appendItems(sameItems, toSection: .same)
@@ -83,7 +75,6 @@ final class HomeDataSource {
 extension HomeDataSource {
     private func createDataSource() -> DiffableDataSource {
         let cardRegistration: CardCellRegistration<CardCell> = configureCardCellRegistration()
-        let weatherBannerRegistration: WeatherBannerCellRegistration<WeatherBannerCell> = configureWeatherBannerCellRegistration()
         let weatherDetailRegistration: WeahterDetailCellRegistration<WeatherDetailCell> = configureDetailBannerCellRegistration()
 
         let cellProvider: CellProvider = { collectionView, indexPath, item in
@@ -93,12 +84,6 @@ extension HomeDataSource {
                     using: cardRegistration,
                     for: indexPath,
                     item: post
-                )
-            case let .dayWeatherInfo(info):
-                return collectionView.dequeueConfiguredReusableCell(
-                    using: weatherBannerRegistration,
-                    for: indexPath,
-                    item: info
                 )
             case let .timeWeatherInfo(info):
                 return collectionView.dequeueConfiguredReusableCell(
@@ -127,16 +112,6 @@ extension HomeDataSource {
         }
     }
 
-    private func configureWeatherBannerCellRegistration<Cell: WeatherBannerCell>() -> WeatherBannerCellRegistration<Cell> {
-        return WeatherBannerCellRegistration<Cell> { cell, _, info in
-            cell.configure(
-                mainImageURL: info.mainImageURL,
-                date: info.date,
-                content: info.detail
-            )
-        }
-    }
-
     private func configureDetailBannerCellRegistration<Cell: WeatherDetailCell>() -> WeahterDetailCellRegistration<Cell> {
         return WeahterDetailCellRegistration<Cell> { cell, _, info in
             cell.configure(
@@ -152,7 +127,7 @@ extension HomeDataSource {
             elementKind: UICollectionView.elementKindSectionHeader
         ) { headerView, _, indexPath in
             switch indexPath.section {
-            case 2:
+            case 1:
                 headerView.configure(title: title, subtitle: subtitle)
             default:
                 return

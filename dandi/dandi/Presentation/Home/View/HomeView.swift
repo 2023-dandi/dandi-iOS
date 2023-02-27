@@ -12,17 +12,19 @@ import Then
 import YDS
 
 final class HomeView: UIView {
+    private(set) lazy var bannerView = WeatherBannerView()
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { [weak self] index, _ in
             switch index {
             case 0:
-                return self?.createWeatherBannerSectionLayout()
-            case 1:
                 return self?.createWeatherDetailSectionLayout()
+            case 1:
+                return self?.createCardSectionLayout()
             default:
                 return self?.createCardSectionLayout()
             }
         }
+        let config = UICollectionViewCompositionalLayoutConfiguration()
         return layout
     }()
 
@@ -30,16 +32,43 @@ final class HomeView: UIView {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
+        collectionView.contentInset = .init(top: -20, left: .zero, bottom: 16, right: .zero)
+        collectionView.delegate = self
         return collectionView
     }()
 
+    private(set) lazy var statusBarView = UIView()
     private(set) lazy var addButton: UIButton = .init()
+
+    private var colors: [UIColor] = []
 
     init() {
         super.init(frame: .zero)
         setProperties()
         setLayouts()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        bannerView.addGradient(colors: colors)
+    }
+
+    public func configure(
+        location: String,
+        temperature: String,
+        description: String
+    ) {
+        bannerView.do {
+            $0.configure(
+                location: location,
+                temperature: temperature,
+                description: description
+            )
+        }
+    }
+
+    public func setGradientColors(colors: [UIColor]) {
+        self.colors = colors
     }
 
     @available(*, unavailable)
@@ -54,39 +83,29 @@ extension HomeView {
             $0.cornerRadius = 30
             $0.backgroundColor = YDSColor.buttonPoint
         }
+        statusBarView.do {
+            $0.backgroundColor = .white
+            $0.alpha = 0
+        }
     }
 
     private func setLayouts() {
-        addSubviews(collectionView, addButton)
+        addSubviews(bannerView, collectionView, addButton, statusBarView)
+        bannerView.snp.makeConstraints { make in
+            make.height.equalTo(350)
+            make.leading.top.trailing.equalToSuperview()
+        }
         collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.edges.equalToSuperview()
         }
         addButton.snp.makeConstraints { make in
             make.bottom.trailing.equalTo(safeAreaLayoutGuide).inset(16)
             make.size.equalTo(60)
         }
-    }
-
-    private func createWeatherBannerSectionLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(240 / 375)
-        )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitems: [item]
-        )
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPagingCentered
-        return section
+        statusBarView.snp.makeConstraints { make in
+            make.leading.top.trailing.equalToSuperview()
+            make.height.equalTo(44)
+        }
     }
 
     private func createWeatherDetailSectionLayout() -> NSCollectionLayoutSection {
@@ -108,8 +127,7 @@ extension HomeView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: 12, leading: 12, bottom: 12, trailing: 12)
-
+        section.contentInsets = .init(top: 300, leading: 12, bottom: 0, trailing: 12)
         return section
     }
 
@@ -138,7 +156,7 @@ extension HomeView {
 
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(62)
+            heightDimension: .absolute(96)
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
@@ -146,9 +164,22 @@ extension HomeView {
             alignment: .top
         )
         header.pinToVisibleBounds = true
-
         section.boundarySupplementaryItems = [header]
-
         return section
+    }
+}
+
+extension HomeView: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffsetY = scrollView.contentOffset.y
+        let pointOfChange: CGFloat = 30
+        UIView.animate(withDuration: 0.2) {
+            self.statusBarView.alpha = contentOffsetY < pointOfChange ? 0 : 1
+            self.bannerView.alpha = contentOffsetY < pointOfChange ? 1 : 0
+        }
+        guard contentOffsetY < -39 else { return }
+        let scale = 1 + ((-contentOffsetY - 39) / bannerView.frame.height)
+        bannerView.transform = CGAffineTransformIdentity
+        bannerView.transform = CGAffineTransformMakeScale(scale, scale)
     }
 }

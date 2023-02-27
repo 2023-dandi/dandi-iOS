@@ -140,6 +140,13 @@ final class HomeViewController: BaseViewController {
                 )
             ]
         )
+        homeView.configure(
+            location: "상도동",
+            temperature: "13",
+            description: "추워요\n너무너무추워요"
+        )
+        homeView.setGradientColors(colors: [.red, .white])
+        homeView.layoutSubviews()
     }
 
     private func bindTapAction() {
