@@ -92,8 +92,22 @@ final class MyPageViewController: BaseViewController {
 
     func bind() {
         myPageView.collectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] _ in
-                self?.navigationController?.pushViewController(PostDetailViewController(postID: 1), animated: true)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                switch owner.myPageDataSource.itemIdentifier(for: indexPath) {
+                case .profile:
+                    owner.navigationController?.pushViewController(
+                        MyInformationViewController(),
+                        animated: true
+                    )
+                case let .post(post):
+                    owner.navigationController?.pushViewController(
+                        PostDetailViewController(postID: post.id),
+                        animated: true
+                    )
+                case .none:
+                    break
+                }
             })
             .disposed(by: disposeBag)
     }
