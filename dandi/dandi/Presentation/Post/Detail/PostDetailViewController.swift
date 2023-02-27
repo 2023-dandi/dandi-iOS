@@ -21,6 +21,7 @@ final class PostDetailViewController: BaseViewController {
     )
 
     private let moreButton: UIButton = .init()
+    private let textView: PostCommentTextView = .init()
 
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
@@ -98,9 +99,13 @@ final class PostDetailViewController: BaseViewController {
     }
 
     private func setLayout() {
-        view.addSubview(collectionView)
+        view.addSubviews(collectionView, textView)
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        textView.snp.makeConstraints {
+            $0.leading.bottom.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.greaterThanOrEqualTo(53)
         }
     }
 

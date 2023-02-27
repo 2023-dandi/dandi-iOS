@@ -58,6 +58,7 @@
 		DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */; };
 		DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */; };
 		DDA8164F29ACAD6800963776 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164E29ACAD6800963776 /* Comment.swift */; };
+		DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */; };
 		DDB23BA42993954A000735FB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA32993954A000735FB /* MyPageView.swift */; };
 		DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA629939561000735FB /* MyPageDataSource.swift */; };
 		DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */; };
@@ -138,6 +139,7 @@
 		DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8164E29ACAD6800963776 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentTextView.swift; sourceTree = "<group>"; };
 		DDB23BA32993954A000735FB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		DDB23BA629939561000735FB /* MyPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDataSource.swift; sourceTree = "<group>"; };
 		DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionView.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 				DDA8164829AC94D300963776 /* ProfileView.swift */,
 				DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */,
 				DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */,
+				DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
+				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
