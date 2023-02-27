@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 final class FeedViewController: BaseViewController {
     private let feedView: FeedView = .init()
     private lazy var feedDataSource: FeedDataSource = .init(
@@ -20,6 +23,7 @@ final class FeedViewController: BaseViewController {
 
     override init() {
         super.init()
+        bind()
         feedView.navigationTitleLabel.text = "현재 상도동은 18도입니다.\n가디건을 걸치고 나가면 어떨까요?"
         feedDataSource.update(feed: [
             Post(
@@ -50,5 +54,13 @@ final class FeedViewController: BaseViewController {
                 isLiked: false
             )
         ])
+    }
+
+    func bind() {
+        feedView.collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.pushViewController(PostDetailViewController(postID: 1), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }

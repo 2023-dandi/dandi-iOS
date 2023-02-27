@@ -121,7 +121,7 @@ extension FeedView: UICollectionViewDelegate {
         let height = scrollViewTranslationY < 0 ? 0 : 108
         let alpha: CGFloat = scrollViewTranslationY < 0 ? 0 : 1
         layoutIfNeeded()
-        UIView.animate(withDuration: 0.6) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
             self.navigationBar.snp.updateConstraints {
                 $0.height.equalTo(height)

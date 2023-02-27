@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 final class MyPageViewController: BaseViewController {
     private let myPageView: MyPageView = .init()
     private lazy var myPageDataSource: MyPageDataSource = .init(
@@ -20,6 +23,7 @@ final class MyPageViewController: BaseViewController {
 
     override init() {
         super.init()
+        bind()
         myPageDataSource.update(
             user: UserProfile(
                 profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
@@ -84,5 +88,13 @@ final class MyPageViewController: BaseViewController {
                 )
             ]
         )
+    }
+
+    func bind() {
+        myPageView.collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.pushViewController(PostDetailViewController(postID: 1), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
