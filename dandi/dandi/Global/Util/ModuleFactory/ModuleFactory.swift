@@ -14,6 +14,8 @@ protocol ModulFactoryInterface {
     func makeFeedViewContontoller() -> FeedViewController
     func makeClosetViewController() -> ClosetViewController
     func makePhotoLibraryViewController() -> PhotoLibraryViewController
+    func makePostDetailViewController(postID: Int) -> PostDetailViewController
+    func makeMyInformationViewController() -> MyInformationViewController
 }
 
 final class ModuleFactory {
@@ -53,6 +55,18 @@ extension ModuleFactory: ModulFactoryInterface {
 
     func makePhotoLibraryViewController() -> PhotoLibraryViewController {
         let vc = PhotoLibraryViewController()
+        vc.factory = self
+        return vc
+    }
+
+    func makePostDetailViewController(postID: Int) -> PostDetailViewController {
+        let vc = PostDetailViewController(postID: postID)
+        vc.factory = self
+        return vc
+    }
+
+    func makeMyInformationViewController() -> MyInformationViewController {
+        let vc = MyInformationViewController()
         vc.factory = self
         return vc
     }

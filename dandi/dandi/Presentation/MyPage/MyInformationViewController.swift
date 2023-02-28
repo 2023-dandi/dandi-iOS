@@ -109,6 +109,7 @@ final class MyInformationViewController: BaseViewController {
             $0.size.equalTo(40)
             $0.bottom.trailing.equalTo(profileImageView)
         }
+        // TODO: - 레이아웃 에러 고치기
         textFieldView.snp.makeConstraints {
             $0.top.equalTo(profileImageView.snp.bottom).offset(32)
             $0.leading.trailing.equalToSuperview().inset(20)

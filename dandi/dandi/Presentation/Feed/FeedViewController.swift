@@ -58,8 +58,17 @@ final class FeedViewController: BaseViewController {
 
     func bind() {
         feedView.collectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] _ in
-                self?.navigationController?.pushViewController(PostDetailViewController(postID: 1), animated: true)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                switch owner.feedDataSource.itemIdentifier(for: indexPath) {
+                case let .post(post):
+                    owner.navigationController?.pushViewController(
+                        owner.factory.makePostDetailViewController(postID: post.id),
+                        animated: true
+                    )
+                default:
+                    break
+                }
             })
             .disposed(by: disposeBag)
     }

@@ -11,6 +11,11 @@ import RxCocoa
 import RxSwift
 
 final class ClosetViewController: BaseViewController {
+    override var hidesBottomBarWhenPushed: Bool {
+        get { navigationController?.topViewController == self }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
+
     private let closetView: ClosetView = .init()
     private lazy var datasource: ClosetDataSource = .init(collectionView: closetView.collectionView)
 
@@ -38,10 +43,7 @@ final class ClosetViewController: BaseViewController {
                 let item = owner.datasource.itemIdentifier(for: indexPath)
                 switch item {
                 case .button:
-                    owner.navigationController?.pushViewController(
-                        owner.factory.makePhotoLibraryViewController(),
-                        animated: true
-                    )
+                    owner.present(owner.factory.makePhotoLibraryViewController(), animated: true)
                 case let .image(image):
                     DandiLog.debug(image)
                 case .none:

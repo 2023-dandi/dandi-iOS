@@ -97,12 +97,12 @@ final class MyPageViewController: BaseViewController {
                 switch owner.myPageDataSource.itemIdentifier(for: indexPath) {
                 case .profile:
                     owner.navigationController?.pushViewController(
-                        MyInformationViewController(),
+                        owner.factory.makeMyInformationViewController(),
                         animated: true
                     )
                 case let .post(post):
                     owner.navigationController?.pushViewController(
-                        PostDetailViewController(postID: post.id),
+                        owner.factory.makePostDetailViewController(postID: post.id),
                         animated: true
                     )
                 case .none:
