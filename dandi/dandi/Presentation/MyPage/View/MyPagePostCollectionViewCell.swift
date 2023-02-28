@@ -1,8 +1,8 @@
 //
-//  ImageCollectionViewCell.swift
+//  MyPagePostCollectionViewCell.swift
 //  dandi
 //
-//  Created by 김윤서 on 2023/01/19.
+//  Created by 김윤서 on 2023/02/28.
 //
 
 import UIKit
@@ -10,16 +10,15 @@ import UIKit
 import SnapKit
 import YDS
 
-final class ImageCollectionViewCell: UICollectionViewCell {
+final class MyPagePostCollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = .init()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayouts()
+        render()
     }
 
-    func configure(contentMode: UIView.ContentMode, imageURL: String) {
-        imageView.contentMode = contentMode
+    func configure(imageURL: String) {
         imageView.image(url: imageURL)
     }
 
@@ -29,9 +28,11 @@ final class ImageCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension ImageCollectionViewCell {
-    private func setLayouts() {
+extension MyPagePostCollectionViewCell {
+    private func render() {
         contentView.backgroundColor = .cyan
+        imageView.contentMode = .scaleAspectFill
+
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

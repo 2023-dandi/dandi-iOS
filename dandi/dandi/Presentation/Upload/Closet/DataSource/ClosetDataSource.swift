@@ -9,7 +9,7 @@ import UIKit
 
 final class ClosetDataSource {
     typealias ButtonCell = AddButtonCollectionViewCell
-    typealias ImageCell = ImageCollectionViewCell
+    typealias ImageCell = ClosetImageCollectionViewCell
     typealias ButtonCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Int>
     typealias ImageCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, ClosetImage>
 
@@ -89,10 +89,7 @@ extension ClosetDataSource {
 
     private func configureImageCellRegistration<Cell: ImageCell>() -> ImageCellRegistration<Cell> {
         return ImageCellRegistration<Cell> { cell, _, image in
-            cell.configure(
-                contentMode: .scaleAspectFit,
-                imageURL: image.imageURL
-            )
+            cell.configure(imageURL: image.imageURL)
         }
     }
 }

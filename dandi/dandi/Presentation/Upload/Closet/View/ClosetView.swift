@@ -12,11 +12,6 @@ import Then
 import YDS
 
 final class ClosetView: UIView {
-    private let navigationBar: YDSTopBar = .init()
-    private(set) lazy var backButton = YDSTopBarButton(image: YDSIcon.arrowLeftLine)
-    private(set) lazy var doneButton = YDSTopBarButton(image: YDSIcon.checkLine)
-    private let navigationTitleLabel: UILabel = .init()
-
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { _, _ in
             let itemSize = NSCollectionLayoutSize(
@@ -44,6 +39,7 @@ final class ClosetView: UIView {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.allowsMultipleSelection = true
         collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
         return collectionView
     }()
@@ -51,7 +47,6 @@ final class ClosetView: UIView {
     init() {
         super.init(frame: .zero)
         setLayouts()
-        setProperties()
     }
 
     @available(*, unavailable)
@@ -62,29 +57,9 @@ final class ClosetView: UIView {
 
 extension ClosetView {
     private func setLayouts() {
-        navigationBar.addSubviews(navigationTitleLabel, doneButton)
-        addSubviews(navigationBar, collectionView)
-        navigationBar.snp.makeConstraints { make in
-            make.leading.top.trailing.equalTo(safeAreaLayoutGuide)
-        }
-        navigationTitleLabel.snp.makeConstraints { make in
-            make.leading.top.trailing.equalToSuperview().inset(16)
-        }
+        addSubviews(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom)
-            make.leading.bottom.trailing.equalTo(safeAreaLayoutGuide)
-        }
-    }
-
-    private func setProperties() {
-        navigationBar.do {
-            $0.topItem?.title = "옷장"
-            $0.topItem?.setRightBarButton(UIBarButtonItem(customView: doneButton), animated: true)
-            $0.topItem?.setLeftBarButton(UIBarButtonItem(customView: backButton), animated: true)
-        }
-        navigationTitleLabel.do {
-            $0.font = YDSFont.title3
-            $0.numberOfLines = 0
+            make.edges.equalTo(safeAreaLayoutGuide)
         }
     }
 }
