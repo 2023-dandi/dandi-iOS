@@ -7,4 +7,44 @@
 
 import UIKit
 
-final class PhotoLibraryViewController: BaseViewController {}
+import YDS
+import YPImagePicker
+
+final class PhotoLibraryViewController: YPImagePicker {
+    init(maxNumberOfItems: Int) {
+        var config = YPImagePickerConfiguration()
+
+        config.library.mediaType = YPlibraryMediaType.photo
+        config.screens = [.library, .photo]
+        config.startOnScreen = .library
+        config.showsPhotoFilters = false
+
+        config.library.maxNumberOfItems = maxNumberOfItems
+        config.library.skipSelectionsGallery = true
+
+        config.colors.albumTintColor = YDSColor.buttonPoint
+        config.colors.tintColor = YDSColor.buttonPoint
+        config.colors.trimmerHandleColor = YDSColor.buttonPoint
+        config.colors.trimmerMainColor = YDSColor.buttonPoint
+        config.colors.positionLineColor = YDSColor.buttonPoint
+
+        config.wordings.libraryTitle = "모든 사진"
+        config.wordings.cameraTitle = "카메라"
+        config.wordings.next = "첨부"
+        config.wordings.cancel = "취소"
+        config.wordings.albumsTitle = "앨범"
+        config.wordings.warningMaxItemsLimit = "최대 \(maxNumberOfItems)장까지 첨부 가능합니다."
+        config.albumName = "단디"
+
+        super.init(configuration: config)
+    }
+
+    required init(configuration: YPImagePickerConfiguration) {
+        super.init(configuration: configuration)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

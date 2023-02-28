@@ -7,13 +7,14 @@
 
 import Foundation
 
+import YPImagePicker
 protocol ModulFactoryInterface {
     func makeTabBarViewController() -> MainTabBarController
     func makeHomeViewController() -> HomeViewController
     func makeMyPageViewController() -> MyPageViewController
     func makeFeedViewContontoller() -> FeedViewController
     func makeClosetViewController() -> ClosetViewController
-    func makePhotoLibraryViewController() -> PhotoLibraryViewController
+    func makePhotoLibraryViewController(maxNumberOfItems: Int) -> PhotoLibraryViewController
     func makePostDetailViewController(postID: Int) -> PostDetailViewController
     func makeMyInformationViewController() -> MyInformationViewController
 }
@@ -53,9 +54,8 @@ extension ModuleFactory: ModulFactoryInterface {
         return vc
     }
 
-    func makePhotoLibraryViewController() -> PhotoLibraryViewController {
-        let vc = PhotoLibraryViewController()
-        vc.factory = self
+    func makePhotoLibraryViewController(maxNumberOfItems: Int) -> PhotoLibraryViewController {
+        let vc = PhotoLibraryViewController(maxNumberOfItems: maxNumberOfItems)
         return vc
     }
 
