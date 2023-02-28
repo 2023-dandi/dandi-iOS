@@ -12,6 +12,11 @@ import Then
 import YDS
 
 final class NotificationListViewController: BaseViewController {
+    override var hidesBottomBarWhenPushed: Bool {
+        get { navigationController?.topViewController == self }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .clear
