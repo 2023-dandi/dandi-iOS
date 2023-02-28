@@ -13,9 +13,9 @@ import YDS
 
 final class ClosetView: UIView {
     private let navigationBar: YDSTopBar = .init()
-    private let backButton = YDSTopBarButton(image: YDSIcon.arrowLeftLine)
-    private let doneButton = YDSTopBarButton(image: YDSIcon.checkLine)
-    private(set) lazy var navigationTitleLabel: UILabel = .init()
+    private(set) lazy var backButton = YDSTopBarButton(image: YDSIcon.arrowLeftLine)
+    private(set) lazy var doneButton = YDSTopBarButton(image: YDSIcon.checkLine)
+    private let navigationTitleLabel: UILabel = .init()
 
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { _, _ in
