@@ -9,8 +9,10 @@ import UIKit
 
 import RxCocoa
 import RxSwift
+import YDS
 
 final class HomeViewController: BaseViewController {
+    private let notificationButton = YDSTopBarButton(image: YDSIcon.bellLine)
     private let homeView: HomeView = .init()
     private lazy var homeDataSource: HomeDataSource = .init(
         collectionView: homeView.collectionView,
@@ -24,6 +26,7 @@ final class HomeViewController: BaseViewController {
     override init() {
         super.init()
         bindTapAction()
+        setLayouts()
         homeDataSource.update(
             dayWeathers: [
                 DayWeatherInfo(
@@ -174,5 +177,21 @@ final class HomeViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
+
+        notificationButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.navigationController?.pushViewController(NotificationListViewController(), animated: true)
+            }).disposed(by: disposeBag)
+    }
+}
+
+extension HomeViewController {
+    private func setLayouts() {
+        view.addSubview(notificationButton)
+        notificationButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalToSuperview().inset(8)
+        }
     }
 }
