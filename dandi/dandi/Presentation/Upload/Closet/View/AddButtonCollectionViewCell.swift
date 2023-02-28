@@ -11,6 +11,16 @@ import SnapKit
 import YDS
 
 final class AddButtonCollectionViewCell: UICollectionViewCell {
+    public var isDisabled: Bool = false {
+        didSet {
+            contentView.backgroundColor = isDisabled
+                ? YDSColor.buttonDisabledBG
+                : YDSColor.buttonPointBG
+
+            isUserInteractionEnabled = !isDisabled
+        }
+    }
+
     enum IconType {
         case add
         case camera
