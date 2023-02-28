@@ -63,6 +63,8 @@
 		DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165429ACD5B000963776 /* UIButton+.swift */; };
 		DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165629ACDA1900963776 /* MyInformationViewController.swift */; };
 		DDA8165929ACEA0000963776 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165829ACEA0000963776 /* PaddingLabel.swift */; };
+		DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DDA8166129ADAB3800963776 /* YPImagePicker */; };
+		DDA8166429ADB5A000963776 /* UIView+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8166329ADB5A000963776 /* UIView+Reactive.swift */; };
 		DDB23BA42993954A000735FB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA32993954A000735FB /* MyPageView.swift */; };
 		DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA629939561000735FB /* MyPageDataSource.swift */; };
 		DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */; };
@@ -148,6 +150,7 @@
 		DDA8165429ACD5B000963776 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		DDA8165629ACDA1900963776 /* MyInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationViewController.swift; sourceTree = "<group>"; };
 		DDA8165829ACEA0000963776 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		DDA8166329ADB5A000963776 /* UIView+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Reactive.swift"; sourceTree = "<group>"; };
 		DDB23BA32993954A000735FB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		DDB23BA629939561000735FB /* MyPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDataSource.swift; sourceTree = "<group>"; };
 		DDB23BAA29939B73000735FB /* MyPageProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileCollectionView.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 				DD9B06CA295EC67800A98041 /* Kingfisher in Frameworks */,
 				DD9B06C7295EC66500A98041 /* Then in Frameworks */,
 				DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */,
+				DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */,
 				DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */,
 				DD9B06D0295EC6E100A98041 /* RxGesture in Frameworks */,
 				DD9B06BD295EC63F00A98041 /* RxCocoa in Frameworks */,
@@ -449,6 +453,7 @@
 				DDA38FFF2965BA33006FBE00 /* UIImage+.swift */,
 				DDA8165229ACD42800963776 /* UIViewController.swift */,
 				DDA8165429ACD5B000963776 /* UIButton+.swift */,
+				DDA8166329ADB5A000963776 /* UIView+Reactive.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -639,6 +644,7 @@
 				DD9B06C9295EC67800A98041 /* Kingfisher */,
 				DD9B06CC295EC6B600A98041 /* YDS */,
 				DD9B06CF295EC6E100A98041 /* RxGesture */,
+				DDA8166129ADAB3800963776 /* YPImagePicker */,
 			);
 			productName = dandi;
 			productReference = DD2398DB295D7C8700A898B2 /* dandi.app */;
@@ -721,6 +727,7 @@
 				DD9B06C8295EC67800A98041 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DD9B06CB295EC6B600A98041 /* XCRemoteSwiftPackageReference "YDS-iOS" */,
 				DD9B06CE295EC6E100A98041 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				DDA8166029ADAB3800963776 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 			);
 			productRefGroup = DD2398DC295D7C8700A898B2 /* Products */;
 			projectDirPath = "";
@@ -857,6 +864,7 @@
 				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
 				DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */,
+				DDA8166429ADB5A000963776 /* UIView+Reactive.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 			);
@@ -1032,6 +1040,8 @@
 				INFOPLIST_FILE = dandi/Application/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "단디";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -1063,6 +1073,8 @@
 				INFOPLIST_FILE = dandi/Application/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "단디";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -1264,6 +1276,14 @@
 				version = 4.0.4;
 			};
 		};
+		DDA8166029ADAB3800963776 /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1321,6 +1341,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD9B06CE295EC6E100A98041 /* XCRemoteSwiftPackageReference "RxGesture" */;
 			productName = RxGesture;
+		};
+		DDA8166129ADAB3800963776 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDA8166029ADAB3800963776 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 

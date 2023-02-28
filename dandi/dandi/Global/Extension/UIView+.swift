@@ -7,6 +7,8 @@
 
 import UIKit.UIView
 
+import RxSwift
+
 extension UIView {
     var cornerRadius: CGFloat {
         get {
