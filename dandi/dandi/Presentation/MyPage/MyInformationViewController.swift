@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxCocoa
+import RxGesture
+import RxSwift
 import SnapKit
 import Then
 import YDS
@@ -34,6 +37,7 @@ final class MyInformationViewController: BaseViewController {
         super.init()
         setProperties()
         setLayouts()
+        bind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +53,35 @@ final class MyInformationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+    }
+
+    func bind() {
+        profileImageView.rx.tapGesture
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                let library = owner.factory.makePhotoLibraryViewController(maxNumberOfItems: 1)
+                library.modalPresentationStyle = .fullScreen
+                library.didFinishPicking { [unowned library] items, cancelled in
+                    guard
+                        !cancelled,
+                        let firstItem = items.first
+                    else {
+                        library.dismiss(animated: true, completion: nil)
+                        return
+                    }
+
+                    switch firstItem {
+                    case let .photo(item):
+                        dump(item.image)
+                        owner.profileImageView.image = item.image
+                    default:
+                        break
+                    }
+                    library.dismiss(animated: true)
+                }
+                owner.present(library, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setProperties() {

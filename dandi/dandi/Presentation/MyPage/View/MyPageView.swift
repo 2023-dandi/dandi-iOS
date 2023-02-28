@@ -103,6 +103,7 @@ extension MyPageView {
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
+        header.pinToVisibleBounds = true
         section.boundarySupplementaryItems = [header]
         return section
     }
