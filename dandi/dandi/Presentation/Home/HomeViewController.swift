@@ -151,6 +151,7 @@ final class HomeViewController: BaseViewController {
 
     private func bindTapAction() {
         homeView.addButton.rx.tap
+            .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.navigationController?.pushViewController(

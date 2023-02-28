@@ -59,7 +59,7 @@ final class MyInformationViewController: BaseViewController {
         profileImageView.rx.tapGesture
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                let library = owner.factory.makePhotoLibraryViewController(maxNumberOfItems: 1)
+                let library = owner.factory.makePhotoLibraryViewController()
                 library.modalPresentationStyle = .fullScreen
                 library.didFinishPicking { [unowned library] items, cancelled in
                     guard

@@ -11,7 +11,7 @@ import YDS
 import YPImagePicker
 
 final class PhotoLibraryViewController: YPImagePicker {
-    init(maxNumberOfItems: Int) {
+    init() {
         var config = YPImagePickerConfiguration()
 
         config.library.mediaType = YPlibraryMediaType.photo
@@ -19,7 +19,6 @@ final class PhotoLibraryViewController: YPImagePicker {
         config.startOnScreen = .library
         config.showsPhotoFilters = false
 
-        config.library.maxNumberOfItems = maxNumberOfItems
         config.library.skipSelectionsGallery = true
 
         config.colors.albumTintColor = YDSColor.buttonPoint
@@ -33,7 +32,6 @@ final class PhotoLibraryViewController: YPImagePicker {
         config.wordings.next = "첨부"
         config.wordings.cancel = "취소"
         config.wordings.albumsTitle = "앨범"
-        config.wordings.warningMaxItemsLimit = "최대 \(maxNumberOfItems)장까지 첨부 가능합니다."
         config.albumName = "단디"
 
         super.init(configuration: config)

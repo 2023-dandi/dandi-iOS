@@ -14,7 +14,7 @@ final class MyPageDataSource {
     // MARK: - typealias
 
     typealias ProfileCell = MyPageProfileCollectionViewCell
-    typealias PostCell = ImageCollectionViewCell
+    typealias PostCell = MyPagePostCollectionViewCell
     typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
 
     typealias ProfileCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, UserProfile>
@@ -106,10 +106,7 @@ extension MyPageDataSource {
 
     private func configurePostCellRegistration<Cell: PostCell>() -> PostCellRegistration<Cell> {
         return PostCellRegistration<Cell> { cell, _, post in
-            cell.configure(
-                contentMode: .scaleAspectFill,
-                imageURL: post.mainImageURL
-            )
+            cell.configure(imageURL: post.mainImageURL)
             cell.cornerRadius = 4
         }
     }
