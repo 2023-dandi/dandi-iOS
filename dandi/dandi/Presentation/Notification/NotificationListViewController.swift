@@ -45,7 +45,7 @@ final class NotificationListViewController: BaseViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = true
     }
 }

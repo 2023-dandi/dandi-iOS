@@ -22,7 +22,7 @@ final class NotificationDataSource {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Notification>
 
     private let collectionView: UICollectionView
-    
+
     private lazy var dataSource = createDataSource()
 
     enum Section {
