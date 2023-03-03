@@ -9,16 +9,18 @@ import UIKit
 
 final class RootSwitcher {
     enum Destination {
+        case login
         case main
         case custom(UIViewController)
     }
 
     static func update(_ destination: Destination) {
-        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-        guard let delegate = sceneDelegate else {
+        guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
             return
         }
         switch destination {
+        case .login:
+            delegate.window?.rootViewController = UIViewController()
         case .main:
             delegate.window?.rootViewController = ModuleFactory.shared.makeTabBarViewController()
         // 테스트에만 사용할것
