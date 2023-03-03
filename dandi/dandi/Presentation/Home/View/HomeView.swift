@@ -12,6 +12,7 @@ import Then
 import YDS
 
 final class HomeView: UIView {
+    private(set) lazy var notificationButton = YDSTopBarButton(image: YDSIcon.bellLine)
     private(set) lazy var bannerView = WeatherBannerView()
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { [weak self] index, _ in
@@ -32,7 +33,7 @@ final class HomeView: UIView {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.contentInset = .init(top: -20, left: .zero, bottom: 16, right: .zero)
+        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
         collectionView.delegate = self
         return collectionView
     }()
@@ -90,7 +91,7 @@ extension HomeView {
     }
 
     private func setLayouts() {
-        addSubviews(bannerView, collectionView, addButton, statusBarView)
+        addSubviews(bannerView, collectionView, addButton, statusBarView, notificationButton)
         bannerView.snp.makeConstraints { make in
             make.height.equalTo(350)
             make.leading.top.trailing.equalToSuperview()
@@ -103,8 +104,13 @@ extension HomeView {
             make.size.equalTo(60)
         }
         statusBarView.snp.makeConstraints { make in
-            make.leading.top.trailing.equalToSuperview()
-            make.height.equalTo(44)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(60)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.top)
+        }
+        notificationButton.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.trailing.equalToSuperview().inset(8)
         }
     }
 
@@ -176,6 +182,7 @@ extension HomeView: UICollectionViewDelegate {
         UIView.animate(withDuration: 0.2) {
             self.statusBarView.alpha = contentOffsetY < pointOfChange ? 0 : 1
             self.bannerView.alpha = contentOffsetY < pointOfChange ? 1 : 0
+            self.notificationButton.alpha = contentOffsetY < pointOfChange ? 1 : 0
         }
         guard contentOffsetY < -39 else { return }
         let scale = 1 + ((-contentOffsetY - 39) / bannerView.frame.height)
