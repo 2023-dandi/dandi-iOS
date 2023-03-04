@@ -22,14 +22,15 @@ final class DefaultAuthRepository: AuthRepository {
     func refreshToken(
         accessToken: String,
         refreshToken: String
-    ) -> Single<Result<VoidType, NetworkError>> {
+    ) -> NetworkResult<TokenDTO> {
         return router.rx.request(.refresh(refreshToken: refreshToken, accessToken: accessToken))
             .flatMap { NetworkHandler.requestDecoded(by: $0) }
     }
 
     func fetchUserInfo(
+        fcmToken _: String,
         idToken: String
-    ) -> Single<Result<VoidType, NetworkError>> {
+    ) -> NetworkResult<TokenDTO> {
         return router.rx.request(.login(idToken: idToken))
             .flatMap { NetworkHandler.requestDecoded(by: $0) }
     }

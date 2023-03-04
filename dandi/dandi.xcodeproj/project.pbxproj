@@ -29,6 +29,10 @@
 		DD31234229B1EDDB00443FCE /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234129B1EDDB00443FCE /* NetworkHandler.swift */; };
 		DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234329B1EFFC00443FCE /* NetworkError.swift */; };
 		DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234529B1F4AD00443FCE /* NetworkLogPlugin.swift */; };
+		DD31234929B2519900443FCE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234829B2519900443FCE /* LoginViewController.swift */; };
+		DD31234B29B2556000443FCE /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234A29B2556000443FCE /* LoginReactor.swift */; };
+		DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */; };
+		DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31235029B2593D00443FCE /* AuthUseCase.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -51,6 +55,8 @@
 		DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F3295EDA1300A98041 /* HomeView.swift */; };
 		DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */; };
 		DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F9295EDCE600A98041 /* UIView+.swift */; };
+		DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */; };
+		DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */; };
 		DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE329641AFF006FBE00 /* HomeReactor.swift */; };
 		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
 		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
@@ -145,6 +151,10 @@
 		DD31234129B1EDDB00443FCE /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		DD31234329B1EFFC00443FCE /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DD31234529B1F4AD00443FCE /* NetworkLogPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogPlugin.swift; sourceTree = "<group>"; };
+		DD31234829B2519900443FCE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DD31234A29B2556000443FCE /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
+		DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
+		DD31235029B2593D00443FCE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +166,9 @@
 		DD9B06F3295EDA1300A98041 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD9B06F9295EDCE600A98041 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDTO.swift; sourceTree = "<group>"; };
+		DD9F6FCA29B31A54002BD4B4 /* dandi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dandi.entitlements; sourceTree = "<group>"; };
 		DDA38FE329641AFF006FBE00 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -264,6 +277,7 @@
 		DD2398DD295D7C8700A898B2 /* dandi */ = {
 			isa = PBXGroup;
 			children = (
+				DD9F6FCA29B31A54002BD4B4 /* dandi.entitlements */,
 				DD239913295D827E00A898B2 /* Application */,
 				DD239917295D83CE00A898B2 /* Global */,
 				DD23991A295D86A700A898B2 /* Data */,
@@ -303,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				DD9B06E8295ECDC100A98041 /* Base */,
+				DD31234729B2514200443FCE /* Login */,
 				DD9B06D5295EC74800A98041 /* Tab */,
 				DD9B06D2295EC71900A98041 /* Home */,
 				DDA8166C29AE0E4900963776 /* Notification */,
@@ -357,6 +372,7 @@
 		DD23991D295D86B600A898B2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				DD31234C29B2591600443FCE /* UseCases */,
 				DD31232C29B1D49C00443FCE /* Interfaces */,
 				DDA38FE729641CB0006FBE00 /* Entities */,
 				DD239920295D86CE00A898B2 /* domain.swift */,
@@ -373,6 +389,7 @@
 				DD31233F29B1EA0300443FCE /* BaseTargetType.swift */,
 				DD31232029B1B9F500443FCE /* Interceptor.swift */,
 				DD31233C29B1E55500443FCE /* Service */,
+				DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -406,6 +423,7 @@
 			children = (
 				DD31233629B1D7AB00443FCE /* VoidType.swift */,
 				DD31233829B1D7E200443FCE /* MessageDTO.swift */,
+				DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -416,6 +434,32 @@
 				DD31233D29B1E56000443FCE /* AuthService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		DD31234729B2514200443FCE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DD31234829B2519900443FCE /* LoginViewController.swift */,
+				DD31234A29B2556000443FCE /* LoginReactor.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DD31234C29B2591600443FCE /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				DD31234F29B2592E00443FCE /* Protocol */,
+				DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		DD31234F29B2592E00443FCE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DD31235029B2593D00443FCE /* AuthUseCase.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		DD9B06D2295EC71900A98041 /* Home */ = {
@@ -935,13 +979,16 @@
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
+				DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
 				DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */,
+				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
+				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
@@ -979,6 +1026,7 @@
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
+				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
 				DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
 				DD31233B29B1E49F00443FCE /* DefaultAuthRepository.swift in Sources */,
@@ -990,12 +1038,14 @@
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
 				DDA8166F29AE0E6200963776 /* NotificationCollectionViewCell.swift in Sources */,
+				DD31234929B2519900443FCE /* LoginViewController.swift in Sources */,
 				DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */,
 				DDA8166629AE017A00963776 /* MyPagePostCollectionViewCell.swift in Sources */,
 				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
 				DDA8167129AE0E6E00963776 /* NotificationReactor.swift in Sources */,
 				DD31233929B1D7E200443FCE /* MessageDTO.swift in Sources */,
+				DD31234B29B2556000443FCE /* LoginReactor.swift in Sources */,
 				DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */,
 				DDA8166429ADB5A000963776 /* UIView+Reactive.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
@@ -1050,6 +1100,7 @@
 /* Begin XCBuildConfiguration section */
 		DD239906295D7C8800A898B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD31232A29B1BB3A00443FCE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1110,6 +1161,7 @@
 		};
 		DD239907295D7C8800A898B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD31232A29B1BB3A00443FCE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1167,6 +1219,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dandi/dandi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PBLH2V4923;
@@ -1177,7 +1230,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1200,6 +1253,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dandi/dandiRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PBLH2V4923;
@@ -1210,7 +1264,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
