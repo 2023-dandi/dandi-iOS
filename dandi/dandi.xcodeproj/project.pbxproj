@@ -57,6 +57,8 @@
 		DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B06F9295EDCE600A98041 /* UIView+.swift */; };
 		DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */; };
 		DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */; };
+		DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FD429B329DA002BD4B4 /* UIViewController+Reactive.swift */; };
+		DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FD629B32C2F002BD4B4 /* UIViewController+Alert.swift */; };
 		DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE329641AFF006FBE00 /* HomeReactor.swift */; };
 		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
 		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
@@ -75,7 +77,7 @@
 		DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */; };
 		DDA8164F29ACAD6800963776 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164E29ACAD6800963776 /* Comment.swift */; };
 		DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */; };
-		DDA8165329ACD42800963776 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165229ACD42800963776 /* UIViewController.swift */; };
+		DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165229ACD42800963776 /* UIViewController+.swift */; };
 		DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165429ACD5B000963776 /* UIButton+.swift */; };
 		DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165629ACDA1900963776 /* MyInformationViewController.swift */; };
 		DDA8165929ACEA0000963776 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8165829ACEA0000963776 /* PaddingLabel.swift */; };
@@ -169,6 +171,8 @@
 		DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDTO.swift; sourceTree = "<group>"; };
 		DD9F6FCA29B31A54002BD4B4 /* dandi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dandi.entitlements; sourceTree = "<group>"; };
+		DD9F6FD429B329DA002BD4B4 /* UIViewController+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Reactive.swift"; sourceTree = "<group>"; };
+		DD9F6FD629B32C2F002BD4B4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		DDA38FE329641AFF006FBE00 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -187,7 +191,7 @@
 		DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8164E29ACAD6800963776 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DDA8165029ACBFDE00963776 /* PostCommentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentTextView.swift; sourceTree = "<group>"; };
-		DDA8165229ACD42800963776 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		DDA8165229ACD42800963776 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		DDA8165429ACD5B000963776 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		DDA8165629ACDA1900963776 /* MyInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationViewController.swift; sourceTree = "<group>"; };
 		DDA8165829ACEA0000963776 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -580,11 +584,13 @@
 			children = (
 				DD9B06F9295EDCE600A98041 /* UIView+.swift */,
 				DDF636FD2960457A007427BD /* UIStackView+.swift */,
-				DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */,
 				DDA38FFF2965BA33006FBE00 /* UIImage+.swift */,
-				DDA8165229ACD42800963776 /* UIViewController.swift */,
+				DDA8165229ACD42800963776 /* UIViewController+.swift */,
 				DDA8165429ACD5B000963776 /* UIButton+.swift */,
+				DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */,
 				DDA8166329ADB5A000963776 /* UIView+Reactive.swift */,
+				DD9F6FD429B329DA002BD4B4 /* UIViewController+Reactive.swift */,
+				DD9F6FD629B32C2F002BD4B4 /* UIViewController+Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1004,7 +1010,7 @@
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
-				DDA8165329ACD42800963776 /* UIViewController.swift in Sources */,
+				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
@@ -1014,6 +1020,7 @@
 				DDA8167329AE26DB00963776 /* NotificationDataSource.swift in Sources */,
 				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
+				DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
 				DDA8165929ACEA0000963776 /* PaddingLabel.swift in Sources */,
 				DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */,
@@ -1025,6 +1032,7 @@
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
+				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
 				DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */,
@@ -1228,6 +1236,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "단디";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 사용하는 동안 날씨 정보를 가져오기 위해 위치 정보가 필요합나다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1262,6 +1271,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "단디";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 사용하는 동안 날씨 정보를 가져오기 위해 위치 정보가 필요합나다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 또는 동영상을 촬영하여 게시글에 첨부, 내 프로필 사진을 촬영하여 등록하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
