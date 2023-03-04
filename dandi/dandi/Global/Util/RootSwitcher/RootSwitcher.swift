@@ -20,7 +20,7 @@ final class RootSwitcher {
         }
         switch destination {
         case .login:
-            delegate.window?.rootViewController = UIViewController()
+            delegate.window?.rootViewController = ModuleFactory.shared.makeLoginViewController()
         case .main:
             delegate.window?.rootViewController = ModuleFactory.shared.makeTabBarViewController()
         // 테스트에만 사용할것

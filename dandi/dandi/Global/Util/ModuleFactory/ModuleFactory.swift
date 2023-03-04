@@ -10,6 +10,7 @@ import Foundation
 import YPImagePicker
 protocol ModulFactoryInterface {
     func makeTabBarViewController() -> MainTabBarController
+    func makeLoginViewController() -> LoginViewController
     func makeHomeViewController() -> HomeViewController
     func makeMyPageViewController() -> MyPageViewController
     func makeFeedViewContontoller() -> FeedViewController
@@ -27,6 +28,19 @@ final class ModuleFactory {
 extension ModuleFactory: ModulFactoryInterface {
     func makeTabBarViewController() -> MainTabBarController {
         let vc = MainTabBarController(factory: self)
+        return vc
+    }
+
+    func makeLoginViewController() -> LoginViewController {
+        let vc = LoginViewController()
+        vc.reactor = LoginReactor(
+            authUseCase: DefaultAuthUseCase(
+                authRepository: DefaultAuthRepository(
+                    interceptor: Interceptor()
+                )
+            )
+        )
+        vc.factory = self
         return vc
     }
 

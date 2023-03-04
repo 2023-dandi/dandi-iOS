@@ -111,7 +111,6 @@ final class ClosetViewController: BaseViewController {
                     // 삭제 API 호출
                     return
                 }
-                
             })
             .disposed(by: disposeBag)
     }

@@ -13,6 +13,20 @@ enum AuthService {
 }
 
 extension AuthService: BaseTargetType {
+    var headers: [String: String]? {
+        switch self {
+        case .login:
+            return [
+                "Content-Type": "application/json"
+            ]
+        case .refresh:
+            return [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(KeychainHandler.shared.accessToken)"
+            ]
+        }
+    }
+
     var path: String {
         switch self {
         case .refresh:
@@ -32,6 +46,14 @@ extension AuthService: BaseTargetType {
     }
 
     var task: Task {
-        return .requestPlain
+        switch self {
+        case let .login(idToken):
+            return .requestParameters(
+                parameters: ["idToken": idToken],
+                encoding: JSONEncoding.default
+            )
+        default:
+            return .requestPlain
+        }
     }
 }
