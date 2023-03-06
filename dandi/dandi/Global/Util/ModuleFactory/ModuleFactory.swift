@@ -47,6 +47,13 @@ extension ModuleFactory: ModulFactoryInterface {
     func makeHomeViewController() -> HomeViewController {
         let vc = HomeViewController()
         vc.factory = self
+        vc.reactor = HomeReactor(
+            hourlyWeatherUseCase: DefaultHomeWeatherUseCase(
+                weatherRepository: DefaultWeatherRepository(
+                    weatherService: DefaultWeatherService()
+                )
+            )
+        )
         return vc
     }
 

@@ -8,9 +8,14 @@
 import RxCocoa
 import RxSwift
 
-protocol HomeWeatherUseCase {}
+protocol HoulryWeatherUseCase {
+    var hourlyWeather: PublishRelay<[TimeWeatherInfo]> { get }
+    func fetchWeatherInfo()
+}
 
-final class DefaultHomeWeatherUseCase: HomeWeatherUseCase {
+final class DefaultHomeWeatherUseCase: HoulryWeatherUseCase {
+    let hourlyWeather = PublishRelay<[TimeWeatherInfo]>()
+
     private let weatherRepository: WeatherRepository
     private let disposeBag = DisposeBag()
 
@@ -20,14 +25,20 @@ final class DefaultHomeWeatherUseCase: HomeWeatherUseCase {
 
     func fetchWeatherInfo() {
         weatherRepository.fetchTodayWeather(
-            numOfRows: 10,
+            numOfRows: 100,
             page: 1,
             base_date: "20230305",
             base_time: "0500",
             nx: 55,
             ny: 127
-        ).subscribe { response in
-            dump(response)
-        }.disposed(by: disposeBag)
+        ) { [weak self] result in
+            switch result {
+            case let .success(response):
+                self?.hourlyWeather.accept(response.toDomain())
+                dump(response.toDomain())
+            case let .failure(error):
+                dump(error)
+            }
+        }
     }
 }

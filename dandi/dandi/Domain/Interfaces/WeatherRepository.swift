@@ -15,6 +15,7 @@ protocol WeatherRepository {
         base_date: String,
         base_time: String,
         nx: Int,
-        ny: Int
-    ) -> Observable<WeatherDTO>
+        ny: Int,
+        completion: @escaping (NetworkResult<WeatherDTO>) -> Void
+    )
 }

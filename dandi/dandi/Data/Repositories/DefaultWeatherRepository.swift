@@ -24,28 +24,24 @@ final class DefaultWeatherRepository: WeatherRepository {
         base_date: String,
         base_time: String,
         nx: Int,
-        ny: Int
-    ) -> Observable<WeatherDTO> {
-        return Observable<WeatherDTO>.create { [weak self] observer in
-            self?.weatherService.getWeathers(
-                numOfRows: numOfRows,
-                page: page,
-                base_date: base_date,
-                base_time: base_time,
-                nx: nx,
-                ny: ny
-            ) { result in
-                switch result {
-                case let .success(response):
-                    dump(response)
-                    observer.onNext(response)
-                case let .failure(error):
-                    dump(error)
-                    observer.onError(error)
-                }
-                observer.onCompleted()
+        ny: Int,
+        completion: @escaping (NetworkResult<WeatherDTO>) -> Void
+    ) {
+        weatherService.getWeathers(
+            numOfRows: numOfRows,
+            page: page,
+            base_date: base_date,
+            base_time: base_time,
+            nx: nx,
+            ny: ny
+        ) { result in
+            switch result {
+            case let .success(response):
+                dump(response)
+                completion(.success(response))
+            case let .failure(error):
+                completion(.failure(.error(error)))
             }
-            return Disposables.create()
         }
     }
 }

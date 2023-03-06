@@ -46,15 +46,9 @@ final class HomeDataSource {
     }
 
     func update(
-        dayWeathers _: [DayWeatherInfo],
         timeWeathers: [TimeWeatherInfo],
         same: [Post]
     ) {
-        configureHeader(
-            title: "13도의 내 기록",
-            subtitle: "이전에 오늘 같은 날씨에는 이렇게 입었어요."
-        )
-
         var snapshot = Snapshot()
         snapshot.appendSections([.timeWeather, .same])
 
@@ -64,7 +58,13 @@ final class HomeDataSource {
         let sameItems = same.map { Item.post($0) }
         snapshot.appendItems(sameItems, toSection: .same)
 
-        dataSource.apply(snapshot, animatingDifferences: false)
+        DispatchQueue.main.async { [weak self] in
+            self?.configureHeader(
+                title: "13도의 내 기록",
+                subtitle: "이전에 오늘 같은 날씨에는 이렇게 입었어요."
+            )
+            self?.dataSource.apply(snapshot, animatingDifferences: false)
+        }
     }
 
     func itemIdentifier(for indexPath: IndexPath) -> Item? {

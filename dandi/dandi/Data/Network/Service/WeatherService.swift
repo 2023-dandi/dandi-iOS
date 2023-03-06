@@ -77,6 +77,7 @@ final class DefaultWeatherService: WeatherService {
                 let data = data,
                 let decodedData = try? JSONDecoder().decode(WeatherDTO.self, from: data)
             else {
+                print(String(data: data ?? Data(), encoding: .utf8))
                 completion(.failure(.decodedErr))
                 return
             }

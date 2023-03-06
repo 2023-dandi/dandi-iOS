@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct DayWeatherInfo {
     let uuid = UUID()
-    let mainImageURL: String
+    let image: UIImage
     let date: String
     let detail: String
 }

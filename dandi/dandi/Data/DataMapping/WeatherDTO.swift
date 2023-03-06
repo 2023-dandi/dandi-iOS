@@ -36,7 +36,7 @@ struct WeatherItemsDTO: Decodable {
 struct WeatherItemDTO: Decodable {
     let baseDate: String
     let baseTime: String
-    let category: String
+    let category: WeatherCategoryDTO
     let fcstDate: String
     let fcstTime: String
     let fcstValue: String
@@ -44,11 +44,9 @@ struct WeatherItemDTO: Decodable {
     let ny: Int
 }
 
-// MARK: - WeatherCategoryDTO
-
 enum WeatherCategoryDTO: String, Decodable {
     case tmp = "TMP" // 1시간 기온
-    case popcas = "POPcas" // 강수확률
+    case pop = "POP" // 강수확률
     case pty = "PTY" // 강수형태
     case pcp = "PCP" // 1시간 강수량
     case reh = "REH" // 습도
@@ -61,4 +59,12 @@ enum WeatherCategoryDTO: String, Decodable {
     case wav = "WAV" // 파고
     case vec = "VEC" // 풍향
     case wsd = "WSD" // 풍속
+}
+
+extension WeatherDTO {
+    func toDomain() -> [TimeWeatherInfo] {
+        return response.body.items.item
+            .filter { $0.category == .tmp }
+            .map { TimeWeatherInfo(image: .add, time: $0.fcstTime, temperature: $0.fcstValue) }
+    }
 }

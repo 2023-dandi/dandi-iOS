@@ -8,11 +8,14 @@
 import CoreLocation
 import UIKit
 
+import ReactorKit
 import RxCocoa
 import RxSwift
 import YDS
 
-final class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController, View {
+    typealias Reactor = HomeReactor
+
     private let homeView: HomeView = .init()
     private lazy var homeDataSource: HomeDataSource = .init(
         collectionView: homeView.collectionView,
@@ -27,134 +30,31 @@ final class HomeViewController: BaseViewController {
     override init() {
         super.init()
         setLocationManager()
-        bindTapAction()
-        homeDataSource.update(
-            dayWeathers: [
-                DayWeatherInfo(
-                    mainImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    date: "9월 11일",
-                    detail: """
-                        (동작구 상도동)은
-                        오늘 (13도)에요.
-                        한낮에는 더워도
-                        밤에는 쌀쌀할 수 있어요!
-                    """
-                ),
-                DayWeatherInfo(
-                    mainImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    date: "9월 11일",
-                    detail: """
-                        (동작구 상도동)은
-                        오늘 (13도)에요.
-                        한낮에는 더워도
-                        밤에는 쌀쌀할 수 있어요!
-                    """
-                ),
-                DayWeatherInfo(
-                    mainImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    date: "9월 11일",
-                    detail: """
-                        (동작구 상도동)은
-                        오늘 (13도)에요.
-                        한낮에는 더워도
-                        밤에는 쌀쌀할 수 있어요!
-                    """
-                )
+        setProperties()
+    }
 
-            ],
-            timeWeathers: [
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
-                ),
-                TimeWeatherInfo(
-                    image: .add,
-                    time: "17시",
-                    temperature: "17도"
+    func bind(reactor: HomeReactor) {
+        bindTapAction()
+        rx.viewWillAppear
+            .map { _ in Reactor.Action.viewWillAppear }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.hourlyWeathers }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, hourlyWeathers in
+                owner.homeDataSource.update(
+                    timeWeathers: hourlyWeathers,
+                    same: [Post(id: 0, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", isLiked: false)]
                 )
-            ],
-            same: [
-                Post(
-                    id: 1,
-                    mainImageURL: "https://cdn.imweb.me/thumbnail/20211105/16246701edcd5.jpg",
-                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    nickname: "비오는 토요일",
-                    date: "22.11.09 11:00",
-                    content: "26도에 딱 적당해요!",
-                    isLiked: false
-                ),
-                Post(
-                    id: 2,
-                    mainImageURL: "https://cdn.imweb.me/thumbnail/20211105/16246701edcd5.jpg",
-                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    nickname: "비오는 토요일",
-                    date: "22.11.09 11:00",
-                    content: "26도에 딱 적당해요!",
-                    isLiked: false
-                ),
-                Post(
-                    id: 3,
-                    mainImageURL: "https://cdn.imweb.me/thumbnail/20211105/16246701edcd5.jpg",
-                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    nickname: "비오는 토요일",
-                    date: "22.11.09 11:00",
-                    content: "26도에 딱 적당해요!",
-                    isLiked: false
-                )
-            ]
-        )
-        homeView.configure(
-            location: "상도동",
-            temperature: "13",
-            description: "추워요\n너무너무추워요"
-        )
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func setProperties() {
         homeView.setGradientColors(colors: [.red, .white])
         homeView.layoutSubviews()
-        DefaultHomeWeatherUseCase(
-            weatherRepository: DefaultWeatherRepository(
-                weatherService: DefaultWeatherService()
-            )).fetchWeatherInfo()
     }
 
     private func setLocationManager() {
@@ -193,44 +93,6 @@ final class HomeViewController: BaseViewController {
             .subscribe(onNext: { owner, _ in
                 owner.navigationController?.pushViewController(NotificationListViewController(), animated: true)
             }).disposed(by: disposeBag)
-
-        let json = """
-        {
-          "response": {
-            "header": {
-              "resultCode": "00",
-              "resultMsg": "NORMAL_SERVICE"
-            },
-            "body": {
-              "dataType": "JSON",
-              "items": {
-                "item": [
-                  {
-                    "baseDate": "20230305",
-                    "baseTime": "0500",
-                    "category": "TMP",
-                    "fcstDate": "20230305",
-                    "fcstTime": "0600",
-                    "fcstValue": "0",
-                    "nx": 55,
-                    "ny": 127
-                  }
-                ]
-              },
-              "pageNo": 1,
-              "numOfRows": 1,
-              "totalCount": 809
-            }
-          }
-        }
-        """.data(using: .utf8)!
-
-        do {
-            let weatherDTO = try JSONDecoder().decode(WeatherDTO.self, from: json)
-            dump(weatherDTO)
-        } catch {
-            print(error)
-        }
     }
 }
 

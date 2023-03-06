@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -131,6 +132,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				DDA8166329ADB5A000963776 /* UIView+Reactive.swift */,
 				DD9F6FD429B329DA002BD4B4 /* UIViewController+Reactive.swift */,
 				DD9F6FD629B32C2F002BD4B4 /* UIViewController+Alert.swift */,
+				DD1721D829B633EF00757C55 /* RxViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -994,6 +997,7 @@
 			files = (
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
+				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,

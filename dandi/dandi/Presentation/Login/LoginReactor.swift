@@ -14,11 +14,6 @@ final class LoginReactor: Reactor {
 
     private let authUseCase: AuthUseCase
 
-    init(authUseCase: AuthUseCase) {
-        self.initialState = State()
-        self.authUseCase = authUseCase
-    }
-
     struct State {
         var isLoading: Bool = false
         var isSuccessLogin: Bool?
@@ -31,6 +26,11 @@ final class LoginReactor: Reactor {
     enum Mutation {
         case setLoginStatus(isSuccess: Bool)
         case setLoading(isLoading: Bool)
+    }
+
+    init(authUseCase: AuthUseCase) {
+        self.initialState = State()
+        self.authUseCase = authUseCase
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
