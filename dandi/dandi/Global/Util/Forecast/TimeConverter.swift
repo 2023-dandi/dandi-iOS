@@ -16,42 +16,47 @@ struct TimeConverter {
         let now = Date()
         var baseDate = now.dateToString()
         var baseTime = String(format: "%02d00", Calendar.current.component(.hour, from: now))
+        let baseTimeInt = Int(baseTime) ?? 0
 
-        if baseTime > "2310" {
-            baseTime = "2300"
-        } else if baseTime > "2010" {
-            baseTime = "2000"
-        } else if baseTime > "1710" {
-            baseTime = "1700"
-        } else if baseTime > "1410" {
-            baseTime = "1400"
-        } else if baseTime > "1110" {
-            baseTime = "1100"
-        } else if baseTime > "0810" {
-            baseTime = "0800"
-        } else if baseTime > "0510" {
-            baseTime = "0500"
-        } else if baseTime > "0210" {
-            baseTime = "0200"
-        } else {
+        switch baseTimeInt {
+        case 0..<210:
             let yesterday = now - 86400
             baseDate = yesterday.dateToString()
             baseTime = "2300"
+        case 210..<510:
+            baseTime = "0200"
+        case 510..<810:
+            baseTime = "0500"
+        case 810..<1110:
+            baseTime = "0800"
+        case 1110..<1410:
+            baseTime = "1100"
+        case 1410..<1710:
+            baseTime = "1400"
+        case 1710..<2010:
+            baseTime = "1700"
+        case 2010..<2310:
+            baseTime = "2000"
+        default:
+            baseTime = "2300"
         }
+
         return (baseDate, baseTime)
     }
 
     func convert24hoursTo12hours(time: Int) -> String {
-        if time == 0 {
+        switch time {
+        case 0:
             return "오전12시"
-        }
-        if time < 12 {
+        case 1..<12:
             return "오전\(time)시"
-        }
-        if time == 12 {
+        case 12:
             return "오후12시"
+        case 13..<24:
+            return "오후\(time - 12)시"
+        default:
+            return ""
         }
-        return "오후\(time - 12)시"
     }
 }
 
