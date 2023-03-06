@@ -10,4 +10,5 @@ enum NetworkError: Error {
     case decodedErr
     case pathErr
     case networkFail
+    case error(Error?)
 }

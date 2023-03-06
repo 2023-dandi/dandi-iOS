@@ -151,6 +151,10 @@ final class HomeViewController: BaseViewController {
         )
         homeView.setGradientColors(colors: [.red, .white])
         homeView.layoutSubviews()
+        DefaultHomeWeatherUseCase(
+            weatherRepository: DefaultWeatherRepository(
+                weatherService: DefaultWeatherService()
+            )).fetchWeatherInfo()
     }
 
     private func setLocationManager() {
@@ -189,6 +193,44 @@ final class HomeViewController: BaseViewController {
             .subscribe(onNext: { owner, _ in
                 owner.navigationController?.pushViewController(NotificationListViewController(), animated: true)
             }).disposed(by: disposeBag)
+
+        let json = """
+        {
+          "response": {
+            "header": {
+              "resultCode": "00",
+              "resultMsg": "NORMAL_SERVICE"
+            },
+            "body": {
+              "dataType": "JSON",
+              "items": {
+                "item": [
+                  {
+                    "baseDate": "20230305",
+                    "baseTime": "0500",
+                    "category": "TMP",
+                    "fcstDate": "20230305",
+                    "fcstTime": "0600",
+                    "fcstValue": "0",
+                    "nx": 55,
+                    "ny": 127
+                  }
+                ]
+              },
+              "pageNo": 1,
+              "numOfRows": 1,
+              "totalCount": 809
+            }
+          }
+        }
+        """.data(using: .utf8)!
+
+        do {
+            let weatherDTO = try JSONDecoder().decode(WeatherDTO.self, from: json)
+            dump(weatherDTO)
+        } catch {
+            print(error)
+        }
     }
 }
 

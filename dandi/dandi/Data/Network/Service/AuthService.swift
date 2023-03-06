@@ -30,9 +30,9 @@ extension AuthService: BaseTargetType {
     var path: String {
         switch self {
         case .refresh:
-            return "/refresh"
+            return "/auth/refresh"
         case .login:
-            return "/login/oauth/apple"
+            return "/auth/login/oauth/apple"
         }
     }
 

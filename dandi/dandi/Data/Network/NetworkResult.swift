@@ -7,4 +7,4 @@
 
 import RxSwift
 
-typealias NetworkResult<Success> = Single<Result<Success, NetworkError>>
+typealias NetworkResult<Success> = Result<Success, NetworkError>

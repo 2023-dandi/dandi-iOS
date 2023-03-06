@@ -72,7 +72,7 @@ final class NetworkLogPlugin: PluginType {
                 return
             }
             var log = "네트워크 오류"
-            log.append("-----------------------------------------\n\(error.errorCode) \(target)\n")
+            log.append("(에러코드: \(error.errorCode)) -------------------\n")
             log.append("\(error.failureReason ?? error.errorDescription ?? "unknown error")\n")
             log.append("\n-----------------------------------------\nEND HTTP")
             print(log)

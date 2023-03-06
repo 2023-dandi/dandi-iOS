@@ -23,6 +23,7 @@ enum NetworkHandler {
             guard let errorResponse = try? decoder.decode(MessageDTO.self, from: response.data) else {
                 return .just(.failure(.pathErr))
             }
+            dump(errorResponse)
             return .just(.failure(.requestErr(errorResponse)))
         default:
             return .just(.failure(.networkFail))

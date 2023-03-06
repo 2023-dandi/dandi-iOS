@@ -59,6 +59,11 @@
 		DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */; };
 		DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FD429B329DA002BD4B4 /* UIViewController+Reactive.swift */; };
 		DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FD629B32C2F002BD4B4 /* UIViewController+Alert.swift */; };
+		DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FD829B4EC7C002BD4B4 /* WeatherDTO.swift */; };
+		DD9F6FDB29B4EF5B002BD4B4 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDA29B4EF5B002BD4B4 /* WeatherService.swift */; };
+		DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */; };
+		DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */; };
+		DD9F6FE129B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FE029B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift */; };
 		DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE329641AFF006FBE00 /* HomeReactor.swift */; };
 		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
 		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
@@ -173,6 +178,11 @@
 		DD9F6FCA29B31A54002BD4B4 /* dandi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dandi.entitlements; sourceTree = "<group>"; };
 		DD9F6FD429B329DA002BD4B4 /* UIViewController+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Reactive.swift"; sourceTree = "<group>"; };
 		DD9F6FD629B32C2F002BD4B4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		DD9F6FD829B4EC7C002BD4B4 /* WeatherDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDTO.swift; sourceTree = "<group>"; };
+		DD9F6FDA29B4EF5B002BD4B4 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
+		DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWeatherRepository.swift; sourceTree = "<group>"; };
+		DD9F6FE029B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeWeatherUseCase.swift; sourceTree = "<group>"; };
 		DDA38FE329641AFF006FBE00 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -388,12 +398,12 @@
 			isa = PBXGroup;
 			children = (
 				DD31234329B1EFFC00443FCE /* NetworkError.swift */,
+				DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */,
 				DD31234129B1EDDB00443FCE /* NetworkHandler.swift */,
 				DD31232829B1BAF100443FCE /* URLConstant.swift */,
 				DD31233F29B1EA0300443FCE /* BaseTargetType.swift */,
 				DD31232029B1B9F500443FCE /* Interceptor.swift */,
 				DD31233C29B1E55500443FCE /* Service */,
-				DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -410,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				DD31233A29B1E49F00443FCE /* DefaultAuthRepository.swift */,
+				DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -418,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				DD31232D29B1D5D300443FCE /* AuthRepository.swift */,
+				DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -428,6 +440,7 @@
 				DD31233629B1D7AB00443FCE /* VoidType.swift */,
 				DD31233829B1D7E200443FCE /* MessageDTO.swift */,
 				DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */,
+				DD9F6FD829B4EC7C002BD4B4 /* WeatherDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -436,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				DD31233D29B1E56000443FCE /* AuthService.swift */,
+				DD9F6FDA29B4EF5B002BD4B4 /* WeatherService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -454,6 +468,7 @@
 			children = (
 				DD31234F29B2592E00443FCE /* Protocol */,
 				DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */,
+				DD9F6FE029B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -984,6 +999,7 @@
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
+				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
 				DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
@@ -991,6 +1007,7 @@
 				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
 				DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */,
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
+				DD9F6FE129B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
@@ -1010,6 +1027,7 @@
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
+				DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */,
 				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
@@ -1030,6 +1048,7 @@
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
+				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,
 				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
@@ -1057,6 +1076,7 @@
 				DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */,
 				DDA8166429ADB5A000963776 /* UIView+Reactive.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
+				DD9F6FDB29B4EF5B002BD4B4 /* WeatherService.swift in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 				DD31234229B1EDDB00443FCE /* NetworkHandler.swift in Sources */,
 			);

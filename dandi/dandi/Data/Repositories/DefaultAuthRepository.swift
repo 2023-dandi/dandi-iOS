@@ -12,9 +12,8 @@ import RxSwift
 final class DefaultAuthRepository: AuthRepository {
     let router: MoyaProvider<AuthService>
 
-    init(interceptor: Interceptor) {
+    init(interceptor _: Interceptor) {
         self.router = MoyaProvider<AuthService>(
-            session: Session(interceptor: interceptor),
             plugins: [NetworkLogPlugin()]
         )
     }
@@ -22,7 +21,7 @@ final class DefaultAuthRepository: AuthRepository {
     func refreshToken(
         accessToken: String,
         refreshToken: String
-    ) -> NetworkResult<TokenDTO> {
+    ) -> Single<NetworkResult<TokenDTO>> {
         return router.rx.request(.refresh(refreshToken: refreshToken, accessToken: accessToken))
             .flatMap { NetworkHandler.requestDecoded(by: $0) }
     }
@@ -30,7 +29,7 @@ final class DefaultAuthRepository: AuthRepository {
     func fetchUserInfo(
         fcmToken _: String,
         idToken: String
-    ) -> NetworkResult<TokenDTO> {
+    ) -> Single<NetworkResult<TokenDTO>> {
         return router.rx.request(.login(idToken: idToken))
             .flatMap { NetworkHandler.requestDecoded(by: $0) }
     }
