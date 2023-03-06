@@ -55,13 +55,11 @@ final class HomeView: UIView {
     }
 
     public func configure(
-        location: String,
         temperature: String,
         description: String
     ) {
         bannerView.do {
             $0.configure(
-                location: location,
                 temperature: temperature,
                 description: description
             )
@@ -129,9 +127,9 @@ extension HomeView {
             layoutSize: groupSize,
             subitems: [item]
         )
-        group.interItemSpacing = .fixed(20)
 
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 12
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = .init(top: 300, leading: 12, bottom: 0, trailing: 12)
         return section

@@ -58,6 +58,8 @@ final class DefaultWeatherService: WeatherService {
             return
         }
 
+        dump(requestURL)
+
         let dataTask = session.dataTask(with: requestURL) { data, response, error in
             guard error == nil else {
                 completion(.failure(.error(error)))

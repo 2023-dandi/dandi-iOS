@@ -23,11 +23,9 @@ final class WeatherBannerView: UIView {
     }
 
     public func configure(
-        location: String,
         temperature: String,
         description: String
     ) {
-        locationLabel.text = location
         temperatureLabel.text = "\(temperature)℃"
         descriptionLabel.text = description
     }

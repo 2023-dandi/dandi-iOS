@@ -65,6 +65,13 @@ extension WeatherDTO {
     func toDomain() -> [TimeWeatherInfo] {
         return response.body.items.item
             .filter { $0.category == .tmp }
-            .map { TimeWeatherInfo(image: .add, time: $0.fcstTime, temperature: $0.fcstValue) }
+            .filter { $0.fcstTime >= String(format: "%02d00", Calendar.current.component(.hour, from: Date()))
+                && $0.fcstDate == Date().dateToString()
+            }
+            .map { TimeWeatherInfo(
+                image: .add,
+                time: TimeConverter().convert24hoursTo12hours(time: (Int($0.fcstTime) ?? 0) / 100),
+                temperature: $0.fcstValue
+            ) }
     }
 }

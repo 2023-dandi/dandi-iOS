@@ -22,6 +22,17 @@ final class HomeViewController: BaseViewController, View {
         presentingViewController: self
     )
     private let locationManager = CLLocationManager()
+    private var coordinate = CLLocationCoordinate2D(
+        /// 혜화역
+        latitude: 37.58306203876132,
+        longitude: 127.0020491941987
+    ) {
+        didSet {
+            coordinatePublisher.accept(coordinate)
+        }
+    }
+
+    private lazy var coordinatePublisher = BehaviorRelay<CLLocationCoordinate2D>(value: coordinate)
 
     override func loadView() {
         view = homeView
@@ -35,8 +46,15 @@ final class HomeViewController: BaseViewController, View {
 
     func bind(reactor: HomeReactor) {
         bindTapAction()
+
         rx.viewWillAppear
             .map { _ in Reactor.Action.viewWillAppear }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        coordinatePublisher
+            .distinctUntilChanged()
+            .map { Reactor.Action.updateLocation(lon: $0.longitude, lat: $0.latitude) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
@@ -44,11 +62,24 @@ final class HomeViewController: BaseViewController, View {
             .compactMap { $0.hourlyWeathers }
             .withUnretained(self)
             .subscribe(onNext: { owner, hourlyWeathers in
-                owner.homeDataSource.update(
-                    timeWeathers: hourlyWeathers,
-                    same: [Post(id: 0, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", isLiked: false)]
-                )
+                DispatchQueue.main.async {
+                    guard let hourlyWeather = hourlyWeathers.first else { return }
+                    owner.homeDataSource.update(
+                        temperature: hourlyWeather.temperature,
+                        timeWeathers: hourlyWeathers,
+                        same: [Post(id: 0, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", isLiked: false)]
+                    )
+                    owner.homeView.configure(
+                        temperature: hourlyWeather.temperature,
+                        description: "한 낮에는 더워도\n 밤에는 쌀쌀할 수 있어요!"
+                    )
+                }
             })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.updateLocationSuccess }
+            .subscribe()
             .disposed(by: disposeBag)
     }
 
@@ -123,7 +154,8 @@ extension HomeViewController: CLLocationManagerDelegate {
         _: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
     ) {
-        guard let location = locations.first else { return }
+        guard let location = locations.last else { return }
+        coordinate = location.coordinate
 
         let geocoder = CLGeocoder()
         let local = Locale(identifier: "Ko-kr")
@@ -142,5 +174,12 @@ extension HomeViewController: CLLocationManagerDelegate {
         didFailWithError error: Error
     ) {
         DandiLog.error(error)
+    }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return String(format: "%.1f", lhs.latitude) == String(format: "%.1f", rhs.latitude)
+            && String(format: "%.1f", lhs.longitude) == String(format: "%.1f", rhs.longitude)
     }
 }

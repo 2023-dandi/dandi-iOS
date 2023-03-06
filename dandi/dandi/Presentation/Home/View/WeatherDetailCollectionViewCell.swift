@@ -36,7 +36,7 @@ final class WeatherDetailCollectionViewCell: UICollectionViewCell {
     ) {
         mainImageView.image = mainImage
         timeLabel.text = time
-        temperatureLabel.text = temperature
+        temperatureLabel.text = temperature + "도"
     }
 
     @available(*, unavailable)
