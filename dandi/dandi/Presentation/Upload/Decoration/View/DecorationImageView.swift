@@ -46,7 +46,7 @@ final class ImageGestureView: UIView {
     private func setProperties() {
         imageView.contentMode = .scaleAspectFit
         imageView.borderColor = .brown
-        imageView.borderWidth = YDSConstant.Border.thin
+        imageView.borderWidth = YDSConstant.Border.normal
         deleteButton.setImage(.remove, for: .normal)
         zoomIcon.image = .actions
     }
@@ -62,7 +62,7 @@ final class ImageGestureView: UIView {
         }
         zoomIcon.snp.makeConstraints {
             $0.leading.bottom.equalToSuperview()
-            $0.size.equalTo(60)
+            $0.size.equalTo(24)
         }
     }
 }
