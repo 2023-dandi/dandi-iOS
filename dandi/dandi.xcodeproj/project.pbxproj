@@ -117,6 +117,7 @@
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
+		DDF78E0C29BE1F97008F1283 /* DecorationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78E0B29BE1F97008F1283 /* DecorationImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +242,7 @@
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		DDF78E0B29BE1F97008F1283 /* DecorationImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				DD1B1A1029BE12610039D8FB /* DecorationView.swift */,
+				DDF78E0B29BE1F97008F1283 /* DecorationImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1046,6 +1049,7 @@
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
+				DDF78E0C29BE1F97008F1283 /* DecorationImageView.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,

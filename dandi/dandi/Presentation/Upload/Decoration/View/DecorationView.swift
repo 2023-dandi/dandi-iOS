@@ -11,5 +11,4 @@ import SnapKit
 import Then
 import YDS
 
-final class DecorationView: UIView {
-}
+final class DecorationView: UIView {}
