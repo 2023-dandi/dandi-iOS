@@ -30,6 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {}
 
+    func application(
+        _: UIApplication,
+        supportedInterfaceOrientationsFor _: UIWindow?
+    ) -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

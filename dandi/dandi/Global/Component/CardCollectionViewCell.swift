@@ -42,7 +42,10 @@ final class CardCollectionViewCell: UICollectionViewCell {
         isLiked: Bool
     ) {
         mainImageView.image(url: mainImageURL)
-        profileInfoView.profileImageView.image(url: profileImageURL)
+        profileInfoView.profileImageView.image(
+            url: profileImageURL,
+            defaultImage: Image.defaultProfile
+        )
         profileInfoView.nicknameLabel.text = nickname
         profileInfoView.dateLabel.text = date
         contentLabel.text = content

@@ -30,7 +30,6 @@ final class MyPagePostCollectionViewCell: UICollectionViewCell {
 
 extension MyPagePostCollectionViewCell {
     private func render() {
-        contentView.backgroundColor = .cyan
         imageView.contentMode = .scaleAspectFill
 
         contentView.addSubview(imageView)

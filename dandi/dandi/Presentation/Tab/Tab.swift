@@ -19,7 +19,7 @@ enum Tab: Int, CaseIterable {
         case .home:
             return YDSIcon.homeLine
         case .feed:
-            return YDSIcon.homeLine
+            return YDSIcon.feedLine
         case .my:
             return YDSIcon.personLine
         }
@@ -30,7 +30,7 @@ enum Tab: Int, CaseIterable {
         case .home:
             return YDSIcon.homeFilled
         case .feed:
-            return YDSIcon.homeFilled
+            return YDSIcon.feedFilled
         case .my:
             return YDSIcon.personFilled
         }

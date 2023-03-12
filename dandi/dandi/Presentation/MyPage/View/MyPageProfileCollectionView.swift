@@ -12,7 +12,7 @@ import Then
 import YDS
 
 final class MyPageProfileCollectionViewCell: UICollectionViewCell {
-    private let profileImageView: UIImageView = .init()
+    private let profileImageView: YDSProfileImageView = .init()
     private let contentStackView: UIStackView = .init()
     private let nicknameLabel: UILabel = .init()
     private let closetLabel: UILabel = .init()
@@ -37,7 +37,7 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell {
         closetLabel.text = "\(closetCount)벌의 날씨 옷"
 
         guard let profileImageURL = profileImageURL else { return }
-        profileImageView.image(url: profileImageURL)
+        profileImageView.image(url: profileImageURL, defaultImage: Image.defaultProfile)
     }
 
     @available(*, unavailable)
@@ -49,8 +49,7 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell {
 extension MyPageProfileCollectionViewCell {
     private func setProperties() {
         profileImageView.do {
-            $0.cornerRadius = 38
-            $0.contentMode = .scaleAspectFill
+            $0.size = .large
         }
         nicknameLabel.do {
             $0.textColor = YDSColor.textPrimary
@@ -87,7 +86,6 @@ extension MyPageProfileCollectionViewCell {
             locationLabel
         )
         profileImageView.snp.makeConstraints { make in
-            make.size.equalTo(76)
             make.leading.equalToSuperview().offset(20)
             make.centerY.equalToSuperview()
         }

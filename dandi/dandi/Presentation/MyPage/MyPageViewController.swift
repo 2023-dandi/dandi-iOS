@@ -26,7 +26,7 @@ final class MyPageViewController: BaseViewController {
         bind()
         myPageDataSource.update(
             user: UserProfile(
-                profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                profileImageURL: "",
                 nickname: "ezidayzi",
                 location: "서울시 동작구",
                 closetCount: 10

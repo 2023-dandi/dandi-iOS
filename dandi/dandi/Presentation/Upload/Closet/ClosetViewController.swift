@@ -111,6 +111,10 @@ final class ClosetViewController: BaseViewController {
                     // 삭제 API 호출
                     return
                 }
+                owner.navigationController?.pushViewController(
+                    owner.factory.makeDecorationViewController(),
+                    animated: true
+                )
             })
             .disposed(by: disposeBag)
     }

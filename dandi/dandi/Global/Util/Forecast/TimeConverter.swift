@@ -19,23 +19,23 @@ struct TimeConverter {
         let baseTimeInt = Int(baseTime) ?? 0
 
         switch baseTimeInt {
-        case 0..<210:
+        case 0 ..< 210:
             let yesterday = now - 86400
             baseDate = yesterday.dateToString()
             baseTime = "2300"
-        case 210..<510:
+        case 210 ..< 510:
             baseTime = "0200"
-        case 510..<810:
+        case 510 ..< 810:
             baseTime = "0500"
-        case 810..<1110:
+        case 810 ..< 1110:
             baseTime = "0800"
-        case 1110..<1410:
+        case 1110 ..< 1410:
             baseTime = "1100"
-        case 1410..<1710:
+        case 1410 ..< 1710:
             baseTime = "1400"
-        case 1710..<2010:
+        case 1710 ..< 2010:
             baseTime = "1700"
-        case 2010..<2310:
+        case 2010 ..< 2310:
             baseTime = "2000"
         default:
             baseTime = "2300"
@@ -48,11 +48,11 @@ struct TimeConverter {
         switch time {
         case 0:
             return "오전12시"
-        case 1..<12:
+        case 1 ..< 12:
             return "오전\(time)시"
         case 12:
             return "오후12시"
-        case 13..<24:
+        case 13 ..< 24:
             return "오후\(time - 12)시"
         default:
             return ""

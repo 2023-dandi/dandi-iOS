@@ -18,6 +18,7 @@ protocol ModulFactoryInterface {
     func makePhotoLibraryViewController() -> PhotoLibraryViewController
     func makePostDetailViewController(postID: Int) -> PostDetailViewController
     func makeMyInformationViewController() -> MyInformationViewController
+    func makeDecorationViewController() -> DecorationViewController
 }
 
 final class ModuleFactory {
@@ -88,6 +89,12 @@ extension ModuleFactory: ModulFactoryInterface {
 
     func makeMyInformationViewController() -> MyInformationViewController {
         let vc = MyInformationViewController()
+        vc.factory = self
+        return vc
+    }
+
+    func makeDecorationViewController() -> DecorationViewController {
+        let vc = DecorationViewController()
         vc.factory = self
         return vc
     }

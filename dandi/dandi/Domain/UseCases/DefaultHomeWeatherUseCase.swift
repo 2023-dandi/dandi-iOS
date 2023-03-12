@@ -37,7 +37,7 @@ final class DefaultHomeWeatherUseCase: HoulryWeatherUseCase {
     ) {
         let (base_date, baseTime) = TimeConverter().getBaseDateAndBaseTime()
         weatherRepository.fetchTodayWeather(
-            numOfRows: 330,
+            numOfRows: 280,
             page: page,
             base_date: base_date,
             base_time: baseTime,

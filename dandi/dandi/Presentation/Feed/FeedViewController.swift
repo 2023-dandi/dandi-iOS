@@ -29,7 +29,7 @@ final class FeedViewController: BaseViewController {
             Post(
                 id: 1,
                 mainImageURL: "https://cdn.imweb.me/thumbnail/20211105/16246701edcd5.jpg",
-                profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                profileImageURL: "",
                 nickname: "비오는 토요일",
                 date: "22.11.09 11:00",
                 content: "26도에 딱 적당해요!",
@@ -38,7 +38,7 @@ final class FeedViewController: BaseViewController {
             Post(
                 id: 2,
                 mainImageURL: "https://cdn.imweb.me/thumbnail/20211105/16246701edcd5.jpg",
-                profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                profileImageURL: "",
                 nickname: "비오는 토요일",
                 date: "22.11.09 11:00",
                 content: "26도에 딱 적당해요!",
@@ -47,7 +47,7 @@ final class FeedViewController: BaseViewController {
             Post(
                 id: 3,
                 mainImageURL: "https://cdn.imweb.me/thumbnail/20211105/16246701edcd5.jpg",
-                profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
+                profileImageURL: "",
                 nickname: "비오는 토요일",
                 date: "22.11.09 11:00",
                 content: "26도에 딱 적당해요!",
