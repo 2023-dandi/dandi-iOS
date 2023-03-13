@@ -7,7 +7,7 @@
 
 import UIKit
 
-import RxGesture
+import SnapKit
 
 final class DecorationViewController: BaseViewController {
     override var hidesBottomBarWhenPushed: Bool {
@@ -15,12 +15,8 @@ final class DecorationViewController: BaseViewController {
         set { super.hidesBottomBarWhenPushed = newValue }
     }
 
-    private lazy var decorationView = DecorationView(disposeBag: self.disposeBag)
-    private var deltaAngle: CGFloat = 0
-
-    override func loadView() {
-        view = decorationView
-    }
+    private var stickers = [StickerEditorView]()
+    private let rawImageView = UIView()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,56 +31,14 @@ final class DecorationViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        decorationView.configure(images: [.add, .checkmark])
+        view.addSubview(rawImageView)
+        rawImageView.backgroundColor = .brown
+//        stickers.append(StickerEditorView(image: Image.defaultProfile))
+        let userResizableView = StickerEditorView(image: Image.defaultProfile)
+        userResizableView.center = view.center
+        rawImageView.addSubview(userResizableView)
+        rawImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
-
-//    private func setImages(images: [UIImage]) {
-//        images.forEach { image in
-//            let imageGestureView = ImageGestureView()
-//            imageGestureView.imageView.image = image
-//
-//            view.addSubview(imageGestureView)
-//            imageGestureView.snp.makeConstraints { make in
-//                make.center.equalToSuperview()
-//                make.size.equalTo(200)
-//            }
-//            imageGestureView.imageView.image = .remove
-//            imageGestureView.isMultipleTouchEnabled = true
-//
-//            imageGestureView.imageView.rx.gesture(.pan())
-//                .debug()
-//                .subscribe(onNext: { [weak self] sender in
-//                    guard
-//                        let sender = sender as? UIPanGestureRecognizer,
-//                        let self = self
-//                    else { return }
-//                    let translation = sender.translation(in: self.view)
-//                    imageGestureView.center = CGPoint(
-//                        x: imageGestureView.center.x + translation.x,
-//                        y: imageGestureView.center.y + translation.y
-//                    )
-//                    sender.setTranslation(CGPoint.zero, in: self.view)
-//                })
-//                .disposed(by: disposeBag)
-//
-//            imageGestureView.zoomIcon.rx.gesture(.pan())
-//                .debug()
-//                .subscribe(onNext: { [weak self] sender in
-//                    guard
-//                        let sender = sender as? UIPanGestureRecognizer,
-//                        let self = self
-//                    else { return }
-//                    // 사이즈 조정
-//                    let translation = sender.translation(in: self.view)
-//                    if abs(translation.x) < 20 || abs(translation.y) < 20 {
-//                        return
-//                    }
-//                    let ratio = min(abs(translation.y) / 100, 2)
-//                    imageGestureView.transform = CGAffineTransform(scaleX: max(ratio, 0.8), y: max(ratio, 0.8))
-//
-//                })
-//                .disposed(by: disposeBag)
-//        }
-//    }
-// }
