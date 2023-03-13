@@ -34,7 +34,7 @@ final class StickerEditorView: UIView {
     private var oldTransform: CGAffineTransform!
 
     init(image: UIImage) {
-        let resizeImage = image.resize(newWidth: min(image.size.width, 200))
+        let resizeImage = image.resize(newWidth: min(image.size.width, 150))
         let stickerImageView = UIImageView(image: resizeImage)
         super.init(frame: stickerImageView.frame)
 

@@ -34,10 +34,12 @@ final class StickerCollectionViewCell: UICollectionViewCell {
 extension StickerCollectionViewCell {
     private func setProperties() {
         imageView.contentMode = .scaleAspectFill
+        clipsToBounds = true
     }
 
     private func setLayouts() {
-        contentView.backgroundColor = YDSColor.bgRecomment
+        contentView.borderColor = YDSColor.bgDimDark
+        contentView.borderWidth = YDSConstant.Border.thin
         contentView.addSubviews(imageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

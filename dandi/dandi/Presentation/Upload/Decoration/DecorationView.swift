@@ -43,19 +43,39 @@ extension DecorationView {
         let layout = UICollectionViewCompositionalLayout { [weak self] index, _ in
             switch index {
             case 0:
-                return self?.createSectionLayout(showHeader: true)
-            case 1:
-                return self?.createSectionLayout(showHeader: false)
+                return self?.createPostSectionLayout()
             default:
-                return self?.createSectionLayout(showHeader: false)
+                return self?.createSectionLayout()
             }
         }
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 12
         return layout
     }
 
-    private func createSectionLayout(showHeader: Bool) -> NSCollectionLayoutSection {
+    private func createPostSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(UIScreen.main.bounds.width * 433 / 375 + 16)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 12
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+
+        return section
+    }
+
+    private func createSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
@@ -75,21 +95,6 @@ extension DecorationView {
         section.interGroupSpacing = 12
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = .init(top: 0, leading: 12, bottom: 12, trailing: 12)
-
-        if showHeader {
-            let headerSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalWidth(1.1)
-            )
-            let header = NSCollectionLayoutBoundarySupplementaryItem(
-                layoutSize: headerSize,
-                elementKind: UICollectionView.elementKindSectionHeader,
-                alignment: .top
-            )
-            header.pinToVisibleBounds = true
-            header.contentInsets = .init(top: 0, leading: -12, bottom: 12, trailing: -12)
-            section.boundarySupplementaryItems = [header]
-        }
 
         return section
     }

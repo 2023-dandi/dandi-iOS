@@ -11,7 +11,7 @@ import SnapKit
 import Then
 import YDS
 
-final class DecorationHeaderView: UICollectionReusableView {
+final class DecorationHeaderView: UICollectionViewCell {
     static let identifier = "DecorationHeaderView"
     private(set) lazy var rawImageView: UIImageView = .init()
 
@@ -20,8 +20,17 @@ final class DecorationHeaderView: UICollectionReusableView {
         setLayouts()
     }
 
+    func makeImage() -> UIImage? {
+        let rect = rawImageView.bounds
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        rawImageView.drawHierarchy(in: rect, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
     private func setLayouts() {
-        addSubview(rawImageView)
+        contentView.addSubview(rawImageView)
         rawImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

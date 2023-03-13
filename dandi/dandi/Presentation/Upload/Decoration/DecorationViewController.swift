@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import SnapKit
+import YDS
 
 final class DecorationViewController: BaseViewController {
     override var hidesBottomBarWhenPushed: Bool {
@@ -37,10 +38,18 @@ final class DecorationViewController: BaseViewController {
         Image.sticker7
     ]
     private var headerViewBackgroundImage: UIImage = Image.background1
+    private var resultImage: UIImage?
     private let contentScrollView = DecorationView()
+    private let doneButton = YDSBoxButton()
 
     override func loadView() {
         view = contentScrollView
+    }
+
+    override init() {
+        super.init()
+        setProperties()
+        setLayouts()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,22 +83,60 @@ final class DecorationViewController: BaseViewController {
         )
         contentScrollView.collectionView.register(
             DecorationHeaderView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: DecorationHeaderView.identifier
+            forCellWithReuseIdentifier: DecorationHeaderView.identifier
         )
+    }
+
+    private func setProperties() {
+        doneButton.text = "꾸미기 완료"
+        doneButton.rounding = .r8
+    }
+
+    private func setLayouts() {
+        view.addSubview(doneButton)
+        doneButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(32)
+        }
     }
 
     private func bind() {
         contentScrollView.collectionView.rx.itemSelected
-            .subscribe(onNext: { indexPath in
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
                 switch indexPath.section {
-                case 0:
-                    self.headerViewBackgroundImage = self.backgroundImages[indexPath.item]
-                    self.contentScrollView.collectionView.reloadData()
+                case 1:
+                    owner.headerViewBackgroundImage = owner.backgroundImages[indexPath.item]
+                    owner.contentScrollView.collectionView.reloadData()
+                case 2:
+                    owner.stickers.append(StickerEditorView(image: self.stickerImages[indexPath.item]))
+                    owner.contentScrollView.collectionView.reloadData()
                 default:
-                    self.stickers.append(StickerEditorView(image: self.stickerImages[indexPath.item]))
-                    self.contentScrollView.collectionView.reloadData()
+                    break
                 }
+            })
+            .disposed(by: disposeBag)
+
+        doneButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.stickers.forEach {
+                    $0.switchControls(toState: false)
+                }
+                guard
+                    let cell = owner.contentScrollView
+                    .collectionView
+                    .cellForItem(at: IndexPath(item: 0, section: 0))
+                    as? DecorationHeaderView,
+                    let image = cell.makeImage()
+                else { return }
+                owner.stickers.forEach {
+                    $0.switchControls(toState: true)
+                }
+                owner.navigationController?.pushViewController(
+                    UploadMainViewController(image: image),
+                    animated: true
+                )
             })
             .disposed(by: disposeBag)
     }
@@ -97,70 +144,72 @@ final class DecorationViewController: BaseViewController {
 
 extension DecorationViewController: UICollectionViewDataSource {
     func numberOfSections(in _: UICollectionView) -> Int {
-        return 2
+        return 3
     }
 
     func collectionView(
         _: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        if section == 0 {
+        switch section {
+        case 0:
+            return 1
+        case 1:
             return backgroundImages.count
+        case 2:
+            return stickerImages.count
+        default:
+            return 0
         }
-        return stickerImages.count
     }
 
     func collectionView(
         _: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard
-            let cell = contentScrollView.collectionView.dequeueReusableCell(
-                withReuseIdentifier: StickerCollectionViewCell.identifier,
-                for: indexPath
-            ) as? StickerCollectionViewCell
-        else { return UICollectionViewCell() }
-
         switch indexPath.section {
         case 0:
-            cell.configure(image: backgroundImages[indexPath.item])
-        case 1:
-            cell.configure(image: stickerImages[indexPath.item])
-        default:
-            break
-        }
-
-        return cell
-    }
-
-    func collectionView(
-        _: UICollectionView,
-        viewForSupplementaryElementOfKind _: String,
-        at indexPath: IndexPath
-    ) -> UICollectionReusableView {
-        guard
-            indexPath.section == 0,
-            let header = contentScrollView.collectionView.dequeueReusableSupplementaryView(
-                ofKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: DecorationHeaderView.identifier,
-                for: indexPath
-            ) as? DecorationHeaderView
-        else { return UICollectionReusableView() }
-        stickers.forEach { stickerView in
-            let userResizableView = stickerView
-            if userResizableView.touchStart == nil {
-                userResizableView.center = CGPoint(
-                    x: UIScreen.main.bounds.width / 2,
-                    y: UIScreen.main.bounds.width * 1.1 / 2
-                )
+            guard
+                let cell = contentScrollView.collectionView.dequeueReusableCell(
+                    withReuseIdentifier: DecorationHeaderView.identifier,
+                    for: indexPath
+                ) as? DecorationHeaderView
+            else { return UICollectionViewCell() }
+            stickers.forEach { stickerView in
+                let userResizableView = stickerView
+                if userResizableView.touchStart == nil {
+                    userResizableView.center = CGPoint(
+                        x: UIScreen.main.bounds.width / 2,
+                        y: UIScreen.main.bounds.width * 1.1 / 2
+                    )
+                }
+                userResizableView.tag = indexPath.item
+                userResizableView.delegate = self
+                cell.rawImageView.addSubview(userResizableView)
             }
-            userResizableView.tag = indexPath.item
-            userResizableView.delegate = self
-            header.rawImageView.addSubview(userResizableView)
+            cell.rawImageView.image = headerViewBackgroundImage
+            return cell
+        case 1:
+            guard
+                let cell = contentScrollView.collectionView.dequeueReusableCell(
+                    withReuseIdentifier: StickerCollectionViewCell.identifier,
+                    for: indexPath
+                ) as? StickerCollectionViewCell
+            else { return UICollectionViewCell() }
+            cell.configure(image: backgroundImages[indexPath.item])
+            return cell
+        case 2:
+            guard
+                let cell = contentScrollView.collectionView.dequeueReusableCell(
+                    withReuseIdentifier: StickerCollectionViewCell.identifier,
+                    for: indexPath
+                ) as? StickerCollectionViewCell
+            else { return UICollectionViewCell() }
+            cell.configure(image: stickerImages[indexPath.item])
+            return cell
+        default:
+            return UICollectionViewCell()
         }
-        header.rawImageView.image = headerViewBackgroundImage
-
-        return header
     }
 }
 
