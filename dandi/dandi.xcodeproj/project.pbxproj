@@ -25,6 +25,7 @@
 		DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */; };
 		DD2E52E229BF2ABD0078EA74 /* DecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */; };
 		DD2E52E429BF38560078EA74 /* DecorationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E329BF38560078EA74 /* DecorationHeaderView.swift */; };
+		DD2E52E629BF58CF0078EA74 /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */; };
 		DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232029B1B9F500443FCE /* Interceptor.swift */; };
 		DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232329B1BA8100443FCE /* KeychainHandler.swift */; };
 		DD31232929B1BAF100443FCE /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232829B1BAF100443FCE /* URLConstant.swift */; };
@@ -163,6 +164,7 @@
 		DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBorderView.swift; sourceTree = "<group>"; };
 		DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationView.swift; sourceTree = "<group>"; };
 		DD2E52E329BF38560078EA74 /* DecorationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationHeaderView.swift; sourceTree = "<group>"; };
+		DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD31232029B1B9F500443FCE /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		DD31232329B1BA8100443FCE /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
 		DD31232829B1BAF100443FCE /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */,
 				DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */,
 				DD2E52E329BF38560078EA74 /* DecorationHeaderView.swift */,
+				DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1054,6 +1057,7 @@
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
 				DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */,
+				DD2E52E629BF58CF0078EA74 /* StickerCollectionViewCell.swift in Sources */,
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
 				DD9F6FE129B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,

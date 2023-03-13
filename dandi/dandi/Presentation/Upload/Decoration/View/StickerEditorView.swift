@@ -14,8 +14,15 @@ import SnapKit
 import Then
 import YDS
 
+protocol StickerEditorViewDelegate: AnyObject {
+    func delete(uuid: UUID)
+}
+
 final class StickerEditorView: UIView {
-    private var touchStart: CGPoint?
+    weak var delegate: StickerEditorViewDelegate?
+    let uuid = UUID()
+
+    private(set) var touchStart: CGPoint?
     private var previousPoint: CGPoint?
     private var deltaAngle: CGFloat?
 
@@ -27,7 +34,8 @@ final class StickerEditorView: UIView {
     private var oldTransform: CGAffineTransform!
 
     init(image: UIImage) {
-        let stickerImageView = UIImageView(image: image)
+        let resizeImage = image.resize(newWidth: min(image.size.width, 200))
+        let stickerImageView = UIImageView(image: resizeImage)
         super.init(frame: stickerImageView.frame)
 
         setupContentView(content: stickerImageView)
@@ -111,6 +119,7 @@ final class StickerEditorView: UIView {
     private func deleteTap(recognizer: UIPanGestureRecognizer) {
         guard let close = recognizer.view else { return }
         close.superview?.removeFromSuperview()
+        delegate?.delete(uuid: uuid)
     }
 
     @objc

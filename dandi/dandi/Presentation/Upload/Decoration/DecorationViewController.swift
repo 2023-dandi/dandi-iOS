@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 
 final class DecorationViewController: BaseViewController {
@@ -16,7 +18,25 @@ final class DecorationViewController: BaseViewController {
     }
 
     private var stickers = [StickerEditorView]()
-    private var headerView: DecorationHeaderView?
+    private let backgroundImages = [
+        Image.background1,
+        Image.background2,
+        Image.background3,
+        Image.background4,
+        Image.background5,
+        Image.background6,
+        Image.background7
+    ]
+    private let stickerImages = [
+        Image.sticker1,
+        Image.sticker2,
+        Image.sticker3,
+        Image.sticker4,
+        Image.sticker5,
+        Image.sticker6,
+        Image.sticker7
+    ]
+    private var headerViewBackgroundImage: UIImage = Image.background1
     private let contentScrollView = DecorationView()
 
     override func loadView() {
@@ -37,25 +57,41 @@ final class DecorationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
-        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
-        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
-        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
 
         setCollectionViewDataSource()
+        bind()
     }
 
     private func setCollectionViewDataSource() {
         contentScrollView.collectionView.dataSource = self
         contentScrollView.collectionView.register(
-            ClosetImageCollectionViewCell.self,
-            forCellWithReuseIdentifier: ClosetImageCollectionViewCell.identifier
+            StickerCollectionViewCell.self,
+            forCellWithReuseIdentifier: StickerCollectionViewCell.identifier
         )
         contentScrollView.collectionView.register(
             DecorationHeaderView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: DecorationHeaderView.identifier
         )
+    }
+
+    private func bind() {
+        contentScrollView.collectionView.rx.itemSelected
+            .subscribe(onNext: { indexPath in
+                switch indexPath.section {
+                case 0:
+                    self.headerViewBackgroundImage = self.backgroundImages[indexPath.item]
+                    self.contentScrollView.collectionView.reloadData()
+                default:
+                    self.stickers.append(StickerEditorView(image: self.stickerImages[indexPath.item]))
+                    self.contentScrollView.collectionView.reloadData()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -66,9 +102,12 @@ extension DecorationViewController: UICollectionViewDataSource {
 
     func collectionView(
         _: UICollectionView,
-        numberOfItemsInSection _: Int
+        numberOfItemsInSection section: Int
     ) -> Int {
-        return 10
+        if section == 0 {
+            return backgroundImages.count
+        }
+        return stickerImages.count
     }
 
     func collectionView(
@@ -77,12 +116,19 @@ extension DecorationViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         guard
             let cell = contentScrollView.collectionView.dequeueReusableCell(
-                withReuseIdentifier: ClosetImageCollectionViewCell.identifier,
+                withReuseIdentifier: StickerCollectionViewCell.identifier,
                 for: indexPath
-            ) as? ClosetImageCollectionViewCell
+            ) as? StickerCollectionViewCell
         else { return UICollectionViewCell() }
 
-        cell.configure(imageURL: "")
+        switch indexPath.section {
+        case 0:
+            cell.configure(image: backgroundImages[indexPath.item])
+        case 1:
+            cell.configure(image: stickerImages[indexPath.item])
+        default:
+            break
+        }
 
         return cell
     }
@@ -102,13 +148,25 @@ extension DecorationViewController: UICollectionViewDataSource {
         else { return UICollectionReusableView() }
         stickers.forEach { stickerView in
             let userResizableView = stickerView
-            userResizableView.center = CGPoint(
-                x: UIScreen.main.bounds.width / 2,
-                y: UIScreen.main.bounds.width * 1.1 / 2
-            )
+            if userResizableView.touchStart == nil {
+                userResizableView.center = CGPoint(
+                    x: UIScreen.main.bounds.width / 2,
+                    y: UIScreen.main.bounds.width * 1.1 / 2
+                )
+            }
+            userResizableView.tag = indexPath.item
+            userResizableView.delegate = self
             header.rawImageView.addSubview(userResizableView)
         }
+        header.rawImageView.image = headerViewBackgroundImage
 
         return header
+    }
+}
+
+extension DecorationViewController: StickerEditorViewDelegate {
+    func delete(uuid: UUID) {
+        stickers = stickers.filter { $0.uuid != uuid }
+        contentScrollView.collectionView.reloadData()
     }
 }

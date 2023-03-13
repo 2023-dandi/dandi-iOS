@@ -13,7 +13,7 @@ import YDS
 
 final class DecorationHeaderView: UICollectionReusableView {
     static let identifier = "DecorationHeaderView"
-    private(set) lazy var rawImageView: UIView = .init()
+    private(set) lazy var rawImageView: UIImageView = .init()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +26,9 @@ final class DecorationHeaderView: UICollectionReusableView {
             make.edges.equalToSuperview()
         }
         rawImageView.clipsToBounds = true
+        rawImageView.contentMode = .scaleToFill
         backgroundColor = YDSColor.bgDimDark
+        rawImageView.isUserInteractionEnabled = true
     }
 
     @available(*, unavailable)
