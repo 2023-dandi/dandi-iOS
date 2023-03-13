@@ -18,6 +18,7 @@ final class ClosetImageCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    static let identifier = "ClosetImageCollectionViewCell"
     private let imageView: UIImageView = .init()
     private let checkIconView: UIImageView = .init()
     private let dimView: UIView = .init()

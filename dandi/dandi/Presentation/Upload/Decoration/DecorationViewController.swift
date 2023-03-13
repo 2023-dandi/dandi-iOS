@@ -16,7 +16,12 @@ final class DecorationViewController: BaseViewController {
     }
 
     private var stickers = [StickerEditorView]()
-    private let rawImageView = UIView()
+    private var headerView: DecorationHeaderView?
+    private let contentScrollView = DecorationView()
+
+    override func loadView() {
+        view = contentScrollView
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,22 +36,79 @@ final class DecorationViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(rawImageView)
-        rawImageView.backgroundColor = .brown
-        rawImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
 
-        stickers.forEach { self.addSticker(editorView: $0) }
+        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
+        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
+        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
+        stickers.append(StickerEditorView(image: Image.defaultProfile.resize(newWidth: 200)))
+
+        setCollectionViewDataSource()
     }
 
-    private func addSticker(editorView: StickerEditorView) {
-        let userResizableView = editorView
-        userResizableView.center = view.center
-        rawImageView.addSubview(userResizableView)
+    private func setCollectionViewDataSource() {
+        contentScrollView.collectionView.dataSource = self
+        contentScrollView.collectionView.register(
+            ClosetImageCollectionViewCell.self,
+            forCellWithReuseIdentifier: ClosetImageCollectionViewCell.identifier
+        )
+        contentScrollView.collectionView.register(
+            DecorationHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: DecorationHeaderView.identifier
+        )
+    }
+}
+
+extension DecorationViewController: UICollectionViewDataSource {
+    func numberOfSections(in _: UICollectionView) -> Int {
+        return 2
+    }
+
+    func collectionView(
+        _: UICollectionView,
+        numberOfItemsInSection _: Int
+    ) -> Int {
+        return 10
+    }
+
+    func collectionView(
+        _: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard
+            let cell = contentScrollView.collectionView.dequeueReusableCell(
+                withReuseIdentifier: ClosetImageCollectionViewCell.identifier,
+                for: indexPath
+            ) as? ClosetImageCollectionViewCell
+        else { return UICollectionViewCell() }
+
+        cell.configure(imageURL: "")
+
+        return cell
+    }
+
+    func collectionView(
+        _: UICollectionView,
+        viewForSupplementaryElementOfKind _: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        guard
+            indexPath.section == 0,
+            let header = contentScrollView.collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: DecorationHeaderView.identifier,
+                for: indexPath
+            ) as? DecorationHeaderView
+        else { return UICollectionReusableView() }
+        stickers.forEach { stickerView in
+            let userResizableView = stickerView
+            userResizableView.center = CGPoint(
+                x: UIScreen.main.bounds.width / 2,
+                y: UIScreen.main.bounds.width * 1.1 / 2
+            )
+            header.rawImageView.addSubview(userResizableView)
+        }
+
+        return header
     }
 }
