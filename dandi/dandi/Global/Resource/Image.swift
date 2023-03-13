@@ -9,4 +9,6 @@ import UIKit
 
 struct Image {
     static let defaultProfile = UIImage(named: "img.defaultProfile")!
+    static let btnDelete = UIImage(named: "btnDelete")!
+    static let btnRotation = UIImage(named: "btnRotation")!
 }

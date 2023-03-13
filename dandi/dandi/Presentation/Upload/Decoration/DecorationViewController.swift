@@ -33,12 +33,20 @@ final class DecorationViewController: BaseViewController {
         super.viewDidLoad()
         view.addSubview(rawImageView)
         rawImageView.backgroundColor = .brown
-//        stickers.append(StickerEditorView(image: Image.defaultProfile))
-        let userResizableView = StickerEditorView(image: Image.defaultProfile)
-        userResizableView.center = view.center
-        rawImageView.addSubview(userResizableView)
         rawImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
+        stickers.append(StickerEditorView(image: Image.defaultProfile))
+
+        stickers.forEach { self.addSticker(editorView: $0) }
+    }
+
+    private func addSticker(editorView: StickerEditorView) {
+        let userResizableView = editorView
+        userResizableView.center = view.center
+        rawImageView.addSubview(userResizableView)
     }
 }

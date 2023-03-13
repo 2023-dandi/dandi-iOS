@@ -21,6 +21,8 @@
 		DD239905295D7C8800A898B2 /* dandiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239904295D7C8800A898B2 /* dandiUITestsLaunchTests.swift */; };
 		DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239918295D83E400A898B2 /* RootSwitcher.swift */; };
 		DD239921295D86CE00A898B2 /* domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239920295D86CE00A898B2 /* domain.swift */; };
+		DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */; };
+		DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */; };
 		DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232029B1B9F500443FCE /* Interceptor.swift */; };
 		DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232329B1BA8100443FCE /* KeychainHandler.swift */; };
 		DD31232929B1BAF100443FCE /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232829B1BAF100443FCE /* URLConstant.swift */; };
@@ -117,7 +119,6 @@
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
-		DDF78E0C29BE1F97008F1283 /* DecorationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78E0B29BE1F97008F1283 /* DecorationImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,8 @@
 		DD239904295D7C8800A898B2 /* dandiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dandiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DD239918295D83E400A898B2 /* RootSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSwitcher.swift; sourceTree = "<group>"; };
 		DD239920295D86CE00A898B2 /* domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = domain.swift; sourceTree = "<group>"; };
+		DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerEditorViewControl.swift; sourceTree = "<group>"; };
+		DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBorderView.swift; sourceTree = "<group>"; };
 		DD31232029B1B9F500443FCE /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		DD31232329B1BA8100443FCE /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
 		DD31232829B1BAF100443FCE /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
@@ -242,7 +245,6 @@
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
-		DDF78E0B29BE1F97008F1283 /* DecorationImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				DD1B1A1029BE12610039D8FB /* StickerEditorView.swift */,
-				DDF78E0B29BE1F97008F1283 /* DecorationImageView.swift */,
+				DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */,
+				DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1032,6 +1035,7 @@
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
+				DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
@@ -1049,7 +1053,6 @@
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
-				DDF78E0C29BE1F97008F1283 /* DecorationImageView.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
@@ -1100,6 +1103,7 @@
 				DDAEF5C929B748570018B577 /* String+.swift in Sources */,
 				DD31233B29B1E49F00443FCE /* DefaultAuthRepository.swift in Sources */,
 				DD31233729B1D7AB00443FCE /* VoidType.swift in Sources */,
+				DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,

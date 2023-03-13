@@ -65,13 +65,18 @@ final class StickerEditorView: UIView {
         borderView = BorderView(frame: bounds)
         addSubview(borderView)
 
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTap))
-        deleteControl = StickerEditorViewControl(image: UIImage(named: "btnClose"), gestureRecognizer: singleTap)
+        let deleteGesture = UITapGestureRecognizer(target: self, action: #selector(deleteTap))
+        deleteControl = StickerEditorViewControl(
+            image: Image.btnDelete,
+            gestureRecognizer: deleteGesture
+        )
         addSubview(deleteControl)
 
         let panResizeGesture = UIPanGestureRecognizer(target: self, action: #selector(resizeTranslate))
-        resizingControl = StickerEditorViewControl(image: UIImage(named: "btnRotation"),
-                                                   gestureRecognizer: panResizeGesture)
+        resizingControl = StickerEditorViewControl(
+            image: Image.btnRotation,
+            gestureRecognizer: panResizeGesture
+        )
         addSubview(resizingControl)
 
         let pinchResizeGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
@@ -102,14 +107,14 @@ final class StickerEditorView: UIView {
 
     // MARK: Gestures with controls
 
-    @objc private func singleTap(recognizer: UIPanGestureRecognizer) {
-        let close = recognizer.view
-        if let close = close {
-            close.superview?.removeFromSuperview()
-        }
+    @objc
+    private func deleteTap(recognizer: UIPanGestureRecognizer) {
+        guard let close = recognizer.view else { return }
+        close.superview?.removeFromSuperview()
     }
 
-    @objc private func resizeTranslate(recognizer: UIPanGestureRecognizer) {
+    @objc
+    private func resizeTranslate(recognizer: UIPanGestureRecognizer) {
         if recognizer.state == .began {
             enableTranslucency(state: true)
             previousPoint = recognizer.location(in: self)
@@ -123,6 +128,8 @@ final class StickerEditorView: UIView {
             enableTranslucency(state: false)
             previousPoint = recognizer.location(in: self)
             setNeedsDisplay()
+        } else {
+            enableTranslucency(state: false)
         }
         updateControlsPosition()
     }
@@ -141,8 +148,10 @@ final class StickerEditorView: UIView {
     }
 
     private func rotateView(with deltaAngle: CGFloat?, recognizer: UIPanGestureRecognizer) {
-        let angle = atan2(recognizer.location(in: superview).y - center.y,
-                          recognizer.location(in: superview).x - center.x)
+        let angle = atan2(
+            recognizer.location(in: superview).y - center.y,
+            recognizer.location(in: superview).x - center.x
+        )
 
         if let deltaAngle = deltaAngle {
             let angleDiff = deltaAngle - angle
@@ -171,15 +180,20 @@ final class StickerEditorView: UIView {
 
     // MARK: Gestures without controls
 
-    @objc private func pinch(recognizer: UIPinchGestureRecognizer) {
+    @objc
+    private func pinch(recognizer: UIPinchGestureRecognizer) {
         if recognizer.state == .began {
             oldBounds = bounds
             enableTranslucency(state: true)
             previousPoint = recognizer.location(in: self)
             setNeedsDisplay()
         } else if recognizer.state == .changed {
-            bounds = CGRect(x: 0, y: 0, width: oldBounds.width * recognizer.scale,
-                            height: oldBounds.height * recognizer.scale)
+            bounds = CGRect(
+                x: 0,
+                y: 0,
+                width: oldBounds.width * recognizer.scale,
+                height: oldBounds.height * recognizer.scale
+            )
         } else if recognizer.state == .ended {
             oldBounds = bounds
             enableTranslucency(state: false)
@@ -189,7 +203,8 @@ final class StickerEditorView: UIView {
         updateControlsPosition()
     }
 
-    @objc private func rotate(recognizer: UIRotationGestureRecognizer) {
+    @objc
+    private func rotate(recognizer: UIRotationGestureRecognizer) {
         if recognizer.state == .began {
             oldTransform = transform
             enableTranslucency(state: true)
@@ -228,6 +243,7 @@ final class StickerEditorView: UIView {
 
     override func touchesEnded(_: Set<UITouch>, with _: UIEvent?) {
         enableTranslucency(state: false)
+        superview?.bringSubviewToFront(self)
     }
 
     private func translateUsingTouchLocation(touchPoint: CGPoint) {
@@ -266,62 +282,7 @@ extension StickerEditorView: UIGestureRecognizerDelegate {
         gestureRecognizer: UIGestureRecognizer,
         shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer
     ) -> Bool {
-        return gestureRecognizer.isKind(of: UIPinchGestureRecognizer.self) && otherGestureRecognizer.isKind(of: UIRotationGestureRecognizer.self)
-    }
-}
-
-class StickerEditorViewControl: UIImageView {
-    init(image: UIImage?, gestureRecognizer: UIGestureRecognizer) {
-        super.init(image: image)
-
-        addGestureRecognizer(gestureRecognizer)
-        self.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: 36,
-            height: 36
-        )
-
-        layer.cornerRadius = frame.width / 2
-        backgroundColor = .cyan
-        isUserInteractionEnabled = true
-    }
-
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class BorderView: UIView {
-    override func draw(_ rect: CGRect) {
-        if let context = UIGraphicsGetCurrentContext() {
-            context.saveGState()
-            context.setLineWidth(1)
-
-            let dash: [CGFloat] = [4.0, 2.0]
-            context.setLineDash(phase: 0.0, lengths: dash)
-
-            UIColor.white.setStroke()
-
-            context.addRect(rect)
-            context.strokePath()
-
-            context.restoreGState()
-        }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
-
-    private func setupView() {
-        backgroundColor = .clear
+        return gestureRecognizer.isKind(of: UIPinchGestureRecognizer.self)
+            && otherGestureRecognizer.isKind(of: UIRotationGestureRecognizer.self)
     }
 }
