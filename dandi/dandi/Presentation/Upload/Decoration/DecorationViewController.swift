@@ -46,10 +46,11 @@ final class DecorationViewController: BaseViewController {
         view = contentScrollView
     }
 
-    override init() {
+    init(selectedImages: [UIImage]) {
         super.init()
         setProperties()
         setLayouts()
+        makeStickerEditorViews(images: selectedImages)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,13 +67,12 @@ final class DecorationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
-        stickers.append(StickerEditorView(image: Image.defaultProfile))
-
         setCollectionViewDataSource()
         bind()
+    }
+
+    private func makeStickerEditorViews(images: [UIImage]) {
+        images.forEach { stickers.append(StickerEditorView(image: $0)) }
     }
 
     private func setCollectionViewDataSource() {

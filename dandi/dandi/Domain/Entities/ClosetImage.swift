@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct ClosetImage {
     let uuid = UUID()
-    let id: Int
-    let imageURL: String
+    let id: Int?
+    let image: UIImage?
+    let imageURL: String?
 }
 
 extension ClosetImage: Equatable, Hashable {

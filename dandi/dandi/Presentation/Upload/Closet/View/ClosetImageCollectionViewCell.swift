@@ -29,6 +29,10 @@ final class ClosetImageCollectionViewCell: UICollectionViewCell {
         setProperties()
     }
 
+    func configure(image: UIImage) {
+        imageView.image = image
+    }
+
     func configure(imageURL: String) {
         imageView.image(url: imageURL)
     }

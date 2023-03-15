@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 import YPImagePicker
+
 protocol ModulFactoryInterface {
     func makeTabBarViewController() -> MainTabBarController
     func makeLoginViewController() -> LoginViewController
@@ -18,7 +20,7 @@ protocol ModulFactoryInterface {
     func makePhotoLibraryViewController() -> PhotoLibraryViewController
     func makePostDetailViewController(postID: Int) -> PostDetailViewController
     func makeMyInformationViewController() -> MyInformationViewController
-    func makeDecorationViewController() -> DecorationViewController
+    func makeDecorationViewController(selectedImages: [UIImage]) -> DecorationViewController
 }
 
 final class ModuleFactory {
@@ -93,8 +95,8 @@ extension ModuleFactory: ModulFactoryInterface {
         return vc
     }
 
-    func makeDecorationViewController() -> DecorationViewController {
-        let vc = DecorationViewController()
+    func makeDecorationViewController(selectedImages: [UIImage]) -> DecorationViewController {
+        let vc = DecorationViewController(selectedImages: selectedImages)
         vc.factory = self
         return vc
     }

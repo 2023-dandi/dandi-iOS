@@ -38,14 +38,14 @@ final class ClosetDataSource {
         self.presentingViewController = presentingViewController
     }
 
-    func update(imageURLs: [ClosetImage]) {
+    func update(items: [ClosetImage]) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
 
         let buttonItems = [Item.button]
         snapshot.appendItems(buttonItems)
 
-        let imageItems = imageURLs.map { Item.image($0) }
+        let imageItems = items.map { Item.image($0) }
         snapshot.appendItems(imageItems)
 
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -88,8 +88,15 @@ extension ClosetDataSource {
     }
 
     private func configureImageCellRegistration<Cell: ImageCell>() -> ImageCellRegistration<Cell> {
-        return ImageCellRegistration<Cell> { cell, _, image in
-            cell.configure(imageURL: image.imageURL)
+        return ImageCellRegistration<Cell> { cell, _, item in
+            if let image = item.image {
+                cell.configure(image: image)
+                return
+            }
+            guard let imageURL = item.imageURL else {
+                return
+            }
+            cell.configure(imageURL: imageURL)
         }
     }
 }

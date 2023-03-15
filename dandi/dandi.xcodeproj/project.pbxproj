@@ -123,6 +123,8 @@
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
+		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
+		DDFF968329C060D100996BD6 /* BackgroundRemovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFF968229C060D100996BD6 /* BackgroundRemovalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +255,7 @@
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		DDFF968229C060D100996BD6 /* BackgroundRemovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemovalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +271,7 @@
 				DD9B06C7295EC66500A98041 /* Then in Frameworks */,
 				DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */,
 				DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */,
+				DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */,
 				DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */,
 				DD9B06D0295EC6E100A98041 /* RxGesture in Frameworks */,
 				DD9B06BD295EC63F00A98041 /* RxCocoa in Frameworks */,
@@ -819,6 +823,7 @@
 		DDDBD43E29740AE800452F01 /* Upload */ = {
 			isa = PBXGroup;
 			children = (
+				DDFF968229C060D100996BD6 /* BackgroundRemovalViewController.swift */,
 				DDDBD43F29740B8800452F01 /* Closet */,
 				DDA8166729AE0B6A00963776 /* Decoration */,
 				DD2E52E729BF726D0078EA74 /* Main */,
@@ -887,6 +892,7 @@
 				DD9B06CC295EC6B600A98041 /* YDS */,
 				DD9B06CF295EC6E100A98041 /* RxGesture */,
 				DDA8166129ADAB3800963776 /* YPImagePicker */,
+				DDFF968029C060AE00996BD6 /* BackgroundRemoval */,
 			);
 			productName = dandi;
 			productReference = DD2398DB295D7C8700A898B2 /* dandi.app */;
@@ -970,6 +976,7 @@
 				DD9B06CB295EC6B600A98041 /* XCRemoteSwiftPackageReference "YDS-iOS" */,
 				DD9B06CE295EC6E100A98041 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				DDA8166029ADAB3800963776 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
+				DDFF967F29C060AE00996BD6 /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
 			);
 			productRefGroup = DD2398DC295D7C8700A898B2 /* Products */;
 			projectDirPath = "";
@@ -1122,6 +1129,7 @@
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
 				DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
+				DDFF968329C060D100996BD6 /* BackgroundRemovalViewController.swift in Sources */,
 				DDAEF5C929B748570018B577 /* String+.swift in Sources */,
 				DD31233B29B1E49F00443FCE /* DefaultAuthRepository.swift in Sources */,
 				DD31233729B1D7AB00443FCE /* VoidType.swift in Sources */,
@@ -1574,6 +1582,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		DDFF967F29C060AE00996BD6 /* XCRemoteSwiftPackageReference "BackgroundRemoval" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ezaldeen99/BackgroundRemoval";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1636,6 +1652,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DDA8166029ADAB3800963776 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
 			productName = YPImagePicker;
+		};
+		DDFF968029C060AE00996BD6 /* BackgroundRemoval */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDFF967F29C060AE00996BD6 /* XCRemoteSwiftPackageReference "BackgroundRemoval" */;
+			productName = BackgroundRemoval;
 		};
 /* End XCSwiftPackageProductDependency section */
 

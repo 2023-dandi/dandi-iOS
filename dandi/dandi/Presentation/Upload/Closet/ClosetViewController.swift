@@ -7,6 +7,7 @@
 
 import UIKit
 
+import BackgroundRemoval
 import RxCocoa
 import RxSwift
 import YDS
@@ -31,7 +32,13 @@ final class ClosetViewController: BaseViewController {
     private let uploadButton: YDSBoxButton = .init()
 
     private lazy var datasource: ClosetDataSource = .init(collectionView: closetView.collectionView)
-    private var imageList = [UIImage]()
+    private var imageList = [ClosetImage]() {
+        didSet {
+            datasource.update(items: imageList)
+        }
+    }
+
+    private var selectedImages = [ClosetImage]()
 
     override func loadView() {
         view = closetView
@@ -41,15 +48,8 @@ final class ClosetViewController: BaseViewController {
         super.init()
         setProperties()
         setLayouts()
-        datasource.update(
-            imageURLs: [
-                ClosetImage(id: 1, imageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2"),
-                ClosetImage(id: 2, imageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2"),
-                ClosetImage(id: 3, imageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2"),
-                ClosetImage(id: 4, imageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2"),
-                ClosetImage(id: 5, imageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2")
-            ])
         bind()
+        datasource.update(items: [])
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,8 +90,23 @@ final class ClosetViewController: BaseViewController {
                     }
                     owner.present(library, animated: true)
                 case let .image(image):
-                    DandiLog.debug(image)
+                    guard !owner.selectedImages.contains(image) else { return }
+                    owner.selectedImages.append(image)
                 case .none:
+                    DandiLog.error("해당 Item 없음")
+                }
+            })
+            .disposed(by: disposeBag)
+
+        closetView.collectionView.rx.itemDeselected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                let item = owner.datasource.itemIdentifier(for: indexPath)
+                switch item {
+                case let .image(image):
+                    guard owner.selectedImages.contains(image) else { return }
+                    owner.selectedImages = owner.selectedImages.filter { $0 != image }
+                default:
                     DandiLog.error("해당 Item 없음")
                 }
             })
@@ -111,8 +126,10 @@ final class ClosetViewController: BaseViewController {
                     // 삭제 API 호출
                     return
                 }
+
+                let images: [UIImage] = owner.selectedImages.compactMap { $0.image }
                 owner.navigationController?.pushViewController(
-                    owner.factory.makeDecorationViewController(),
+                    owner.factory.makeDecorationViewController(selectedImages: images),
                     animated: true
                 )
             })
@@ -142,8 +159,9 @@ final class ClosetViewController: BaseViewController {
 
     private func addImage(_ item: YPMediaItem) {
         guard let image = convertItemToImage(with: item) else { return }
-        imageList.append(image)
-        // TODO: - 이미지 영상처리
+        let removeBackgroundImage = BackgroundRemoval().removeBackground(image: image, maskOnly: false)
+        // 임시
+        imageList.append(ClosetImage(id: nil, image: removeBackgroundImage, imageURL: nil))
     }
 
     private func convertItemToImage(with item: YPMediaItem) -> UIImage? {
