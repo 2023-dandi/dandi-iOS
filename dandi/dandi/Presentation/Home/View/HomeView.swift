@@ -81,6 +81,12 @@ extension HomeView {
         addButton.do {
             $0.cornerRadius = 30
             $0.backgroundColor = YDSColor.buttonPoint
+            $0.setImage(
+                YDSIcon.plusLine
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(.white),
+                for: .normal
+            )
         }
         statusBarView.do {
             $0.backgroundColor = .white

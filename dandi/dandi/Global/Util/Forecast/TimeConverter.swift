@@ -59,12 +59,3 @@ struct TimeConverter {
         }
     }
 }
-
-extension Date {
-    func dateToString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = .autoupdatingCurrent
-        dateFormatter.dateFormat = "yyyyMMdd"
-        return dateFormatter.string(from: self)
-    }
-}

@@ -41,7 +41,7 @@ final class HomeViewController: BaseViewController, View {
     override init() {
         super.init()
         setLocationManager()
-        setProperties()
+        setGradientColors()
     }
 
     func bind(reactor: HomeReactor) {
@@ -83,8 +83,17 @@ final class HomeViewController: BaseViewController, View {
             .disposed(by: disposeBag)
     }
 
-    private func setProperties() {
-        homeView.setGradientColors(colors: [.red, .white])
+    private func setGradientColors() {
+        switch Date().hour {
+        case 6 ..< 8:
+            homeView.setGradientColors(colors: [Color.pastelYellow, .white])
+        case 8 ..< 18:
+            homeView.setGradientColors(colors: [Color.pastelBlue, .white])
+        case 18 ..< 19:
+            homeView.setGradientColors(colors: [Color.pastelRed, .white])
+        default:
+            homeView.setGradientColors(colors: [Color.pastelPurple, .white])
+        }
         homeView.layoutSubviews()
     }
 

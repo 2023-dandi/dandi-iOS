@@ -113,6 +113,8 @@
 		DDC52200299520E500E2845F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC521FF299520E500E2845F /* UserProfile.swift */; };
 		DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */; };
 		DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */; };
+		DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16629C2DE5000BAB1CF /* Date+.swift */; };
+		DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16829C2E05500BAB1CF /* Color.swift */; };
 		DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44029740DD900452F01 /* ClosetViewController.swift */; };
 		DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44229740DE300452F01 /* ClosetReactor.swift */; };
 		DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44429740DEA00452F01 /* ClosetView.swift */; };
@@ -245,6 +247,8 @@
 		DDC521FF299520E500E2845F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDataSource.swift; sourceTree = "<group>"; };
+		DDCDA16629C2DE5000BAB1CF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		DDCDA16829C2E05500BAB1CF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DDDBD44029740DD900452F01 /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		DDDBD44229740DE300452F01 /* ClosetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetReactor.swift; sourceTree = "<group>"; };
 		DDDBD44429740DEA00452F01 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 				DD2398EC295D7C8800A898B2 /* LaunchScreen.storyboard */,
 				DD2398EA295D7C8800A898B2 /* Assets.xcassets */,
 				DDAEF5C629B721710018B577 /* Image.swift */,
+				DDCDA16829C2E05500BAB1CF /* Color.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -667,6 +672,7 @@
 				DD9F6FD629B32C2F002BD4B4 /* UIViewController+Alert.swift */,
 				DD1721D829B633EF00757C55 /* RxViewController.swift */,
 				DDAEF5C829B748570018B577 /* String+.swift */,
+				DDCDA16629C2DE5000BAB1CF /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1079,6 +1085,7 @@
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
 				DD9F6FE129B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
+				DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
@@ -1147,6 +1154,7 @@
 				DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */,
 				DD2E52E229BF2ABD0078EA74 /* DecorationView.swift in Sources */,
 				DDA8166629AE017A00963776 /* MyPagePostCollectionViewCell.swift in Sources */,
+				DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */,
 				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
 				DDA8167129AE0E6E00963776 /* NotificationReactor.swift in Sources */,
