@@ -22,7 +22,7 @@ extension AuthService: BaseTargetType {
         case .refresh:
             return [
                 "Content-Type": "application/json",
-                "Authorization": "Bearer \(KeychainHandler.shared.accessToken)"
+                "Authorization": "Bearer \(UserDefaultHandler.shared.accessToken)"
             ]
         }
     }

@@ -9,7 +9,7 @@ import RxSwift
 
 protocol WeatherRepository {
     /// 날씨 조회
-    func fetchTodayWeather(
+    func fetchWeather(
         numOfRows: Int,
         page: Int,
         base_date: String,

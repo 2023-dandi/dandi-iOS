@@ -134,7 +134,7 @@ final class DecorationViewController: BaseViewController {
                     $0.switchControls(toState: true)
                 }
                 owner.navigationController?.pushViewController(
-                    UploadMainViewController(image: image),
+                    owner.factory.makeUploadMainViewController(image: image),
                     animated: true
                 )
             })

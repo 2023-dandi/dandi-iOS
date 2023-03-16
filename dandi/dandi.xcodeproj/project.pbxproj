@@ -27,7 +27,7 @@
 		DD2E52E629BF58CF0078EA74 /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */; };
 		DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E829BF72960078EA74 /* UploadMainViewController.swift */; };
 		DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232029B1B9F500443FCE /* Interceptor.swift */; };
-		DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232329B1BA8100443FCE /* KeychainHandler.swift */; };
+		DD31232429B1BA8100443FCE /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232329B1BA8100443FCE /* UserDefaultHandler.swift */; };
 		DD31232929B1BAF100443FCE /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232829B1BAF100443FCE /* URLConstant.swift */; };
 		DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232D29B1D5D300443FCE /* AuthRepository.swift */; };
 		DD31233729B1D7AB00443FCE /* VoidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31233629B1D7AB00443FCE /* VoidType.swift */; };
@@ -72,7 +72,7 @@
 		DD9F6FDB29B4EF5B002BD4B4 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDA29B4EF5B002BD4B4 /* WeatherService.swift */; };
 		DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */; };
 		DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */; };
-		DD9F6FE129B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FE029B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift */; };
+		DD9F6FE129B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FE029B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift */; };
 		DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE329641AFF006FBE00 /* HomeReactor.swift */; };
 		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
 		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
@@ -132,6 +132,14 @@
 		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
 		DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */; };
 		DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */; };
+		DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2FB29C36F39007BDBA7 /* PostService.swift */; };
+		DDE3E30029C375FC007BDBA7 /* DefaultPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2FF29C375FC007BDBA7 /* DefaultPostRepository.swift */; };
+		DDE3E30229C376CD007BDBA7 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30129C376CD007BDBA7 /* PostDTO.swift */; };
+		DDE3E30429C37AA8007BDBA7 /* PostImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */; };
+		DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */; };
+		DDE3E30829C37C70007BDBA7 /* UploadMainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30729C37C70007BDBA7 /* UploadMainReactor.swift */; };
+		DDE3E30A29C37F91007BDBA7 /* DefaultTempratureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30929C37F91007BDBA7 /* DefaultTempratureUseCase.swift */; };
+		DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
@@ -180,7 +188,7 @@
 		DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD2E52E829BF72960078EA74 /* UploadMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMainViewController.swift; sourceTree = "<group>"; };
 		DD31232029B1B9F500443FCE /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
-		DD31232329B1BA8100443FCE /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
+		DD31232329B1BA8100443FCE /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		DD31232829B1BAF100443FCE /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		DD31232A29B1BB3A00443FCE /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		DD31232D29B1D5D300443FCE /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -216,7 +224,7 @@
 		DD9F6FDA29B4EF5B002BD4B4 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWeatherRepository.swift; sourceTree = "<group>"; };
-		DD9F6FE029B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeWeatherUseCase.swift; sourceTree = "<group>"; };
+		DD9F6FE029B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHourlyWeatherUseCase.swift; sourceTree = "<group>"; };
 		DDA38FE329641AFF006FBE00 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -275,6 +283,14 @@
 		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
 		DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		DDE3E2FB29C36F39007BDBA7 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		DDE3E2FF29C375FC007BDBA7 /* DefaultPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostRepository.swift; sourceTree = "<group>"; };
+		DDE3E30129C376CD007BDBA7 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
+		DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDTO.swift; sourceTree = "<group>"; };
+		DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		DDE3E30729C37C70007BDBA7 /* UploadMainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMainReactor.swift; sourceTree = "<group>"; };
+		DDE3E30929C37F91007BDBA7 /* DefaultTempratureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTempratureUseCase.swift; sourceTree = "<group>"; };
+		DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUploadUseCase.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
@@ -487,6 +503,7 @@
 			children = (
 				DDCDA16C29C2EA7E00BAB1CF /* View */,
 				DD2E52E829BF72960078EA74 /* UploadMainViewController.swift */,
+				DDE3E30729C37C70007BDBA7 /* UploadMainReactor.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -494,7 +511,7 @@
 		DD31232229B1BA5300443FCE /* KeychainHandler */ = {
 			isa = PBXGroup;
 			children = (
-				DD31232329B1BA8100443FCE /* KeychainHandler.swift */,
+				DD31232329B1BA8100443FCE /* UserDefaultHandler.swift */,
 				DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */,
 			);
 			path = KeychainHandler;
@@ -505,6 +522,7 @@
 			children = (
 				DD31233A29B1E49F00443FCE /* DefaultAuthRepository.swift */,
 				DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */,
+				DDE3E2FF29C375FC007BDBA7 /* DefaultPostRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -514,6 +532,7 @@
 			children = (
 				DD31232D29B1D5D300443FCE /* AuthRepository.swift */,
 				DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */,
+				DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -525,6 +544,8 @@
 				DD31233829B1D7E200443FCE /* MessageDTO.swift */,
 				DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */,
 				DD9F6FD829B4EC7C002BD4B4 /* WeatherDTO.swift */,
+				DDE3E30129C376CD007BDBA7 /* PostDTO.swift */,
+				DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -534,6 +555,7 @@
 			children = (
 				DD31233D29B1E56000443FCE /* AuthService.swift */,
 				DD9F6FDA29B4EF5B002BD4B4 /* WeatherService.swift */,
+				DDE3E2FB29C36F39007BDBA7 /* PostService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -552,7 +574,9 @@
 			children = (
 				DD31234F29B2592E00443FCE /* Protocol */,
 				DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */,
-				DD9F6FE029B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift */,
+				DD9F6FE029B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift */,
+				DDE3E30929C37F91007BDBA7 /* DefaultTempratureUseCase.swift */,
+				DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1120,6 +1144,7 @@
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
 				DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */,
+				DDE3E30A29C37F91007BDBA7 /* DefaultTempratureUseCase.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
@@ -1133,9 +1158,10 @@
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
 				DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */,
+				DDE3E30229C376CD007BDBA7 /* PostDTO.swift in Sources */,
 				DD2E52E629BF58CF0078EA74 /* StickerCollectionViewCell.swift in Sources */,
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
-				DD9F6FE129B4F869002BD4B4 /* DefaultHomeWeatherUseCase.swift in Sources */,
+				DD9F6FE129B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
@@ -1144,6 +1170,8 @@
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
+				DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */,
+				DDE3E30429C37AA8007BDBA7 /* PostImageDTO.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
 				DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */,
@@ -1167,6 +1195,7 @@
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
 				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
+				DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
 				DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */,
 				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
@@ -1182,6 +1211,7 @@
 				DD31232929B1BAF100443FCE /* URLConstant.swift in Sources */,
 				DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */,
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
+				DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
@@ -1190,8 +1220,9 @@
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
+				DDE3E30829C37C70007BDBA7 /* UploadMainReactor.swift in Sources */,
 				DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */,
-				DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */,
+				DD31232429B1BA8100443FCE /* UserDefaultHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
 				DDAEF5C929B748570018B577 /* String+.swift in Sources */,
 				DD31233B29B1E49F00443FCE /* DefaultAuthRepository.swift in Sources */,
@@ -1216,6 +1247,7 @@
 				DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */,
 				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
+				DDE3E30029C375FC007BDBA7 /* DefaultPostRepository.swift in Sources */,
 				DDA8167129AE0E6E00963776 /* NotificationReactor.swift in Sources */,
 				DD31233929B1D7E200443FCE /* MessageDTO.swift in Sources */,
 				DD31234B29B2556000443FCE /* LoginReactor.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  DefaultHomeWeatherUseCase.swift
+//  DefaultHourlyWeatherUseCase.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/06.
@@ -19,7 +19,7 @@ protocol HoulryWeatherUseCase {
     )
 }
 
-final class DefaultHomeWeatherUseCase: HoulryWeatherUseCase {
+final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
     let hourlyWeather = PublishRelay<[TimeWeatherInfo]>()
     let isCompletedUpdationLocation = PublishSubject<Bool>()
 
@@ -36,7 +36,7 @@ final class DefaultHomeWeatherUseCase: HoulryWeatherUseCase {
         page: Int
     ) {
         let (base_date, baseTime) = TimeConverter().getBaseDateAndBaseTime()
-        weatherRepository.fetchTodayWeather(
+        weatherRepository.fetchWeather(
             numOfRows: 280,
             page: page,
             base_date: base_date,
@@ -48,10 +48,8 @@ final class DefaultHomeWeatherUseCase: HoulryWeatherUseCase {
             case let .success(response):
                 self?.hourlyWeather.accept(response.toDomain())
                 self?.isCompletedUpdationLocation.onNext(true)
-                dump(response.toDomain())
-            case let .failure(error):
+            case .failure:
                 self?.isCompletedUpdationLocation.onNext(false)
-                dump(error)
             }
         }
     }

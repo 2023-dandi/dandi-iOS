@@ -18,7 +18,7 @@ final class SplashViewController: BaseViewController {
         super.viewDidLoad()
         setLayouts()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            guard KeychainHandler.shared.accessToken == "" else {
+            guard UserDefaultHandler.shared.accessToken == "" else {
                 RootSwitcher.update(.main)
                 return
             }

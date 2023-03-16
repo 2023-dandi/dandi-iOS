@@ -76,4 +76,18 @@ extension WeatherDTO {
                 temperature: $0.fcstValue
             ) }
     }
+
+    func toDomain() -> TemperatureInfo {
+        let min = response.body.items.item
+            .filter { $0.category == .tmn }
+            .map { $0.fcstValue.toDouble() }
+            .first
+
+        let max = response.body.items.item
+            .filter { $0.category == .tmx }
+            .map { $0.fcstValue.toDouble() }
+            .first
+
+        return TemperatureInfo(min: Int(min ?? -1), max: Int(max ?? -1))
+    }
 }

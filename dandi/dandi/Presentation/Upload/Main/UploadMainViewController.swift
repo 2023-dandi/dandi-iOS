@@ -7,10 +7,15 @@
 
 import UIKit
 
+import ReactorKit
+import RxCocoa
+import RxSwift
 import SnapKit
 import YDS
 
-final class UploadMainViewController: BaseViewController {
+final class UploadMainViewController: BaseViewController, View {
+    typealias Reactor = UploadMainReactor
+
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
         set { super.hidesBottomBarWhenPushed = newValue }
@@ -20,6 +25,16 @@ final class UploadMainViewController: BaseViewController {
     private let uploadButton = YDSBoxButton()
     private let gradientBackgroundView = UIView()
     private let image: UIImage
+
+    private var clothesFeeling: ClothesFeeling = .cold
+    private var weatherFeelings: [WeatherFeeling] = []
+    private var temperature: TemperatureInfo? {
+        didSet {
+            DispatchQueue.main.async {
+                self.uploadView.collectionView.reloadData()
+            }
+        }
+    }
 
     override func loadView() {
         view = uploadView
@@ -46,6 +61,55 @@ final class UploadMainViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradientBackgroundView.addGradient(colors: [UIColor.white.withAlphaComponent(0), .white])
+    }
+
+    func bind(reactor: Reactor) {
+        uploadView.collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                switch indexPath.section {
+                case 2:
+                    guard let item = ClothesFeeling(rawValue: indexPath.item) else { return }
+                    self.clothesFeeling = item
+                case 3:
+                    guard let item = WeatherFeeling(rawValue: indexPath.item) else { return }
+                    self.weatherFeelings.append(item)
+                default:
+                    return
+                }
+            })
+            .disposed(by: disposeBag)
+
+        rx.viewWillAppear
+            .map { _ in Reactor.Action.viewWillAppear }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        uploadButton.rx.tap
+            .withUnretained(self)
+            .map { owner, _ in Reactor.Action.upload(
+                image: owner.image,
+                clothesFeeling: owner.clothesFeeling,
+                weatherFeelings: owner.weatherFeelings
+            ) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.temparature }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, temparature in
+                owner.temperature = temparature
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.isLoading }
+            .withUnretained(self)
+            .subscribe(onNext: { _, isLoading in
+                dump(isLoading)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setPropeties() {
@@ -110,6 +174,12 @@ extension UploadMainViewController: UICollectionViewDataSource {
 
         case 1:
             let cell: UploadWeatherCollectionViewCell = uploadView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            if let temperature = temperature {
+                cell.configure(
+                    min: temperature.min,
+                    max: temperature.max
+                )
+            }
             return cell
 
         case 2:

@@ -18,7 +18,7 @@ final class DefaultWeatherRepository: WeatherRepository {
         self.weatherService = weatherService
     }
 
-    func fetchTodayWeather(
+    func fetchWeather(
         numOfRows: Int,
         page: Int,
         base_date: String,

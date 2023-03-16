@@ -45,6 +45,8 @@ final class HomeReactor: Reactor {
                 Observable.just(.setLoading(isLoading: false))
             ])
         case let .updateLocation(lon, lat):
+            UserDefaultHandler.shared.lon = lon
+            UserDefaultHandler.shared.lat = lat
             let converter: LocationConverter = .init()
             let (nx, ny): (Int, Int) = converter.convertGrid(lon: lon, lat: lat)
             hourlyWeatherUseCase.fetchWeatherInfo(nx: nx, ny: ny, page: page)

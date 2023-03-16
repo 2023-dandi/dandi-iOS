@@ -22,6 +22,7 @@ protocol ModulFactoryInterface {
     func makePostDetailViewController(postID: Int) -> PostDetailViewController
     func makeMyInformationViewController() -> MyInformationViewController
     func makeDecorationViewController(selectedImages: [UIImage]) -> DecorationViewController
+    func makeUploadMainViewController(image: UIImage) -> UploadMainViewController
 }
 
 final class ModuleFactory {
@@ -57,7 +58,7 @@ extension ModuleFactory: ModulFactoryInterface {
         let vc = HomeViewController()
         vc.factory = self
         vc.reactor = HomeReactor(
-            hourlyWeatherUseCase: DefaultHomeWeatherUseCase(
+            hourlyWeatherUseCase: DefaultHourlyWeatherUseCase(
                 weatherRepository: DefaultWeatherRepository(
                     weatherService: DefaultWeatherService()
                 )
@@ -104,6 +105,20 @@ extension ModuleFactory: ModulFactoryInterface {
     func makeDecorationViewController(selectedImages: [UIImage]) -> DecorationViewController {
         let vc = DecorationViewController(selectedImages: selectedImages)
         vc.factory = self
+        return vc
+    }
+
+    func makeUploadMainViewController(image: UIImage) -> UploadMainViewController {
+        let vc = UploadMainViewController(image: image)
+        vc.factory = self
+        vc.reactor = UploadMainReactor(
+            weatherUseCase: DefaultTemperatureUseCase(
+                weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService())
+            ),
+            uploadUseCase: DefaultUploadUseCase(
+                postRepository: DefaultPostRepository(interceptor: Interceptor())
+            )
+        )
         return vc
     }
 }

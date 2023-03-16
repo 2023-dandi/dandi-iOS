@@ -24,8 +24,8 @@ final class DefaultAuthUseCase: AuthUseCase {
                 switch result {
                 case let .success(response):
                     dump(response)
-                    KeychainHandler.shared.accessToken = response.accessToken
-                    KeychainHandler.shared.refreshToken = response.refreshToken
+                    UserDefaultHandler.shared.accessToken = response.accessToken
+                    UserDefaultHandler.shared.refreshToken = response.refreshToken
                     self?.loginSuccess.accept(true)
                 case .failure:
                     self?.loginSuccess.accept(false)

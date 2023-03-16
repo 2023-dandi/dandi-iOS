@@ -11,4 +11,8 @@ extension String {
     func toInt() -> Int {
         return Int(self) ?? 0
     }
+
+    func toDouble() -> Double {
+        return Double(self) ?? 0.0
+    }
 }

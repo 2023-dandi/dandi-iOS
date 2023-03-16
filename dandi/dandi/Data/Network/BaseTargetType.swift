@@ -18,7 +18,7 @@ extension BaseTargetType {
     var headers: [String: String]? {
         return [
             "Content-Type": "application/json",
-            "Authorization": "Bearer \(KeychainHandler.shared.accessToken)"
+            "Authorization": "Bearer \(UserDefaultHandler.shared.accessToken)"
         ]
     }
 

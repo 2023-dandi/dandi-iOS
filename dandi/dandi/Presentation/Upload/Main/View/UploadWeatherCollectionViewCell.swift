@@ -25,10 +25,13 @@ final class UploadWeatherCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func configure(min: Int, max: Int) {
+        control.text = "최고\(max)/최저\(min)"
+    }
+
     private func setProperties() {
         label.font = YDSFont.title3
         label.text = "날씨"
-        control.text = "최고/최저 맑음"
     }
 
     private func setLayouts() {
@@ -39,7 +42,8 @@ final class UploadWeatherCollectionViewCell: UICollectionViewCell {
         }
         control.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(24)
+            $0.leading.equalTo(label.snp.trailing).offset(4)
+            $0.trailing.equalToSuperview()
             $0.height.equalTo(30)
             $0.width.equalTo(120)
         }
@@ -78,7 +82,8 @@ final class InformationControl: UIControl {
         }
         informationIcon.snp.makeConstraints {
             $0.size.equalTo(24)
-            $0.leading.equalTo(label.snp.trailing)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(label.snp.trailing).offset(4)
             $0.trailing.greaterThanOrEqualToSuperview()
         }
     }
