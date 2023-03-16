@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        RootSwitcher.update(.main)
+        RootSwitcher.update(.splash)
 
         if #available(iOS 13.0, *) {
             self.window?.overrideUserInterfaceStyle = .light

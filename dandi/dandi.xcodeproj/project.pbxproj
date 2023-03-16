@@ -130,6 +130,8 @@
 		DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */; };
 		DDDBD44C29792CEB00452F01 /* ClosetImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44B29792CEB00452F01 /* ClosetImageCollectionViewCell.swift */; };
 		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
+		DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */; };
+		DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
@@ -271,6 +273,8 @@
 		DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDDBD44B29792CEB00452F01 /* ClosetImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
+		DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
@@ -399,8 +403,9 @@
 			isa = PBXGroup;
 			children = (
 				DD9B06E8295ECDC100A98041 /* Base */,
-				DD31234729B2514200443FCE /* Login */,
 				DD9B06D5295EC74800A98041 /* Tab */,
+				DDE3E2F429C33073007BDBA7 /* Splash */,
+				DD31234729B2514200443FCE /* Login */,
 				DD9B06D2295EC71900A98041 /* Home */,
 				DDA8166C29AE0E4900963776 /* Notification */,
 				DD9B06DE295EC80400A98041 /* Feed */,
@@ -490,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				DD31232329B1BA8100443FCE /* KeychainHandler.swift */,
+				DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */,
 			);
 			path = KeychainHandler;
 			sourceTree = "<group>";
@@ -896,6 +902,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DDE3E2F429C33073007BDBA7 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		DDF78D68297CDBE300817925 /* PhotoLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1176,6 +1190,7 @@
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
+				DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */,
 				DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
 				DDAEF5C929B748570018B577 /* String+.swift in Sources */,
@@ -1211,6 +1226,7 @@
 				DD9F6FDB29B4EF5B002BD4B4 /* WeatherService.swift in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 				DD31234229B1EDDB00443FCE /* NetworkHandler.swift in Sources */,
+				DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,13 +11,19 @@ struct KeychainHandler {
 
     private init() {}
 
-    private let accessTokenKey = "accessToken"
-    private let refreshTokenKey = "refreshToken"
-    private let fcmTokenKey = "fcmToken"
+    enum Key: String {
+        case accessToken
+        case refreshToken
+    }
 
-    var accessToken: String = ""
+    @UserDefault(key: Key.accessToken.rawValue, defaultValue: "")
+    var accessToken: String
 
-    var refreshToken: String = ""
+    @UserDefault(key: Key.refreshToken.rawValue, defaultValue: "")
+    var refreshToken: String
 
-    var fcmToken: String = ""
+    func removeAll() {
+        _accessToken.reset()
+        _refreshToken.reset()
+    }
 }

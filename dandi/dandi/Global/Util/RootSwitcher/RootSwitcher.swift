@@ -9,6 +9,7 @@ import UIKit
 
 final class RootSwitcher {
     enum Destination {
+        case splash
         case login
         case main
         case custom(UIViewController)
@@ -19,6 +20,8 @@ final class RootSwitcher {
             return
         }
         switch destination {
+        case .splash:
+            delegate.window?.rootViewController = ModuleFactory.shared.makeSplahViewController()
         case .login:
             delegate.window?.rootViewController = ModuleFactory.shared.makeLoginViewController()
         case .main:

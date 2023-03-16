@@ -63,8 +63,29 @@ final class Interceptor: RequestInterceptor {
         dataTask.responseData { responseData in
             switch responseData.result {
             case .success:
-                // Authorization, Set-Cookie Header로 오는거 파싱
-                dump(responseData.response?.allHeaderFields)
+                guard let value = responseData.value else { return }
+
+                guard
+                    let decodedData = try? JSONDecoder().decode(TokenDTO.self, from: value),
+                    let statusCode = responseData.response?.statusCode,
+                    statusCode < 300
+                else {
+                    KeychainHandler.shared.refreshToken = ""
+                    KeychainHandler.shared.accessToken = ""
+                    RootSwitcher.update(.login)
+                    completion(false)
+
+                    guard
+                        let decodedData = try? JSONDecoder().decode(MessageDTO.self, from: value)
+                    else { return }
+
+                    dump(decodedData)
+                    return
+                }
+                dump(decodedData)
+                KeychainHandler.shared.refreshToken = decodedData.refreshToken
+                KeychainHandler.shared.accessToken = decodedData.accessToken
+
                 completion(true)
             case .failure:
                 KeychainHandler.shared.refreshToken = ""

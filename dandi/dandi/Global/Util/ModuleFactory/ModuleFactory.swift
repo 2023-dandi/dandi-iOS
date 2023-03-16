@@ -11,6 +11,7 @@ import UIKit
 import YPImagePicker
 
 protocol ModulFactoryInterface {
+    func makeSplahViewController() -> SplashViewController
     func makeTabBarViewController() -> MainTabBarController
     func makeLoginViewController() -> LoginViewController
     func makeHomeViewController() -> HomeViewController
@@ -29,6 +30,11 @@ final class ModuleFactory {
 }
 
 extension ModuleFactory: ModulFactoryInterface {
+    func makeSplahViewController() -> SplashViewController {
+        let vc = SplashViewController()
+        return vc
+    }
+    
     func makeTabBarViewController() -> MainTabBarController {
         let vc = MainTabBarController(factory: self)
         return vc

@@ -43,8 +43,8 @@ final class LoginViewController: BaseViewController, View {
         reactor.state
             .compactMap { $0.isSuccessLogin }
             .withUnretained(self)
-            .subscribe(onNext: { _, isCompleted in
-                dump(isCompleted)
+            .subscribe(onNext: { _, _ in
+                RootSwitcher.update(.main)
             })
             .disposed(by: disposeBag)
     }

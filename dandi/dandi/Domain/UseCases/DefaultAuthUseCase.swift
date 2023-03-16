@@ -23,6 +23,7 @@ final class DefaultAuthUseCase: AuthUseCase {
             .subscribe { [weak self] result in
                 switch result {
                 case let .success(response):
+                    dump(response)
                     KeychainHandler.shared.accessToken = response.accessToken
                     KeychainHandler.shared.refreshToken = response.refreshToken
                     self?.loginSuccess.accept(true)
