@@ -20,7 +20,6 @@
 		DD239903295D7C8800A898B2 /* dandiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239902295D7C8800A898B2 /* dandiUITests.swift */; };
 		DD239905295D7C8800A898B2 /* dandiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239904295D7C8800A898B2 /* dandiUITestsLaunchTests.swift */; };
 		DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239918295D83E400A898B2 /* RootSwitcher.swift */; };
-		DD239921295D86CE00A898B2 /* domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD239920295D86CE00A898B2 /* domain.swift */; };
 		DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */; };
 		DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */; };
 		DD2E52E229BF2ABD0078EA74 /* DecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */; };
@@ -115,6 +114,15 @@
 		DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */; };
 		DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16629C2DE5000BAB1CF /* Date+.swift */; };
 		DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16829C2E05500BAB1CF /* Color.swift */; };
+		DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16A29C2E89E00BAB1CF /* UploadMainView.swift */; };
+		DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16D29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift */; };
+		DDCDA17029C2EE2600BAB1CF /* SectionTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16F29C2EE2600BAB1CF /* SectionTitleHeaderView.swift */; };
+		DDCDA17229C2EF8600BAB1CF /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17129C2EF8600BAB1CF /* TagCollectionViewCell.swift */; };
+		DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17329C2F5D600BAB1CF /* ClothesFeeling.swift */; };
+		DDCDA17629C2F6E200BAB1CF /* WeatherFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17529C2F6E200BAB1CF /* WeatherFeeling.swift */; };
+		DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17829C311E900BAB1CF /* ReusableView.swift */; };
+		DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */; };
+		DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */; };
 		DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44029740DD900452F01 /* ClosetViewController.swift */; };
 		DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44229740DE300452F01 /* ClosetReactor.swift */; };
 		DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44429740DEA00452F01 /* ClosetView.swift */; };
@@ -126,7 +134,6 @@
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
 		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
-		DDFF968329C060D100996BD6 /* BackgroundRemovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFF968229C060D100996BD6 /* BackgroundRemovalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,7 +171,6 @@
 		DD239902295D7C8800A898B2 /* dandiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dandiUITests.swift; sourceTree = "<group>"; };
 		DD239904295D7C8800A898B2 /* dandiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dandiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DD239918295D83E400A898B2 /* RootSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSwitcher.swift; sourceTree = "<group>"; };
-		DD239920295D86CE00A898B2 /* domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = domain.swift; sourceTree = "<group>"; };
 		DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerEditorViewControl.swift; sourceTree = "<group>"; };
 		DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBorderView.swift; sourceTree = "<group>"; };
 		DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationView.swift; sourceTree = "<group>"; };
@@ -249,6 +255,15 @@
 		DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDataSource.swift; sourceTree = "<group>"; };
 		DDCDA16629C2DE5000BAB1CF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		DDCDA16829C2E05500BAB1CF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DDCDA16A29C2E89E00BAB1CF /* UploadMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMainView.swift; sourceTree = "<group>"; };
+		DDCDA16D29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDCDA16F29C2EE2600BAB1CF /* SectionTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleHeaderView.swift; sourceTree = "<group>"; };
+		DDCDA17129C2EF8600BAB1CF /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDCDA17329C2F5D600BAB1CF /* ClothesFeeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesFeeling.swift; sourceTree = "<group>"; };
+		DDCDA17529C2F6E200BAB1CF /* WeatherFeeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFeeling.swift; sourceTree = "<group>"; };
+		DDCDA17829C311E900BAB1CF /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+ReusableView.swift"; sourceTree = "<group>"; };
+		DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reuseable.swift"; sourceTree = "<group>"; };
 		DDDBD44029740DD900452F01 /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
 		DDDBD44229740DE300452F01 /* ClosetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetReactor.swift; sourceTree = "<group>"; };
 		DDDBD44429740DEA00452F01 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
@@ -259,7 +274,6 @@
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
-		DDFF968229C060D100996BD6 /* BackgroundRemovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemovalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +326,7 @@
 		DD1B1A0F29BE12460039D8FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */,
 				DD1B1A1029BE12610039D8FB /* StickerEditorView.swift */,
 				DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */,
 				DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */,
@@ -444,7 +459,6 @@
 				DD31234C29B2591600443FCE /* UseCases */,
 				DD31232C29B1D49C00443FCE /* Interfaces */,
 				DDA38FE729641CB0006FBE00 /* Entities */,
-				DD239920295D86CE00A898B2 /* domain.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -466,6 +480,7 @@
 		DD2E52E729BF726D0078EA74 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DDCDA16C29C2EA7E00BAB1CF /* View */,
 				DD2E52E829BF72960078EA74 /* UploadMainViewController.swift */,
 			);
 			path = Main;
@@ -612,6 +627,7 @@
 		DD9B06EB295ECF0100A98041 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				DDCDA17729C311C600BAB1CF /* Reusable */,
 				DD31232229B1BA5300443FCE /* KeychainHandler */,
 				DD9B06F0295ECFE000A98041 /* Log */,
 				DD9B06E7295ECCC300A98041 /* RootSwitcher */,
@@ -687,6 +703,8 @@
 				DDC521FF299520E500E2845F /* UserProfile.swift */,
 				DDA8164E29ACAD6800963776 /* Comment.swift */,
 				DDA8167429AE273900963776 /* Notification.swift */,
+				DDCDA17329C2F5D600BAB1CF /* ClothesFeeling.swift */,
+				DDCDA17529C2F6E200BAB1CF /* WeatherFeeling.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -739,7 +757,6 @@
 			children = (
 				DD1B1A0F29BE12460039D8FB /* View */,
 				DDA8166829AE0B8D00963776 /* DecorationViewController.swift */,
-				DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */,
 			);
 			path = Decoration;
 			sourceTree = "<group>";
@@ -826,10 +843,30 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		DDCDA16C29C2EA7E00BAB1CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDCDA16A29C2E89E00BAB1CF /* UploadMainView.swift */,
+				DDCDA16D29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift */,
+				DDCDA16F29C2EE2600BAB1CF /* SectionTitleHeaderView.swift */,
+				DDCDA17129C2EF8600BAB1CF /* TagCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDCDA17729C311C600BAB1CF /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				DDCDA17829C311E900BAB1CF /* ReusableView.swift */,
+				DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */,
+				DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
 		DDDBD43E29740AE800452F01 /* Upload */ = {
 			isa = PBXGroup;
 			children = (
-				DDFF968229C060D100996BD6 /* BackgroundRemovalViewController.swift */,
 				DDDBD43F29740B8800452F01 /* Closet */,
 				DDA8166729AE0B6A00963776 /* Decoration */,
 				DD2E52E729BF726D0078EA74 /* Main */,
@@ -1073,6 +1110,7 @@
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
+				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
 				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
 				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
@@ -1087,16 +1125,20 @@
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
+				DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
+				DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */,
+				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DDDBD44C29792CEB00452F01 /* ClosetImageCollectionViewCell.swift in Sources */,
+				DDCDA17029C2EE2600BAB1CF /* SectionTitleHeaderView.swift in Sources */,
 				DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */,
 				DDA8167529AE273900963776 /* Notification.swift in Sources */,
 				DDC52200299520E500E2845F /* UserProfile.swift in Sources */,
@@ -1110,6 +1152,7 @@
 				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
+				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
 				DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */,
 				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
@@ -1130,26 +1173,27 @@
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,
-				DD239921295D86CE00A898B2 /* domain.swift in Sources */,
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
 				DD31232429B1BA8100443FCE /* KeychainHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
-				DDFF968329C060D100996BD6 /* BackgroundRemovalViewController.swift in Sources */,
 				DDAEF5C929B748570018B577 /* String+.swift in Sources */,
 				DD31233B29B1E49F00443FCE /* DefaultAuthRepository.swift in Sources */,
 				DD31233729B1D7AB00443FCE /* VoidType.swift in Sources */,
 				DD2E52E429BF38560078EA74 /* DecorationHeaderView.swift in Sources */,
+				DDCDA17629C2F6E200BAB1CF /* WeatherFeeling.swift in Sources */,
 				DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
+				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DDB23BA42993954A000735FB /* MyPageView.swift in Sources */,
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
 				DDA8166F29AE0E6200963776 /* NotificationCollectionViewCell.swift in Sources */,
 				DD31234929B2519900443FCE /* LoginViewController.swift in Sources */,
+				DDCDA17229C2EF8600BAB1CF /* TagCollectionViewCell.swift in Sources */,
 				DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */,
 				DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */,
 				DD2E52E229BF2ABD0078EA74 /* DecorationView.swift in Sources */,
