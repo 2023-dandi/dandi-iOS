@@ -21,7 +21,7 @@ final class Interceptor: RequestInterceptor {
     ) {
         var urlRequest = urlRequest
         urlRequest.setValue(
-            "Bearer " + KeychainHandler.shared.accessToken,
+            "Bearer " + UserDefaultHandler.shared.accessToken,
             forHTTPHeaderField: "Authorization"
         )
         completion(.success(urlRequest))
@@ -49,8 +49,8 @@ final class Interceptor: RequestInterceptor {
     private func refreshToken(completion: @escaping (Bool) -> Void) {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "Bearer \(KeychainHandler.shared.accessToken)",
-            "Cookie": "Refresh-Token=\(KeychainHandler.shared.refreshToken)"
+            "Authorization": "Bearer \(UserDefaultHandler.shared.accessToken)",
+            "Cookie": "Refresh-Token=\(UserDefaultHandler.shared.refreshToken)"
         ]
 
         let dataTask = AF.request(
@@ -70,8 +70,8 @@ final class Interceptor: RequestInterceptor {
                     let statusCode = responseData.response?.statusCode,
                     statusCode < 300
                 else {
-                    KeychainHandler.shared.refreshToken = ""
-                    KeychainHandler.shared.accessToken = ""
+                    UserDefaultHandler.shared.refreshToken = ""
+                    UserDefaultHandler.shared.accessToken = ""
                     RootSwitcher.update(.login)
                     completion(false)
 
@@ -83,13 +83,13 @@ final class Interceptor: RequestInterceptor {
                     return
                 }
                 dump(decodedData)
-                KeychainHandler.shared.refreshToken = decodedData.refreshToken
-                KeychainHandler.shared.accessToken = decodedData.accessToken
+                UserDefaultHandler.shared.refreshToken = decodedData.refreshToken
+                UserDefaultHandler.shared.accessToken = decodedData.accessToken
 
                 completion(true)
             case .failure:
-                KeychainHandler.shared.refreshToken = ""
-                KeychainHandler.shared.accessToken = ""
+                UserDefaultHandler.shared.refreshToken = ""
+                UserDefaultHandler.shared.accessToken = ""
                 RootSwitcher.update(.login)
                 completion(false)
             }
