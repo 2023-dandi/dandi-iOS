@@ -67,7 +67,11 @@ extension NotificationDataSource {
 extension NotificationDataSource {
     private func configureNotificationCellRegistration<Cell: NotificationCell>() -> NotificationCellRegistration<Cell> {
         return NotificationCellRegistration<Cell> { cell, _, item in
-            cell.configure(type: item.type, title: item.title, description: item.description, isHighlighted: true)
+            cell.configure(
+                type: item.type,
+                title: item.title,
+                description: item.description
+            )
         }
     }
 }

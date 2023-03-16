@@ -16,6 +16,7 @@ final class NotificationCollectionViewCell: UICollectionViewCell {
     private let iconView = UIImageView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
+    private let newIcon = UIView()
 
     override init(frame _: CGRect) {
         super.init(frame: .zero)
@@ -26,12 +27,10 @@ final class NotificationCollectionViewCell: UICollectionViewCell {
     func configure(
         type: NotificationType,
         title: String,
-        description: String?,
-        isHighlighted: Bool = false
+        description: String?
     ) {
-        iconView.image = type.image
+        iconView.image = type.image.withInset(UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4))
         titleLabel.text = title
-        contentView.backgroundColor = isHighlighted ? YDSColor.buttonPointBG : YDSColor.bgNormal
         guard let description = description else {
             descriptionLabel.isHidden = true
             return
@@ -63,11 +62,23 @@ extension NotificationCollectionViewCell {
             $0.textColor = YDSColor.textTertiary
             $0.lineBreakMode = .byCharWrapping
         }
+        iconView.do {
+            $0.borderWidth = YDSConstant.Border.normal
+            $0.borderColor = YDSColor.borderNormal
+            $0.cornerRadius = 24
+        }
+        newIcon.do {
+            $0.cornerRadius = 4
+            $0.backgroundColor = YDSColor.pinkItemPrimary
+        }
     }
 
     private func setLayouts() {
-        contentView.addSubviews(iconView, contentStackView)
-        contentStackView.addArrangedSubviews(titleLabel, descriptionLabel)
+        contentView.addSubviews(iconView, contentStackView, newIcon)
+        contentStackView.addArrangedSubviews(
+            titleLabel,
+            descriptionLabel
+        )
         iconView.snp.makeConstraints {
             $0.size.equalTo(48)
             $0.leading.equalToSuperview().offset(16)
@@ -78,6 +89,11 @@ extension NotificationCollectionViewCell {
             $0.top.bottom.equalToSuperview().inset(12)
             $0.height.greaterThanOrEqualTo(40)
             $0.trailing.equalToSuperview().inset(16)
+        }
+        newIcon.snp.makeConstraints {
+            $0.size.equalTo(8)
+            $0.top.equalTo(contentStackView.snp.top)
+            $0.trailing.equalTo(contentStackView.snp.trailing)
         }
     }
 }

@@ -6,8 +6,9 @@
 //
 
 import Foundation
-
 import UIKit
+
+import YDS
 
 enum NotificationType {
     case heart
@@ -16,9 +17,9 @@ enum NotificationType {
 
     var image: UIImage {
         switch self {
-        case .heart: return .add
-        case .new: return .remove
-        case .comment: return .actions
+        case .heart: return YDSIcon.heartLine
+        case .new: return YDSIcon.newLine
+        case .comment: return YDSIcon.commentLine
         }
     }
 }
