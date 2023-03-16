@@ -20,9 +20,9 @@ final class UploadMainView: UIView {
             case 1:
                 return self?.createWeatherSection()
             case 2:
-                return self?.createTagSection()
+                return self?.createHorizontalTagSection()
             case 3:
-                return self?.createTagSection()
+                return self?.createVerticalTagSection()
             default:
                 return self?.createWeatherSection()
             }
@@ -58,7 +58,6 @@ extension UploadMainView {
         }
     }
 
-    /// 게시글 사진 부분
     private func createPhotoSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -83,7 +82,6 @@ extension UploadMainView {
         return section
     }
 
-    /// 날씨 부분
     private func createWeatherSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -105,8 +103,44 @@ extension UploadMainView {
         return section
     }
 
-    /// 메모 부분
-    private func createTagSection() -> NSCollectionLayoutSection {
+    private func createHorizontalTagSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(60),
+            heightDimension: .absolute(30)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(60),
+            heightDimension: .absolute(30)
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        group.interItemSpacing = .fixed(12)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 12
+        section.contentInsets = .init(top: 0, leading: 24, bottom: 16, trailing: 24)
+
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(50)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [header]
+        section.orthogonalScrollingBehavior = .continuous
+        return section
+    }
+
+    private func createVerticalTagSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .estimated(60),
             heightDimension: .absolute(30)
