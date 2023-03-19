@@ -9,19 +9,9 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol HoulryWeatherUseCase {
-    var hourlyWeather: PublishRelay<[TimeWeatherInfo]> { get }
-    var isCompletedUpdationLocation: PublishSubject<Bool> { get }
-    func fetchWeatherInfo(
-        nx: Int, // 그리드 x 좌표
-        ny: Int, // 그리드 y 좌표
-        page: Int // page 수
-    )
-}
-
 final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
     let hourlyWeather = PublishRelay<[TimeWeatherInfo]>()
-    let isCompletedUpdationLocation = PublishSubject<Bool>()
+    let isCompleted = PublishSubject<Bool>()
 
     private let weatherRepository: WeatherRepository
     private let disposeBag = DisposeBag()
@@ -47,9 +37,9 @@ final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
             switch result {
             case let .success(response):
                 self?.hourlyWeather.accept(response.toDomain())
-                self?.isCompletedUpdationLocation.onNext(true)
+                self?.isCompleted.onNext(true)
             case .failure:
-                self?.isCompletedUpdationLocation.onNext(false)
+                self?.isCompleted.onNext(false)
             }
         }
     }

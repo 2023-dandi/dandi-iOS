@@ -11,18 +11,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-protocol UploadUseCase {
-    var imagePublisher: PublishRelay<String?> { get }
-    var postIdPublusher: PublishRelay<Int?> { get }
-    func uploadImage(image: UIImage)
-    func uploadPost(
-        imageURL: String,
-        temperatures: TemperatureInfo,
-        clothesFeeling: ClothesFeeling,
-        weatherFeelings: [WeatherFeeling]
-    )
-}
-
 final class DefaultUploadUseCase: UploadUseCase {
     let imagePublisher = PublishRelay<String?>()
     let postIdPublusher = PublishRelay<Int?>()

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD00E7E829C77610001536D4 /* HourlyWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7E729C77610001536D4 /* HourlyWeatherUseCase.swift */; };
+		DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7E929C7766E001536D4 /* TemperatureUseCase.swift */; };
+		DD00E7EC29C776F9001536D4 /* UploadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */; };
+		DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -142,7 +146,7 @@
 		DDE3E30429C37AA8007BDBA7 /* PostImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */; };
 		DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */; };
 		DDE3E30829C37C70007BDBA7 /* UploadMainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30729C37C70007BDBA7 /* UploadMainReactor.swift */; };
-		DDE3E30A29C37F91007BDBA7 /* DefaultTempratureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30929C37F91007BDBA7 /* DefaultTempratureUseCase.swift */; };
+		DDE3E30A29C37F91007BDBA7 /* DefaultTemperatureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30929C37F91007BDBA7 /* DefaultTemperatureUseCase.swift */; };
 		DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */; };
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
@@ -168,6 +172,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD00E7E729C77610001536D4 /* HourlyWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherUseCase.swift; sourceTree = "<group>"; };
+		DD00E7E929C7766E001536D4 /* TemperatureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUseCase.swift; sourceTree = "<group>"; };
+		DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadUseCase.swift; sourceTree = "<group>"; };
+		DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailUseCase.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -297,7 +305,7 @@
 		DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDTO.swift; sourceTree = "<group>"; };
 		DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		DDE3E30729C37C70007BDBA7 /* UploadMainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMainReactor.swift; sourceTree = "<group>"; };
-		DDE3E30929C37F91007BDBA7 /* DefaultTempratureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTempratureUseCase.swift; sourceTree = "<group>"; };
+		DDE3E30929C37F91007BDBA7 /* DefaultTemperatureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTemperatureUseCase.swift; sourceTree = "<group>"; };
 		DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUploadUseCase.swift; sourceTree = "<group>"; };
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -584,7 +592,7 @@
 				DD31234F29B2592E00443FCE /* Protocol */,
 				DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */,
 				DD9F6FE029B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift */,
-				DDE3E30929C37F91007BDBA7 /* DefaultTempratureUseCase.swift */,
+				DDE3E30929C37F91007BDBA7 /* DefaultTemperatureUseCase.swift */,
 				DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */,
 				DD0B685E29C764B2000A0E24 /* DefaultPostDetailUseCase.swift */,
 			);
@@ -595,6 +603,10 @@
 			isa = PBXGroup;
 			children = (
 				DD31235029B2593D00443FCE /* AuthUseCase.swift */,
+				DD00E7E729C77610001536D4 /* HourlyWeatherUseCase.swift */,
+				DD00E7E929C7766E001536D4 /* TemperatureUseCase.swift */,
+				DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */,
+				DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1156,7 +1168,7 @@
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
 				DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */,
-				DDE3E30A29C37F91007BDBA7 /* DefaultTempratureUseCase.swift in Sources */,
+				DDE3E30A29C37F91007BDBA7 /* DefaultTemperatureUseCase.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
@@ -1184,6 +1196,7 @@
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* PostImageDTO.swift in Sources */,
+				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
 				DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */,
@@ -1204,6 +1217,7 @@
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
+				DD00E7EC29C776F9001536D4 /* UploadUseCase.swift in Sources */,
 				DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */,
 				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
@@ -1229,9 +1243,11 @@
 				DD0B685F29C764B2000A0E24 /* DefaultPostDetailUseCase.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */,
+				DD00E7E829C77610001536D4 /* HourlyWeatherUseCase.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
+				DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */,
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
 				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,

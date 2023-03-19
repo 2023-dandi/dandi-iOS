@@ -11,11 +11,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-protocol PostDetailUseCase {
-    var postPublisher: PublishRelay<Post?> { get }
-    func fetchPost(id: Int)
-}
-
 final class DefaultPostDetailUseCase: PostDetailUseCase {
     let postPublisher = PublishRelay<Post?>()
 

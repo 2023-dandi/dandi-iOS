@@ -52,7 +52,7 @@ final class HomeReactor: Reactor {
             hourlyWeatherUseCase.fetchWeatherInfo(nx: nx, ny: ny, page: page)
             return Observable.concat([
                 Observable.just(.setLoading(isLoading: true)),
-                hourlyWeatherUseCase.isCompletedUpdationLocation
+                hourlyWeatherUseCase.isCompleted
                     .map { Mutation.setUpdateLocationSuccess($0) },
                 Observable.just(.setLoading(isLoading: false))
             ])
