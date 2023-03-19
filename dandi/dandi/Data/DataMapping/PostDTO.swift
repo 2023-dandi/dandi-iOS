@@ -41,6 +41,12 @@ struct TemperatureInfo: Codable {
     }
 }
 
+extension TemperatureInfo: Equatable {
+    static func == (lhs: TemperatureInfo, rhs: TemperatureInfo) -> Bool {
+        return lhs.min == rhs.min || lhs.max == rhs.max
+    }
+}
+
 struct OutfitFeelingsInfo: Codable {
     let feelingIndex: Int
     let additionalFeelingIndices: [Int]

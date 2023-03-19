@@ -26,7 +26,7 @@ final class UploadMainViewController: BaseViewController, View {
     private let gradientBackgroundView = UIView()
     private let image: UIImage
 
-    private var clothesFeeling: ClothesFeeling = .cold
+    private var clothesFeeling: ClothesFeeling?
     private var weatherFeelings: [WeatherFeeling] = []
     private var temperature: TemperatureInfo? {
         didSet {
@@ -64,39 +64,35 @@ final class UploadMainViewController: BaseViewController, View {
     }
 
     func bind(reactor: Reactor) {
-        uploadView.collectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                guard let self = self else { return }
-                switch indexPath.section {
-                case 2:
-                    guard let item = ClothesFeeling(rawValue: indexPath.item) else { return }
-                    self.clothesFeeling = item
-                case 3:
-                    guard let item = WeatherFeeling(rawValue: indexPath.item) else { return }
-                    self.weatherFeelings.append(item)
-                default:
-                    return
-                }
-            })
-            .disposed(by: disposeBag)
+        bindCollectionView()
+        bindAction(reactor)
+        bindState(reactor)
+    }
 
+    private func bindAction(_ reactor: Reactor) {
         rx.viewWillAppear
             .map { _ in Reactor.Action.viewWillAppear }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
         uploadButton.rx.tap
+            .debounce(.microseconds(500), scheduler: MainScheduler.asyncInstance)
             .withUnretained(self)
-            .map { owner, _ in Reactor.Action.upload(
-                image: owner.image,
-                clothesFeeling: owner.clothesFeeling,
-                weatherFeelings: owner.weatherFeelings
-            ) }
+            .map { owner, _ in
+                Reactor.Action.upload(
+                    image: owner.image,
+                    clothesFeeling: owner.clothesFeeling,
+                    weatherFeelings: owner.weatherFeelings
+                )
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+    }
 
+    private func bindState(_ reactor: Reactor) {
         reactor.state
             .map { $0.temparature }
+            .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, temparature in
                 owner.temperature = temparature
@@ -105,26 +101,101 @@ final class UploadMainViewController: BaseViewController, View {
 
         reactor.state
             .map { $0.isLoading }
+            .distinctUntilChanged()
             .withUnretained(self)
-            .subscribe(onNext: { _, isLoading in
-                dump(isLoading)
+            .subscribe(onNext: { owner, isLoading in
+                owner.uploadButton.isDisabled = isLoading
             })
             .disposed(by: disposeBag)
+    }
+
+    // swiftlint:disable cyclomatic_complexity
+    private func bindCollectionView() {
+        uploadView.collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                switch indexPath.section {
+                case 2:
+                    guard
+                        let item = ClothesFeeling(rawValue: indexPath.item),
+                        let cell = self.uploadView.collectionView.cellForItem(at: indexPath)
+                    else { return }
+                    self.clothesFeeling = item
+                    cell.isSelected = true
+                    self.deselectAllItems(exclude: indexPath)
+                case 3:
+                    guard
+                        let item = WeatherFeeling(rawValue: indexPath.item),
+                        !self.weatherFeelings.contains(item)
+                    else { return }
+                    self.weatherFeelings.append(item)
+                default:
+                    return
+                }
+            })
+            .disposed(by: disposeBag)
+
+        uploadView.collectionView.rx.itemDeselected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                switch indexPath.section {
+                case 2:
+                    guard
+                        let cell = self.uploadView.collectionView.cellForItem(at: indexPath),
+                        let item = ClothesFeeling(rawValue: indexPath.item)
+                    else { return }
+                    if self.clothesFeeling == item {
+                        self.clothesFeeling = nil
+                    }
+                    cell.isSelected = false
+                case 3:
+                    guard
+                        let item = WeatherFeeling(rawValue: indexPath.item),
+                        self.weatherFeelings.contains(item)
+                    else { return }
+                    self.weatherFeelings = self.weatherFeelings.filter { $0 != item }
+                default:
+                    return
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func bindTapAction() {
+        uploadButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.navigationController?.pushViewController(owner.factory.makePostDetailViewController(postID: 11), animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func deselectAllItems(exclude: IndexPath, animated: Bool = false) {
+        for indexPath in uploadView.collectionView.indexPathsForSelectedItems ?? [] {
+            if indexPath == exclude { continue }
+            if indexPath.section == 2 {
+                uploadView.collectionView.deselectItem(at: indexPath, animated: animated)
+                uploadView.collectionView.cellForItem(at: indexPath)?.isSelected = false
+            }
+        }
     }
 
     private func setPropeties() {
         uploadButton.text = "업로드"
         uploadButton.rounding = .r8
 
-        uploadView.collectionView.dataSource = self
-        uploadView.collectionView.register(cell: ClosetImageCollectionViewCell.self)
-        uploadView.collectionView.register(cell: TagCollectionViewCell.self)
-        uploadView.collectionView.register(cell: UploadWeatherCollectionViewCell.self)
-        uploadView.collectionView.register(
-            SectionTitleHeaderView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: SectionTitleHeaderView.reuseIdentifier
-        )
+        uploadView.collectionView.do {
+            $0.dataSource = self
+            $0.register(cell: ClosetImageCollectionViewCell.self)
+            $0.register(cell: TagCollectionViewCell.self)
+            $0.register(cell: UploadWeatherCollectionViewCell.self)
+            $0.register(
+                SectionTitleHeaderView.self,
+                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: SectionTitleHeaderView.reuseIdentifier
+            )
+            $0.allowsMultipleSelection = true
+        }
     }
 
     private func setLayouts() {
@@ -185,17 +256,19 @@ extension UploadMainViewController: UICollectionViewDataSource {
         case 2:
             let cell: TagCollectionViewCell = uploadView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
             guard
-                let text = ClothesFeeling(rawValue: indexPath.item)?.text
+                let item = ClothesFeeling(rawValue: indexPath.item)
             else { return UICollectionViewCell() }
-            cell.configure(text: text)
+            cell.configure(text: item.text)
+            cell.isSelected = item == clothesFeeling
             return cell
 
         case 3:
             let cell: TagCollectionViewCell = uploadView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
             guard
-                let text = WeatherFeeling(rawValue: indexPath.item)?.text
+                let item = WeatherFeeling(rawValue: indexPath.item)
             else { return UICollectionViewCell() }
-            cell.configure(text: text)
+            cell.configure(text: item.text)
+            cell.isSelected = weatherFeelings.contains(item)
             return cell
 
         default:

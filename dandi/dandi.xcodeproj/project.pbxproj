@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
@@ -164,6 +165,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
@@ -842,6 +844,7 @@
 				DDC522132995EC8100E2845F /* DataSource */,
 				DDC522112995EA5100E2845F /* View */,
 				DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */,
+				DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1175,6 +1178,7 @@
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
 				DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */,
+				DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */,
 				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,

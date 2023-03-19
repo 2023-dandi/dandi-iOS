@@ -10,6 +10,11 @@ import UIKit
 import YDS
 
 final class PostDetailViewController: BaseViewController {
+    override var hidesBottomBarWhenPushed: Bool {
+        get { navigationController?.topViewController == self }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: createLayout())
         collectionView.showsVerticalScrollIndicator = false
@@ -25,11 +30,6 @@ final class PostDetailViewController: BaseViewController {
     private let commentBottomTextView: PostCommentTextView = .init()
     private var isKeyboardPresented = false
 
-    override var hidesBottomBarWhenPushed: Bool {
-        get { navigationController?.topViewController == self }
-        set { super.hidesBottomBarWhenPushed = newValue }
-    }
-
     init(postID _: Int) {
         super.init()
         setLayout()
@@ -40,6 +40,7 @@ final class PostDetailViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     override func viewDidLoad() {
@@ -54,7 +55,9 @@ final class PostDetailViewController: BaseViewController {
                 date: "22.11.09 11:00",
                 content: "26도에 딱 적당해요!",
                 isLiked: false
-            ), comments: [
+            ),
+            tag: WeatherFeeling.allCases,
+            comments: [
                 Comment(
                     id: 0,
                     profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
@@ -192,45 +195,80 @@ extension PostDetailViewController {
     }
 
     private func createLayout() -> UICollectionViewLayout {
-        let sectionProvider = { (_: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            var config = UICollectionLayoutListConfiguration(appearance: .plain)
-            config.showsSeparators = false
+        let sectionProvider = { [weak self] (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            switch sectionIndex {
+            case 1:
+                return self?.createVerticalTagSection()
+            default:
+                return self?.createListSection(layoutEnvironment: layoutEnvironment)
+            }
+        }
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+    }
 
-            config.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
-                guard
-                    let self = self,
-                    let item = self.dataSource.commentItemIdentifier(for: indexPath),
-                    item.isMine
-                else {
-                    let reportAction = UIContextualAction(
-                        style: .normal,
-                        title: nil
-                    ) { _, _, completion in
-                        // report 함수 구현
-                        completion(true)
-                    }
-                    reportAction.image = YDSIcon.warningcircleLine
-                    reportAction.backgroundColor = YDSColor.bgSelected
-                    return UISwipeActionsConfiguration(actions: [reportAction])
-                }
-                let deleteAction = UIContextualAction(
+    private func createListSection(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        var config = UICollectionLayoutListConfiguration(appearance: .plain)
+        config.showsSeparators = false
+
+        config.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
+            guard
+                let self = self,
+                let item = self.dataSource.commentItemIdentifier(for: indexPath),
+                item.isMine
+            else {
+                let reportAction = UIContextualAction(
                     style: .normal,
                     title: nil
                 ) { _, _, completion in
-                    // delete 함수 구현
+                    // report 함수 구현
                     completion(true)
                 }
-                deleteAction.image = YDSIcon.trashcanLine
-                deleteAction.backgroundColor = YDSColor.buttonWarnedBG
-                return UISwipeActionsConfiguration(actions: [deleteAction])
+                reportAction.image = YDSIcon.warningcircleLine
+                reportAction.backgroundColor = YDSColor.bgRecomment
+                return UISwipeActionsConfiguration(actions: [reportAction])
             }
-
-            let section = NSCollectionLayoutSection.list(
-                using: config,
-                layoutEnvironment: layoutEnvironment
-            )
-            return section
+            let deleteAction = UIContextualAction(
+                style: .normal,
+                title: nil
+            ) { _, _, completion in
+                // delete 함수 구현
+                completion(true)
+            }
+            deleteAction.image = YDSIcon.trashcanLine
+            deleteAction.backgroundColor = YDSColor.buttonWarnedBG
+            return UISwipeActionsConfiguration(actions: [deleteAction])
         }
-        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+
+        let section = NSCollectionLayoutSection.list(
+            using: config,
+            layoutEnvironment: layoutEnvironment
+        )
+        return section
+    }
+
+    private func createVerticalTagSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(60),
+            heightDimension: .absolute(30)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(30)
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        group.interItemSpacing = .fixed(4)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.contentInsets = .init(top: 0, leading: 20, bottom: 16, trailing: 20)
+
+        return section
     }
 }

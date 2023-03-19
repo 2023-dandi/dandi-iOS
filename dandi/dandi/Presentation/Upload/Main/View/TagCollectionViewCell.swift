@@ -22,6 +22,16 @@ final class TagCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    override var isUserInteractionEnabled: Bool {
+        didSet {
+            if isUserInteractionEnabled {
+                contentView.backgroundColor = YDSColor.buttonBright
+                titleLabel.textColor = YDSColor.monoItemText
+                borderColor = YDSColor.borderNormal
+            }
+        }
+    }
+
     private let titleLabel = UILabel()
 
     override init(frame: CGRect) {

@@ -25,7 +25,7 @@ final class UploadMainReactor: Reactor {
         case viewWillAppear
         case upload(
             image: UIImage,
-            clothesFeeling: ClothesFeeling,
+            clothesFeeling: ClothesFeeling?,
             weatherFeelings: [WeatherFeeling]
         )
     }
@@ -63,12 +63,16 @@ final class UploadMainReactor: Reactor {
                 uploadUseCase.imagePublisher
                     .compactMap { $0 }
                     .map { [weak self] imageURL in
-                        guard let self = self else { return }
+                        guard
+                            let self = self,
+                            let clothesFeeling = clothesFeeling
+                        else { return }
+
                         self.uploadUseCase.uploadPost(
                             imageURL: imageURL,
                             temperatures: self.currentState.temparature,
                             clothesFeeling: clothesFeeling,
-                            weatherFeelings: weatherFeelings
+                            weatherFeelings: Array(Set(weatherFeelings))
                         )
                     }
                     .map { Mutation.setLoading(isLoading: false) }

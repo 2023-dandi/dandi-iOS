@@ -56,10 +56,13 @@ final class ProfileView: UIView {
     }
 
     private func setLayouts() {
+        let spacer = UIView()
+
         addSubview(contentView)
         contentView.addArrangedSubviews(
             imageView,
             nicknameLabel,
+            spacer,
             timestampLabel
         )
         contentView.snp.makeConstraints {

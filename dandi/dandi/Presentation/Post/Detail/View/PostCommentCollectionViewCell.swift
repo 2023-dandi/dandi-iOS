@@ -63,12 +63,12 @@ extension PostCommentCollectionViewCell {
             $0.size = .small
         }
         nicknameLabel.do {
-            $0.font = YDSFont.caption0
+            $0.font = YDSFont.body1
             $0.textColor = YDSColor.textPrimary
             $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
         }
         contentLabel.do {
-            $0.font = YDSFont.caption0
+            $0.font = YDSFont.body1
             $0.textColor = YDSColor.textSecondary
             $0.numberOfLines = 0
             $0.lineBreakMode = .byCharWrapping

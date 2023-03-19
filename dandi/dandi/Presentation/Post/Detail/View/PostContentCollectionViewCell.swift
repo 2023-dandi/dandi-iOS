@@ -32,7 +32,6 @@ final class PostContentCollectionViewCell: UICollectionViewCell {
             timestamp: post.date
         )
         mainImageView.image(url: post.mainImageURL)
-        dateLabel.text = "\(post.date)의 날씨는"
         temperatureLabel.text = "\(post.content)"
         heartButton.isSelected = post.isLiked
     }
@@ -58,14 +57,28 @@ extension PostContentCollectionViewCell {
             $0.axis = .vertical
             $0.alignment = .leading
         }
-        // TODO: - 이미지 교체
         heartButton.do {
-            $0.setImage(.checkmark, for: .normal)
+            $0.setImage(
+                YDSIcon.heartFilled
+                    .resize(newWidth: 32)
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(YDSColor.buttonWarned),
+                for: .selected
+            )
+            heartButton.do {
+                $0.setImage(
+                    YDSIcon.heartLine
+                        .resize(newWidth: 32)
+                        .withRenderingMode(.alwaysOriginal)
+                        .withTintColor(YDSColor.buttonNormal),
+                    for: .normal
+                )
+            }
         }
     }
 
     private func setLayouts() {
-        contentStackView.addArrangedSubviews(dateLabel, temperatureLabel)
+        contentStackView.addArrangedSubviews(temperatureLabel)
         contentView.addSubviews(
             profileView,
             mainImageView,
@@ -83,9 +96,9 @@ extension PostContentCollectionViewCell {
         }
         contentStackView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
-            $0.top.equalTo(mainImageView.snp.bottom).offset(6)
+            $0.top.equalTo(mainImageView.snp.bottom).offset(12)
             $0.trailing.equalToSuperview().inset(60)
-            $0.bottom.equalToSuperview().offset(-6)
+            $0.bottom.equalToSuperview().offset(-12)
         }
         heartButton.snp.makeConstraints {
             $0.size.equalTo(40)

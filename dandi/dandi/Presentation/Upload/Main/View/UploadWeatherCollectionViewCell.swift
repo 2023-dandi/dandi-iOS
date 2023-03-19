@@ -42,7 +42,7 @@ final class UploadWeatherCollectionViewCell: UICollectionViewCell {
         }
         control.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(label.snp.trailing).offset(4)
+            $0.leading.equalTo(label.snp.trailing).inset(4)
             $0.trailing.equalToSuperview()
             $0.height.equalTo(30)
             $0.width.equalTo(120)

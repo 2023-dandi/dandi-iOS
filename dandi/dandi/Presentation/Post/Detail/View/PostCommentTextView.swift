@@ -25,7 +25,7 @@ final class PostCommentTextView: UIView {
     }
 
     func configure(profileImageURL: String?) {
-        profileImageView.image(url: profileImageURL, defaultImage: .actions)
+        profileImageView.image(url: profileImageURL, defaultImage: Image.defaultProfile)
     }
 
     @available(*, unavailable)
