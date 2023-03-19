@@ -6,5 +6,11 @@
 //
 
 struct MessageDTO: Decodable, Error {
-    let message: String
+    let message: String?
+}
+
+extension MessageDTO {
+    func toDomain(statusCode: Int) -> ErrorResponse {
+        return ErrorResponse(statusCase: StatusCase(statusCode), message: message)
+    }
 }

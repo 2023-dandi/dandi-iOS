@@ -6,9 +6,8 @@
 //
 
 enum NetworkError: Error {
-    case requestErr(MessageDTO)
-    case decodedErr
-    case pathErr
+    case httpError(ErrorResponse)
+    case decodedError
     case networkFail
     case error(Error?)
 }

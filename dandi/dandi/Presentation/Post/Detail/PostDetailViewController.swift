@@ -7,9 +7,12 @@
 
 import UIKit
 
+import ReactorKit
+import RxCocoa
+import RxSwift
 import YDS
 
-final class PostDetailViewController: BaseViewController {
+final class PostDetailViewController: BaseViewController, View {
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
         set { super.hidesBottomBarWhenPushed = newValue }

@@ -16,15 +16,14 @@ enum NetworkHandler {
         switch response.statusCode {
         case 200 ..< 300:
             guard let decodedData = try? decoder.decode(T.self, from: response.data) else {
-                return .just(.failure(.decodedErr))
+                return .just(.failure(.decodedError))
             }
             return .just(.success(decodedData))
         case 300 ..< 500:
-            guard let errorResponse = try? decoder.decode(MessageDTO.self, from: response.data) else {
-                return .just(.failure(.pathErr))
+            guard let message = try? decoder.decode(MessageDTO.self, from: response.data) else {
+                return .just(.failure(.httpError(ErrorResponse(statusCode: response.statusCode))))
             }
-            dump(errorResponse)
-            return .just(.failure(.requestErr(errorResponse)))
+            return .just(.failure(.httpError(message.toDomain(statusCode: response.statusCode))))
         default:
             return .just(.failure(.networkFail))
         }
@@ -35,15 +34,14 @@ enum NetworkHandler {
         switch response.statusCode {
         case 200 ..< 300:
             guard let decodedData = try? decoder.decode(T.self, from: response.data) else {
-                return .failure(.decodedErr)
+                return .failure(.decodedError)
             }
             return .success(decodedData)
         case 300 ..< 500:
-            guard let errorResponse = try? decoder.decode(MessageDTO.self, from: response.data) else {
-                return .failure(.pathErr)
+            guard let message = try? decoder.decode(MessageDTO.self, from: response.data) else {
+                return .failure(.httpError(ErrorResponse(statusCode: response.statusCode)))
             }
-            dump(errorResponse)
-            return .failure(.requestErr(errorResponse))
+            return .failure(.httpError(message.toDomain(statusCode: response.statusCode)))
         default:
             return .failure(.networkFail)
         }
@@ -55,10 +53,10 @@ enum NetworkHandler {
         case 200 ..< 300:
             return .success(response.statusCode)
         case 300 ..< 500:
-            guard let errorResponse = try? decoder.decode(MessageDTO.self, from: response.data) else {
-                return .failure(.pathErr)
+            guard let message = try? decoder.decode(MessageDTO.self, from: response.data) else {
+                return .failure(.httpError(ErrorResponse(statusCode: response.statusCode)))
             }
-            return .failure(.requestErr(errorResponse))
+            return .failure(.httpError(message.toDomain(statusCode: response.statusCode)))
         default:
             return .failure(.networkFail)
         }

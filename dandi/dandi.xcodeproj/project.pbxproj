@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
+		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
+		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
 		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
@@ -166,6 +168,8 @@
 
 /* Begin PBXFileReference section */
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
+		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
+		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
@@ -496,6 +500,7 @@
 				DD31233F29B1EA0300443FCE /* BaseTargetType.swift */,
 				DD31232029B1B9F500443FCE /* Interceptor.swift */,
 				DD31233C29B1E55500443FCE /* Service */,
+				DD0B685A29C760C5000A0E24 /* StatusCase.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA38FE829641CCB006FBE00 /* Post.swift */,
+				DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */,
 				DDA38FF029656099006FBE00 /* DayWeatherInfo.swift */,
 				DDA38FF729657E92006FBE00 /* TimeWeatherInfo.swift */,
 				DDDBD44D2979338800452F01 /* ClosetImage.swift */,
@@ -1188,6 +1194,7 @@
 				DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */,
 				DDA8167529AE273900963776 /* Notification.swift in Sources */,
 				DDC52200299520E500E2845F /* UserProfile.swift in Sources */,
+				DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */,
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
 				DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */,
 				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
@@ -1217,6 +1224,7 @@
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
 				DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
+				DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,

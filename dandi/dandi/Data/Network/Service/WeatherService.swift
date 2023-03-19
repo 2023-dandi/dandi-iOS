@@ -54,7 +54,7 @@ final class DefaultWeatherService: WeatherService {
             .replacingOccurrences(of: "%25", with: "%")
 
         guard let requestURL = components.url else {
-            completion(.failure(.pathErr))
+            completion(.failure(.decodedError))
             return
         }
 
@@ -67,11 +67,13 @@ final class DefaultWeatherService: WeatherService {
             }
             let successsRange = 200 ..< 300
 
-            guard
-                let statusCode = (response as? HTTPURLResponse)?.statusCode,
-                successsRange.contains(statusCode)
-            else {
-                completion(.failure(.requestErr(MessageDTO(message: "에러입니다."))))
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+                completion(.failure(.decodedError))
+                return
+            }
+
+            guard successsRange.contains(statusCode) else {
+                completion(.failure(.httpError(ErrorResponse(statusCode: statusCode))))
                 return
             }
 
@@ -80,7 +82,7 @@ final class DefaultWeatherService: WeatherService {
                 let decodedData = try? JSONDecoder().decode(WeatherDTO.self, from: data)
             else {
                 dump(String(data: data ?? Data(), encoding: .utf8))
-                completion(.failure(.decodedErr))
+                completion(.failure(.decodedError))
                 return
             }
 
