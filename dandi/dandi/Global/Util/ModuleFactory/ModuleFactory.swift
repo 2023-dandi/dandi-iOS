@@ -93,6 +93,13 @@ extension ModuleFactory: ModulFactoryInterface {
     func makePostDetailViewController(postID: Int) -> PostDetailViewController {
         let vc = PostDetailViewController(postID: postID)
         vc.factory = self
+        vc.reactor = PostDetailReactor(
+            postDetailUseCase: DefaultPostDetailUseCase(
+                postRepository: DefaultPostRepository(
+                    interceptor: Interceptor()
+                )
+            )
+        )
         return vc
     }
 

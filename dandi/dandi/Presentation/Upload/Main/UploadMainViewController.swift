@@ -107,6 +107,15 @@ final class UploadMainViewController: BaseViewController, View {
                 owner.uploadButton.isDisabled = isLoading
             })
             .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.postID }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, id in
+                owner.navigationController?.pushViewController(owner.factory.makePostDetailViewController(postID: id), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     // swiftlint:disable cyclomatic_complexity
@@ -157,15 +166,6 @@ final class UploadMainViewController: BaseViewController, View {
                 default:
                     return
                 }
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func bindTapAction() {
-        uploadButton.rx.tap
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                owner.navigationController?.pushViewController(owner.factory.makePostDetailViewController(postID: 11), animated: true)
             })
             .disposed(by: disposeBag)
     }

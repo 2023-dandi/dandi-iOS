@@ -29,6 +29,21 @@ struct PostDTO: Codable {
     }
 }
 
+extension PostDTO {
+    func toDomain(id: Int) -> Post {
+        return Post(
+            id: id,
+            mainImageURL: postImageUrl,
+            profileImageURL: nil,
+            nickname: writerNickname ?? "",
+            date: createdAt ?? "",
+            content: "\(temperatures.min)도~\(temperatures.max)도에, \(ClothesFeeling(rawValue: outfitFeelings.feelingIndex)?.text ?? "").",
+            tag: outfitFeelings.additionalFeelingIndices?.compactMap { WeatherFeeling(rawValue: $0) } ?? [],
+            isLiked: true
+        )
+    }
+}
+
 struct TemperatureInfo: Codable {
     let min: Int
     let max: Int
@@ -49,5 +64,5 @@ extension TemperatureInfo: Equatable {
 
 struct OutfitFeelingsInfo: Codable {
     let feelingIndex: Int
-    let additionalFeelingIndices: [Int]
+    let additionalFeelingIndices: [Int]?
 }

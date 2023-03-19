@@ -19,6 +19,7 @@ final class UploadMainReactor: Reactor {
     struct State {
         var isLoading: Bool = false
         var temparature: TemperatureInfo = .init(min: 0, max: 0)
+        var postID: Int?
     }
 
     enum Action {
@@ -33,6 +34,7 @@ final class UploadMainReactor: Reactor {
     enum Mutation {
         case setLoading(isLoading: Bool)
         case setTemparature(TemperatureInfo)
+        case setPostID(Int?)
     }
 
     init(
@@ -75,7 +77,9 @@ final class UploadMainReactor: Reactor {
                             weatherFeelings: Array(Set(weatherFeelings))
                         )
                     }
-                    .map { Mutation.setLoading(isLoading: false) }
+                    .map { Mutation.setLoading(isLoading: false) },
+                uploadUseCase.postIdPublusher
+                    .map { Mutation.setPostID($0) }
             ])
         }
     }
@@ -87,6 +91,8 @@ final class UploadMainReactor: Reactor {
             newState.isLoading = isLoading
         case let .setTemparature(temperatureInfo):
             newState.temparature = temperatureInfo
+        case let .setPostID(id):
+            newState.postID = id
         }
         return newState
     }

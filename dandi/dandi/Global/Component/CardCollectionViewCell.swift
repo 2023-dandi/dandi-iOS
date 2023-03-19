@@ -35,7 +35,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
 
     public func configure(
         mainImageURL: String,
-        profileImageURL: String,
+        profileImageURL: String?,
         nickname: String,
         content: String,
         date: String,

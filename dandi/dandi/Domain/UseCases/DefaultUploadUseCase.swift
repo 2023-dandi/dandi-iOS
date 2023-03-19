@@ -13,7 +13,7 @@ import RxSwift
 
 protocol UploadUseCase {
     var imagePublisher: PublishRelay<String?> { get }
-    var postSuccessPublusher: PublishRelay<Bool> { get }
+    var postIdPublusher: PublishRelay<Int?> { get }
     func uploadImage(image: UIImage)
     func uploadPost(
         imageURL: String,
@@ -25,7 +25,7 @@ protocol UploadUseCase {
 
 final class DefaultUploadUseCase: UploadUseCase {
     let imagePublisher = PublishRelay<String?>()
-    let postSuccessPublusher = PublishRelay<Bool>()
+    let postIdPublusher = PublishRelay<Int?>()
 
     private let postRepository: PostRepository
     private let disposeBag = DisposeBag()
@@ -64,10 +64,10 @@ final class DefaultUploadUseCase: UploadUseCase {
         ) { [weak self] result in
             switch result {
             case .success:
-                self?.postSuccessPublusher.accept(true)
+                self?.postIdPublusher.accept(11)
             case let .failure(error):
                 DandiLog.error(error)
-                self?.postSuccessPublusher.accept(false)
+                self?.postIdPublusher.accept(nil)
             }
         }
     }

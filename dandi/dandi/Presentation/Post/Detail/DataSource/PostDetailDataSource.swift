@@ -45,14 +45,13 @@ final class PostDetailDataSource {
 
     func update(
         post: Post,
-        tag: [WeatherFeeling],
         comments: [Comment]
     ) {
         var snapshot = Snapshot()
         snapshot.appendSections([.post, .tag, .comment])
 
         let postItem = [Item.post(post)]
-        let tagItem = tag.map { Item.tag($0) }
+        let tagItem = post.tag.map { Item.tag($0) }
         let commentItems = comments.map { Item.comment($0) }
 
         snapshot.appendItems(postItem, toSection: .post)

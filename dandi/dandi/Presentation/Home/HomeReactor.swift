@@ -15,7 +15,7 @@ final class HomeReactor: Reactor {
 
     struct State {
         var isLoading: Bool = false
-        var hourlyWeathers: [TimeWeatherInfo]?
+        var hourlyWeathers: [TimeWeatherInfo] = []
         var updateLocationSuccess: Bool = false
     }
 

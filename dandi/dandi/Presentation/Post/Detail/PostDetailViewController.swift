@@ -13,6 +13,8 @@ import RxSwift
 import YDS
 
 final class PostDetailViewController: BaseViewController, View {
+    typealias Reactor = PostDetailReactor
+
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
         set { super.hidesBottomBarWhenPushed = newValue }
@@ -32,12 +34,13 @@ final class PostDetailViewController: BaseViewController, View {
     private let moreButton: UIButton = .init()
     private let commentBottomTextView: PostCommentTextView = .init()
     private var isKeyboardPresented = false
+    private let postID: Int
 
-    init(postID _: Int) {
+    init(postID: Int) {
+        self.postID = postID
         super.init()
         setLayout()
         setProperties()
-        bind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,52 +52,6 @@ final class PostDetailViewController: BaseViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
-        dataSource.update(
-            post: Post(
-                id: 2,
-                mainImageURL: "https://cdn.imweb.me/thumbnail/20211105/16246701edcd5.jpg",
-                profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                nickname: "비오는 토요일",
-                date: "22.11.09 11:00",
-                content: "26도에 딱 적당해요!",
-                isLiked: false
-            ),
-            tag: WeatherFeeling.allCases,
-            comments: [
-                Comment(
-                    id: 0,
-                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    nickname: "이지데이지",
-                    date: "22.11.09 11:00",
-                    content: "26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!26도에 딱 적당해요!",
-                    isMine: false
-                ),
-                Comment(
-                    id: 1,
-                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    nickname: "이지데이지",
-                    date: "22.11.09 11:00",
-                    content: "26도에 딱 적당해요!",
-                    isMine: false
-                ),
-                Comment(
-                    id: 2,
-                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    nickname: "이지데이지",
-                    date: "22.11.09 11:00",
-                    content: "26도에 딱 적당해요!",
-                    isMine: true
-                ),
-                Comment(
-                    id: 3,
-                    profileImageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                    nickname: "이지데이지",
-                    date: "22.11.09 11:00",
-                    content: "26도에 딱 적당해요!",
-                    isMine: false
-                )
-            ]
-        )
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,8 +59,10 @@ final class PostDetailViewController: BaseViewController, View {
         navigationController?.navigationBar.isHidden = true
     }
 
-    private func bind() {
+    func bind(reactor: Reactor) {
         bindKeyboard()
+        bindAction(reactor)
+        bindState(reactor)
     }
 
     private func setProperties() {
@@ -112,6 +71,27 @@ final class PostDetailViewController: BaseViewController, View {
         moreButton.setImage(YDSIcon.dotsVerticalLine.withRenderingMode(.alwaysTemplate), for: .normal)
         moreButton.tintColor = YDSColor.buttonNormal
         navigationItem.setRightBarButton(UIBarButtonItem(customView: moreButton), animated: false)
+    }
+}
+
+extension PostDetailViewController {
+    private func bindAction(_ reactor: Reactor) {
+        rx.viewWillAppear
+            .withUnretained(self)
+            .map { owner, _ in Reactor.Action.fetchPostDetail(id: owner.postID) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindState(_ reactor: Reactor) {
+        reactor.state
+            .compactMap { $0.post }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, post in
+                owner.dataSource.update(post: post, comments: [])
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindKeyboard() {

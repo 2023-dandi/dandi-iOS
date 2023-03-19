@@ -27,7 +27,7 @@ final class ProfileView: UIView {
         nickname: String,
         timestamp: String
     ) {
-        imageView.image(url: profileImageURL, defaultImage: .add)
+        imageView.image(url: profileImageURL, defaultImage: Image.defaultProfile)
         nicknameLabel.text = nickname
         timestampLabel.text = timestamp
     }

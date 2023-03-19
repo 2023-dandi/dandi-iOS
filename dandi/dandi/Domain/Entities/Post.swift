@@ -11,10 +11,11 @@ struct Post {
     let uuid = UUID()
     let id: Int
     let mainImageURL: String
-    let profileImageURL: String
+    let profileImageURL: String?
     let nickname: String
     let date: String
     let content: String
+    let tag: [WeatherFeeling]
     let isLiked: Bool
 }
 
