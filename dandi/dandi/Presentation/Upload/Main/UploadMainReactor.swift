@@ -58,12 +58,6 @@ final class UploadMainReactor: Reactor {
                 .map { Mutation.setTemparature($0) }
         case let .upload(image, clothesFeeling, weatherFeelings):
             uploadUseCase.uploadImage(image: image)
-            uploadUseCase.uploadPost(
-                imageURL: "https://mblogthumb-phinf.pstatic.net/20140509_116/jabez5424_1399618275059rrU5H_JPEG/naver_com_20140509_153929.jpg?type=w2",
-                temperatures: initialState.temparature,
-                clothesFeeling: clothesFeeling,
-                weatherFeelings: weatherFeelings
-            )
             return Observable.concat([
                 Observable.just(.setLoading(isLoading: true)),
                 uploadUseCase.imagePublisher
@@ -72,7 +66,7 @@ final class UploadMainReactor: Reactor {
                         guard let self = self else { return }
                         self.uploadUseCase.uploadPost(
                             imageURL: imageURL,
-                            temperatures: self.initialState.temparature,
+                            temperatures: self.currentState.temparature,
                             clothesFeeling: clothesFeeling,
                             weatherFeelings: weatherFeelings
                         )

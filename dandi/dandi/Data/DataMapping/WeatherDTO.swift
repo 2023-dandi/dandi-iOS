@@ -88,6 +88,9 @@ extension WeatherDTO {
             .map { $0.fcstValue.toDouble() }
             .first
 
+        dump(min)
+        dump(max)
+
         return TemperatureInfo(min: Int(min ?? -1), max: Int(max ?? -1))
     }
 }

@@ -50,12 +50,12 @@ final class DefaultPostRepository: PostRepository {
 
     func uploadPost(
         post: PostDTO,
-        completion: @escaping NetworkCompletion<VoidType>
+        completion: @escaping NetworkCompletion<Int>
     ) {
         router.request(.postPosts(post: post)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                completion(NetworkHandler.requestErrorDecoded(by: response))
             case .failure:
                 completion(.failure(.networkFail))
             }

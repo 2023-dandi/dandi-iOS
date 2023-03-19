@@ -48,4 +48,19 @@ enum NetworkHandler {
             return .failure(.networkFail)
         }
     }
+
+    static func requestErrorDecoded(by response: Response) -> NetworkResult<Int> {
+        let decoder = JSONDecoder()
+        switch response.statusCode {
+        case 200 ..< 300:
+            return .success(response.statusCode)
+        case 300 ..< 500:
+            guard let errorResponse = try? decoder.decode(MessageDTO.self, from: response.data) else {
+                return .failure(.pathErr)
+            }
+            return .failure(.requestErr(errorResponse))
+        default:
+            return .failure(.networkFail)
+        }
+    }
 }

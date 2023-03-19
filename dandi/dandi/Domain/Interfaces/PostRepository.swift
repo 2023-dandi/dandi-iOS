@@ -20,6 +20,6 @@ protocol PostRepository {
 
     func uploadPost(
         post: PostDTO,
-        completion: @escaping NetworkCompletion<VoidType>
+        completion: @escaping NetworkCompletion<Int>
     )
 }

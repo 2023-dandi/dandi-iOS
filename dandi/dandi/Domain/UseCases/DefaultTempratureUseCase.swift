@@ -36,7 +36,7 @@ final class DefaultTemperatureUseCase: TemperatureUseCase {
     ) {
         let (base_date, baseTime) = TimeConverter().getBaseDateAndBaseTime()
         weatherRepository.fetchWeather(
-            numOfRows: 280,
+            numOfRows: 500,
             page: page,
             base_date: base_date,
             base_time: baseTime,

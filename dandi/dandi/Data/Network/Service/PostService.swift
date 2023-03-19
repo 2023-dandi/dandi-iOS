@@ -15,6 +15,21 @@ enum PostService {
 }
 
 extension PostService: BaseTargetType {
+    var headers: [String: String]? {
+        switch self {
+        case .postImage:
+            return [
+                "Content-Type": "multipart/form-data",
+                "Authorization": "Bearer \(UserDefaultHandler.shared.accessToken)"
+            ]
+        default:
+            return [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(UserDefaultHandler.shared.accessToken)"
+            ]
+        }
+    }
+
     var path: String {
         switch self {
         case .postImage:
@@ -41,7 +56,7 @@ extension PostService: BaseTargetType {
             let imageData = image.jpegData(compressionQuality: .greatestFiniteMagnitude) ?? Data()
             let data = MultipartFormData(
                 provider: .data(imageData),
-                name: "post_image",
+                name: "postImage",
                 fileName: "post_image.jpeg",
                 mimeType: "image/jpeg"
             )
@@ -51,5 +66,9 @@ extension PostService: BaseTargetType {
         case .getDetailPost:
             return .requestPlain
         }
+    }
+
+    var validationType: ValidationType {
+        return .successCodes
     }
 }

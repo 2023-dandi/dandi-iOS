@@ -35,7 +35,7 @@ extension ModuleFactory: ModulFactoryInterface {
         let vc = SplashViewController()
         return vc
     }
-    
+
     func makeTabBarViewController() -> MainTabBarController {
         let vc = MainTabBarController(factory: self)
         return vc
