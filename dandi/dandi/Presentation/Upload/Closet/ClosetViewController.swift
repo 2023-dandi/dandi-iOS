@@ -38,7 +38,11 @@ final class ClosetViewController: BaseViewController {
         }
     }
 
-    private var selectedImages = [ClosetImage]()
+    private var selectedImages = [ClosetImage]() {
+        didSet {
+            uploadButton.isDisabled = selectedImages.count == 0
+        }
+    }
 
     override func loadView() {
         view = closetView
@@ -63,6 +67,8 @@ final class ClosetViewController: BaseViewController {
     }
 
     func bind() {
+        bindTapAction()
+
         closetView.collectionView.rx.itemSelected
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
@@ -111,7 +117,9 @@ final class ClosetViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
 
+    private func bindTapAction() {
         rightTopButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
@@ -145,6 +153,8 @@ final class ClosetViewController: BaseViewController {
             $0.type = .filled
             $0.setBackgroundColor(YDSColor.buttonPointBG, for: .normal)
             $0.setBackgroundColor(YDSColor.buttonPointPressed, for: .highlighted)
+            $0.setBackgroundColor(YDSColor.buttonDisabledBG, for: .disabled)
+            $0.isDisabled = true
         }
         navigationItem.setRightBarButton(UIBarButtonItem(customView: rightTopButton), animated: false)
     }
