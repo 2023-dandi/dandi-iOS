@@ -113,7 +113,12 @@ final class UploadMainViewController: BaseViewController, View {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, id in
-                owner.navigationController?.pushViewController(owner.factory.makePostDetailViewController(postID: id), animated: true)
+                guard
+                    var viewControllers = owner.navigationController?.viewControllers
+                else { return }
+                viewControllers.removeLast(3)
+                viewControllers.append(owner.factory.makePostDetailViewController(postID: id))
+                owner.navigationController?.setViewControllers(viewControllers, animated: true)
             })
             .disposed(by: disposeBag)
     }

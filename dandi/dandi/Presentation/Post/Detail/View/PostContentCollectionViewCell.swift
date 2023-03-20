@@ -92,7 +92,7 @@ extension PostContentCollectionViewCell {
         mainImageView.snp.makeConstraints {
             $0.top.equalTo(profileView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(mainImageView.snp.width).multipliedBy(433 / 375)
+            $0.height.equalTo(UIScreen.main.bounds.width * 433 / 375 + 16)
         }
         contentStackView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)

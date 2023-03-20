@@ -77,9 +77,8 @@ final class UploadMainReactor: Reactor {
                             weatherFeelings: Array(Set(weatherFeelings))
                         )
                     }
-                    .map { Mutation.setLoading(isLoading: false) },
-                uploadUseCase.postIdPublusher
-                    .map { Mutation.setPostID($0) }
+                    .flatMap { self.uploadUseCase.postIdPublusher }
+                    .compactMap { Mutation.setPostID($0) }
             ])
         }
     }

@@ -11,6 +11,7 @@
 		DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7E929C7766E001536D4 /* TemperatureUseCase.swift */; };
 		DD00E7EC29C776F9001536D4 /* UploadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */; };
 		DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */; };
+		DD00E7F029C817CB001536D4 /* PostIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7EF29C817CB001536D4 /* PostIdDTO.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -176,6 +177,7 @@
 		DD00E7E929C7766E001536D4 /* TemperatureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUseCase.swift; sourceTree = "<group>"; };
 		DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadUseCase.swift; sourceTree = "<group>"; };
 		DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailUseCase.swift; sourceTree = "<group>"; };
+		DD00E7EF29C817CB001536D4 /* PostIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIdDTO.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				DD9F6FD829B4EC7C002BD4B4 /* WeatherDTO.swift */,
 				DDE3E30129C376CD007BDBA7 /* PostDTO.swift */,
 				DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */,
+				DD00E7EF29C817CB001536D4 /* PostIdDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1200,6 +1203,7 @@
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
 				DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */,
+				DD00E7F029C817CB001536D4 /* PostIdDTO.swift in Sources */,
 				DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */,
 				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,

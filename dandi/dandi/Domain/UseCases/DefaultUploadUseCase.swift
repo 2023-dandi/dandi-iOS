@@ -51,8 +51,9 @@ final class DefaultUploadUseCase: UploadUseCase {
             )
         ) { [weak self] result in
             switch result {
-            case .success:
-                self?.postIdPublusher.accept(11)
+            case let .success(postIdDTO):
+                dump(postIdDTO)
+                self?.postIdPublusher.accept(postIdDTO.postId)
             case let .failure(error):
                 DandiLog.error(error)
                 self?.postIdPublusher.accept(nil)
