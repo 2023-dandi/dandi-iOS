@@ -54,7 +54,7 @@ final class Interceptor: RequestInterceptor {
         ]
 
         let dataTask = AF.request(
-            Environment.baseURL + "/refresh",
+            Environment.baseURL + "/auth/refresh",
             method: .post,
             encoding: JSONEncoding.default,
             headers: headers
@@ -87,6 +87,7 @@ final class Interceptor: RequestInterceptor {
                 UserDefaultHandler.shared.accessToken = decodedData.accessToken
 
                 completion(true)
+
             case .failure:
                 UserDefaultHandler.shared.refreshToken = ""
                 UserDefaultHandler.shared.accessToken = ""

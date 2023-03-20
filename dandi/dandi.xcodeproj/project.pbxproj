@@ -19,6 +19,9 @@
 		DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */; };
 		DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */; };
 		DD00E80029C83DF0001536D4 /* DefaultMemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FF29C83DF0001536D4 /* DefaultMemberRepository.swift */; };
+		DD00E80229C844AB001536D4 /* DefaultMemberInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80129C844AB001536D4 /* DefaultMemberInfoUseCase.swift */; };
+		DD00E80429C844B7001536D4 /* MyPageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80329C844B7001536D4 /* MyPageUseCase.swift */; };
+		DD00E80629C8478E001536D4 /* MyPageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80529C8478E001536D4 /* MyPageReactor.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -192,6 +195,9 @@
 		DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoDTO.swift; sourceTree = "<group>"; };
 		DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationDTO.swift; sourceTree = "<group>"; };
 		DD00E7FF29C83DF0001536D4 /* DefaultMemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMemberRepository.swift; sourceTree = "<group>"; };
+		DD00E80129C844AB001536D4 /* DefaultMemberInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMemberInfoUseCase.swift; sourceTree = "<group>"; };
+		DD00E80329C844B7001536D4 /* MyPageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageUseCase.swift; sourceTree = "<group>"; };
+		DD00E80529C8478E001536D4 /* MyPageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageReactor.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -619,6 +625,7 @@
 				DDE3E30929C37F91007BDBA7 /* DefaultTemperatureUseCase.swift */,
 				DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */,
 				DD0B685E29C764B2000A0E24 /* DefaultPostDetailUseCase.swift */,
+				DD00E80129C844AB001536D4 /* DefaultMemberInfoUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -631,6 +638,7 @@
 				DD00E7E929C7766E001536D4 /* TemperatureUseCase.swift */,
 				DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */,
 				DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */,
+				DD00E80329C844B7001536D4 /* MyPageUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -672,6 +680,7 @@
 				DDB23BA22993953C000735FB /* View */,
 				DD9B06E2295EC83100A98041 /* MyPageViewController.swift */,
 				DDA8165629ACDA1900963776 /* MyInformationViewController.swift */,
+				DD00E80529C8478E001536D4 /* MyPageReactor.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1226,12 +1235,14 @@
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
+				DD00E80229C844AB001536D4 /* DefaultMemberInfoUseCase.swift in Sources */,
 				DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */,
 				DD00E7F029C817CB001536D4 /* PostIdDTO.swift in Sources */,
 				DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */,
 				DD00E80029C83DF0001536D4 /* DefaultMemberRepository.swift in Sources */,
 				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
+				DD00E80629C8478E001536D4 /* MyPageReactor.swift in Sources */,
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DDDBD44C29792CEB00452F01 /* ClosetImageCollectionViewCell.swift in Sources */,
@@ -1265,6 +1276,7 @@
 				DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */,
 				DD1B1A1129BE12610039D8FB /* StickerEditorView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
+				DD00E80429C844B7001536D4 /* MyPageUseCase.swift in Sources */,
 				DDA8165929ACEA0000963776 /* PaddingLabel.swift in Sources */,
 				DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */,
 				DD31232929B1BAF100443FCE /* URLConstant.swift in Sources */,

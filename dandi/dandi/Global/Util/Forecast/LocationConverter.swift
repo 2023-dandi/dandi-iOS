@@ -5,6 +5,7 @@
 //  Created by 김윤서 on 2023/03/07.
 //
 
+import CoreLocation
 import Foundation
 
 struct MapGridData {
@@ -19,20 +20,20 @@ struct MapGridData {
 }
 
 final class LocationConverter {
-    let map: MapGridData = .init()
+    private let map: MapGridData = .init()
 
-    let PI: Double = .pi
-    let DEGRAD: Double = .pi / 180.0
-    let RADDEG: Double = 180.0 / .pi
+    private let PI: Double = .pi
+    private let DEGRAD: Double = .pi / 180.0
+    private let RADDEG: Double = 180.0 / .pi
 
-    var re: Double
-    var slat1: Double
-    var slat2: Double
-    var olon: Double
-    var olat: Double
-    var sn: Double
-    var sf: Double
-    var ro: Double
+    private let re: Double
+    private let slat1: Double
+    private let slat2: Double
+    private let olon: Double
+    private let olat: Double
+    private var sn: Double
+    private var sf: Double
+    private var ro: Double
 
     init() {
         self.re = map.re / map.grid
@@ -68,5 +69,25 @@ final class LocationConverter {
         let y: Double = ro - ra * cos(theta) + map.yo
 
         return (Int(x + 1.5), Int(y + 1.5))
+    }
+
+    func fetchAddress(
+        latitude: Double,
+        longitude: Double,
+        handler: @escaping (String) -> Void
+    ) {
+        var address = ""
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+
+        geocoder.reverseGeocodeLocation(location) { placemarks, _ in
+            var placeMark: CLPlacemark?
+            placeMark = placemarks?[0]
+
+            if let locationName = placeMark?.name as? String {
+                address += locationName + ", "
+            }
+            handler(address)
+        }
     }
 }

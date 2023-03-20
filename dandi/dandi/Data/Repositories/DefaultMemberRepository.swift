@@ -10,7 +10,6 @@ import UIKit
 import Moya
 
 final class DefaultMemberRepository: MemberRepository {
-
     let router: MoyaProvider<MemberService>
 
     init(interceptor: Interceptor) {

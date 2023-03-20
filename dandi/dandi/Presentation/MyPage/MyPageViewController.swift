@@ -7,10 +7,13 @@
 
 import UIKit
 
+import ReactorKit
 import RxCocoa
 import RxSwift
 
-final class MyPageViewController: BaseViewController {
+final class MyPageViewController: BaseViewController, View {
+    typealias Reactor = MyPageReactor
+
     private let myPageView: MyPageView = .init()
     private lazy var myPageDataSource: MyPageDataSource = .init(
         collectionView: myPageView.collectionView,
@@ -23,10 +26,33 @@ final class MyPageViewController: BaseViewController {
 
     override init() {
         super.init()
-        bind()
     }
 
-    func bind() {
+    func bind(reactor: MyPageReactor) {
+        bindCollectionView()
+        bindState(reactor)
+        bindAction(reactor)
+    }
+
+    private func bindState(_ reactor: MyPageReactor) {
+        reactor.state
+            .compactMap { $0.profile }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, profile in
+                owner.myPageDataSource.update(user: profile, feed: [])
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func bindAction(_ reactor: MyPageReactor) {
+        rx.viewWillAppear
+            .map { _ in Reactor.Action.fetchProfile }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindCollectionView() {
         myPageView.collectionView.rx.itemSelected
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in

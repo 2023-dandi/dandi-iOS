@@ -70,6 +70,12 @@ extension ModuleFactory: ModulFactoryInterface {
     func makeMyPageViewController() -> MyPageViewController {
         let vc = MyPageViewController()
         vc.factory = self
+        vc.reactor = MyPageReactor(
+            memberInfoUseCase: DefaultMemberInfoUseCase(
+                memberRepository: DefaultMemberRepository(interceptor: Interceptor()),
+                converter: LocationConverter()
+            )
+        )
         return vc
     }
 

@@ -11,3 +11,14 @@ struct MemberInfoDTO: Decodable {
     let longitude: Double
     let profileImageUrl: String
 }
+
+extension MemberInfoDTO {
+    func toDomain(location: String) -> UserProfile {
+        return UserProfile(
+            profileImageURL: profileImageUrl,
+            nickname: nickname,
+            location: location,
+            closetCount: 11
+        )
+    }
+}

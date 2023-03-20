@@ -35,8 +35,6 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell {
         nicknameLabel.text = nickname
         locationLabel.text = location
         closetLabel.text = "\(closetCount)벌의 날씨 옷"
-
-        guard let profileImageURL = profileImageURL else { return }
         profileImageView.image(url: profileImageURL, defaultImage: Image.defaultProfile)
     }
 
