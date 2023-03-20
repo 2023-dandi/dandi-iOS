@@ -61,8 +61,10 @@ extension PostService: BaseTargetType {
                 mimeType: "image/jpeg"
             )
             return .uploadMultipart([data])
+
         case let .postPosts(post: post):
             return .requestJSONEncodable(post)
+
         case .getDetailPost:
             return .requestPlain
         }

@@ -119,6 +119,11 @@ extension ModuleFactory: ModulFactoryInterface {
                     interceptor: Interceptor(
                     )
                 )
+            ),
+            imageUseCase: DefaultProfileImageUseCase(
+                memberRepository: DefaultMemberRepository(
+                    interceptor: Interceptor()
+                )
             )
         )
         return vc

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 import ReactorKit
 import RxCocoa
@@ -15,6 +16,7 @@ final class MyInformationReactor: Reactor {
     let initialState: State
 
     private let nicknameUseCase: NicknameUseCase
+    private let imageUseCase: ImageUseCase
 
     struct State {
         var profile: UserProfile
@@ -25,7 +27,7 @@ final class MyInformationReactor: Reactor {
 
     enum Action {
         case checkNicknameValidation(nickname: String)
-        case update(nickname: String)
+        case update(nickname: String?, image: UIImage?)
     }
 
     enum Mutation {
@@ -36,10 +38,12 @@ final class MyInformationReactor: Reactor {
 
     init(
         userProfile: UserProfile,
-        nicknameUseCase: NicknameUseCase
+        nicknameUseCase: NicknameUseCase,
+        imageUseCase: ImageUseCase
     ) {
         self.initialState = State(profile: userProfile)
         self.nicknameUseCase = nicknameUseCase
+        self.imageUseCase = imageUseCase
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -48,10 +52,36 @@ final class MyInformationReactor: Reactor {
             nicknameUseCase.checkValidation(nickname: nickname)
             return nicknameUseCase.nicknameValidationPublisher
                 .map { Mutation.setValidation($0.text, $0.isEnabled) }
-        case let .update(nickname):
-            nicknameUseCase.update(nickname: nickname)
-            return nicknameUseCase.isNicknameUpdatedPublisher
+        case let .update(nickname, image):
+
+            let nicknameUploaded = nicknameUseCase.isNicknameUpdatedPublisher
+                .compactMap { $0 }
                 .map { Mutation.setCompletion($0) }
+
+            let imageUploaded = imageUseCase.imagePublisher
+                .compactMap { $0 }
+                .map { _ in Mutation.setCompletion(true) }
+
+            if let nickname, let image {
+                nicknameUseCase.update(nickname: nickname)
+                imageUseCase.uploadImage(image: image)
+                return Observable.concat([
+                    nicknameUploaded,
+                    imageUploaded
+                ])
+            }
+
+            if let nickname {
+                nicknameUseCase.update(nickname: nickname)
+                return nicknameUploaded
+            }
+
+            if let image {
+                imageUseCase.uploadImage(image: image)
+                return imageUploaded
+            }
+
+            return .empty()
         }
     }
 

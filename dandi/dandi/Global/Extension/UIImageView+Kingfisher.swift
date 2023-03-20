@@ -11,14 +11,15 @@ import UIKit.UIImageView
 extension UIImageView {
     func image(url: String?, defaultImage: UIImage? = UIImage()) {
         kf.indicatorType = .activity
-        guard
-            let urlString = url,
-            !urlString.contains("/profile/default"),
-            let url = URL(string: urlString)
-        else {
+        guard let urlString = url else {
             image = defaultImage
             return
         }
+        if urlString.contains("/profile/default") {
+            image = Image.defaultProfile
+            return
+        }
+        let url = URL(string: urlString)
         kf.setImage(
             with: url,
             placeholder: .none,

@@ -24,17 +24,19 @@ final class MyInformationViewController: BaseViewController, View {
     }
 
     private let doneButton = UIButton()
-    private let profileImageView = UIImageView()
+    private let profileImageView = YDSProfileImageView()
     private let cameraIconView = UIImageView()
 
     private let contentStackView = UIStackView()
     private let textFieldView = YDSSimpleTextFieldView()
     private let locationTitleLabel = PaddingLabel()
-    // TODO: - YDS 수정해야함
     private let locationItem = YDSListItem(title: "서울특별시 상도동", showNextIconView: true)
     private let historyTitleLabel = PaddingLabel()
     private let closetItem = YDSListItem(title: "내 옷장", showNextIconView: true)
     private let likeItem = YDSListItem(title: "좋아요", showNextIconView: true)
+
+    private var isNicknameChanged: Bool = false
+    private var isProfileChanged: Bool = false
 
     override init() {
         super.init()
@@ -79,6 +81,15 @@ final class MyInformationViewController: BaseViewController, View {
                 self?.textFieldView.helperLabelText = text
             })
             .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.isUpdateCompleted }
+            .subscribe(onNext: { [weak self] isUpdateCompleted in
+                if isUpdateCompleted {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindAction(_ reactor: Reactor) {
@@ -86,6 +97,7 @@ final class MyInformationViewController: BaseViewController, View {
             .take(1)
             .subscribe(onNext: { [weak self] _ in
                 self?.textFieldView.text = reactor.currentState.profile.nickname
+                self?.profileImageView.image(url: reactor.currentState.profile.profileImageURL)
             })
             .disposed(by: disposeBag)
 
@@ -94,11 +106,23 @@ final class MyInformationViewController: BaseViewController, View {
                 self?.textFieldView.isPositive = false
                 self?.textFieldView.isNegative = false
                 self?.textFieldView.helperLabelText = " "
+                self?.isNicknameChanged = true
             }
             .distinctUntilChanged()
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .compactMap { $0 }
             .map { Reactor.Action.checkNicknameValidation(nickname: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        doneButton.rx.tap
+            .withUnretained(self)
+            .map { owner, _ in
+                Reactor.Action.update(
+                    nickname: owner.isNicknameChanged ? owner.textFieldView.text : nil,
+                    image: owner.isNicknameChanged ? owner.profileImageView.image : nil
+                )
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -120,7 +144,7 @@ final class MyInformationViewController: BaseViewController, View {
 
                     switch firstItem {
                     case let .photo(item):
-                        dump(item.image)
+                        owner.isProfileChanged = true
                         owner.profileImageView.image = item.image
                     default:
                         break
@@ -143,8 +167,7 @@ final class MyInformationViewController: BaseViewController, View {
             $0.titleLabel?.font = YDSFont.subtitle2
         }
         profileImageView.do {
-            $0.cornerRadius = 60
-            $0.backgroundColor = YDSColor.borderThin
+            $0.size = .extraLarge
         }
         cameraIconView.do {
             $0.image = YDSIcon.cameraLine
@@ -184,7 +207,6 @@ final class MyInformationViewController: BaseViewController, View {
         )
         profileImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(32)
-            $0.size.equalTo(120)
             $0.centerX.equalToSuperview()
         }
         cameraIconView.snp.makeConstraints {

@@ -25,6 +25,8 @@
 		DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80729C86E02001536D4 /* MyInformationReactor.swift */; };
 		DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80929C87047001536D4 /* NicknameUseCase.swift */; };
 		DD00E80C29C8706B001536D4 /* DefaultNicknameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */; };
+		DD00E80E29C8A9B0001536D4 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80D29C8A9B0001536D4 /* ImageUseCase.swift */; };
+		DD00E81029C8A9BC001536D4 /* DefaultImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80F29C8A9BC001536D4 /* DefaultImageUseCase.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -204,6 +206,8 @@
 		DD00E80729C86E02001536D4 /* MyInformationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationReactor.swift; sourceTree = "<group>"; };
 		DD00E80929C87047001536D4 /* NicknameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameUseCase.swift; sourceTree = "<group>"; };
 		DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNicknameUseCase.swift; sourceTree = "<group>"; };
+		DD00E80D29C8A9B0001536D4 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
+		DD00E80F29C8A9BC001536D4 /* DefaultImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageUseCase.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -633,6 +637,7 @@
 				DD0B685E29C764B2000A0E24 /* DefaultPostDetailUseCase.swift */,
 				DD00E80129C844AB001536D4 /* DefaultMemberInfoUseCase.swift */,
 				DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */,
+				DD00E80F29C8A9BC001536D4 /* DefaultImageUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -647,6 +652,7 @@
 				DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */,
 				DD00E80329C844B7001536D4 /* MyPageUseCase.swift */,
 				DD00E80929C87047001536D4 /* NicknameUseCase.swift */,
+				DD00E80D29C8A9B0001536D4 /* ImageUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1252,6 +1258,7 @@
 				DD00E80029C83DF0001536D4 /* DefaultMemberRepository.swift in Sources */,
 				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
+				DD00E81029C8A9BC001536D4 /* DefaultImageUseCase.swift in Sources */,
 				DD00E80629C8478E001536D4 /* MyPageReactor.swift in Sources */,
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
@@ -1271,6 +1278,7 @@
 				DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */,
 				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
+				DD00E80E29C8A9B0001536D4 /* ImageUseCase.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
 				DD00E7F829C82EA8001536D4 /* NicknameDTO.swift in Sources */,
 				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
