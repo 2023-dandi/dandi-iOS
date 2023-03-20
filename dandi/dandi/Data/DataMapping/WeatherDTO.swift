@@ -77,7 +77,7 @@ extension WeatherDTO {
             ) }
     }
 
-    func toDomain() -> TemperatureInfo {
+    func toDomain() -> Temperatures {
         let min = response.body.items.item
             .filter { $0.category == .tmn }
             .map { $0.fcstValue.toDouble() }
@@ -91,6 +91,6 @@ extension WeatherDTO {
         dump(min)
         dump(max)
 
-        return TemperatureInfo(min: Int(min ?? -1), max: Int(max ?? -1))
+        return Temperatures(min: Int(min ?? -1), max: Int(max ?? -1))
     }
 }

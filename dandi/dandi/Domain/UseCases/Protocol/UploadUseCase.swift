@@ -16,7 +16,7 @@ protocol UploadUseCase {
     func uploadImage(image: UIImage)
     func uploadPost(
         imageURL: String,
-        temperatures: TemperatureInfo,
+        temperatures: Temperatures,
         clothesFeeling: ClothesFeeling,
         weatherFeelings: [WeatherFeeling]
     )

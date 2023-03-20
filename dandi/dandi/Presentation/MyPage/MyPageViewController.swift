@@ -47,6 +47,7 @@ final class MyPageViewController: BaseViewController, View {
 
     private func bindAction(_ reactor: MyPageReactor) {
         rx.viewWillAppear
+            .take(1)
             .map { _ in Reactor.Action.fetchProfile }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)

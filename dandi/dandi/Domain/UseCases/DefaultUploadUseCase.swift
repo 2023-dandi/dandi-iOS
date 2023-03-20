@@ -36,15 +36,15 @@ final class DefaultUploadUseCase: UploadUseCase {
 
     func uploadPost(
         imageURL: String,
-        temperatures: TemperatureInfo,
+        temperatures: Temperatures,
         clothesFeeling: ClothesFeeling,
         weatherFeelings: [WeatherFeeling]
     ) {
         postRepository.uploadPost(
             post: PostDTO(
-                postImageUrl: imageURL,
+                postImageURL: imageURL,
                 temperatures: temperatures,
-                outfitFeelings: OutfitFeelingsInfo(
+                outfitFeelings: OutfitFeelings(
                     feelingIndex: clothesFeeling.rawValue,
                     additionalFeelingIndices: weatherFeelings.map { $0.rawValue }
                 )

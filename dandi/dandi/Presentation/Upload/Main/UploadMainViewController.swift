@@ -28,7 +28,7 @@ final class UploadMainViewController: BaseViewController, View {
 
     private var clothesFeeling: ClothesFeeling?
     private var weatherFeelings: [WeatherFeeling] = []
-    private var temperature: TemperatureInfo? {
+    private var temperature: Temperatures? {
         didSet {
             DispatchQueue.main.async {
                 self.uploadView.collectionView.reloadData()

@@ -18,7 +18,7 @@ final class UploadMainReactor: Reactor {
 
     struct State {
         var isLoading: Bool = false
-        var temparature: TemperatureInfo = .init(min: 0, max: 0)
+        var temparature: Temperatures = .init(min: 0, max: 0)
         var postID: Int?
     }
 
@@ -33,7 +33,7 @@ final class UploadMainReactor: Reactor {
 
     enum Mutation {
         case setLoading(isLoading: Bool)
-        case setTemparature(TemperatureInfo)
+        case setTemparature(Temperatures)
         case setPostID(Int?)
     }
 

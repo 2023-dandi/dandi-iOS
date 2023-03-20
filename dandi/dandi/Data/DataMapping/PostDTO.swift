@@ -8,24 +8,46 @@
 import Foundation
 
 struct PostDTO: Codable {
-    let writerNickname: String?
-    let postImageUrl: String
-    let temperatures: TemperatureInfo
-    let outfitFeelings: OutfitFeelingsInfo
+    let mine: Bool?
+    let temperatures: Temperatures
     let createdAt: String?
+    let postImageURL: String
+    let outfitFeelings: OutfitFeelings
+    let writer: Writer?
 
     init(
-        writerNickname: String? = nil,
-        postImageUrl: String,
-        temperatures: TemperatureInfo,
-        outfitFeelings: OutfitFeelingsInfo,
+        mine: Bool? = nil,
+        writer: Writer? = nil,
+        postImageURL: String,
+        temperatures: Temperatures,
+        outfitFeelings: OutfitFeelings,
         createdAt: String? = nil
     ) {
-        self.writerNickname = writerNickname
-        self.postImageUrl = postImageUrl
+        self.mine = mine
+        self.writer = writer
+        self.postImageURL = postImageURL
         self.temperatures = temperatures
         self.outfitFeelings = outfitFeelings
         self.createdAt = createdAt
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case mine, temperatures, createdAt
+        case postImageURL = "postImageUrl"
+        case outfitFeelings, writer
+    }
+}
+
+// MARK: - Writer
+
+struct Writer: Codable {
+    let id: Int
+    let nickname: String
+    let profileImageURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, nickname
+        case profileImageURL = "profileImageUrl"
     }
 }
 
@@ -33,9 +55,9 @@ extension PostDTO {
     func toDomain(id: Int) -> Post {
         return Post(
             id: id,
-            mainImageURL: postImageUrl,
+            mainImageURL: postImageURL,
             profileImageURL: nil,
-            nickname: writerNickname ?? "",
+            nickname: writer?.nickname ?? "",
             date: createdAt ?? "",
             content: "\(temperatures.min)도~\(temperatures.max)도에, \(ClothesFeeling(rawValue: outfitFeelings.feelingIndex)?.text ?? "").",
             tag: outfitFeelings.additionalFeelingIndices?.compactMap { WeatherFeeling(rawValue: $0) } ?? [],
@@ -44,7 +66,7 @@ extension PostDTO {
     }
 }
 
-struct TemperatureInfo: Codable {
+struct Temperatures: Codable {
     let min: Int
     let max: Int
     let description: String?
@@ -56,13 +78,13 @@ struct TemperatureInfo: Codable {
     }
 }
 
-extension TemperatureInfo: Equatable {
-    static func == (lhs: TemperatureInfo, rhs: TemperatureInfo) -> Bool {
+extension Temperatures: Equatable {
+    static func == (lhs: Temperatures, rhs: Temperatures) -> Bool {
         return lhs.min == rhs.min || lhs.max == rhs.max
     }
 }
 
-struct OutfitFeelingsInfo: Codable {
+struct OutfitFeelings: Codable {
     let feelingIndex: Int
     let additionalFeelingIndices: [Int]?
 }

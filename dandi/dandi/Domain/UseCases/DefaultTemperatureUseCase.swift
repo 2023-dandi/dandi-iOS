@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 
 final class DefaultTemperatureUseCase: TemperatureUseCase {
-    let temperatureInfo = PublishRelay<TemperatureInfo?>()
+    let temperatureInfo = PublishRelay<Temperatures?>()
     let isCompletedUpdationLocation = PublishSubject<Bool>()
 
     private let weatherRepository: WeatherRepository
