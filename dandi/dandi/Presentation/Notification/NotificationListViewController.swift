@@ -32,10 +32,10 @@ final class NotificationListViewController: BaseViewController {
         title = "알림"
         setLayouts()
         dataSource.update(list: [
-            Notification(id: 1, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구", type: .heart),
-            Notification(id: 2, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구", type: .comment),
-            Notification(id: 3, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구", type: .new),
-            Notification(id: 4, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: nil, type: .heart)
+            NotificationItem(id: 1, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구", type: .heart),
+            NotificationItem(id: 2, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구", type: .comment),
+            NotificationItem(id: 3, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구", type: .new),
+            NotificationItem(id: 4, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: nil, type: .heart)
         ])
     }
 

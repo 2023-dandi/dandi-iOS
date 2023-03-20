@@ -26,6 +26,7 @@ final class PostDetailDataSource {
     private lazy var dataSource = createDataSource()
 
     private let collectionView: UICollectionView
+    private let presentingViewController: PostDetailViewController
 
     enum Section {
         case post
@@ -39,8 +40,12 @@ final class PostDetailDataSource {
         case comment(Comment)
     }
 
-    init(collectionView: UICollectionView) {
+    init(
+        collectionView: UICollectionView,
+        presentingViewController: PostDetailViewController
+    ) {
         self.collectionView = collectionView
+        self.presentingViewController = presentingViewController
     }
 
     func update(
@@ -108,8 +113,9 @@ final class PostDetailDataSource {
     }
 
     private func configureContentCell<Cell: ContentCell>() -> ContentCellRegistration<Cell> {
-        return ContentCellRegistration<Cell> { cell, _, post in
+        return ContentCellRegistration<Cell> { [weak self] cell, _, post in
             cell.configure(post: post)
+            cell.heartButtonDelegate = self?.presentingViewController
         }
     }
 

@@ -44,16 +44,6 @@ final class MyInformationViewController: BaseViewController, View {
         setLayouts()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = true
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
@@ -86,6 +76,7 @@ final class MyInformationViewController: BaseViewController, View {
             .compactMap { $0.isUpdateCompleted }
             .subscribe(onNext: { [weak self] isUpdateCompleted in
                 if isUpdateCompleted {
+                    NotificationCenterManager.reloadProfile.post()
                     self?.navigationController?.popViewController(animated: true)
                 }
             })
@@ -120,7 +111,7 @@ final class MyInformationViewController: BaseViewController, View {
             .map { owner, _ in
                 Reactor.Action.update(
                     nickname: owner.isNicknameChanged ? owner.textFieldView.text : nil,
-                    image: owner.isNicknameChanged ? owner.profileImageView.image : nil
+                    image: owner.isProfileChanged ? owner.profileImageView.image : nil
                 )
             }
             .bind(to: reactor.action)

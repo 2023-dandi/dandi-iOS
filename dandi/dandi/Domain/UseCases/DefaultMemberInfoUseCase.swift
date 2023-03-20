@@ -30,6 +30,7 @@ final class DefaultMemberInfoUseCase: MemberInfoUseCase {
         memberRepository.fetchMemberInfo { [weak self] result in
             switch result {
             case let .success(memberInfoDTO):
+                self?.memberInfoPublisher.accept(memberInfoDTO.toDomain(location: ""))
                 self?.converter.fetchAddress(
                     latitude: memberInfoDTO.latitude,
                     longitude: memberInfoDTO.longitude

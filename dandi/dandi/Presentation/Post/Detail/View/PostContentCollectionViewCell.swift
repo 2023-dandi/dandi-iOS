@@ -11,13 +11,20 @@ import SnapKit
 import Then
 import YDS
 
+protocol HeartButtonDelegate: AnyObject {
+    func buttonDidTap(postID: Int)
+}
+
 final class PostContentCollectionViewCell: UICollectionViewCell {
+    weak var heartButtonDelegate: HeartButtonDelegate?
+
     private let profileView: ProfileView = .init()
     private let mainImageView: UIImageView = .init()
     private let dateLabel: UILabel = .init()
     private let temperatureLabel: UILabel = .init()
     private let contentStackView: UIStackView = .init()
     private let heartButton: UIButton = .init()
+    private var postID: Int?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +33,7 @@ final class PostContentCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(post: Post) {
+        postID = post.id
         profileView.configure(
             profileImageURL: post.profileImageURL,
             nickname: post.nickname,
@@ -65,15 +73,14 @@ extension PostContentCollectionViewCell {
                     .withTintColor(YDSColor.buttonWarned),
                 for: .selected
             )
-            heartButton.do {
-                $0.setImage(
-                    YDSIcon.heartLine
-                        .resize(newWidth: 32)
-                        .withRenderingMode(.alwaysOriginal)
-                        .withTintColor(YDSColor.buttonNormal),
-                    for: .normal
-                )
-            }
+            $0.setImage(
+                YDSIcon.heartLine
+                    .resize(newWidth: 32)
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(YDSColor.buttonNormal),
+                for: .normal
+            )
+            $0.addTarget(self, action: #selector(heartButtonDidTap), for: .touchUpInside)
         }
     }
 
@@ -105,5 +112,12 @@ extension PostContentCollectionViewCell {
             $0.trailing.equalToSuperview().inset(20)
             $0.centerY.equalTo(contentStackView.snp.centerY)
         }
+    }
+
+    @objc
+    private func heartButtonDidTap() {
+        heartButton.isSelected.toggle()
+        guard let postID = postID else { return }
+        heartButtonDelegate?.buttonDidTap(postID: postID)
     }
 }

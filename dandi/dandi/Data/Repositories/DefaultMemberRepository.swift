@@ -35,12 +35,12 @@ final class DefaultMemberRepository: MemberRepository {
 
     func updateNickname(
         nickname: String,
-        completion: @escaping NetworkCompletion<NicknameDTO>
+        completion: @escaping NetworkCompletion<StatusCase>
     ) {
         router.request(.patchNickname(nickname: nickname)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                completion(NetworkHandler.requestErrorDecoded(by: response))
             case .failure:
                 completion(.failure(.networkFail))
             }

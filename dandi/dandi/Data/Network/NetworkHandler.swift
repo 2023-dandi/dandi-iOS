@@ -47,11 +47,11 @@ enum NetworkHandler {
         }
     }
 
-    static func requestErrorDecoded(by response: Response) -> NetworkResult<Int> {
+    static func requestErrorDecoded(by response: Response) -> NetworkResult<StatusCase> {
         let decoder = JSONDecoder()
         switch response.statusCode {
         case 200 ..< 300:
-            return .success(response.statusCode)
+            return .success(StatusCase(response.statusCode))
         case 300 ..< 500:
             guard let message = try? decoder.decode(MessageDTO.self, from: response.data) else {
                 return .failure(.httpError(ErrorResponse(statusCode: response.statusCode)))

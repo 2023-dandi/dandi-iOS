@@ -9,6 +9,7 @@ import Foundation
 
 struct PostDTO: Codable {
     let mine: Bool?
+    let liked: Bool?
     let temperatures: Temperatures
     let createdAt: String?
     let postImageURL: String
@@ -21,7 +22,8 @@ struct PostDTO: Codable {
         postImageURL: String,
         temperatures: Temperatures,
         outfitFeelings: OutfitFeelings,
-        createdAt: String? = nil
+        createdAt: String? = nil,
+        liked: Bool? = nil
     ) {
         self.mine = mine
         self.writer = writer
@@ -29,12 +31,14 @@ struct PostDTO: Codable {
         self.temperatures = temperatures
         self.outfitFeelings = outfitFeelings
         self.createdAt = createdAt
+        self.liked = liked
     }
 
     enum CodingKeys: String, CodingKey {
         case mine, temperatures, createdAt
         case postImageURL = "postImageUrl"
         case outfitFeelings, writer
+        case liked
     }
 }
 
@@ -61,7 +65,8 @@ extension PostDTO {
             date: createdAt ?? "",
             content: "\(temperatures.min)도~\(temperatures.max)도에, \(ClothesFeeling(rawValue: outfitFeelings.feelingIndex)?.text ?? "").",
             tag: outfitFeelings.additionalFeelingIndices?.compactMap { WeatherFeeling(rawValue: $0) } ?? [],
-            isLiked: true
+            isLiked: liked ?? false,
+            isMine: mine ?? false
         )
     }
 }

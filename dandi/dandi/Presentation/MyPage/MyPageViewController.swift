@@ -10,10 +10,12 @@ import UIKit
 import ReactorKit
 import RxCocoa
 import RxSwift
+import YDS
 
 final class MyPageViewController: BaseViewController, View {
     typealias Reactor = MyPageReactor
 
+    private let rightTopButton = YDSTopBarButton(image: YDSIcon.boardLine)
     private let myPageView: MyPageView = .init()
     private lazy var myPageDataSource: MyPageDataSource = .init(
         collectionView: myPageView.collectionView,
@@ -26,12 +28,14 @@ final class MyPageViewController: BaseViewController, View {
 
     override init() {
         super.init()
+        setProperties()
     }
 
     func bind(reactor: MyPageReactor) {
         bindCollectionView(reactor)
         bindState(reactor)
         bindAction(reactor)
+        bindTapAction()
     }
 
     private func bindState(_ reactor: MyPageReactor) {
@@ -40,18 +44,19 @@ final class MyPageViewController: BaseViewController, View {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, profile in
-                dump(profile)
                 owner.myPageDataSource.update(user: profile, feed: [])
             })
             .disposed(by: disposeBag)
     }
 
     private func bindAction(_ reactor: MyPageReactor) {
-        rx.viewWillAppear
-            .take(1)
-            .map { _ in Reactor.Action.fetchProfile }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        Observable.merge([
+            rx.viewWillAppear.take(1).map { _ in },
+            NotificationCenterManager.reloadProfile.addObserver().map { _ in }
+        ])
+        .map { _ in Reactor.Action.fetchProfile }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
     }
 
     private func bindCollectionView(_ reactor: MyPageReactor) {
@@ -75,5 +80,18 @@ final class MyPageViewController: BaseViewController, View {
                 }
             })
             .disposed(by: disposeBag)
+    }
+
+    private func bindTapAction() {
+        rightTopButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { _, _ in
+                // 설정창 연결
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func setProperties() {
+        navigationItem.setRightBarButton(UIBarButtonItem(customView: rightTopButton), animated: false)
     }
 }

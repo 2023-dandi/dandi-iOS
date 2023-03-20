@@ -1,5 +1,5 @@
 //
-//  Notification.swift
+//  NotificationItem.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/02/28.
@@ -10,7 +10,7 @@ import UIKit
 
 import YDS
 
-enum NotificationType {
+enum NotificationItemType {
     case heart
     case new
     case comment
@@ -24,16 +24,16 @@ enum NotificationType {
     }
 }
 
-struct Notification {
+struct NotificationItem {
     let uuid = UUID()
     let id: Int
     let title: String
     let description: String?
-    let type: NotificationType
+    let type: NotificationItemType
 }
 
-extension Notification: Equatable, Hashable {
-    static func == (lhs: Notification, rhs: Notification) -> Bool {
+extension NotificationItem: Equatable, Hashable {
+    static func == (lhs: NotificationItem, rhs: NotificationItem) -> Bool {
         return lhs.uuid == rhs.uuid
     }
 

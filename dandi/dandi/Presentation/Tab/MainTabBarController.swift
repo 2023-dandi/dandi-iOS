@@ -51,12 +51,12 @@ extension MainTabBarController {
 
         let myPageVC = factory.makeMyPageViewController()
         let myPageNavigationController = YDSNavigationController(rootViewController: myPageVC)
+        myPageNavigationController.title = "마이페이지"
         myPageNavigationController.tabBarItem = UITabBarItem(
             title: nil,
             image: Tab.my.image,
             selectedImage: Tab.my.selectedImage
         )
-        myPageNavigationController.navigationBar.isHidden = true
 
         super.setViewControllers([
             homeNavigationController,

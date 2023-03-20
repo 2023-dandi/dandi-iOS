@@ -25,7 +25,7 @@ final class NotificationCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(
-        type: NotificationType,
+        type: NotificationItemType,
         title: String,
         description: String?
     ) {

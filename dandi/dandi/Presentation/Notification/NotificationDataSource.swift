@@ -15,11 +15,11 @@ final class NotificationDataSource {
 
     typealias NotificationCell = NotificationCollectionViewCell
 
-    typealias NotificationCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Notification>
+    typealias NotificationCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, NotificationItem>
 
-    typealias CellProvider = (UICollectionView, IndexPath, Notification) -> UICollectionViewCell?
-    typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, Notification>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Notification>
+    typealias CellProvider = (UICollectionView, IndexPath, NotificationItem) -> UICollectionViewCell?
+    typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, NotificationItem>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, NotificationItem>
 
     private let collectionView: UICollectionView
 
@@ -37,14 +37,14 @@ final class NotificationDataSource {
 
     // MARK: - Update DataSource
 
-    func update(list: [Notification]) {
+    func update(list: [NotificationItem]) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(list)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 
-    func itemIdentifier(for indexPath: IndexPath) -> Notification? {
+    func itemIdentifier(for indexPath: IndexPath) -> NotificationItem? {
         return dataSource.itemIdentifier(for: indexPath)
     }
 }

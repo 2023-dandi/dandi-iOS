@@ -27,6 +27,8 @@
 		DD00E80C29C8706B001536D4 /* DefaultNicknameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */; };
 		DD00E80E29C8A9B0001536D4 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80D29C8A9B0001536D4 /* ImageUseCase.swift */; };
 		DD00E81029C8A9BC001536D4 /* DefaultImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80F29C8A9BC001536D4 /* DefaultImageUseCase.swift */; };
+		DD00E81329C8C8F3001536D4 /* NotificationCenterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E81229C8C8F3001536D4 /* NotificationCenterHandler.swift */; };
+		DD00E81529C8C8FD001536D4 /* NotificaionCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E81429C8C8FD001536D4 /* NotificaionCenterManager.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -127,7 +129,7 @@
 		DDA8166F29AE0E6200963776 /* NotificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8166E29AE0E6200963776 /* NotificationCollectionViewCell.swift */; };
 		DDA8167129AE0E6E00963776 /* NotificationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8167029AE0E6E00963776 /* NotificationReactor.swift */; };
 		DDA8167329AE26DB00963776 /* NotificationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8167229AE26DB00963776 /* NotificationDataSource.swift */; };
-		DDA8167529AE273900963776 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8167429AE273900963776 /* Notification.swift */; };
+		DDA8167529AE273900963776 /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8167429AE273900963776 /* NotificationItem.swift */; };
 		DDAEF5C729B721710018B577 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEF5C629B721710018B577 /* Image.swift */; };
 		DDAEF5C929B748570018B577 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEF5C829B748570018B577 /* String+.swift */; };
 		DDB23BA42993954A000735FB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB23BA32993954A000735FB /* MyPageView.swift */; };
@@ -208,6 +210,8 @@
 		DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNicknameUseCase.swift; sourceTree = "<group>"; };
 		DD00E80D29C8A9B0001536D4 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
 		DD00E80F29C8A9BC001536D4 /* DefaultImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageUseCase.swift; sourceTree = "<group>"; };
+		DD00E81229C8C8F3001536D4 /* NotificationCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHandler.swift; sourceTree = "<group>"; };
+		DD00E81429C8C8FD001536D4 /* NotificaionCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificaionCenterManager.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -302,7 +306,7 @@
 		DDA8166E29AE0E6200963776 /* NotificationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8167029AE0E6E00963776 /* NotificationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationReactor.swift; sourceTree = "<group>"; };
 		DDA8167229AE26DB00963776 /* NotificationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDataSource.swift; sourceTree = "<group>"; };
-		DDA8167429AE273900963776 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		DDA8167429AE273900963776 /* NotificationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItem.swift; sourceTree = "<group>"; };
 		DDAEF5C629B721710018B577 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		DDAEF5C829B748570018B577 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		DDB23BA32993954A000735FB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
@@ -382,6 +386,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD00E81129C8C8D7001536D4 /* NotificationHandler */ = {
+			isa = PBXGroup;
+			children = (
+				DD00E81229C8C8F3001536D4 /* NotificationCenterHandler.swift */,
+				DD00E81429C8C8FD001536D4 /* NotificaionCenterManager.swift */,
+			);
+			path = NotificationHandler;
+			sourceTree = "<group>";
+		};
 		DD1721DC29B64FF000757C55 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +740,7 @@
 		DD9B06EB295ECF0100A98041 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				DD00E81129C8C8D7001536D4 /* NotificationHandler */,
 				DDCDA17729C311C600BAB1CF /* Reusable */,
 				DD31232229B1BA5300443FCE /* KeychainHandler */,
 				DD9B06F0295ECFE000A98041 /* Log */,
@@ -803,7 +817,7 @@
 				DDDBD44D2979338800452F01 /* ClosetImage.swift */,
 				DDC521FF299520E500E2845F /* UserProfile.swift */,
 				DDA8164E29ACAD6800963776 /* Comment.swift */,
-				DDA8167429AE273900963776 /* Notification.swift */,
+				DDA8167429AE273900963776 /* NotificationItem.swift */,
 				DDCDA17329C2F5D600BAB1CF /* ClothesFeeling.swift */,
 				DDCDA17529C2F6E200BAB1CF /* WeatherFeeling.swift */,
 			);
@@ -1260,12 +1274,13 @@
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DD00E81029C8A9BC001536D4 /* DefaultImageUseCase.swift in Sources */,
 				DD00E80629C8478E001536D4 /* MyPageReactor.swift in Sources */,
+				DD00E81529C8C8FD001536D4 /* NotificaionCenterManager.swift in Sources */,
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DDDBD44C29792CEB00452F01 /* ClosetImageCollectionViewCell.swift in Sources */,
 				DDCDA17029C2EE2600BAB1CF /* SectionTitleHeaderView.swift in Sources */,
 				DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */,
-				DDA8167529AE273900963776 /* Notification.swift in Sources */,
+				DDA8167529AE273900963776 /* NotificationItem.swift in Sources */,
 				DDC52200299520E500E2845F /* UserProfile.swift in Sources */,
 				DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */,
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
@@ -1292,6 +1307,7 @@
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */,
 				DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */,
+				DD00E81329C8C8F3001536D4 /* NotificationCenterHandler.swift in Sources */,
 				DD1B1A1129BE12610039D8FB /* StickerEditorView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
 				DD00E80429C844B7001536D4 /* MyPageUseCase.swift in Sources */,

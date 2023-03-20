@@ -15,7 +15,7 @@ protocol MemberRepository {
 
     func updateNickname(
         nickname: String,
-        completion: @escaping NetworkCompletion<NicknameDTO>
+        completion: @escaping NetworkCompletion<StatusCase>
     )
 
     func updateLocation(

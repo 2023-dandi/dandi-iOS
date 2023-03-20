@@ -28,7 +28,8 @@ final class PostDetailViewController: BaseViewController, View {
     }()
 
     private lazy var dataSource = PostDetailDataSource(
-        collectionView: self.collectionView
+        collectionView: self.collectionView,
+        presentingViewController: self
     )
 
     private let moreButton: UIButton = .init()
@@ -124,6 +125,12 @@ extension PostDetailViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension PostDetailViewController: HeartButtonDelegate {
+    func buttonDidTap(postID: Int) {
+        dump(postID)
     }
 }
 
