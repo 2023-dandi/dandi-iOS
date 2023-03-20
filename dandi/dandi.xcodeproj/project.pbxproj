@@ -12,6 +12,12 @@
 		DD00E7EC29C776F9001536D4 /* UploadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */; };
 		DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */; };
 		DD00E7F029C817CB001536D4 /* PostIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7EF29C817CB001536D4 /* PostIdDTO.swift */; };
+		DD00E7F229C8223D001536D4 /* MemberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7F129C8223D001536D4 /* MemberService.swift */; };
+		DD00E7F429C82B1B001536D4 /* MemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7F329C82B1B001536D4 /* MemberRepository.swift */; };
+		DD00E7F829C82EA8001536D4 /* NicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7F729C82EA8001536D4 /* NicknameDTO.swift */; };
+		DD00E7FA29C82F08001536D4 /* LocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7F929C82F08001536D4 /* LocationDTO.swift */; };
+		DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */; };
+		DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -144,7 +150,7 @@
 		DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2FB29C36F39007BDBA7 /* PostService.swift */; };
 		DDE3E30029C375FC007BDBA7 /* DefaultPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2FF29C375FC007BDBA7 /* DefaultPostRepository.swift */; };
 		DDE3E30229C376CD007BDBA7 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30129C376CD007BDBA7 /* PostDTO.swift */; };
-		DDE3E30429C37AA8007BDBA7 /* PostImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */; };
+		DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30329C37AA8007BDBA7 /* ImageDTO.swift */; };
 		DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */; };
 		DDE3E30829C37C70007BDBA7 /* UploadMainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30729C37C70007BDBA7 /* UploadMainReactor.swift */; };
 		DDE3E30A29C37F91007BDBA7 /* DefaultTemperatureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E30929C37F91007BDBA7 /* DefaultTemperatureUseCase.swift */; };
@@ -178,6 +184,12 @@
 		DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadUseCase.swift; sourceTree = "<group>"; };
 		DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailUseCase.swift; sourceTree = "<group>"; };
 		DD00E7EF29C817CB001536D4 /* PostIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIdDTO.swift; sourceTree = "<group>"; };
+		DD00E7F129C8223D001536D4 /* MemberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberService.swift; sourceTree = "<group>"; };
+		DD00E7F329C82B1B001536D4 /* MemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepository.swift; sourceTree = "<group>"; };
+		DD00E7F729C82EA8001536D4 /* NicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameDTO.swift; sourceTree = "<group>"; };
+		DD00E7F929C82F08001536D4 /* LocationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDTO.swift; sourceTree = "<group>"; };
+		DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoDTO.swift; sourceTree = "<group>"; };
+		DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationDTO.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -304,7 +316,7 @@
 		DDE3E2FB29C36F39007BDBA7 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		DDE3E2FF29C375FC007BDBA7 /* DefaultPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostRepository.swift; sourceTree = "<group>"; };
 		DDE3E30129C376CD007BDBA7 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
-		DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDTO.swift; sourceTree = "<group>"; };
+		DDE3E30329C37AA8007BDBA7 /* ImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDTO.swift; sourceTree = "<group>"; };
 		DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		DDE3E30729C37C70007BDBA7 /* UploadMainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMainReactor.swift; sourceTree = "<group>"; };
 		DDE3E30929C37F91007BDBA7 /* DefaultTemperatureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTemperatureUseCase.swift; sourceTree = "<group>"; };
@@ -505,6 +517,7 @@
 		DD239922295D86DF00A898B2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DD0B685A29C760C5000A0E24 /* StatusCase.swift */,
 				DD31234329B1EFFC00443FCE /* NetworkError.swift */,
 				DD9F6FC529B308FE002BD4B4 /* NetworkResult.swift */,
 				DD31234129B1EDDB00443FCE /* NetworkHandler.swift */,
@@ -512,7 +525,6 @@
 				DD31233F29B1EA0300443FCE /* BaseTargetType.swift */,
 				DD31232029B1B9F500443FCE /* Interceptor.swift */,
 				DD31233C29B1E55500443FCE /* Service */,
-				DD0B685A29C760C5000A0E24 /* StatusCase.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -552,6 +564,7 @@
 				DD31232D29B1D5D300443FCE /* AuthRepository.swift */,
 				DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */,
 				DDE3E30529C37B2B007BDBA7 /* PostRepository.swift */,
+				DD00E7F329C82B1B001536D4 /* MemberRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -564,8 +577,12 @@
 				DD9F6FC729B30A23002BD4B4 /* TokenDTO.swift */,
 				DD9F6FD829B4EC7C002BD4B4 /* WeatherDTO.swift */,
 				DDE3E30129C376CD007BDBA7 /* PostDTO.swift */,
-				DDE3E30329C37AA8007BDBA7 /* PostImageDTO.swift */,
+				DDE3E30329C37AA8007BDBA7 /* ImageDTO.swift */,
 				DD00E7EF29C817CB001536D4 /* PostIdDTO.swift */,
+				DD00E7F729C82EA8001536D4 /* NicknameDTO.swift */,
+				DD00E7F929C82F08001536D4 /* LocationDTO.swift */,
+				DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */,
+				DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -576,6 +593,7 @@
 				DD31233D29B1E56000443FCE /* AuthService.swift */,
 				DD9F6FDA29B4EF5B002BD4B4 /* WeatherService.swift */,
 				DDE3E2FB29C36F39007BDBA7 /* PostService.swift */,
+				DD00E7F129C8223D001536D4 /* MemberService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1167,6 +1185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD00E7FA29C82F08001536D4 /* LocationDTO.swift in Sources */,
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
@@ -1174,7 +1193,9 @@
 				DDE3E30A29C37F91007BDBA7 /* DefaultTemperatureUseCase.swift in Sources */,
 				DD9B06EA295ECDC800A98041 /* BaseViewController.swift in Sources */,
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
+				DD00E7F229C8223D001536D4 /* MemberService.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
+				DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */,
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
 				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
@@ -1198,7 +1219,7 @@
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */,
-				DDE3E30429C37AA8007BDBA7 /* PostImageDTO.swift in Sources */,
+				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
@@ -1226,6 +1247,7 @@
 				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
+				DD00E7F829C82EA8001536D4 /* NicknameDTO.swift in Sources */,
 				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
 				DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
@@ -1235,6 +1257,7 @@
 				DDA8167329AE26DB00963776 /* NotificationDataSource.swift in Sources */,
 				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
 				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
+				DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */,
 				DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */,
 				DD1B1A1129BE12610039D8FB /* StickerEditorView.swift in Sources */,
 				DDA38FE929641CCB006FBE00 /* Post.swift in Sources */,
@@ -1279,6 +1302,7 @@
 				DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */,
 				DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */,
 				DD2E52E229BF2ABD0078EA74 /* DecorationView.swift in Sources */,
+				DD00E7F429C82B1B001536D4 /* MemberRepository.swift in Sources */,
 				DDA8166629AE017A00963776 /* MyPagePostCollectionViewCell.swift in Sources */,
 				DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */,
 				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,

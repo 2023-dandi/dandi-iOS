@@ -23,6 +23,7 @@ enum StatusCase: String, Decodable {
     case serviceUnavailable = "SERVICE_UNAVAILABLE"
     case notDefined = "NOT_DEFINED_CLIENT_ERROR"
 
+    // swiftlint: disable cyclomatic_complexity
     init(_ statusCode: Int) {
         switch statusCode {
         case 200: self = .okay

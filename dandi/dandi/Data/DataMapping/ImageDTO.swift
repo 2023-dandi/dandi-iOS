@@ -8,3 +8,7 @@
 struct PostImageDTO: Decodable {
     let postImageUrl: String
 }
+
+struct ProfileImageDTO: Decodable {
+    let profileImageUrl: String
+}
