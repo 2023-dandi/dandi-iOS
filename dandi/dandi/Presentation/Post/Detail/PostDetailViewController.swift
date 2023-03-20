@@ -37,6 +37,8 @@ final class PostDetailViewController: BaseViewController, View {
     private var isKeyboardPresented = false
     private let postID: Int
 
+    private let likePublisher = PublishSubject<Int>()
+
     init(postID: Int) {
         self.postID = postID
         super.init()
@@ -82,6 +84,13 @@ extension PostDetailViewController {
             .map { owner, _ in Reactor.Action.fetchPostDetail(id: owner.postID) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
+        likePublisher
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .withUnretained(self)
+            .map { owner, _ in Reactor.Action.like(id: owner.postID) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 
     private func bindState(_ reactor: Reactor) {
@@ -91,6 +100,16 @@ extension PostDetailViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, post in
                 owner.dataSource.update(post: post, comments: [])
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.isLiked }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { _, isLiked in
+                // 게시물 리스트 업데이트 로직 심기
+                dump(isLiked)
             })
             .disposed(by: disposeBag)
     }
@@ -130,7 +149,7 @@ extension PostDetailViewController {
 
 extension PostDetailViewController: HeartButtonDelegate {
     func buttonDidTap(postID: Int) {
-        dump(postID)
+        likePublisher.onNext(postID)
     }
 }
 

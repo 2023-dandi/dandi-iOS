@@ -22,4 +22,9 @@ protocol PostRepository {
         post: PostDTO,
         completion: @escaping NetworkCompletion<PostIdDTO>
     )
+
+    func like(
+        id: Int,
+        completion: @escaping NetworkCompletion<StatusCase>
+    )
 }

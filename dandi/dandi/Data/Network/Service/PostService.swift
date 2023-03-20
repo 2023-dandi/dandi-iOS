@@ -12,6 +12,7 @@ enum PostService {
     case postImage(image: UIImage)
     case postPosts(post: PostDTO)
     case getDetailPost(id: Int)
+    case like(id: Int)
 }
 
 extension PostService: BaseTargetType {
@@ -38,6 +39,8 @@ extension PostService: BaseTargetType {
             return "/posts"
         case let .getDetailPost(id):
             return "/posts/\(id)"
+        case let .like(id):
+            return "/posts/\(id)/likes"
         }
     }
 
@@ -47,6 +50,8 @@ extension PostService: BaseTargetType {
             return .post
         case .getDetailPost:
             return .get
+        case .like:
+            return .patch
         }
     }
 
@@ -66,6 +71,8 @@ extension PostService: BaseTargetType {
             return .requestJSONEncodable(post)
 
         case .getDetailPost:
+            return .requestPlain
+        case .like:
             return .requestPlain
         }
     }

@@ -67,7 +67,7 @@ final class HomeViewController: BaseViewController, View {
                     owner.homeDataSource.update(
                         temperature: hourlyWeather.temperature,
                         timeWeathers: hourlyWeathers,
-                        same: []
+                        same: [Post(id: 4, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", tag: [], isLiked: true, isMine: true)]
                     )
                     owner.homeView.configure(
                         temperature: hourlyWeather.temperature,

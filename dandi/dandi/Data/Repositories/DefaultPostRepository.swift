@@ -60,4 +60,18 @@ final class DefaultPostRepository: PostRepository {
             }
         }
     }
+
+    func like(
+        id: Int,
+        completion: @escaping NetworkCompletion<StatusCase>
+    ) {
+        router.request(.like(id: id)) { result in
+            switch result {
+            case let .success(response):
+                completion(NetworkHandler.requestErrorDecoded(by: response))
+            case .failure:
+                completion(.failure(.networkFail))
+            }
+        }
+    }
 }

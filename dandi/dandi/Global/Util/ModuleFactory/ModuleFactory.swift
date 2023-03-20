@@ -104,6 +104,11 @@ extension ModuleFactory: ModulFactoryInterface {
                 postRepository: DefaultPostRepository(
                     interceptor: Interceptor()
                 )
+            ),
+            postLikeUseCase: DefaultPostLikeUseCase(
+                postRepository: DefaultPostRepository(
+                    interceptor: Interceptor()
+                )
             )
         )
         return vc
