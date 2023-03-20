@@ -7,9 +7,6 @@
 
 import Alamofire
 import Foundation
-import Moya
-import RxMoya
-import RxSwift
 
 final class DefaultWeatherRepository: WeatherRepository {
     private let weatherService: WeatherService

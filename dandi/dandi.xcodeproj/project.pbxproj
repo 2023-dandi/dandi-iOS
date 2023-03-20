@@ -18,6 +18,7 @@
 		DD00E7FA29C82F08001536D4 /* LocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7F929C82F08001536D4 /* LocationDTO.swift */; };
 		DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */; };
 		DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */; };
+		DD00E80029C83DF0001536D4 /* DefaultMemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E7FF29C83DF0001536D4 /* DefaultMemberRepository.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -190,6 +191,7 @@
 		DD00E7F929C82F08001536D4 /* LocationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDTO.swift; sourceTree = "<group>"; };
 		DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoDTO.swift; sourceTree = "<group>"; };
 		DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationDTO.swift; sourceTree = "<group>"; };
+		DD00E7FF29C83DF0001536D4 /* DefaultMemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMemberRepository.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				DD31233A29B1E49F00443FCE /* DefaultAuthRepository.swift */,
 				DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */,
 				DDE3E2FF29C375FC007BDBA7 /* DefaultPostRepository.swift */,
+				DD00E7FF29C83DF0001536D4 /* DefaultMemberRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1226,6 +1229,7 @@
 				DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */,
 				DD00E7F029C817CB001536D4 /* PostIdDTO.swift in Sources */,
 				DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */,
+				DD00E80029C83DF0001536D4 /* DefaultMemberRepository.swift in Sources */,
 				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,

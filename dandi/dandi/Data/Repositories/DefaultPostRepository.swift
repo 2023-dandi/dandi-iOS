@@ -5,10 +5,9 @@
 //  Created by 김윤서 on 2023/03/17.
 //
 
-import Moya
-import RxMoya
-import RxSwift
 import UIKit
+
+import Moya
 
 final class DefaultPostRepository: PostRepository {
     let router: MoyaProvider<PostService>

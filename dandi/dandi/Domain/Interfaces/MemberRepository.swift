@@ -5,28 +5,31 @@
 //  Created by 김윤서 on 2023/03/20.
 //
 
+import UIKit
 
 protocol MemberRepository {
     func updateProfileImage(
-        id: Int,
-        completion: @escaping NetworkCompletion<PostDTO>
+        image: UIImage,
+        completion: @escaping NetworkCompletion<ProfileImageDTO>
     )
 
     func updateNickname(
-        id: Int,
-        completion: @escaping NetworkCompletion<PostDTO>
+        nickname: String,
+        completion: @escaping NetworkCompletion<NicknameDTO>
     )
 
     func updateLocation(
-        id: Int,
-        completion: @escaping NetworkCompletion<PostDTO>
+        latitude: Double,
+        longitude: Double,
+        completion: @escaping NetworkCompletion<LocationDTO>
     )
 
     func fetchMemberInfo(
-        completion: @escaping NetworkCompletion<PostDTO>
+        completion: @escaping NetworkCompletion<MemberInfoDTO>
     )
 
     func confirmNicknameDuplication(
-        completion: @escaping NetworkCompletion<PostDTO>
+        nickname: String,
+        completion: @escaping NetworkCompletion<DuplicationDTO>
     )
 }
