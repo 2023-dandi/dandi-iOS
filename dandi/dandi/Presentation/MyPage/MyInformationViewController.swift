@@ -7,6 +7,7 @@
 
 import UIKit
 
+import ReactorKit
 import RxCocoa
 import RxGesture
 import RxSwift
@@ -14,7 +15,9 @@ import SnapKit
 import Then
 import YDS
 
-final class MyInformationViewController: BaseViewController {
+final class MyInformationViewController: BaseViewController, View {
+    typealias Reactor = MyInformationReactor
+
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
         set { super.hidesBottomBarWhenPushed = newValue }
@@ -37,7 +40,6 @@ final class MyInformationViewController: BaseViewController {
         super.init()
         setProperties()
         setLayouts()
-        bind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +57,53 @@ final class MyInformationViewController: BaseViewController {
         hideKeyboardWhenTappedAround()
     }
 
-    func bind() {
+    func bind(reactor: Reactor) {
+        bindTapAction()
+        bindAction(reactor)
+        bindState(reactor)
+    }
+
+    private func bindState(_ reactor: Reactor) {
+        reactor.state
+            .compactMap { $0.isValidNickname }
+            .subscribe(onNext: { [weak self] isValid in
+                self?.doneButton.isEnabled = isValid
+                self?.textFieldView.isPositive = isValid
+                self?.textFieldView.isNegative = !isValid
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.helperText }
+            .subscribe(onNext: { [weak self] text in
+                self?.textFieldView.helperLabelText = text
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func bindAction(_ reactor: Reactor) {
+        rx.viewWillAppear
+            .take(1)
+            .subscribe(onNext: { [weak self] _ in
+                self?.textFieldView.text = reactor.currentState.profile.nickname
+            })
+            .disposed(by: disposeBag)
+
+        textFieldView.textField.rx.text
+            .do { [weak self] _ in
+                self?.textFieldView.isPositive = false
+                self?.textFieldView.isNegative = false
+                self?.textFieldView.helperLabelText = " "
+            }
+            .distinctUntilChanged()
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .compactMap { $0 }
+            .map { Reactor.Action.checkNicknameValidation(nickname: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindTapAction() {
         profileImageView.rx.tapGesture
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
@@ -112,6 +160,7 @@ final class MyInformationViewController: BaseViewController {
         }
         textFieldView.do {
             $0.fieldLabelText = "닉네임"
+            $0.helperLabelText = " "
         }
         [locationTitleLabel, historyTitleLabel].forEach {
             $0.textColor = YDSColor.textSecondary
@@ -146,7 +195,7 @@ final class MyInformationViewController: BaseViewController {
         textFieldView.snp.makeConstraints {
             $0.top.equalTo(profileImageView.snp.bottom).offset(32)
             $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(98)
+            $0.height.equalTo(110)
         }
         contentStackView.snp.makeConstraints {
             $0.top.equalTo(textFieldView.snp.bottom).offset(12)

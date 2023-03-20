@@ -29,7 +29,7 @@ final class MyPageViewController: BaseViewController, View {
     }
 
     func bind(reactor: MyPageReactor) {
-        bindCollectionView()
+        bindCollectionView(reactor)
         bindState(reactor)
         bindAction(reactor)
     }
@@ -40,6 +40,7 @@ final class MyPageViewController: BaseViewController, View {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, profile in
+                dump(profile)
                 owner.myPageDataSource.update(user: profile, feed: [])
             })
             .disposed(by: disposeBag)
@@ -53,14 +54,15 @@ final class MyPageViewController: BaseViewController, View {
             .disposed(by: disposeBag)
     }
 
-    private func bindCollectionView() {
+    private func bindCollectionView(_ reactor: MyPageReactor) {
         myPageView.collectionView.rx.itemSelected
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 switch owner.myPageDataSource.itemIdentifier(for: indexPath) {
                 case .profile:
+                    guard let profile = reactor.currentState.profile else { return }
                     owner.navigationController?.pushViewController(
-                        owner.factory.makeMyInformationViewController(),
+                        owner.factory.makeMyInformationViewController(userProfile: profile),
                         animated: true
                     )
                 case let .post(post):

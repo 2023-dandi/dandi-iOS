@@ -20,7 +20,7 @@ protocol ModulFactoryInterface {
     func makeClosetViewController() -> ClosetViewController
     func makePhotoLibraryViewController() -> PhotoLibraryViewController
     func makePostDetailViewController(postID: Int) -> PostDetailViewController
-    func makeMyInformationViewController() -> MyInformationViewController
+    func makeMyInformationViewController(userProfile: UserProfile) -> MyInformationViewController
     func makeDecorationViewController(selectedImages: [UIImage]) -> DecorationViewController
     func makeUploadMainViewController(image: UIImage) -> UploadMainViewController
 }
@@ -109,9 +109,18 @@ extension ModuleFactory: ModulFactoryInterface {
         return vc
     }
 
-    func makeMyInformationViewController() -> MyInformationViewController {
+    func makeMyInformationViewController(userProfile: UserProfile) -> MyInformationViewController {
         let vc = MyInformationViewController()
         vc.factory = self
+        vc.reactor = MyInformationReactor(
+            userProfile: userProfile,
+            nicknameUseCase: DefaultNicknameUseCase(
+                memberRepository: DefaultMemberRepository(
+                    interceptor: Interceptor(
+                    )
+                )
+            )
+        )
         return vc
     }
 

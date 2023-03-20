@@ -74,20 +74,19 @@ final class LocationConverter {
     func fetchAddress(
         latitude: Double,
         longitude: Double,
-        handler: @escaping (String) -> Void
+        completion: @escaping (String) -> Void
     ) {
-        var address = ""
         let geocoder = CLGeocoder()
         let location = CLLocation(latitude: latitude, longitude: longitude)
 
-        geocoder.reverseGeocodeLocation(location) { placemarks, _ in
-            var placeMark: CLPlacemark?
-            placeMark = placemarks?[0]
-
-            if let locationName = placeMark?.name as? String {
-                address += locationName + ", "
-            }
-            handler(address)
+        let local = Locale(identifier: "Ko-kr")
+        geocoder.reverseGeocodeLocation(location, preferredLocale: local) { placemarks, _ in
+            guard
+                let address: [CLPlacemark] = placemarks,
+                let last = address.first
+            else { return }
+            dump(address)
+            completion("\(last.locality ?? "") \(last.subLocality ?? "")")
         }
     }
 }

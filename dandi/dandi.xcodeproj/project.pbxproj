@@ -22,6 +22,9 @@
 		DD00E80229C844AB001536D4 /* DefaultMemberInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80129C844AB001536D4 /* DefaultMemberInfoUseCase.swift */; };
 		DD00E80429C844B7001536D4 /* MyPageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80329C844B7001536D4 /* MyPageUseCase.swift */; };
 		DD00E80629C8478E001536D4 /* MyPageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80529C8478E001536D4 /* MyPageReactor.swift */; };
+		DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80729C86E02001536D4 /* MyInformationReactor.swift */; };
+		DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80929C87047001536D4 /* NicknameUseCase.swift */; };
+		DD00E80C29C8706B001536D4 /* DefaultNicknameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */; };
 		DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */; };
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
@@ -198,6 +201,9 @@
 		DD00E80129C844AB001536D4 /* DefaultMemberInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMemberInfoUseCase.swift; sourceTree = "<group>"; };
 		DD00E80329C844B7001536D4 /* MyPageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageUseCase.swift; sourceTree = "<group>"; };
 		DD00E80529C8478E001536D4 /* MyPageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageReactor.swift; sourceTree = "<group>"; };
+		DD00E80729C86E02001536D4 /* MyInformationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationReactor.swift; sourceTree = "<group>"; };
+		DD00E80929C87047001536D4 /* NicknameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameUseCase.swift; sourceTree = "<group>"; };
+		DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNicknameUseCase.swift; sourceTree = "<group>"; };
 		DD0B685829C75C63000A0E24 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -626,6 +632,7 @@
 				DDE3E30B29C380A0007BDBA7 /* DefaultUploadUseCase.swift */,
 				DD0B685E29C764B2000A0E24 /* DefaultPostDetailUseCase.swift */,
 				DD00E80129C844AB001536D4 /* DefaultMemberInfoUseCase.swift */,
+				DD00E80B29C8706B001536D4 /* DefaultNicknameUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -639,6 +646,7 @@
 				DD00E7EB29C776F9001536D4 /* UploadUseCase.swift */,
 				DD00E7ED29C77712001536D4 /* PostDetailUseCase.swift */,
 				DD00E80329C844B7001536D4 /* MyPageUseCase.swift */,
+				DD00E80929C87047001536D4 /* NicknameUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -679,8 +687,9 @@
 				DDB23BA529939553000735FB /* DataSource */,
 				DDB23BA22993953C000735FB /* View */,
 				DD9B06E2295EC83100A98041 /* MyPageViewController.swift */,
-				DDA8165629ACDA1900963776 /* MyInformationViewController.swift */,
 				DD00E80529C8478E001536D4 /* MyPageReactor.swift */,
+				DDA8165629ACDA1900963776 /* MyInformationViewController.swift */,
+				DD00E80729C86E02001536D4 /* MyInformationReactor.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1212,6 +1221,7 @@
 				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
 				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
 				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
+				DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
 				DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
@@ -1309,6 +1319,7 @@
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
+				DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */,
 				DDB23BA42993954A000735FB /* MyPageView.swift in Sources */,
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
@@ -1323,6 +1334,7 @@
 				DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */,
 				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
+				DD00E80C29C8706B001536D4 /* DefaultNicknameUseCase.swift in Sources */,
 				DDE3E30029C375FC007BDBA7 /* DefaultPostRepository.swift in Sources */,
 				DDA8167129AE0E6E00963776 /* NotificationReactor.swift in Sources */,
 				DD31233929B1D7E200443FCE /* MessageDTO.swift in Sources */,
