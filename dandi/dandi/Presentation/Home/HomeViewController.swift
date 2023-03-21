@@ -33,6 +33,9 @@ final class HomeViewController: BaseViewController, View {
     }
 
     private lazy var coordinatePublisher = BehaviorRelay<CLLocationCoordinate2D>(value: coordinate)
+    private let addButton: UIButton = .init()
+    private let closetButton: UIButton = .init()
+    private let writingButton: UIButton = .init()
 
     override func loadView() {
         view = homeView
@@ -42,6 +45,8 @@ final class HomeViewController: BaseViewController, View {
         super.init()
         setLocationManager()
         setGradientColors()
+        setLayouts()
+        setProperties()
     }
 
     func bind(reactor: HomeReactor) {
@@ -104,15 +109,36 @@ final class HomeViewController: BaseViewController, View {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
+    private func setProperties() {
+        addButton.do {
+            $0.cornerRadius = 30
+            $0.backgroundColor = YDSColor.buttonPoint
+            $0.setImage(
+                YDSIcon.plusLine
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(.white),
+                for: .normal
+            )
+        }
+    }
+
+    private func setLayouts() {
+        view.addSubview(addButton)
+        addButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.size.equalTo(60)
+        }
+    }
+
     private func bindTapAction() {
-        homeView.addButton.rx.tap
+        addButton.rx.tap
             .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.navigationController?.pushViewController(
-                    owner.factory.makeClosetViewController(),
-                    animated: true
-                )
+                let popupController = HomeButtonViewController()
+                popupController.modalPresentationStyle = .overFullScreen
+                popupController.modalTransitionStyle = .crossDissolve
+                owner.present(popupController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
 

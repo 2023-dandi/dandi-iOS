@@ -39,7 +39,6 @@ final class HomeView: UIView {
     }()
 
     private(set) lazy var statusBarView = UIView()
-    private(set) lazy var addButton: UIButton = .init()
 
     private var colors: [UIColor] = []
 
@@ -78,16 +77,6 @@ final class HomeView: UIView {
 
 extension HomeView {
     private func setProperties() {
-        addButton.do {
-            $0.cornerRadius = 30
-            $0.backgroundColor = YDSColor.buttonPoint
-            $0.setImage(
-                YDSIcon.plusLine
-                    .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.white),
-                for: .normal
-            )
-        }
         statusBarView.do {
             $0.backgroundColor = .white
             $0.alpha = 0
@@ -95,17 +84,13 @@ extension HomeView {
     }
 
     private func setLayouts() {
-        addSubviews(bannerView, collectionView, addButton, statusBarView, notificationButton)
+        addSubviews(bannerView, collectionView, statusBarView, notificationButton)
         bannerView.snp.makeConstraints { make in
             make.height.equalTo(350)
             make.leading.top.trailing.equalToSuperview()
         }
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-        }
-        addButton.snp.makeConstraints { make in
-            make.bottom.trailing.equalTo(safeAreaLayoutGuide).inset(16)
-            make.size.equalTo(60)
         }
         statusBarView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()

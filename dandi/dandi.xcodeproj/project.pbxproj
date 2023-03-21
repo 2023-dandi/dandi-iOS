@@ -70,6 +70,7 @@
 		DD31234B29B2556000443FCE /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234A29B2556000443FCE /* LoginReactor.swift */; };
 		DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */; };
 		DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31235029B2593D00443FCE /* AuthUseCase.swift */; };
+		DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -260,6 +261,7 @@
 		DD31234A29B2556000443FCE /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		DD31235029B2593D00443FCE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonViewController.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 				DDA38FEC29655B0A006FBE00 /* View */,
 				DDA38FE329641AFF006FBE00 /* HomeReactor.swift */,
 				DD9B06D3295EC72E00A98041 /* HomeViewController.swift */,
+				DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				DD9F6FE129B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */,
+				DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
