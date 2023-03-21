@@ -13,7 +13,13 @@ import SnapKit
 import Then
 import YDS
 
+protocol RotaionDelegate: AnyObject {
+    func rotate()
+}
+
 final class HomeButtonViewController: BaseViewController {
+    weak var delegate: RotaionDelegate?
+
     private let closeButton: UIButton = .init()
     private let closetButton: UIButton = .init()
     private let writingButton: UIButton = .init()
@@ -32,6 +38,7 @@ final class HomeButtonViewController: BaseViewController {
         ])
         .withUnretained(self)
         .subscribe(onNext: { owner, _ in
+            owner.delegate?.rotate()
             owner.dismiss(animated: true)
         })
         .disposed(by: disposeBag)

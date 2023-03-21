@@ -135,10 +135,12 @@ final class HomeViewController: BaseViewController, View {
             .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                let popupController = HomeButtonViewController()
-                popupController.modalPresentationStyle = .overFullScreen
-                popupController.modalTransitionStyle = .crossDissolve
-                owner.present(popupController, animated: true, completion: nil)
+                owner.addButton.transform = CGAffineTransform(rotationAngle: 180)
+                let vc = HomeButtonViewController()
+                vc.modalPresentationStyle = .overFullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                vc.delegate = self
+                owner.present(vc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
 
@@ -218,5 +220,11 @@ extension CLLocationCoordinate2D: Equatable {
     public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
         return String(format: "%.1f", lhs.latitude) == String(format: "%.1f", rhs.latitude)
             && String(format: "%.1f", lhs.longitude) == String(format: "%.1f", rhs.longitude)
+    }
+}
+
+extension HomeViewController: RotaionDelegate {
+    func rotate() {
+        addButton.transform = CGAffineTransform(rotationAngle: 0)
     }
 }
