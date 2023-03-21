@@ -52,7 +52,7 @@ final class HomeButtonViewController: BaseViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.delegate?.present(owner.factory.makeClosetViewController())
-                owner.dismiss(animated: true)
+                owner.dismiss(animated: false)
             })
             .disposed(by: disposeBag)
 
@@ -60,7 +60,7 @@ final class HomeButtonViewController: BaseViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.delegate?.present(owner.factory.makeDecorationViewController(selectedImages: []))
-                owner.dismiss(animated: true)
+                owner.dismiss(animated: false)
             })
             .disposed(by: disposeBag)
     }
