@@ -15,6 +15,7 @@ protocol ModulFactoryInterface {
     func makeTabBarViewController() -> MainTabBarController
     func makeLoginViewController() -> LoginViewController
     func makeHomeViewController() -> HomeViewController
+    func makeHomeButtonViewController() -> HomeButtonViewController
     func makeMyPageViewController() -> MyPageViewController
     func makeFeedViewContontoller() -> FeedViewController
     func makeClosetViewController() -> ClosetViewController
@@ -64,6 +65,12 @@ extension ModuleFactory: ModulFactoryInterface {
                 )
             )
         )
+        return vc
+    }
+
+    func makeHomeButtonViewController() -> HomeButtonViewController {
+        let vc = HomeButtonViewController()
+        vc.factory = self
         return vc
     }
 

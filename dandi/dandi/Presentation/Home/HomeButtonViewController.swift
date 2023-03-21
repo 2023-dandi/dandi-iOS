@@ -15,13 +15,14 @@ import YDS
 
 protocol RotaionDelegate: AnyObject {
     func rotate()
+    func present(_ viewController: UIViewController)
 }
 
 final class HomeButtonViewController: BaseViewController {
     weak var delegate: RotaionDelegate?
 
     private let closeButton: UIButton = .init()
-    private let closetButton: UIButton = .init()
+    private let clothesButton: UIButton = .init()
     private let writingButton: UIButton = .init()
 
     override init() {
@@ -31,6 +32,11 @@ final class HomeButtonViewController: BaseViewController {
         bind()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.rotate()
+    }
+
     private func bind() {
         Observable.merge([
             view.rx.tapGesture,
@@ -38,10 +44,25 @@ final class HomeButtonViewController: BaseViewController {
         ])
         .withUnretained(self)
         .subscribe(onNext: { owner, _ in
-            owner.delegate?.rotate()
             owner.dismiss(animated: true)
         })
         .disposed(by: disposeBag)
+
+        clothesButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.delegate?.present(owner.factory.makeClosetViewController())
+                owner.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        writingButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.delegate?.present(owner.factory.makeDecorationViewController(selectedImages: []))
+                owner.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setProperties() {
@@ -56,7 +77,7 @@ final class HomeButtonViewController: BaseViewController {
                 for: .normal
             )
         }
-        [closetButton, writingButton].forEach {
+        [clothesButton, writingButton].forEach {
             $0.do {
                 $0.cornerRadius = 8
                 $0.backgroundColor = YDSColor.bgNormal
@@ -65,19 +86,19 @@ final class HomeButtonViewController: BaseViewController {
             }
         }
 
-        closetButton.setTitle("옷 등록", for: .normal)
+        clothesButton.setTitle("옷 등록", for: .normal)
         writingButton.setTitle("날씨 옷 기록", for: .normal)
     }
 
     private func setLayouts() {
         let height = tabBarController?.tabBar.frame.height ?? 49.0
-        view.addSubviews(closeButton, closetButton, writingButton)
+        view.addSubviews(closeButton, clothesButton, writingButton)
         closeButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16 + height)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.size.equalTo(60)
         }
-        closetButton.snp.makeConstraints { make in
+        clothesButton.snp.makeConstraints { make in
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(closeButton.snp.top).offset(-8)
             make.width.equalTo(120)
@@ -85,7 +106,7 @@ final class HomeButtonViewController: BaseViewController {
         }
         writingButton.snp.makeConstraints { make in
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.bottom.equalTo(closetButton.snp.top).offset(-8)
+            make.bottom.equalTo(clothesButton.snp.top).offset(-8)
             make.width.equalTo(120)
             make.height.equalTo(48)
         }
