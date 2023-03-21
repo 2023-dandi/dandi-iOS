@@ -11,17 +11,24 @@ import SnapKit
 import YDS
 
 final class ClosetImageCollectionViewCell: UICollectionViewCell {
+    enum CellType {
+        case closet
+        case home
+    }
+
     override var isSelected: Bool {
         didSet {
+            guard type == .closet else { return }
             checkIconView.isHidden = !isSelected
-            dimView.isHidden = !isSelected
+            backgroundColor = isSelected ?
+                YDSColor.dimNormal : YDSColor.bgNormal
         }
     }
 
-    static let identifier = "ClosetImageCollectionViewCell"
+    var type: CellType = .closet
+
     private let imageView: UIImageView = .init()
     private let checkIconView: UIImageView = .init()
-    private let dimView: UIView = .init()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,24 +60,21 @@ extension ClosetImageCollectionViewCell {
         checkIconView.image = YDSIcon.checkcircleFilled
             .withRenderingMode(.alwaysOriginal)
             .withTintColor(YDSColor.buttonPoint)
-        dimView.backgroundColor = YDSColor.bgDimDark
         imageView.contentMode = .scaleAspectFit
         isSelected = false
+        contentView.borderColor = YDSColor.borderNormal
+        contentView.borderWidth = YDSConstant.Border.thin
     }
 
     private func setLayouts() {
         contentView.backgroundColor = YDSColor.bgRecomment
-        contentView.addSubviews(imageView, dimView)
-        dimView.addSubview(checkIconView)
+        contentView.addSubviews(imageView, checkIconView)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        dimView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         checkIconView.snp.makeConstraints { make in
-            make.size.equalTo(32)
-            make.center.equalToSuperview()
+            make.size.equalTo(24)
+            make.top.right.equalToSuperview().inset(4)
         }
     }
 }

@@ -20,7 +20,7 @@ final class HomeView: UIView {
             case 0:
                 return self?.createWeatherDetailSectionLayout()
             case 1:
-                return self?.createCardSectionLayout()
+                return self?.createRecommandationSectionLayout()
             default:
                 return self?.createCardSectionLayout()
             }
@@ -138,6 +138,41 @@ extension HomeView {
         section.interGroupSpacing = 12
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = .init(top: 300, leading: 12, bottom: 0, trailing: 12)
+        return section
+    }
+
+    private func createRecommandationSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(125),
+            heightDimension: .absolute(125)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: .zero, leading: 12, bottom: .zero, trailing: 12)
+
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(96)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        header.pinToVisibleBounds = true
+        section.boundarySupplementaryItems = [header]
         return section
     }
 

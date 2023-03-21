@@ -14,9 +14,11 @@ final class HomeDataSource {
     // MARK: - typealias
 
     typealias WeatherDetailCell = WeatherDetailCollectionViewCell
+    typealias ClothesCell = ClosetImageCollectionViewCell
     typealias CardCell = CardCollectionViewCell
 
     typealias WeahterDetailCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, TimeWeatherInfo>
+    typealias ClothesCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, ClosetImage>
     typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
 
     typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
@@ -32,11 +34,13 @@ final class HomeDataSource {
 
     enum Section {
         case timeWeather
+        case recommendation
         case same
     }
 
     enum Item: Hashable {
         case timeWeatherInfo(TimeWeatherInfo)
+        case recommendation(ClosetImage)
         case post(Post)
     }
 
@@ -46,23 +50,28 @@ final class HomeDataSource {
     }
 
     func update(
+        recommedationText: String,
         temperature: String,
+        recommendation: [ClosetImage],
         timeWeathers: [TimeWeatherInfo],
         same: [Post]
     ) {
         var snapshot = Snapshot()
-        snapshot.appendSections([.timeWeather, .same])
+        snapshot.appendSections([.timeWeather, .recommendation, .same])
 
         let timeWeatherItems = timeWeathers.map { Item.timeWeatherInfo($0) }
         snapshot.appendItems(timeWeatherItems, toSection: .timeWeather)
 
+        let recommadationItems = recommendation.map { Item.recommendation($0) }
+        snapshot.appendItems(recommadationItems, toSection: .recommendation)
+
         let sameItems = same.map { Item.post($0) }
         snapshot.appendItems(sameItems, toSection: .same)
 
-        configureHeader(
-            title: temperature + "도의 내 기록",
-            subtitle: "이전에 오늘 같은 날씨에는 이렇게 입었어요."
-        )
+        configureHeader(headers: [
+            Header(title: "오늘의 추천룩", subtitle: recommedationText),
+            Header(title: temperature + "도의 내 기록", subtitle: "이전에 오늘 같은 날씨에는 이렇게 입었어요.")
+        ])
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
@@ -74,6 +83,7 @@ final class HomeDataSource {
 extension HomeDataSource {
     private func createDataSource() -> DiffableDataSource {
         let cardRegistration: CardCellRegistration<CardCell> = configureCardCellRegistration()
+        let imageRegistration: ClothesCellRegistration<ClothesCell> = configureRecommendationCellRegistration()
         let weatherDetailRegistration: WeahterDetailCellRegistration<WeatherDetailCell> = configureDetailBannerCellRegistration()
 
         let cellProvider: CellProvider = { collectionView, indexPath, item in
@@ -89,6 +99,12 @@ extension HomeDataSource {
                     using: weatherDetailRegistration,
                     for: indexPath,
                     item: info
+                )
+            case let .recommendation(item):
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: imageRegistration,
+                    for: indexPath,
+                    item: item
                 )
             }
         }
@@ -111,6 +127,13 @@ extension HomeDataSource {
         }
     }
 
+    private func configureRecommendationCellRegistration<Cell: ClothesCell>() -> ClothesCellRegistration<Cell> {
+        return ClothesCellRegistration<Cell> { cell, _, _ in
+            cell.type = .home
+            cell.configure(image: Image.background4)
+        }
+    }
+
     private func configureDetailBannerCellRegistration<Cell: WeatherDetailCell>() -> WeahterDetailCellRegistration<Cell> {
         return WeahterDetailCellRegistration<Cell> { cell, _, info in
             cell.configure(
@@ -121,13 +144,20 @@ extension HomeDataSource {
         }
     }
 
-    private func configureHeader(title: String, subtitle: String) {
+    struct Header {
+        let title: String
+        let subtitle: String
+    }
+
+    private func configureHeader(headers: [Header]) {
         let headerRegistration = SectionHeaderRegistration<CardHeaderView>(
             elementKind: UICollectionView.elementKindSectionHeader
         ) { headerView, _, indexPath in
             switch indexPath.section {
             case 1:
-                headerView.configure(title: title, subtitle: subtitle)
+                headerView.configure(title: headers[0].title, subtitle: headers[0].subtitle)
+            case 2:
+                headerView.configure(title: headers[1].title, subtitle: headers[1].subtitle)
             default:
                 return
             }

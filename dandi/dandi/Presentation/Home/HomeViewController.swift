@@ -65,7 +65,9 @@ final class HomeViewController: BaseViewController, View {
                 DispatchQueue.main.async {
                     guard let hourlyWeather = hourlyWeathers.first else { return }
                     owner.homeDataSource.update(
+                        recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
                         temperature: hourlyWeather.temperature,
+                        recommendation: [ClosetImage(id: 1, image: nil, imageURL: nil), ClosetImage(id: 1, image: nil, imageURL: nil), ClosetImage(id: 1, image: nil, imageURL: nil)],
                         timeWeathers: hourlyWeathers,
                         same: [Post(id: 4, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", tag: [], isLiked: true, isMine: true)]
                     )
