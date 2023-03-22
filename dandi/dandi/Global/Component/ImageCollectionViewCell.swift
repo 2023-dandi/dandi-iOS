@@ -12,20 +12,20 @@ import YDS
 
 final class ImageCollectionViewCell: UICollectionViewCell {
     enum CellType {
-        case closet
-        case home
+        case check
+        case none
     }
 
     override var isSelected: Bool {
         didSet {
-            guard type == .closet else { return }
+            guard type == .check else { return }
             checkIconView.isHidden = !isSelected
             backgroundColor = isSelected ?
                 YDSColor.dimNormal : YDSColor.bgNormal
         }
     }
 
-    var type: CellType = .closet
+    var type: CellType = .check
 
     private let imageView: UIImageView = .init()
     private let checkIconView: UIImageView = .init()

@@ -129,7 +129,7 @@ extension HomeDataSource {
 
     private func configureRecommendationCellRegistration<Cell: ClothesCell>() -> ClothesCellRegistration<Cell> {
         return ClothesCellRegistration<Cell> { cell, _, _ in
-            cell.type = .home
+            cell.type = .none
             cell.configure(image: Image.background4)
         }
     }

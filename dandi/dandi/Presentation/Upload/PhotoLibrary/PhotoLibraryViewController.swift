@@ -7,12 +7,16 @@
 
 import UIKit
 
+import BackgroundRemoval
 import SnapKit
 import Then
 import YDS
 import YPImagePicker
 
 final class PhotoLibraryViewController: YPImagePicker {
+    var factory: ModulFactoryInterface!
+
+    private var imageList: [UIImage] = []
     init() {
         var config = YPImagePickerConfiguration()
 
@@ -22,6 +26,7 @@ final class PhotoLibraryViewController: YPImagePicker {
         config.showsPhotoFilters = false
 
         config.library.skipSelectionsGallery = true
+        config.library.maxNumberOfItems = 5
 
         config.colors.albumTintColor = YDSColor.buttonPoint
         config.colors.tintColor = YDSColor.buttonPoint
@@ -43,22 +48,38 @@ final class PhotoLibraryViewController: YPImagePicker {
     }
 
     private func didFinishPickingCompletion() {
-        didFinishPicking { [unowned self] items, cancelled in
+        didFinishPicking { [weak self] items, cancelled in
             guard
+                let self = self,
                 !cancelled,
                 let firstItem = items.first
             else {
-                self.dismiss(animated: true, completion: nil)
+                self?.dismiss(animated: true, completion: nil)
                 return
             }
 
             switch firstItem {
             case .photo:
-                break
+                items.forEach { self.addImage($0) }
             default:
                 break
             }
-            self.pushViewController(UIViewController(), animated: true)
+            self.pushViewController(self.factory.makeClosetViewController(selectedImages: self.imageList), animated: true)
+        }
+    }
+
+    private func addImage(_ item: YPMediaItem) {
+        guard let image = convertItemToImage(with: item) else { return }
+        let removeBackgroundImage = BackgroundRemoval().removeBackground(image: image, maskOnly: false)
+        imageList.append(removeBackgroundImage)
+    }
+
+    private func convertItemToImage(with item: YPMediaItem) -> UIImage? {
+        switch item {
+        case let .photo(photo):
+            return photo.image
+        default:
+            return nil
         }
     }
 

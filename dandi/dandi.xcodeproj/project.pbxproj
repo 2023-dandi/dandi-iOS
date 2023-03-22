@@ -74,6 +74,8 @@
 		DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */; };
 		DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */; };
 		DD61796129CB5773005B7527 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */; };
+		DD61796329CB5B32005B7527 /* RoundTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */; };
+		DD61796529CB5FBF005B7527 /* PagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -262,6 +264,8 @@
 		DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesViewController.swift; sourceTree = "<group>"; };
 		DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesView.swift; sourceTree = "<group>"; };
 		DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -797,7 +801,9 @@
 				DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */,
 				DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */,
 				DDA8165829ACEA0000963776 /* PaddingLabel.swift */,
+				DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */,
 				DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */,
+				DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1243,6 +1249,7 @@
 				DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */,
 				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */,
+				DD61796529CB5FBF005B7527 /* PagerCollectionViewCell.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
@@ -1264,6 +1271,7 @@
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
 				DDCDA17029C2EE2600BAB1CF /* SectionTitleHeaderView.swift in Sources */,
+				DD61796329CB5B32005B7527 /* RoundTagCollectionViewCell.swift in Sources */,
 				DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */,
 				DDA8167529AE273900963776 /* NotificationItem.swift in Sources */,
 				DDC52200299520E500E2845F /* UserProfile.swift in Sources */,

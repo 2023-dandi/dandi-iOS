@@ -70,12 +70,12 @@ final class RegistrationClothesView: UIView {
     private func createTabBarSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(1.0)
+            heightDimension: .fractionalHeight(1.0)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(400),
-            heightDimension: .absolute(48)
+            widthDimension: .absolute(88),
+            heightDimension: .absolute(46)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -84,6 +84,7 @@ final class RegistrationClothesView: UIView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: .zero, leading: 16, bottom: .zero, trailing: 16)
 
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -102,14 +103,14 @@ final class RegistrationClothesView: UIView {
     private func createTagSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .estimated(60),
-            heightDimension: .absolute(26)
+            heightDimension: .fractionalHeight(1.0)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(30)
+            heightDimension: .absolute(32)
         )
 
         let group = NSCollectionLayoutGroup.horizontal(
@@ -119,7 +120,8 @@ final class RegistrationClothesView: UIView {
         group.interItemSpacing = .fixed(16)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 12
+        section.interGroupSpacing = 16
+        section.contentInsets = .init(top: 12, leading: 16, bottom: .zero, trailing: 16)
         return section
     }
 }
