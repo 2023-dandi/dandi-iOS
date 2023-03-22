@@ -71,6 +71,9 @@
 		DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */; };
 		DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31235029B2593D00443FCE /* AuthUseCase.swift */; };
 		DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */; };
+		DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */; };
+		DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */; };
+		DD61796129CB5773005B7527 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -152,12 +155,6 @@
 		DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17829C311E900BAB1CF /* ReusableView.swift */; };
 		DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */; };
 		DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */; };
-		DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44029740DD900452F01 /* ClosetViewController.swift */; };
-		DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44229740DE300452F01 /* ClosetReactor.swift */; };
-		DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44429740DEA00452F01 /* ClosetView.swift */; };
-		DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44629792BF400452F01 /* ClosetDataSource.swift */; };
-		DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */; };
-		DDDBD44C29792CEB00452F01 /* ClosetImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44B29792CEB00452F01 /* ClosetImageCollectionViewCell.swift */; };
 		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
 		DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */; };
 		DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */; };
@@ -262,6 +259,9 @@
 		DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		DD31235029B2593D00443FCE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonViewController.swift; sourceTree = "<group>"; };
+		DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesViewController.swift; sourceTree = "<group>"; };
+		DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesView.swift; sourceTree = "<group>"; };
+		DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -332,12 +332,6 @@
 		DDCDA17829C311E900BAB1CF /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+ReusableView.swift"; sourceTree = "<group>"; };
 		DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reuseable.swift"; sourceTree = "<group>"; };
-		DDDBD44029740DD900452F01 /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
-		DDDBD44229740DE300452F01 /* ClosetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetReactor.swift; sourceTree = "<group>"; };
-		DDDBD44429740DEA00452F01 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
-		DDDBD44629792BF400452F01 /* ClosetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetDataSource.swift; sourceTree = "<group>"; };
-		DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonCollectionViewCell.swift; sourceTree = "<group>"; };
-		DDDBD44B29792CEB00452F01 /* ClosetImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
 		DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -495,6 +489,7 @@
 				DD9B06E1295EC81F00A98041 /* MyPage */,
 				DDA390032966BE2C006FBE00 /* Location */,
 				DDC522092995E69C00E2845F /* Post */,
+				DD61795B29CB53F1005B7527 /* Closet */,
 				DDDBD43E29740AE800452F01 /* Upload */,
 			);
 			path = Presentation;
@@ -678,6 +673,15 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		DD61795B29CB53F1005B7527 /* Closet */ = {
+			isa = PBXGroup;
+			children = (
+				DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */,
+				DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */,
+			);
+			path = Closet;
+			sourceTree = "<group>";
+		};
 		DD9B06D2295EC71900A98041 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +797,7 @@
 				DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */,
 				DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */,
 				DDA8165829ACEA0000963776 /* PaddingLabel.swift */,
+				DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -952,14 +957,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DDC522122995EB0A00E2845F /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				DDDBD44629792BF400452F01 /* ClosetDataSource.swift */,
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
 		DDC522132995EC8100E2845F /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -992,33 +989,11 @@
 		DDDBD43E29740AE800452F01 /* Upload */ = {
 			isa = PBXGroup;
 			children = (
-				DDDBD43F29740B8800452F01 /* Closet */,
 				DDA8166729AE0B6A00963776 /* Decoration */,
 				DD2E52E729BF726D0078EA74 /* Main */,
 				DDF78D68297CDBE300817925 /* PhotoLibrary */,
 			);
 			path = Upload;
-			sourceTree = "<group>";
-		};
-		DDDBD43F29740B8800452F01 /* Closet */ = {
-			isa = PBXGroup;
-			children = (
-				DDC522122995EB0A00E2845F /* DataSource */,
-				DDDBD44829792C2E00452F01 /* View */,
-				DDDBD44029740DD900452F01 /* ClosetViewController.swift */,
-				DDDBD44229740DE300452F01 /* ClosetReactor.swift */,
-			);
-			path = Closet;
-			sourceTree = "<group>";
-		};
-		DDDBD44829792C2E00452F01 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DDDBD44429740DEA00452F01 /* ClosetView.swift */,
-				DDDBD44929792C4600452F01 /* AddButtonCollectionViewCell.swift */,
-				DDDBD44B29792CEB00452F01 /* ClosetImageCollectionViewCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		DDE3E2F429C33073007BDBA7 /* Splash */ = {
@@ -1249,8 +1224,9 @@
 				DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */,
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
-				DDDBD44A29792C4600452F01 /* AddButtonCollectionViewCell.swift in Sources */,
+				DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */,
 				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
+				DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */,
 				DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
 				DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */,
@@ -1270,7 +1246,6 @@
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
-				DDDBD44129740DD900452F01 /* ClosetViewController.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
@@ -1288,17 +1263,16 @@
 				DD00E81529C8C8FD001536D4 /* NotificaionCenterManager.swift in Sources */,
 				DD31234029B1EA0300443FCE /* BaseTargetType.swift in Sources */,
 				DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */,
-				DDDBD44C29792CEB00452F01 /* ClosetImageCollectionViewCell.swift in Sources */,
 				DDCDA17029C2EE2600BAB1CF /* SectionTitleHeaderView.swift in Sources */,
 				DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */,
 				DDA8167529AE273900963776 /* NotificationItem.swift in Sources */,
 				DDC52200299520E500E2845F /* UserProfile.swift in Sources */,
+				DD61796129CB5773005B7527 /* ImageCollectionViewCell.swift in Sources */,
 				DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */,
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
 				DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */,
 				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
-				DDDBD44329740DE300452F01 /* ClosetReactor.swift in Sources */,
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
 				DD00E7EC29C776F9001536D4 /* UploadUseCase.swift in Sources */,
 				DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */,
@@ -1315,7 +1289,6 @@
 				DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */,
 				DDA8167329AE26DB00963776 /* NotificationDataSource.swift in Sources */,
 				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
-				DDDBD44529740DEA00452F01 /* ClosetView.swift in Sources */,
 				DD00E81929C8D6F3001536D4 /* DefaultPostLikeUseCase.swift in Sources */,
 				DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */,
 				DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */,
@@ -1339,7 +1312,6 @@
 				DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */,
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
-				DDDBD44729792BF400452F01 /* ClosetDataSource.swift in Sources */,
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
 				DDE3E30829C37C70007BDBA7 /* UploadMainReactor.swift in Sources */,
 				DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */,

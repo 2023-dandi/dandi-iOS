@@ -49,7 +49,6 @@ final class Interceptor: RequestInterceptor {
     private func refreshToken(completion: @escaping (Bool) -> Void) {
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "Authorization": "Bearer \(UserDefaultHandler.shared.accessToken)",
             "Cookie": "Refresh-Token=\(UserDefaultHandler.shared.refreshToken)"
         ]
 
@@ -78,7 +77,6 @@ final class Interceptor: RequestInterceptor {
                     guard
                         let decodedData = try? JSONDecoder().decode(MessageDTO.self, from: value)
                     else { return }
-
                     dump(decodedData)
                     return
                 }
