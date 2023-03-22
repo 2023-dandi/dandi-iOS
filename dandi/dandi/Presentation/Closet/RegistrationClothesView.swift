@@ -64,6 +64,7 @@ final class RegistrationClothesView: UIView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
+
         return section
     }
 

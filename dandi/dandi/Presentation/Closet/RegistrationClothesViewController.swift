@@ -7,12 +7,21 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+import YDS
+
 struct ClothesCategory {
     let title: String
     let sub: [String]
 }
 
 final class RegistrationClothesViewController: BaseViewController {
+    typealias CategoryItems = [Int: [Int]]
+
+    private let navigationBar = YDSTopBar()
+    private let backButton = UIButton()
+    private let saveButton = YDSBoxButton()
     private let registrationView = RegistrationClothesView()
 
     private let category: [ClothesCategory] = [
@@ -25,7 +34,8 @@ final class RegistrationClothesViewController: BaseViewController {
 
     private let selectedImages: [UIImage]
     private var selectedCategoryIndex: Int = 0
-    private var selectedSubCategoryItems = [Int: [Int]]() {
+    private var visibleImageIndex: Int = 0
+    private var selectedSubCategoryItems = CategoryItems() {
         didSet {
             for key in selectedSubCategoryItems.keys {
                 dump(selectedSubCategoryItems[key])
@@ -33,19 +43,72 @@ final class RegistrationClothesViewController: BaseViewController {
         }
     }
 
-    override func loadView() {
-        view = registrationView
-    }
-
     init(selectedImages: [UIImage]) {
         self.selectedImages = selectedImages
         super.init()
         setCollectionView()
-        bindCollectionView()
+        setProperties()
+        setLayouts()
+        bind()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+
+    func bind() {
+        backButton.rx.tap
+            .bind(onNext: { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+        saveButton.rx.tap
+            .bind(onNext: { [weak self] _ in
+                self?.navigationController?.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func setProperties() {
+        navigationBar.topItem?.title = "옷 등록"
+        backButton.setImage(YDSIcon.arrowLeftLine, for: .normal)
+        navigationBar
+            .topItem?
+            .setLeftBarButton(
+                UIBarButtonItem(customView: backButton),
+                animated: false
+            )
+        saveButton.setBackgroundColor(YDSColor.buttonPoint, for: .normal)
+        saveButton.setBackgroundColor(YDSColor.buttonDisabledBG, for: .disabled)
+        saveButton.text = "업로드"
+        saveButton.rounding = .r8
+    }
+
+    private func setLayouts() {
+        view.addSubviews(navigationBar, registrationView, saveButton)
+        navigationBar.snp.makeConstraints {
+            $0.leading.top.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        registrationView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(navigationBar.snp.bottom)
+        }
+        saveButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-32)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
     }
 
     private func setCollectionView() {
         registrationView.collectionView.dataSource = self
+        registrationView.collectionView.delegate = self
+
         registrationView.collectionView.register(cell: ImageCollectionViewCell.self)
         registrationView.collectionView.register(cell: RoundTagCollectionViewCell.self)
         registrationView.collectionView.register(cell: PagerCollectionViewCell.self)
@@ -57,54 +120,6 @@ final class RegistrationClothesViewController: BaseViewController {
         registrationView.collectionView.allowsMultipleSelection = true
     }
 
-    private func bindCollectionView() {
-        registrationView.collectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                guard let self = self else { return }
-                switch indexPath.section {
-                case 1:
-                    guard let cell = self.registrationView.collectionView.cellForItem(at: indexPath) else { return }
-                    self.selectedCategoryIndex = indexPath.item
-                    self.deselectAllItems(exclude: indexPath)
-                    self.registrationView.collectionView.reloadSections(IndexSet(integer: 2))
-                    cell.isSelected = true
-                case 2:
-                    guard let cell = self.registrationView.collectionView.cellForItem(at: indexPath) else { return }
-                    cell.isSelected = true
-                    guard var selectedSubcategory = self.selectedSubCategoryItems[self.selectedCategoryIndex] else {
-                        self.selectedSubCategoryItems[self.selectedCategoryIndex] = [indexPath.item]
-                        return
-                    }
-                    if !selectedSubcategory.contains(indexPath.item) {
-                        self.selectedSubCategoryItems[self.selectedCategoryIndex]?.append(indexPath.item)
-                    }
-                default:
-                    return
-                }
-            })
-            .disposed(by: disposeBag)
-
-        registrationView.collectionView.rx.itemDeselected
-            .subscribe(onNext: { [weak self] indexPath in
-                guard let self = self else { return }
-                switch indexPath.section {
-                case 2:
-                    guard let cell = self.registrationView.collectionView.cellForItem(at: indexPath) else { return }
-                    cell.isSelected = false
-
-                    guard var selectedSubcategory = self.selectedSubCategoryItems[self.selectedCategoryIndex] else {
-                        return
-                    }
-                    if selectedSubcategory.contains(indexPath.item) {
-                        self.selectedSubCategoryItems[self.selectedCategoryIndex] = selectedSubcategory.filter { $0 != indexPath.item }
-                    }
-                default:
-                    return
-                }
-            })
-            .disposed(by: disposeBag)
-    }
-
     private func deselectAllItems(exclude: IndexPath, animated: Bool = false) {
         for indexPath in registrationView.collectionView.indexPathsForSelectedItems ?? [] {
             if indexPath == exclude { continue }
@@ -112,6 +127,54 @@ final class RegistrationClothesViewController: BaseViewController {
                 registrationView.collectionView.deselectItem(at: indexPath, animated: animated)
                 registrationView.collectionView.cellForItem(at: indexPath)?.isSelected = false
             }
+        }
+    }
+}
+
+extension RegistrationClothesViewController: UICollectionViewDelegate {
+    func collectionView(
+        _: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        switch indexPath.section {
+        case 1:
+            guard let cell = registrationView.collectionView.cellForItem(at: indexPath) else { return }
+            selectedCategoryIndex = indexPath.item
+            deselectAllItems(exclude: indexPath)
+            registrationView.collectionView.reloadSections(IndexSet(integer: 2))
+            cell.isSelected = true
+        case 2:
+            guard let cell = registrationView.collectionView.cellForItem(at: indexPath) else { return }
+            cell.isSelected = true
+            guard let selectedSubcategory = selectedSubCategoryItems[selectedCategoryIndex] else {
+                selectedSubCategoryItems[selectedCategoryIndex] = [indexPath.item]
+                return
+            }
+            if !selectedSubcategory.contains(indexPath.item) {
+                selectedSubCategoryItems[selectedCategoryIndex]?.append(indexPath.item)
+            }
+        default:
+            return
+        }
+    }
+
+    func collectionView(
+        _: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath
+    ) {
+        switch indexPath.section {
+        case 2:
+            guard let cell = registrationView.collectionView.cellForItem(at: indexPath) else { return }
+            cell.isSelected = false
+
+            guard let selectedSubcategory = selectedSubCategoryItems[selectedCategoryIndex] else {
+                return
+            }
+            if selectedSubcategory.contains(indexPath.item) {
+                selectedSubCategoryItems[selectedCategoryIndex] = selectedSubcategory.filter { $0 != indexPath.item }
+            }
+        default:
+            return
         }
     }
 }
