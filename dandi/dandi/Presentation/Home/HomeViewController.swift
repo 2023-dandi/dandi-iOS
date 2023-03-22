@@ -139,7 +139,8 @@ final class HomeViewController: BaseViewController, View {
                 let vc = owner.factory.makeHomeButtonViewController()
                 vc.modalPresentationStyle = .overFullScreen
                 vc.modalTransitionStyle = .crossDissolve
-                vc.delegate = self
+                vc.rotationDelegate = self
+                vc.controllerDelegate = self
                 owner.present(vc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
@@ -224,11 +225,17 @@ extension CLLocationCoordinate2D: Equatable {
 }
 
 extension HomeViewController: RotaionDelegate {
-    func present(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-
     func rotate() {
         addButton.transform = CGAffineTransform(rotationAngle: 0)
+    }
+}
+
+extension HomeViewController: ViewControllerDelegate {
+    func presentViewController(_ viewController: UIViewController, animated: Bool) {
+        present(viewController, animated: animated)
+    }
+
+    func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        navigationController?.pushViewController(viewController, animated: animated)
     }
 }

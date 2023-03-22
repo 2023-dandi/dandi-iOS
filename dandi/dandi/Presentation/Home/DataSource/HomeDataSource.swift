@@ -14,7 +14,7 @@ final class HomeDataSource {
     // MARK: - typealias
 
     typealias WeatherDetailCell = WeatherDetailCollectionViewCell
-    typealias ClothesCell = ClosetImageCollectionViewCell
+    typealias ClothesCell = ImageCollectionViewCell
     typealias CardCell = CardCollectionViewCell
 
     typealias WeahterDetailCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, TimeWeatherInfo>

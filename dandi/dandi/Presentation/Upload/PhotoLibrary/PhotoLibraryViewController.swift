@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+import Then
 import YDS
 import YPImagePicker
 
@@ -32,9 +34,32 @@ final class PhotoLibraryViewController: YPImagePicker {
         config.wordings.next = "첨부"
         config.wordings.cancel = "취소"
         config.wordings.albumsTitle = "앨범"
+
         config.albumName = "단디"
 
         super.init(configuration: config)
+
+        didFinishPickingCompletion()
+    }
+
+    private func didFinishPickingCompletion() {
+        didFinishPicking { [unowned self] items, cancelled in
+            guard
+                !cancelled,
+                let firstItem = items.first
+            else {
+                self.dismiss(animated: true, completion: nil)
+                return
+            }
+
+            switch firstItem {
+            case .photo:
+                break
+            default:
+                break
+            }
+            self.pushViewController(UIViewController(), animated: true)
+        }
     }
 
     required init(configuration: YPImagePickerConfiguration) {

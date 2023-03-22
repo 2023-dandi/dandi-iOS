@@ -7,4 +7,10 @@
 
 import UIKit
 
-final class RegistrationClothesView
+final class RegistrationClothesViewController: BaseViewController {
+    private let registrationView = RegistrationClothesView()
+
+    override func loadView() {
+        view = registrationView
+    }
+}

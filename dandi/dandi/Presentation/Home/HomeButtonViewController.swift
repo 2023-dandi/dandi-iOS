@@ -15,11 +15,16 @@ import YDS
 
 protocol RotaionDelegate: AnyObject {
     func rotate()
-    func present(_ viewController: UIViewController)
+}
+
+protocol ViewControllerDelegate: AnyObject {
+    func presentViewController(_ viewController: UIViewController, animated: Bool)
+    func pushViewController(_ viewController: UIViewController, animated: Bool)
 }
 
 final class HomeButtonViewController: BaseViewController {
-    weak var delegate: RotaionDelegate?
+    weak var rotationDelegate: RotaionDelegate?
+    weak var controllerDelegate: ViewControllerDelegate?
 
     private let closeButton: UIButton = .init()
     private let clothesButton: UIButton = .init()
@@ -34,7 +39,7 @@ final class HomeButtonViewController: BaseViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.rotate()
+        rotationDelegate?.rotate()
     }
 
     private func bind() {
@@ -51,15 +56,21 @@ final class HomeButtonViewController: BaseViewController {
         clothesButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.delegate?.present(owner.factory.makeClosetViewController())
                 owner.dismiss(animated: false)
+                owner.controllerDelegate?.presentViewController(
+                    owner.factory.makePhotoLibraryViewController(),
+                    animated: true
+                )
             })
             .disposed(by: disposeBag)
 
         writingButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.delegate?.present(owner.factory.makeDecorationViewController(selectedImages: []))
+                owner.controllerDelegate?.pushViewController(
+                    owner.factory.makeDecorationViewController(selectedImages: []),
+                    animated: true
+                )
                 owner.dismiss(animated: false)
             })
             .disposed(by: disposeBag)

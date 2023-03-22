@@ -191,7 +191,7 @@ final class UploadMainViewController: BaseViewController, View {
 
         uploadView.collectionView.do {
             $0.dataSource = self
-            $0.register(cell: ClosetImageCollectionViewCell.self)
+            $0.register(cell: ImageCollectionViewCell.self)
             $0.register(cell: TagCollectionViewCell.self)
             $0.register(cell: UploadWeatherCollectionViewCell.self)
             $0.register(
@@ -244,7 +244,7 @@ extension UploadMainViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell: ClosetImageCollectionViewCell = uploadView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell: ImageCollectionViewCell = uploadView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.configure(image: image)
             return cell
 
