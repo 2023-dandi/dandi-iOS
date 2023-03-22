@@ -68,7 +68,7 @@ final class DefaultPostRepository: PostRepository {
         router.request(.deletePost(id: id)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestErrorDecoded(by: response))
+                completion(NetworkHandler.requestStatusCaseDecoded(by: response))
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -82,7 +82,7 @@ final class DefaultPostRepository: PostRepository {
         router.request(.like(id: id)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestErrorDecoded(by: response))
+                completion(NetworkHandler.requestStatusCaseDecoded(by: response))
             case .failure:
                 completion(.failure(.networkFail))
             }

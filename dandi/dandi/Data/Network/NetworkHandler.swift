@@ -47,7 +47,7 @@ enum NetworkHandler {
         }
     }
 
-    static func requestErrorDecoded(by response: Response) -> NetworkResult<StatusCase> {
+    static func requestStatusCaseDecoded(by response: Response) -> NetworkResult<StatusCase> {
         let decoder = JSONDecoder()
         switch response.statusCode {
         case 200 ..< 300:

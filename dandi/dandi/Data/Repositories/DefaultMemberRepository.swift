@@ -40,7 +40,7 @@ final class DefaultMemberRepository: MemberRepository {
         router.request(.patchNickname(nickname: nickname)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestErrorDecoded(by: response))
+                completion(NetworkHandler.requestStatusCaseDecoded(by: response))
             case .failure:
                 completion(.failure(.networkFail))
             }
