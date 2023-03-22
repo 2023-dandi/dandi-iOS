@@ -91,6 +91,23 @@ extension PostDetailViewController {
             .map { owner, _ in Reactor.Action.like(id: owner.postID) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
+        let moreButtonDidTap = moreButton.rx.tap
+            .withUnretained(self)
+            .flatMapLatest { owner, _ -> Observable<PostDetailAlertType> in
+                let actions: [PostDetailAlertType] = [.share, .delete]
+                return owner.rx.makeActionSheet(
+                    title: "게시물을 어떻게 하시겠어요?",
+                    actions: actions,
+                    closeAction: Alert(title: "닫기", style: .cancel)
+                )
+            }
+
+        moreButtonDidTap.filter { $0 == .delete }
+            .withUnretained(self)
+            .map { owner, _ in Reactor.Action.delete(id: owner.postID) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 
     private func bindState(_ reactor: Reactor) {
@@ -108,8 +125,19 @@ extension PostDetailViewController {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { _, isLiked in
-                // 게시물 리스트 업데이트 로직 심기
+                // TODO: - 게시물 리스트 업데이트 로직 심기
                 dump(isLiked)
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.isDeleted }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, isDeleted in
+                if isDeleted {
+                    owner.navigationController?.popViewController(animated: true)
+                }
             })
             .disposed(by: disposeBag)
     }

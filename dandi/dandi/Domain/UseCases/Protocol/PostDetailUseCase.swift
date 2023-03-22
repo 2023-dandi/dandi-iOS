@@ -10,5 +10,7 @@ import RxSwift
 
 protocol PostDetailUseCase {
     var postPublisher: PublishRelay<Post?> { get }
+    var deleteSuccessPublisher: PublishRelay<Bool> { get }
     func fetchPost(id: Int)
+    func delete(id: Int)
 }

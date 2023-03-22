@@ -18,17 +18,20 @@ final class PostDetailReactor: Reactor {
         var isLiked: Bool?
         var isLoading: Bool = false
         var post: Post?
+        var isDeleted: Bool = false
     }
 
     enum Action {
         case fetchPostDetail(id: Int)
         case like(id: Int)
+        case delete(id: Int)
     }
 
     enum Mutation {
         case setLoading(isLoading: Bool)
         case setPost(Post)
         case setLikeButtonStatus(isLiked: Bool)
+        case setDeleteStatus(Bool)
     }
 
     init(
@@ -52,6 +55,10 @@ final class PostDetailReactor: Reactor {
             return postLikeUseCase.completionPublisher
                 .compactMap { $0 }
                 .map { Mutation.setLikeButtonStatus(isLiked: $0) }
+        case let .delete(id):
+            postDetailUseCase.delete(id: id)
+            return postDetailUseCase.deleteSuccessPublisher
+                .map { Mutation.setDeleteStatus($0) }
         }
     }
 
@@ -64,6 +71,8 @@ final class PostDetailReactor: Reactor {
             newState.post = post
         case let .setLikeButtonStatus(isLiked):
             newState.isLiked = isLiked
+        case let .setDeleteStatus(isDeleted):
+            newState.isDeleted = isDeleted
         }
         return newState
     }

@@ -23,6 +23,11 @@ protocol PostRepository {
         completion: @escaping NetworkCompletion<PostIdDTO>
     )
 
+    func deletePost(
+        id: Int,
+        completion: @escaping NetworkCompletion<StatusCase>
+    )
+    
     func like(
         id: Int,
         completion: @escaping NetworkCompletion<StatusCase>

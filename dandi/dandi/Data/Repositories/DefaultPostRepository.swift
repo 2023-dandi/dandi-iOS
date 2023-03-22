@@ -61,6 +61,20 @@ final class DefaultPostRepository: PostRepository {
         }
     }
 
+    func deletePost(
+        id: Int,
+        completion: @escaping NetworkCompletion<StatusCase>
+    ) {
+        router.request(.deletePost(id: id)) { result in
+            switch result {
+            case let .success(response):
+                completion(NetworkHandler.requestErrorDecoded(by: response))
+            case .failure:
+                completion(.failure(.networkFail))
+            }
+        }
+    }
+
     func like(
         id: Int,
         completion: @escaping NetworkCompletion<StatusCase>

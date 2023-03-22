@@ -74,7 +74,7 @@ final class HomeViewController: BaseViewController, View {
                         temperature: hourlyWeather.temperature,
                         recommendation: [ClosetImage(id: 1, image: nil, imageURL: nil), ClosetImage(id: 1, image: nil, imageURL: nil), ClosetImage(id: 1, image: nil, imageURL: nil)],
                         timeWeathers: hourlyWeathers,
-                        same: [Post(id: 4, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", tag: [], isLiked: true, isMine: true)]
+                        same: [Post(id: 12, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", tag: [], isLiked: true, isMine: true)]
                     )
                     owner.homeView.configure(
                         temperature: hourlyWeather.temperature,

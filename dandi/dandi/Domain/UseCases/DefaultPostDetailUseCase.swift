@@ -13,6 +13,7 @@ import RxSwift
 
 final class DefaultPostDetailUseCase: PostDetailUseCase {
     let postPublisher = PublishRelay<Post?>()
+    let deleteSuccessPublisher = PublishRelay<Bool>()
 
     private let postRepository: PostRepository
     private let disposeBag = DisposeBag()
@@ -29,6 +30,18 @@ final class DefaultPostDetailUseCase: PostDetailUseCase {
             case .failure:
                 // TODO: 에러처리
                 self?.postPublisher.accept(nil)
+            }
+        }
+    }
+
+    func delete(id: Int) {
+        postRepository.deletePost(id: id) { [weak self] result in
+            switch result {
+            case .success:
+                self?.deleteSuccessPublisher.accept(true)
+            case .failure:
+                // TODO: 에러처리
+                self?.deleteSuccessPublisher.accept(false)
             }
         }
     }
