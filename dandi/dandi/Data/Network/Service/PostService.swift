@@ -14,6 +14,7 @@ enum PostService {
     case getDetailPost(id: Int)
     case like(id: Int)
     case deletePost(id: Int)
+    case my
 }
 
 extension PostService: BaseTargetType {
@@ -44,6 +45,8 @@ extension PostService: BaseTargetType {
             return "/posts/\(id)/likes"
         case let .deletePost(id):
             return "/posts/\(id)"
+        case .my:
+            return "/posts/my"
         }
     }
 
@@ -57,6 +60,8 @@ extension PostService: BaseTargetType {
             return .patch
         case .deletePost:
             return .delete
+        case .my:
+            return .get
         }
     }
 
@@ -82,6 +87,9 @@ extension PostService: BaseTargetType {
             return .requestPlain
 
         case .deletePost:
+            return .requestPlain
+
+        case .my:
             return .requestPlain
         }
     }

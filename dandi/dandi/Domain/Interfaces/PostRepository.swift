@@ -27,9 +27,11 @@ protocol PostRepository {
         id: Int,
         completion: @escaping NetworkCompletion<StatusCase>
     )
-    
+
     func like(
         id: Int,
         completion: @escaping NetworkCompletion<StatusCase>
     )
+
+    func fetchMyPostList(completion: @escaping NetworkCompletion<PostsWithPageDTO>)
 }

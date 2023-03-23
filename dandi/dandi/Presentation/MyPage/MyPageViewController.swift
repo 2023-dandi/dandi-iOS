@@ -22,6 +22,9 @@ final class MyPageViewController: BaseViewController, View {
         presentingViewController: self
     )
 
+    private var profile = UserProfile()
+    private var posts: [MyPost] = []
+
     override func loadView() {
         view = myPageView
     }
@@ -44,7 +47,18 @@ final class MyPageViewController: BaseViewController, View {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, profile in
-                owner.myPageDataSource.update(user: profile, feed: [])
+                owner.profile = profile
+                owner.myPageDataSource.update(user: owner.profile, feed: owner.posts)
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.posts }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, posts in
+                dump(posts)
+                owner.posts = posts
+                owner.myPageDataSource.update(user: owner.profile, feed: owner.posts)
             })
             .disposed(by: disposeBag)
     }
@@ -57,6 +71,11 @@ final class MyPageViewController: BaseViewController, View {
         .map { _ in Reactor.Action.fetchProfile }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
+
+        rx.viewWillAppear.take(1)
+            .map { _ in Reactor.Action.fetchMyPosts }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 
     private func bindCollectionView(_ reactor: MyPageReactor) {

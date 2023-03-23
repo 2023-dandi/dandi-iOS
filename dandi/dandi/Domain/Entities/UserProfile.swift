@@ -13,6 +13,22 @@ struct UserProfile {
     let nickname: String
     let location: String
     let closetCount: Int
+
+    init(profileImageURL: String, nickname: String, location: String, closetCount: Int) {
+        self.profileImageURL = profileImageURL
+        self.nickname = nickname
+        self.location = location
+        self.closetCount = closetCount
+    }
+
+    init() {
+        self.init(
+            profileImageURL: "",
+            nickname: "",
+            location: "",
+            closetCount: 0
+        )
+    }
 }
 
 extension UserProfile: Equatable, Hashable {

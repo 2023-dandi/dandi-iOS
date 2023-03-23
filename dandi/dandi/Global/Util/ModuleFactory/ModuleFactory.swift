@@ -81,6 +81,9 @@ extension ModuleFactory: ModulFactoryInterface {
             memberInfoUseCase: DefaultMemberInfoUseCase(
                 memberRepository: DefaultMemberRepository(interceptor: Interceptor()),
                 converter: LocationConverter()
+            ),
+            postListUseCase: DefaultMyPostsUseCase(
+                postRepository: DefaultPostRepository(interceptor: Interceptor())
             )
         )
         return vc

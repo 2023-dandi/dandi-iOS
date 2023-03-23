@@ -88,4 +88,15 @@ final class DefaultPostRepository: PostRepository {
             }
         }
     }
+
+    func fetchMyPostList(completion: @escaping NetworkCompletion<PostsWithPageDTO>) {
+        router.request(.my) { result in
+            switch result {
+            case let .success(response):
+                completion(NetworkHandler.requestDecoded(by: response))
+            case .failure:
+                completion(.failure(.networkFail))
+            }
+        }
+    }
 }

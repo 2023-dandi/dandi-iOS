@@ -13,23 +13,31 @@ final class MyPageReactor: Reactor {
     let initialState: State
 
     private let memberInfoUseCase: MemberInfoUseCase
+    private let postListUseCase: PostListUseCase
 
     struct State {
         var isLoading: Bool = false
         var profile: UserProfile?
+        var posts: [MyPost] = []
     }
 
     enum Action {
         case fetchProfile
+        case fetchMyPosts
     }
 
     enum Mutation {
         case setUserProfile(UserProfile)
+        case setMyPostList([MyPost])
     }
 
-    init(memberInfoUseCase: MemberInfoUseCase) {
+    init(
+        memberInfoUseCase: MemberInfoUseCase,
+        postListUseCase: PostListUseCase
+    ) {
         self.initialState = State()
         self.memberInfoUseCase = memberInfoUseCase
+        self.postListUseCase = postListUseCase
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -39,6 +47,10 @@ final class MyPageReactor: Reactor {
             return memberInfoUseCase.memberInfoPublisher
                 .compactMap { $0 }
                 .compactMap { Mutation.setUserProfile($0) }
+        case .fetchMyPosts:
+            postListUseCase.fetchPostList()
+            return postListUseCase.postsPublisher
+                .map { Mutation.setMyPostList($0) }
         }
     }
 
@@ -47,6 +59,8 @@ final class MyPageReactor: Reactor {
         switch mutation {
         case let .setUserProfile(userProfile):
             newState.profile = userProfile
+        case let .setMyPostList(posts):
+            newState.posts = posts
         }
         return newState
     }

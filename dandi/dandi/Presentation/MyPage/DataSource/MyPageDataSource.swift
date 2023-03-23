@@ -18,7 +18,7 @@ final class MyPageDataSource {
     typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
 
     typealias ProfileCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, UserProfile>
-    typealias PostCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
+    typealias PostCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, MyPost>
 
     typealias CellProvider = (UICollectionView, IndexPath, Item) -> UICollectionViewCell?
     typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, Item>
@@ -35,7 +35,7 @@ final class MyPageDataSource {
 
     enum Item: Hashable {
         case profile(UserProfile)
-        case post(Post)
+        case post(MyPost)
     }
 
     // MARK: - Initialize
@@ -47,7 +47,7 @@ final class MyPageDataSource {
 
     // MARK: - Update DataSource
 
-    func update(user: UserProfile, feed: [Post]) {
+    func update(user: UserProfile, feed: [MyPost]) {
         configureHeader(title: "내가 올린 게시물")
 
         var snapshot = Snapshot()
@@ -106,7 +106,7 @@ extension MyPageDataSource {
 
     private func configurePostCellRegistration<Cell: PostCell>() -> PostCellRegistration<Cell> {
         return PostCellRegistration<Cell> { cell, _, post in
-            cell.configure(imageURL: post.mainImageURL)
+            cell.configure(imageURL: post.postImageUrl)
             cell.cornerRadius = 4
         }
     }
