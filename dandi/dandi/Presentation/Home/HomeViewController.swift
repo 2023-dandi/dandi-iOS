@@ -5,7 +5,6 @@
 //  Created by 김윤서 on 2022/12/30.
 //
 
-import CoreLocation
 import UIKit
 
 import ReactorKit
@@ -43,7 +42,6 @@ final class HomeViewController: BaseViewController, View {
 
     override init() {
         super.init()
-        setLocationManager()
         setGradientColors()
         setLayouts()
         setProperties()
@@ -51,6 +49,13 @@ final class HomeViewController: BaseViewController, View {
 
     func bind(reactor: HomeReactor) {
         bindTapAction()
+
+        LocationConverter().fetchAddress(
+            latitude: UserDefaultHandler.shared.lat,
+            longitude: UserDefaultHandler.shared.lon
+        ) { [weak self] text in
+            self?.homeView.bannerView.locationLabel.text = text
+        }
 
         rx.viewWillAppear
             .map { _ in Reactor.Action.viewWillAppear }
@@ -102,11 +107,6 @@ final class HomeViewController: BaseViewController, View {
             homeView.setGradientColors(colors: [Color.pastelPurple, .white])
         }
         homeView.layoutSubviews()
-    }
-
-    private func setLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
     private func setProperties() {
@@ -164,63 +164,6 @@ final class HomeViewController: BaseViewController, View {
             .subscribe(onNext: { owner, _ in
                 owner.navigationController?.pushViewController(NotificationListViewController(), animated: true)
             }).disposed(by: disposeBag)
-    }
-}
-
-// MARK: - CLLocationManagerDelegate
-
-extension HomeViewController: CLLocationManagerDelegate {
-    func locationManager(
-        _: CLLocationManager,
-        didChangeAuthorization status: CLAuthorizationStatus
-    ) {
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            DandiLog.debug("GPS 권한 설정됨")
-            locationManager.startUpdatingLocation()
-        case .restricted, .notDetermined:
-            DandiLog.debug("GPS 권한 설정되지 않음")
-            locationManager.requestWhenInUseAuthorization()
-        case .denied:
-            DandiLog.debug("GPS 권한 요청 거부됨")
-            showRequestLocationServiceAlert()
-            locationManager.requestWhenInUseAuthorization()
-        @unknown default:
-            DandiLog.error("GPS 권한 Default")
-        }
-    }
-
-    func locationManager(
-        _: CLLocationManager,
-        didUpdateLocations locations: [CLLocation]
-    ) {
-        guard let location = locations.last else { return }
-        coordinate = location.coordinate
-
-        let geocoder = CLGeocoder()
-        let local = Locale(identifier: "Ko-kr")
-        geocoder.reverseGeocodeLocation(location, preferredLocale: local) { [weak self] placemarks, _ in
-            guard
-                let self = self,
-                let address: [CLPlacemark] = placemarks,
-                let last = address.last
-            else { return }
-            self.homeView.bannerView.locationLabel.text = "\(last.locality ?? "") \(last.subLocality ?? "")"
-        }
-    }
-
-    func locationManager(
-        _: CLLocationManager,
-        didFailWithError error: Error
-    ) {
-        DandiLog.error(error)
-    }
-}
-
-extension CLLocationCoordinate2D: Equatable {
-    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
-        return String(format: "%.1f", lhs.latitude) == String(format: "%.1f", rhs.latitude)
-            && String(format: "%.1f", lhs.longitude) == String(format: "%.1f", rhs.longitude)
     }
 }
 

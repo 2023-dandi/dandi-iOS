@@ -32,8 +32,8 @@ final class DefaultMemberInfoUseCase: MemberInfoUseCase {
             case let .success(memberInfoDTO):
                 self?.memberInfoPublisher.accept(memberInfoDTO.toDomain(location: ""))
                 self?.converter.fetchAddress(
-                    latitude: memberInfoDTO.latitude,
-                    longitude: memberInfoDTO.longitude
+                    latitude: UserDefaultHandler.shared.lat,
+                    longitude: UserDefaultHandler.shared.lon
                 ) { address in
                     self?.memberInfoPublisher.accept(memberInfoDTO.toDomain(location: address))
                 }

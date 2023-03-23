@@ -77,6 +77,8 @@
 		DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */; };
 		DD3D9A5629CC429900E298B1 /* PostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5529CC429900E298B1 /* PostListUseCase.swift */; };
 		DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5729CC42D600E298B1 /* DefaultMyPostsUseCase.swift */; };
+		DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */; };
+		DD3D9A5C29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5B29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift */; };
 		DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */; };
 		DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */; };
 		DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */; };
@@ -274,6 +276,8 @@
 		DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDTO.swift; sourceTree = "<group>"; };
 		DD3D9A5529CC429900E298B1 /* PostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListUseCase.swift; sourceTree = "<group>"; };
 		DD3D9A5729CC42D600E298B1 /* DefaultMyPostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMyPostsUseCase.swift; sourceTree = "<group>"; };
+		DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUseCase.swift; sourceTree = "<group>"; };
+		DD3D9A5B29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
 		DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonViewController.swift; sourceTree = "<group>"; };
 		DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesViewController.swift; sourceTree = "<group>"; };
 		DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesView.swift; sourceTree = "<group>"; };
@@ -692,6 +696,7 @@
 				DD00E80D29C8A9B0001536D4 /* ImageUseCase.swift */,
 				DD00E81629C8D6C3001536D4 /* LikeUseCase.swift */,
 				DD3D9A5529CC429900E298B1 /* PostListUseCase.swift */,
+				DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -860,6 +865,7 @@
 				DD1721D829B633EF00757C55 /* RxViewController.swift */,
 				DDAEF5C829B748570018B577 /* String+.swift */,
 				DDCDA16629C2DE5000BAB1CF /* Date+.swift */,
+				DD3D9A5B29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1259,6 +1265,7 @@
 			files = (
 				DD00E7FA29C82F08001536D4 /* LocationDTO.swift in Sources */,
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */,
+				DD3D9A5C29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
 				DD3D9A4D29CC243100E298B1 /* ClosetTabView.swift in Sources */,
@@ -1298,6 +1305,7 @@
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */,
+				DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */,
