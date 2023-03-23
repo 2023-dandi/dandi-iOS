@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "pageboy",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uias/Pageboy",
+      "state" : {
+        "revision" : "5522aa6ae88633f6c23cf504e9cd684e963822f1",
+        "version" : "4.0.2"
+      }
+    },
+    {
       "identity" : "panmodal",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/slackhq/PanModal.git",
@@ -115,6 +124,15 @@
       "state" : {
         "revision" : "87dd17a86240f16788239a78dd8be11c4b013150",
         "version" : "4.8.0"
+      }
+    },
+    {
+      "identity" : "tabman",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uias/Tabman",
+      "state" : {
+        "revision" : "6a87a2825939f5da06cf52a6582d67a646488cff",
+        "version" : "3.0.1"
       }
     },
     {

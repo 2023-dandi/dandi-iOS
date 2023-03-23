@@ -70,6 +70,9 @@
 		DD31234B29B2556000443FCE /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234A29B2556000443FCE /* LoginReactor.swift */; };
 		DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */; };
 		DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31235029B2593D00443FCE /* AuthUseCase.swift */; };
+		DD3D9A4B29CC204A00E298B1 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = DD3D9A4A29CC204A00E298B1 /* Tabman */; };
+		DD3D9A4D29CC243100E298B1 /* ClosetTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4C29CC243100E298B1 /* ClosetTabView.swift */; };
+		DD3D9A5029CC303200E298B1 /* DecorationMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */; };
 		DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */; };
 		DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */; };
 		DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */; };
@@ -261,6 +264,8 @@
 		DD31234A29B2556000443FCE /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		DD31235029B2593D00443FCE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		DD3D9A4C29CC243100E298B1 /* ClosetTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetTabView.swift; sourceTree = "<group>"; };
+		DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonViewController.swift; sourceTree = "<group>"; };
 		DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesViewController.swift; sourceTree = "<group>"; };
 		DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesView.swift; sourceTree = "<group>"; };
@@ -368,6 +373,7 @@
 				DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */,
 				DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */,
 				DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */,
+				DD3D9A4B29CC204A00E298B1 /* Tabman in Frameworks */,
 				DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */,
 				DD9B06D0295EC6E100A98041 /* RxGesture in Frameworks */,
 				DD9B06BD295EC63F00A98041 /* RxCocoa in Frameworks */,
@@ -679,6 +685,15 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		DD3D9A4E29CC243400E298B1 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				DD3D9A4C29CC243100E298B1 /* ClosetTabView.swift */,
+				DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		DD61795B29CB53F1005B7527 /* Closet */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,6 +916,7 @@
 		DDA8166729AE0B6A00963776 /* Decoration */ = {
 			isa = PBXGroup;
 			children = (
+				DD3D9A4E29CC243400E298B1 /* Tab */,
 				DD1B1A0F29BE12460039D8FB /* View */,
 				DDA8166829AE0B8D00963776 /* DecorationViewController.swift */,
 			);
@@ -1061,6 +1077,7 @@
 				DD9B06CF295EC6E100A98041 /* RxGesture */,
 				DDA8166129ADAB3800963776 /* YPImagePicker */,
 				DDFF968029C060AE00996BD6 /* BackgroundRemoval */,
+				DD3D9A4A29CC204A00E298B1 /* Tabman */,
 			);
 			productName = dandi;
 			productReference = DD2398DB295D7C8700A898B2 /* dandi.app */;
@@ -1145,6 +1162,7 @@
 				DD9B06CE295EC6E100A98041 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				DDA8166029ADAB3800963776 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				DDFF967F29C060AE00996BD6 /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
+				DD3D9A4929CC204A00E298B1 /* XCRemoteSwiftPackageReference "Tabman" */,
 			);
 			productRefGroup = DD2398DC295D7C8700A898B2 /* Products */;
 			projectDirPath = "";
@@ -1231,6 +1249,7 @@
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
+				DD3D9A4D29CC243100E298B1 /* ClosetTabView.swift in Sources */,
 				DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */,
 				DDE3E30A29C37F91007BDBA7 /* DefaultTemperatureUseCase.swift in Sources */,
 				DD00E81729C8D6C3001536D4 /* LikeUseCase.swift in Sources */,
@@ -1364,6 +1383,7 @@
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
 				DD00E80C29C8706B001536D4 /* DefaultNicknameUseCase.swift in Sources */,
 				DDE3E30029C375FC007BDBA7 /* DefaultPostRepository.swift in Sources */,
+				DD3D9A5029CC303200E298B1 /* DecorationMenuCollectionViewCell.swift in Sources */,
 				DDA8167129AE0E6E00963776 /* NotificationReactor.swift in Sources */,
 				DD31233929B1D7E200443FCE /* MessageDTO.swift in Sources */,
 				DD31234B29B2556000443FCE /* LoginReactor.swift in Sources */,
@@ -1726,6 +1746,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DD3D9A4929CC204A00E298B1 /* XCRemoteSwiftPackageReference "Tabman" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uias/Tabman";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -1809,6 +1837,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DD3D9A4A29CC204A00E298B1 /* Tabman */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD3D9A4929CC204A00E298B1 /* XCRemoteSwiftPackageReference "Tabman" */;
+			productName = Tabman;
+		};
 		DD9B06B4295EC5DD00A98041 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */;

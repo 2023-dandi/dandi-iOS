@@ -45,7 +45,7 @@ extension DecorationView {
             case 0:
                 return self?.createPostSectionLayout()
             default:
-                return self?.createSectionLayout()
+                return self?.createPostSectionLayout()
             }
         }
         return layout

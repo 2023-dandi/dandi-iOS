@@ -77,14 +77,8 @@ final class DecorationViewController: BaseViewController {
 
     private func setCollectionViewDataSource() {
         contentScrollView.collectionView.dataSource = self
-        contentScrollView.collectionView.register(
-            StickerCollectionViewCell.self,
-            forCellWithReuseIdentifier: StickerCollectionViewCell.identifier
-        )
-        contentScrollView.collectionView.register(
-            DecorationHeaderView.self,
-            forCellWithReuseIdentifier: DecorationHeaderView.identifier
-        )
+        contentScrollView.collectionView.register(cell: DecorationHeaderView.self)
+        contentScrollView.collectionView.register(cell: DecorationMenuCollectionViewCell.self)
     }
 
     private func setProperties() {
@@ -144,7 +138,7 @@ final class DecorationViewController: BaseViewController {
 
 extension DecorationViewController: UICollectionViewDataSource {
     func numberOfSections(in _: UICollectionView) -> Int {
-        return 3
+        return 2
     }
 
     func collectionView(
@@ -155,22 +149,20 @@ extension DecorationViewController: UICollectionViewDataSource {
         case 0:
             return 1
         case 1:
-            return backgroundImages.count
-        case 2:
-            return stickerImages.count
+            return 1
         default:
             return 0
         }
     }
 
     func collectionView(
-        _: UICollectionView,
+        _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
             guard
-                let cell = contentScrollView.collectionView.dequeueReusableCell(
+                let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: DecorationHeaderView.identifier,
                     for: indexPath
                 ) as? DecorationHeaderView
@@ -190,22 +182,12 @@ extension DecorationViewController: UICollectionViewDataSource {
             cell.rawImageView.image = headerViewBackgroundImage
             return cell
         case 1:
-            guard
-                let cell = contentScrollView.collectionView.dequeueReusableCell(
-                    withReuseIdentifier: StickerCollectionViewCell.identifier,
-                    for: indexPath
-                ) as? StickerCollectionViewCell
-            else { return UICollectionViewCell() }
-            cell.configure(image: backgroundImages[indexPath.item])
-            return cell
-        case 2:
-            guard
-                let cell = contentScrollView.collectionView.dequeueReusableCell(
-                    withReuseIdentifier: StickerCollectionViewCell.identifier,
-                    for: indexPath
-                ) as? StickerCollectionViewCell
-            else { return UICollectionViewCell() }
-            cell.configure(image: stickerImages[indexPath.item])
+            let cell: DecorationMenuCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.update(
+                category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
+                tagList: ["전체", "티셔츠", "셔츠", "맨투맨"],
+                photo: [.add, .checkmark, .strokedCheckmark, .remove]
+            )
             return cell
         default:
             return UICollectionViewCell()
