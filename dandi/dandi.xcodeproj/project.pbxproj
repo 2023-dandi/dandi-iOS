@@ -39,6 +39,7 @@
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
 		DD1B1A1129BE12610039D8FB /* StickerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1B1A1029BE12610039D8FB /* StickerEditorView.swift */; };
+		DD1D6B1C29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B1B29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -234,6 +235,7 @@
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
 		DD1B1A1029BE12610039D8FB /* StickerEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerEditorView.swift; sourceTree = "<group>"; };
+		DD1D6B1B29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -846,6 +848,7 @@
 				DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */,
 				DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */,
 				DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */,
+				DD1D6B1B29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1416,6 +1419,7 @@
 				DDA8166429ADB5A000963776 /* UIView+Reactive.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
 				DD9F6FDB29B4EF5B002BD4B4 /* WeatherService.swift in Sources */,
+				DD1D6B1C29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 				DD31234229B1EDDB00443FCE /* NetworkHandler.swift in Sources */,
 				DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */,

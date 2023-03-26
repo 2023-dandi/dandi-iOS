@@ -20,7 +20,7 @@ final class ClosetTabView: UIView {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(cell: PagerCollectionViewCell.self)
+        collectionView.register(cell: CategoryTextCollectionViewCell.self)
         collectionView.alwaysBounceVertical = false
         return collectionView
     }()
@@ -126,7 +126,7 @@ extension ClosetTabView: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch collectionView {
         case categoryCollectionView:
-            let cell: PagerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell: CategoryTextCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.configure(text: category[indexPath.item])
             return cell
 
@@ -173,12 +173,12 @@ extension ClosetTabView: UICollectionViewDelegate {
 extension ClosetTabView {
     private func createMainCategoryTabCollectionLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
+            widthDimension: .estimated(60),
             heightDimension: .fractionalHeight(1.0)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(88),
+            widthDimension: .estimated(60),
             heightDimension: .absolute(36)
         )
         let group = NSCollectionLayoutGroup.horizontal(
@@ -203,7 +203,7 @@ extension ClosetTabView {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
+            widthDimension: .estimated(60),
             heightDimension: .absolute(26)
         )
 
@@ -214,6 +214,7 @@ extension ClosetTabView {
         group.interItemSpacing = .fixed(16)
 
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = 16
         section.contentInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)
         let layout = UICollectionViewCompositionalLayout(section: section)

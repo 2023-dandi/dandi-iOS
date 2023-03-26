@@ -40,7 +40,7 @@ final class DecorationViewController: BaseViewController {
     private var headerViewBackgroundImage: UIImage = Image.background1
     private var resultImage: UIImage?
     private let contentScrollView = DecorationView()
-    private let doneButton = YDSBoxButton()
+    private let doneButton = UIButton()
 
     override func loadView() {
         view = contentScrollView
@@ -82,15 +82,19 @@ final class DecorationViewController: BaseViewController {
     }
 
     private func setProperties() {
-        doneButton.text = "꾸미기 완료"
-        doneButton.rounding = .r8
+        doneButton.setImage(
+            YDSIcon.checkLine
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(YDSColor.buttonNormal),
+            for: .normal
+        )
+        navigationItem.setRightBarButton(UIBarButtonItem(customView: doneButton), animated: false)
     }
 
     private func setLayouts() {
         view.addSubview(doneButton)
         doneButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(32)
+            make.size.equalTo(44)
         }
     }
 
@@ -184,8 +188,8 @@ extension DecorationViewController: UICollectionViewDataSource {
         case 1:
             let cell: DecorationMenuCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.update(
-                category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
-                tagList: ["전체", "티셔츠", "셔츠", "맨투맨"],
+                category: ["전체", "", "상의", "아우터", "악세사리", "기타패션"],
+                tagList: ["봄", "겨울", "가을", "겨울"],
                 photo: [.add, .checkmark, .strokedCheckmark, .remove]
             )
             return cell

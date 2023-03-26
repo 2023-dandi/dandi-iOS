@@ -45,7 +45,7 @@ extension DecorationView {
             case 0:
                 return self?.createPostSectionLayout()
             default:
-                return self?.createPostSectionLayout()
+                return self?.createTabSectionLayout()
             }
         }
         return layout
@@ -84,7 +84,7 @@ extension DecorationView {
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
+            heightDimension: .fractionalHeight(0.8)
         )
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: groupSize,
