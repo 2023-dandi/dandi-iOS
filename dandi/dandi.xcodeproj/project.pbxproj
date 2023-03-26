@@ -43,6 +43,7 @@
 		DD1D6B1E29D032C800085FBE /* PagerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B1D29D032C800085FBE /* PagerButton.swift */; };
 		DD1D6B2629D03F5400085FBE /* BackgroundTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */; };
 		DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */; };
+		DD1D6B2A29D0429500085FBE /* ImagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -242,6 +243,7 @@
 		DD1D6B1D29D032C800085FBE /* PagerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerButton.swift; sourceTree = "<group>"; };
 		DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTabViewController.swift; sourceTree = "<group>"; };
 		DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesWithAddButtonView.swift; sourceTree = "<group>"; };
+		DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesDataSource.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 				DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */,
 				DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */,
 				DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */,
+				DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -1347,6 +1350,7 @@
 				DD9B06E5295EC8A600A98041 /* ModuleFactory.swift in Sources */,
 				DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */,
 				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
+				DD1D6B2A29D0429500085FBE /* ImagesDataSource.swift in Sources */,
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
 				DD00E7EC29C776F9001536D4 /* UploadUseCase.swift in Sources */,

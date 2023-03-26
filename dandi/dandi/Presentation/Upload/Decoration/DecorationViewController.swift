@@ -19,24 +19,7 @@ final class DecorationViewController: BaseViewController {
     }
 
     private var stickers = [StickerEditorView]()
-    private let backgroundImages = [
-        Image.background1,
-        Image.background2,
-        Image.background3,
-        Image.background4,
-        Image.background5,
-        Image.background6,
-        Image.background7
-    ]
-    private let stickerImages = [
-        Image.sticker1,
-        Image.sticker2,
-        Image.sticker3,
-        Image.sticker4,
-        Image.sticker5,
-        Image.sticker6,
-        Image.sticker7
-    ]
+
     private var headerViewBackgroundImage: UIImage = Image.background1
     private var resultImage: UIImage?
     private let contentScrollView = DecorationView()
@@ -77,7 +60,7 @@ final class DecorationViewController: BaseViewController {
 
     private func setCollectionViewDataSource() {
         contentScrollView.collectionView.dataSource = self
-        contentScrollView.collectionView.register(cell: DecorationHeaderView.self)
+        contentScrollView.collectionView.register(cell: DecorationImageCollectionViewCell.self)
         contentScrollView.collectionView.register(cell: DecorationMenuCollectionViewCell.self)
     }
 
@@ -99,22 +82,6 @@ final class DecorationViewController: BaseViewController {
     }
 
     private func bind() {
-        contentScrollView.collectionView.rx.itemSelected
-            .withUnretained(self)
-            .subscribe(onNext: { owner, indexPath in
-                switch indexPath.section {
-                case 1:
-                    owner.headerViewBackgroundImage = owner.backgroundImages[indexPath.item]
-                    owner.contentScrollView.collectionView.reloadData()
-                case 2:
-                    owner.stickers.append(StickerEditorView(image: self.stickerImages[indexPath.item]))
-                    owner.contentScrollView.collectionView.reloadData()
-                default:
-                    break
-                }
-            })
-            .disposed(by: disposeBag)
-
         doneButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
@@ -125,7 +92,7 @@ final class DecorationViewController: BaseViewController {
                     let cell = owner.contentScrollView
                     .collectionView
                     .cellForItem(at: IndexPath(item: 0, section: 0))
-                    as? DecorationHeaderView,
+                    as? DecorationImageCollectionViewCell,
                     let image = cell.makeImage()
                 else { return }
                 owner.stickers.forEach {
@@ -165,12 +132,7 @@ extension DecorationViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            guard
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: DecorationHeaderView.identifier,
-                    for: indexPath
-                ) as? DecorationHeaderView
-            else { return UICollectionViewCell() }
+            let cell: DecorationImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             stickers.forEach { stickerView in
                 let userResizableView = stickerView
                 if userResizableView.touchStart == nil {

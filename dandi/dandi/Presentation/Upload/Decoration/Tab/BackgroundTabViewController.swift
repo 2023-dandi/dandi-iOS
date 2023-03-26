@@ -5,4 +5,46 @@
 //  Created by 김윤서 on 2023/03/26.
 //
 
-import Foundation
+import UIKit
+
+final class BackgroundTabViewController: BaseViewController {
+    private let contentView = ImagesWithAddButtonView()
+    private lazy var dataSource = ImagesDataSource(collectionView: self.contentView.collectionView)
+
+    private let backgroundImages = [
+        Image.background1,
+        Image.background2,
+        Image.background3,
+        Image.background4,
+        Image.background5,
+        Image.background6,
+        Image.background7
+    ]
+
+    private let stickerImages = [
+        Image.sticker1,
+        Image.sticker2,
+        Image.sticker3,
+        Image.sticker4,
+        Image.sticker5,
+        Image.sticker6,
+        Image.sticker7
+    ]
+
+    override func loadView() {
+        view = contentView
+    }
+
+    override init() {
+        super.init()
+        dataSource.update(items: [
+            ClosetImage(id: 1, image: Image.background1, imageURL: nil),
+            ClosetImage(id: 2, image: Image.background2, imageURL: nil),
+            ClosetImage(id: 3, image: Image.background3, imageURL: nil),
+            ClosetImage(id: 4, image: Image.background4, imageURL: nil),
+            ClosetImage(id: 5, image: Image.background5, imageURL: nil),
+            ClosetImage(id: 6, image: Image.background6, imageURL: nil),
+            ClosetImage(id: 7, image: Image.background7, imageURL: nil)
+        ])
+    }
+}

@@ -24,6 +24,12 @@ final class ImageCollectionViewCell: UICollectionViewCell {
                 YDSColor.dimNormal : YDSColor.bgNormal
         }
     }
+    
+    override var contentMode: UIView.ContentMode {
+        didSet {
+            imageView.contentMode = contentMode
+        }
+    }
 
     var type: CellType = .check
 
