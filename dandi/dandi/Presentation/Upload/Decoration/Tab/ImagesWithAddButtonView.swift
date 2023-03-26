@@ -35,29 +35,27 @@ final class ImagesWithAddButtonView: UIView {
 
 extension ImagesWithAddButtonView {
     private func createLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { _, _ in
-            let itemSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1 / 4),
-                heightDimension: .fractionalWidth(1 / 4)
-            )
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let margin: CGFloat = 26
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1 / 4),
+            heightDimension: .fractionalWidth(1 / 4)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-            let groupSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: itemSize.widthDimension
-            )
-            let group = NSCollectionLayoutGroup.horizontal(
-                layoutSize: groupSize,
-                subitem: item,
-                count: 4
-            )
-            group.interItemSpacing = .fixed(12)
-            group.contentInsets = .init(top: .zero, leading: 26, bottom: .zero, trailing: 26)
+        let groupHeight: CGFloat = (UIScreen.main.bounds.width - margin * 2) / 4
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(groupHeight)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 4
+        )
+        group.interItemSpacing = .fixed(12)
+        group.contentInsets = .init(top: .zero, leading: margin, bottom: .zero, trailing: margin)
 
-            let section = NSCollectionLayoutSection(group: group)
-            section.interGroupSpacing = 0
-            return section
-        }
-        return layout
+        let section = NSCollectionLayoutSection(group: group)
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }

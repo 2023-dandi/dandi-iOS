@@ -44,6 +44,7 @@
 		DD1D6B2629D03F5400085FBE /* BackgroundTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */; };
 		DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */; };
 		DD1D6B2A29D0429500085FBE /* ImagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */; };
+		DD1D6B2C29D0672C00085FBE /* StickerTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -244,6 +245,7 @@
 		DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTabViewController.swift; sourceTree = "<group>"; };
 		DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesWithAddButtonView.swift; sourceTree = "<group>"; };
 		DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesDataSource.swift; sourceTree = "<group>"; };
+		DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTabViewController.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -713,11 +715,12 @@
 		DD3D9A4E29CC243400E298B1 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */,
 				DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */,
 				DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */,
-				DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */,
 				DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */,
 				DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */,
+				DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -1402,6 +1405,7 @@
 				DD3D9A5229CC410800E298B1 /* MyPost.swift in Sources */,
 				DD31233B29B1E49F00443FCE /* DefaultAuthRepository.swift in Sources */,
 				DD31233729B1D7AB00443FCE /* VoidType.swift in Sources */,
+				DD1D6B2C29D0672C00085FBE /* StickerTabViewController.swift in Sources */,
 				DD2E52E429BF38560078EA74 /* DecorationImageCollectionViewCell.swift in Sources */,
 				DDCDA17629C2F6E200BAB1CF /* WeatherFeeling.swift in Sources */,
 				DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */,
