@@ -41,6 +41,8 @@
 		DD1B1A1129BE12610039D8FB /* StickerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1B1A1029BE12610039D8FB /* StickerEditorView.swift */; };
 		DD1D6B1C29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B1B29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift */; };
 		DD1D6B1E29D032C800085FBE /* PagerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B1D29D032C800085FBE /* PagerButton.swift */; };
+		DD1D6B2629D03F5400085FBE /* BackgroundTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */; };
+		DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -53,7 +55,7 @@
 		DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */; };
 		DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */; };
 		DD2E52E229BF2ABD0078EA74 /* DecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */; };
-		DD2E52E429BF38560078EA74 /* DecorationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E329BF38560078EA74 /* DecorationHeaderView.swift */; };
+		DD2E52E429BF38560078EA74 /* DecorationImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E329BF38560078EA74 /* DecorationImageCollectionViewCell.swift */; };
 		DD2E52E629BF58CF0078EA74 /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */; };
 		DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E52E829BF72960078EA74 /* UploadMainViewController.swift */; };
 		DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31232029B1B9F500443FCE /* Interceptor.swift */; };
@@ -73,7 +75,7 @@
 		DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */; };
 		DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31235029B2593D00443FCE /* AuthUseCase.swift */; };
 		DD3D9A4B29CC204A00E298B1 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = DD3D9A4A29CC204A00E298B1 /* Tabman */; };
-		DD3D9A4D29CC243100E298B1 /* ClosetTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4C29CC243100E298B1 /* ClosetTabView.swift */; };
+		DD3D9A4D29CC243100E298B1 /* ClosetTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */; };
 		DD3D9A5029CC303200E298B1 /* DecorationMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */; };
 		DD3D9A5229CC410800E298B1 /* MyPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5129CC410800E298B1 /* MyPost.swift */; };
 		DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */; };
@@ -238,6 +240,8 @@
 		DD1B1A1029BE12610039D8FB /* StickerEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerEditorView.swift; sourceTree = "<group>"; };
 		DD1D6B1B29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD1D6B1D29D032C800085FBE /* PagerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerButton.swift; sourceTree = "<group>"; };
+		DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTabViewController.swift; sourceTree = "<group>"; };
+		DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesWithAddButtonView.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -254,7 +258,7 @@
 		DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerEditorViewControl.swift; sourceTree = "<group>"; };
 		DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBorderView.swift; sourceTree = "<group>"; };
 		DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationView.swift; sourceTree = "<group>"; };
-		DD2E52E329BF38560078EA74 /* DecorationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationHeaderView.swift; sourceTree = "<group>"; };
+		DD2E52E329BF38560078EA74 /* DecorationImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD2E52E829BF72960078EA74 /* UploadMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMainViewController.swift; sourceTree = "<group>"; };
 		DD31232029B1B9F500443FCE /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
@@ -274,7 +278,7 @@
 		DD31234A29B2556000443FCE /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		DD31235029B2593D00443FCE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
-		DD3D9A4C29CC243100E298B1 /* ClosetTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetTabView.swift; sourceTree = "<group>"; };
+		DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetTabViewController.swift; sourceTree = "<group>"; };
 		DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD3D9A5129CC410800E298B1 /* MyPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPost.swift; sourceTree = "<group>"; };
 		DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDTO.swift; sourceTree = "<group>"; };
@@ -432,17 +436,16 @@
 			path = Forecast;
 			sourceTree = "<group>";
 		};
-		DD1B1A0F29BE12460039D8FB /* View */ = {
+		DD1D6B2229D03EDC00085FBE /* Sticker */ = {
 			isa = PBXGroup;
 			children = (
-				DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */,
+				DD2E52E329BF38560078EA74 /* DecorationImageCollectionViewCell.swift */,
+				DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */,
 				DD1B1A1029BE12610039D8FB /* StickerEditorView.swift */,
 				DD2E52DD29BF1F370078EA74 /* StickerEditorViewControl.swift */,
-				DD2E52DF29BF1FF10078EA74 /* DashBorderView.swift */,
-				DD2E52E329BF38560078EA74 /* DecorationHeaderView.swift */,
 				DD2E52E529BF58CF0078EA74 /* StickerCollectionViewCell.swift */,
 			);
-			path = View;
+			path = Sticker;
 			sourceTree = "<group>";
 		};
 		DD2398D2295D7C8700A898B2 = {
@@ -708,8 +711,10 @@
 		DD3D9A4E29CC243400E298B1 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
-				DD3D9A4C29CC243100E298B1 /* ClosetTabView.swift */,
+				DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */,
+				DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */,
 				DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */,
+				DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -940,8 +945,9 @@
 		DDA8166729AE0B6A00963776 /* Decoration */ = {
 			isa = PBXGroup;
 			children = (
+				DD1D6B2229D03EDC00085FBE /* Sticker */,
 				DD3D9A4E29CC243400E298B1 /* Tab */,
-				DD1B1A0F29BE12460039D8FB /* View */,
+				DD2E52E129BF2ABD0078EA74 /* DecorationView.swift */,
 				DDA8166829AE0B8D00963776 /* DecorationViewController.swift */,
 			);
 			path = Decoration;
@@ -1274,7 +1280,7 @@
 				DD3D9A5C29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
-				DD3D9A4D29CC243100E298B1 /* ClosetTabView.swift in Sources */,
+				DD3D9A4D29CC243100E298B1 /* ClosetTabViewController.swift in Sources */,
 				DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */,
 				DDE3E30A29C37F91007BDBA7 /* DefaultTemperatureUseCase.swift in Sources */,
 				DD00E81729C8D6C3001536D4 /* LikeUseCase.swift in Sources */,
@@ -1375,6 +1381,7 @@
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */,
 				DD00E7E829C77610001536D4 /* HourlyWeatherUseCase.swift in Sources */,
+				DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
@@ -1387,10 +1394,11 @@
 				DD31232429B1BA8100443FCE /* UserDefaultHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
 				DDAEF5C929B748570018B577 /* String+.swift in Sources */,
+				DD1D6B2629D03F5400085FBE /* BackgroundTabViewController.swift in Sources */,
 				DD3D9A5229CC410800E298B1 /* MyPost.swift in Sources */,
 				DD31233B29B1E49F00443FCE /* DefaultAuthRepository.swift in Sources */,
 				DD31233729B1D7AB00443FCE /* VoidType.swift in Sources */,
-				DD2E52E429BF38560078EA74 /* DecorationHeaderView.swift in Sources */,
+				DD2E52E429BF38560078EA74 /* DecorationImageCollectionViewCell.swift in Sources */,
 				DDCDA17629C2F6E200BAB1CF /* WeatherFeeling.swift in Sources */,
 				DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,

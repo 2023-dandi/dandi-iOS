@@ -1,5 +1,5 @@
 //
-//  DecorationHeaderView.swift
+//  DecorationImageCollectionViewCell.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/13.
@@ -11,8 +11,7 @@ import SnapKit
 import Then
 import YDS
 
-final class DecorationHeaderView: UICollectionViewCell {
-    static let identifier = "DecorationHeaderView"
+final class DecorationImageCollectionViewCell: UICollectionViewCell {
     private(set) lazy var rawImageView: UIImageView = .init()
 
     override init(frame: CGRect) {

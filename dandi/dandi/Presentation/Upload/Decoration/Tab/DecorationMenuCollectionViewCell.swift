@@ -7,17 +7,18 @@
 
 import UIKit
 
+import YDS
 import SnapKit
 import Then
 
 final class DecorationMenuCollectionViewCell: UICollectionViewCell {
-    private let closetTabView = ClosetTabView()
+    private let closetTabView = ClosetTabViewController()
     private let backgroundTabView = UIView()
     private let stickerTabView = UIView()
 
     private let menuBar = UIStackView()
     private let buttons: [PagerButton] = [PagerButton("옷장"), PagerButton("배경"), PagerButton("스티커")]
-    private lazy var tabs: [UIView] = [closetTabView, backgroundTabView, stickerTabView]
+    private lazy var tabs: [UIView] = [closetTabView.view, backgroundTabView, stickerTabView]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +39,8 @@ final class DecorationMenuCollectionViewCell: UICollectionViewCell {
         menuBar.do {
             $0.axis = .horizontal
             $0.distribution = .fillEqually
+            $0.borderColor = YDSColor.borderNormal
+            $0.borderWidth = YDSConstant.Border.thin
         }
         for (tag, button) in buttons.enumerated() {
             button.tag = tag

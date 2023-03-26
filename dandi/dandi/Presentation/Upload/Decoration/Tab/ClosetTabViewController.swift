@@ -1,5 +1,5 @@
 //
-//  ClosetTabView.swift
+//  ClosetTabViewController.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/23.
@@ -9,10 +9,10 @@ import UIKit
 
 import YDS
 
-final class ClosetTabView: UIView {
+final class ClosetTabViewController: BaseViewController {
     private(set) lazy var categoryCollectionView: UICollectionView = {
         let collectionView = UICollectionView(
-            frame: self.bounds,
+            frame: self.view.bounds,
             collectionViewLayout: createMainCategoryTabCollectionLayout()
         )
         collectionView.register(cell: CategoryTextCollectionViewCell.self)
@@ -22,7 +22,7 @@ final class ClosetTabView: UIView {
 
     private(set) lazy var tagCollectionView: UICollectionView = {
         let collectionView = UICollectionView(
-            frame: self.bounds,
+            frame: self.view.bounds,
             collectionViewLayout: createTagCollectionViewLayout()
         )
         collectionView.register(cell: RoundTagCollectionViewCell.self)
@@ -32,7 +32,7 @@ final class ClosetTabView: UIView {
 
     private(set) lazy var photoCollectionView: UICollectionView = {
         let collectionView = UICollectionView(
-            frame: self.bounds,
+            frame: self.view.bounds,
             collectionViewLayout: createPhotoCollectionViewLayout()
         )
         collectionView.register(cell: ImageCollectionViewCell.self)
@@ -44,8 +44,8 @@ final class ClosetTabView: UIView {
     private var tagList: [String] = []
     private var photo: [UIImage] = []
 
-    init() {
-        super.init(frame: .zero)
+    override init() {
+        super.init()
         render()
     }
 
@@ -64,7 +64,7 @@ final class ClosetTabView: UIView {
     }
 
     private func render() {
-        addSubviews(categoryCollectionView, tagCollectionView, photoCollectionView)
+        view.addSubviews(categoryCollectionView, tagCollectionView, photoCollectionView)
         categoryCollectionView.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()
             make.height.equalTo(36)
@@ -94,7 +94,7 @@ final class ClosetTabView: UIView {
     }
 }
 
-extension ClosetTabView: UICollectionViewDataSource {
+extension ClosetTabViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection _: Int
@@ -140,7 +140,7 @@ extension ClosetTabView: UICollectionViewDataSource {
     }
 }
 
-extension ClosetTabView: UICollectionViewDelegate {
+extension ClosetTabViewController: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
@@ -163,7 +163,7 @@ extension ClosetTabView: UICollectionViewDelegate {
 
 // MARK: - Create CollectionView Layout
 
-extension ClosetTabView {
+extension ClosetTabViewController {
     private func createMainCategoryTabCollectionLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .estimated(60),
