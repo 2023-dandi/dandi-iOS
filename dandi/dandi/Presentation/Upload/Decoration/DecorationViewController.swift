@@ -7,168 +7,70 @@
 
 import UIKit
 
+import PanModal
 import RxCocoa
 import RxSwift
 import SnapKit
 import YDS
 
 final class DecorationViewController: BaseViewController {
-    override var hidesBottomBarWhenPushed: Bool {
-        get { navigationController?.topViewController == self }
-        set { super.hidesBottomBarWhenPushed = newValue }
-    }
-
-    private var stickers = [StickerEditorView]()
-
-    private var headerViewBackgroundImage: UIImage = Image.background1
-    private var resultImage: UIImage?
-    private let contentScrollView = DecorationView()
-    private let doneButton = UIButton()
+    private let contentView = DecorationMenuView()
 
     override func loadView() {
-        view = contentScrollView
+        view = contentView
     }
 
-    init(selectedImages: [UIImage]) {
+    init(factory: ModulFactoryInterface) {
         super.init()
-        setProperties()
-        setLayouts()
-        makeStickerEditorViews(images: selectedImages)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = true
+        super.factory = factory
+        setContentView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setCollectionViewDataSource()
-        bind()
     }
 
-    private func makeStickerEditorViews(images: [UIImage]) {
-        images.forEach { stickers.append(StickerEditorView(image: $0)) }
-    }
-
-    private func setCollectionViewDataSource() {
-        contentScrollView.collectionView.dataSource = self
-        contentScrollView.collectionView.register(cell: DecorationImageCollectionViewCell.self)
-        contentScrollView.collectionView.register(cell: DecorationMenuCollectionViewCell.self)
-    }
-
-    private func setProperties() {
-        doneButton.setImage(
-            YDSIcon.checkLine
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(YDSColor.buttonNormal),
-            for: .normal
+    private func setContentView() {
+        contentView.parentViewController = self
+        let closet = factory.makeClosetTabViewController()
+        //        closet.addImageDeleagte = self
+        closet.update(
+            category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
+            tagList: ["봄", "겨울", "가을", "겨울"],
+            photo: [.add, .checkmark, .strokedCheckmark, .remove]
         )
-        navigationItem.setRightBarButton(UIBarButtonItem(customView: doneButton), animated: false)
-    }
 
-    private func setLayouts() {
-        view.addSubview(doneButton)
-        doneButton.snp.makeConstraints { make in
-            make.size.equalTo(44)
-        }
-    }
+        let background = factory.makeBackgroundTabViewController()
+        let sticker = factory.makeStickerTabViewController()
 
-    private func bind() {
-        doneButton.rx.tap
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                owner.stickers.forEach {
-                    $0.switchControls(toState: false)
-                }
-                guard
-                    let cell = owner.contentScrollView
-                    .collectionView
-                    .cellForItem(at: IndexPath(item: 0, section: 0))
-                    as? DecorationImageCollectionViewCell,
-                    let image = cell.makeImage()
-                else { return }
-                owner.stickers.forEach {
-                    $0.switchControls(toState: true)
-                }
-                owner.navigationController?.pushViewController(
-                    owner.factory.makeUploadMainViewController(image: image),
-                    animated: true
-                )
-            })
-            .disposed(by: disposeBag)
+        contentView.setViewControllers([closet, background, sticker])
     }
 }
 
-extension DecorationViewController: UICollectionViewDataSource {
-    func numberOfSections(in _: UICollectionView) -> Int {
-        return 2
-    }
-
-    func collectionView(
-        _: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        default:
-            return 0
-        }
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell: DecorationImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            stickers.forEach { stickerView in
-                let userResizableView = stickerView
-                if userResizableView.touchStart == nil {
-                    userResizableView.center = CGPoint(
-                        x: UIScreen.main.bounds.width / 2,
-                        y: UIScreen.main.bounds.width * 1.1 / 2
-                    )
-                }
-                userResizableView.tag = indexPath.item
-                userResizableView.delegate = self
-                cell.rawImageView.addSubview(userResizableView)
-            }
-            cell.rawImageView.image = headerViewBackgroundImage
-            return cell
-        case 1:
-            let cell: DecorationMenuCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.parentViewController = self
-            let closet = factory.makeClosetTabViewController()
-            let background = factory.makeBackgroundTabViewController()
-            let sticker = factory.makeStickerTabViewController()
-            closet.update(
-                category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
-                tagList: ["봄", "겨울", "가을", "겨울"],
-                photo: [.add, .checkmark, .strokedCheckmark, .remove]
-            )
-            cell.setViewControllers([closet, background, sticker])
-            return cell
-        default:
-            return UICollectionViewCell()
-        }
-    }
-}
-
-extension DecorationViewController: StickerEditorViewDelegate {
-    func delete(uuid: UUID) {
-        stickers = stickers.filter { $0.uuid != uuid }
-        contentScrollView.collectionView.reloadData()
-    }
-}
+// extension DecorationViewController: StickerEditorViewDelegate {
+//    func delete(uuid: UUID) {
+//        stickers = stickers.filter { $0.uuid != uuid }
+//    }
+// }
+//
+// extension DecorationViewController: AddImageDelegate {
+//    func add(_ viewController: UIViewController, image: UIImage) {
+//        switch viewController {
+//        case is ClosetTabViewController:
+//            let userResizableView = StickerEditorView(image: image)
+//            if userResizableView.touchStart == nil {
+//                userResizableView.center = CGPoint(
+//                    x: UIScreen.main.bounds.width / 2,
+//                    y: UIScreen.main.bounds.width * 1.1 / 2
+//                )
+//            }
+//            userResizableView.delegate = self
+//            contentView.imageView.addSubview(userResizableView)
+//        case is BackgroundTabViewController:
+//            headerViewBackgroundImage = image
+//            contentScrollView.imageView.image = headerViewBackgroundImage
+//        default:
+//            return
+//        }
+//    }
+// }

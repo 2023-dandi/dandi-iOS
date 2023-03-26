@@ -10,12 +10,15 @@ import UIKit
 import YDS
 
 final class ClosetTabViewController: BaseViewController {
+    weak var addImageDeleagte: AddImageDelegate?
+
     private(set) lazy var categoryCollectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: self.view.bounds,
             collectionViewLayout: createMainCategoryTabCollectionLayout()
         )
         collectionView.register(cell: CategoryTextCollectionViewCell.self)
+        collectionView.bounces = false
         setCollectionView(collectionView)
         return collectionView
     }()
@@ -26,6 +29,7 @@ final class ClosetTabViewController: BaseViewController {
             collectionViewLayout: createTagCollectionViewLayout()
         )
         collectionView.register(cell: RoundTagCollectionViewCell.self)
+        collectionView.bounces = false
         setCollectionView(collectionView)
         return collectionView
     }()
@@ -157,6 +161,7 @@ extension ClosetTabViewController: UICollectionViewDelegate {
         case photoCollectionView:
             print("photoCollectionView")
             print(indexPath)
+            addImageDeleagte?.add(self, image: photo[indexPath.item])
         default:
             break
         }

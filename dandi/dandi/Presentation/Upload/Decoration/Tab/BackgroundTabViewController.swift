@@ -37,7 +37,7 @@ final class BackgroundTabViewController: BaseViewController {
 
     override init() {
         super.init()
-        title = "옷장"
+        title = "배경"
         dataSource.update(items: [
             ClosetImage(id: 1, image: Image.background1, imageURL: nil),
             ClosetImage(id: 2, image: Image.background2, imageURL: nil),

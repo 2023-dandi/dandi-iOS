@@ -68,7 +68,7 @@ final class HomeButtonViewController: BaseViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.controllerDelegate?.pushViewController(
-                    owner.factory.makeDecorationViewController(selectedImages: []),
+                    owner.factory.makeDecorationViewController(),
                     animated: true
                 )
                 owner.dismiss(animated: false)

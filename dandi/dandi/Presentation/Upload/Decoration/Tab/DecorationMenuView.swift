@@ -1,5 +1,5 @@
 //
-//  DecorationMenuCollectionViewCell.swift
+//  DecorationMenuView.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/23.
@@ -11,7 +11,7 @@ import SnapKit
 import Then
 import YDS
 
-final class DecorationMenuCollectionViewCell: UICollectionViewCell {
+final class DecorationMenuView: UIView {
     private let menuBar = UIStackView()
     private var buttons: [PagerButton] = []
     private var views: [UIView] = []
@@ -31,7 +31,7 @@ final class DecorationMenuCollectionViewCell: UICollectionViewCell {
             buttons.append(PagerButton(viewController.title ?? ""))
             embed(
                 parent: parentViewController,
-                container: contentView,
+                container: self,
                 child: viewController, previous: nil
             )
         }
@@ -45,6 +45,7 @@ final class DecorationMenuCollectionViewCell: UICollectionViewCell {
     }
 
     private func setProperties() {
+        backgroundColor = YDSColor.bgNormal
         menuBar.do {
             $0.axis = .horizontal
             $0.distribution = .fillEqually
@@ -54,7 +55,7 @@ final class DecorationMenuCollectionViewCell: UICollectionViewCell {
     }
 
     private func setLayouts() {
-        contentView.addSubviews(menuBar)
+        addSubviews(menuBar)
         menuBar.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()
             make.height.equalTo(48)
