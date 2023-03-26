@@ -16,11 +16,12 @@ final class ClosetTabView: UIView {
             collectionViewLayout: createMainCategoryTabCollectionLayout()
         )
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(cell: PagerCollectionViewCell.self)
+        collectionView.alwaysBounceVertical = false
         return collectionView
     }()
 
@@ -30,11 +31,12 @@ final class ClosetTabView: UIView {
             collectionViewLayout: createTagCollectionViewLayout()
         )
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(cell: RoundTagCollectionViewCell.self)
+        collectionView.alwaysBounceVertical = false
         return collectionView
     }()
 
@@ -44,6 +46,7 @@ final class ClosetTabView: UIView {
             collectionViewLayout: createPhotoCollectionViewLayout()
         )
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
         collectionView.delegate = self
@@ -176,7 +179,7 @@ extension ClosetTabView {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .absolute(88),
-            heightDimension: .absolute(46)
+            heightDimension: .absolute(36)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -201,7 +204,7 @@ extension ClosetTabView {
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(32)
+            heightDimension: .absolute(26)
         )
 
         let group = NSCollectionLayoutGroup.horizontal(
@@ -212,33 +215,32 @@ extension ClosetTabView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 16
-        section.contentInsets = .init(top: 12, leading: 16, bottom: .zero, trailing: 16)
+        section.contentInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
 
     private func createPhotoCollectionViewLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1 / 3),
             heightDimension: .fractionalWidth(1 / 3)
         )
-
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: itemSize.heightDimension
+        )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
-            subitems: [item]
+            subitem: item,
+            count: 3
         )
-        group.interItemSpacing = .fixed(16)
+        group.interItemSpacing = .fixed(2)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 16
-        section.contentInsets = .init(top: 12, leading: 16, bottom: .zero, trailing: 16)
+        section.interGroupSpacing = 2
+        section.contentInsets = .init(top: .zero, leading: .zero, bottom: 16, trailing: .zero)
+
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+import CoreLocation
 import ReactorKit
 import RxCocoa
 import RxSwift

@@ -70,12 +70,12 @@ extension DecorationView {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 12
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
 
         return section
     }
 
-    private func createSectionLayout() -> NSCollectionLayoutSection {
+    private func createTabSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
@@ -83,19 +83,15 @@ extension DecorationView {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(64),
-            heightDimension: .absolute(64)
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
         )
-        let group = NSCollectionLayoutGroup.horizontal(
+        let group = NSCollectionLayoutGroup.vertical(
             layoutSize: groupSize,
             subitems: [item]
         )
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 12
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: 0, leading: 12, bottom: 12, trailing: 12)
-
         return section
     }
 }
