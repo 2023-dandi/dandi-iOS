@@ -15,13 +15,8 @@ final class ClosetTabView: UIView {
             frame: self.bounds,
             collectionViewLayout: createMainCategoryTabCollectionLayout()
         )
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.register(cell: CategoryTextCollectionViewCell.self)
-        collectionView.alwaysBounceVertical = false
+        setCollectionView(collectionView)
         return collectionView
     }()
 
@@ -30,13 +25,8 @@ final class ClosetTabView: UIView {
             frame: self.bounds,
             collectionViewLayout: createTagCollectionViewLayout()
         )
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.register(cell: RoundTagCollectionViewCell.self)
-        collectionView.alwaysBounceVertical = false
+        setCollectionView(collectionView)
         return collectionView
     }()
 
@@ -45,13 +35,8 @@ final class ClosetTabView: UIView {
             frame: self.bounds,
             collectionViewLayout: createPhotoCollectionViewLayout()
         )
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.register(cell: ImageCollectionViewCell.self)
+        setCollectionView(collectionView)
         return collectionView
     }()
 
@@ -93,6 +78,14 @@ final class ClosetTabView: UIView {
             make.top.equalTo(tagCollectionView.snp.bottom)
             make.leading.bottom.trailing.equalToSuperview()
         }
+    }
+
+    private func setCollectionView(_ collectionView: UICollectionView) {
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
 
     @available(*, unavailable)
