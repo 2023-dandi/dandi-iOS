@@ -19,6 +19,7 @@ final class StickerTabViewController: BaseViewController {
 
     override init() {
         super.init()
+        title = "스티커"
         dataSource.update(items: [
             ClosetImage(id: 1, image: Image.sticker1, imageURL: nil),
             ClosetImage(id: 2, image: Image.sticker2, imageURL: nil),

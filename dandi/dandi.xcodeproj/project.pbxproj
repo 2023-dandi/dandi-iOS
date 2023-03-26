@@ -717,10 +717,10 @@
 			children = (
 				DD3D9A4F29CC303200E298B1 /* DecorationMenuCollectionViewCell.swift */,
 				DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */,
+				DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */,
 				DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */,
 				DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */,
 				DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */,
-				DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";

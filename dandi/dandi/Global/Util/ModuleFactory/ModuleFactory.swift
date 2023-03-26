@@ -24,6 +24,9 @@ protocol ModulFactoryInterface {
     func makeMyInformationViewController(userProfile: UserProfile) -> MyInformationViewController
     func makeDecorationViewController(selectedImages: [UIImage]) -> DecorationViewController
     func makeUploadMainViewController(image: UIImage) -> UploadMainViewController
+    func makeBackgroundTabViewController() -> BackgroundTabViewController
+    func makeStickerTabViewController() -> StickerTabViewController
+    func makeClosetTabViewController() -> ClosetTabViewController
 }
 
 final class ModuleFactory {
@@ -162,6 +165,24 @@ extension ModuleFactory: ModulFactoryInterface {
                 postRepository: DefaultPostRepository(interceptor: Interceptor())
             )
         )
+        return vc
+    }
+
+    func makeBackgroundTabViewController() -> BackgroundTabViewController {
+        let vc = BackgroundTabViewController()
+        vc.factory = self
+        return vc
+    }
+
+    func makeStickerTabViewController() -> StickerTabViewController {
+        let vc = StickerTabViewController()
+        vc.factory = self
+        return vc
+    }
+
+    func makeClosetTabViewController() -> ClosetTabViewController {
+        let vc = ClosetTabViewController()
+        vc.factory = self
         return vc
     }
 }

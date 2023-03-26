@@ -149,11 +149,16 @@ extension DecorationViewController: UICollectionViewDataSource {
             return cell
         case 1:
             let cell: DecorationMenuCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.update(
-                category: ["전체", "", "상의", "아우터", "악세사리", "기타패션"],
+            cell.parentViewController = self
+            let closet = factory.makeClosetTabViewController()
+            let background = factory.makeBackgroundTabViewController()
+            let sticker = factory.makeStickerTabViewController()
+            closet.update(
+                category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
                 tagList: ["봄", "겨울", "가을", "겨울"],
                 photo: [.add, .checkmark, .strokedCheckmark, .remove]
             )
+            cell.setViewControllers([closet, background, sticker])
             return cell
         default:
             return UICollectionViewCell()

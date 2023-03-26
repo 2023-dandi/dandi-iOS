@@ -36,6 +36,7 @@ final class ClosetTabViewController: BaseViewController {
             collectionViewLayout: createPhotoCollectionViewLayout()
         )
         collectionView.register(cell: ImageCollectionViewCell.self)
+        collectionView.allowsMultipleSelection = true
         setCollectionView(collectionView)
         return collectionView
     }()
@@ -46,6 +47,7 @@ final class ClosetTabViewController: BaseViewController {
 
     override init() {
         super.init()
+        title = "옷장"
         render()
     }
 

@@ -87,6 +87,7 @@ extension ImagesDataSource {
                     .withTintColor(YDSColor.buttonNormal)
                     .resize(newWidth: 24)
             )
+            cell.type = .none
         }
     }
 
@@ -99,6 +100,7 @@ extension ImagesDataSource {
             if let imageURL = item.imageURL {
                 cell.configure(imageURL: imageURL)
             }
+            cell.type = .none
         }
     }
 }
