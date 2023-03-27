@@ -22,8 +22,7 @@ protocol ModulFactoryInterface {
     func makePhotoLibraryViewController() -> PhotoLibraryViewController
     func makePostDetailViewController(postID: Int) -> PostDetailViewController
     func makeMyInformationViewController(userProfile: UserProfile) -> MyInformationViewController
-    func makeDecorationViewController() -> DecorationImageViewController
-    func makeDecorationMenuViewController() -> DecorationViewController
+    func makeDecorationViewController() -> DecorationViewController
     func makeUploadMainViewController(image: UIImage) -> UploadMainViewController
     func makeBackgroundTabViewController() -> BackgroundTabViewController
     func makeStickerTabViewController() -> StickerTabViewController
@@ -149,14 +148,9 @@ extension ModuleFactory: ModulFactoryInterface {
         return vc
     }
 
-    func makeDecorationViewController() -> DecorationImageViewController {
-        let vc = DecorationImageViewController()
+    func makeDecorationViewController() -> DecorationViewController {
+        let vc = DecorationViewController()
         vc.factory = self
-        return vc
-    }
-
-    func makeDecorationMenuViewController() -> DecorationViewController {
-        let vc = DecorationViewController(factory: self)
         return vc
     }
 

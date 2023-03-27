@@ -46,7 +46,7 @@
 		DD1D6B2A29D0429500085FBE /* ImagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */; };
 		DD1D6B2C29D0672C00085FBE /* StickerTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */; };
 		DD1D6B2E29D079EA00085FBE /* AddImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2D29D079EA00085FBE /* AddImageDelegate.swift */; };
-		DD1D6B3029D0808900085FBE /* DecorationImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2F29D0808900085FBE /* DecorationImageViewController.swift */; };
+		DD1D6B3029D0808900085FBE /* DecorationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -148,7 +148,6 @@
 		DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DDA8166129ADAB3800963776 /* YPImagePicker */; };
 		DDA8166429ADB5A000963776 /* UIView+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8166329ADB5A000963776 /* UIView+Reactive.swift */; };
 		DDA8166629AE017A00963776 /* MyPagePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8166529AE017A00963776 /* MyPagePostCollectionViewCell.swift */; };
-		DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8166829AE0B8D00963776 /* DecorationViewController.swift */; };
 		DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8166A29AE0E3C00963776 /* NotificationListViewController.swift */; };
 		DDA8166F29AE0E6200963776 /* NotificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8166E29AE0E6200963776 /* NotificationCollectionViewCell.swift */; };
 		DDA8167129AE0E6E00963776 /* NotificationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8167029AE0E6E00963776 /* NotificationReactor.swift */; };
@@ -247,7 +246,7 @@
 		DD1D6B2929D0429500085FBE /* ImagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesDataSource.swift; sourceTree = "<group>"; };
 		DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTabViewController.swift; sourceTree = "<group>"; };
 		DD1D6B2D29D079EA00085FBE /* AddImageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageDelegate.swift; sourceTree = "<group>"; };
-		DD1D6B2F29D0808900085FBE /* DecorationImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationImageViewController.swift; sourceTree = "<group>"; };
+		DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationViewController.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -342,7 +341,6 @@
 		DDA8165829ACEA0000963776 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		DDA8166329ADB5A000963776 /* UIView+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Reactive.swift"; sourceTree = "<group>"; };
 		DDA8166529AE017A00963776 /* MyPagePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePostCollectionViewCell.swift; sourceTree = "<group>"; };
-		DDA8166829AE0B8D00963776 /* DecorationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationViewController.swift; sourceTree = "<group>"; };
 		DDA8166A29AE0E3C00963776 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		DDA8166E29AE0E6200963776 /* NotificationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8167029AE0E6E00963776 /* NotificationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationReactor.swift; sourceTree = "<group>"; };
@@ -953,8 +951,7 @@
 			children = (
 				DD1D6B2229D03EDC00085FBE /* Sticker */,
 				DD3D9A4E29CC243400E298B1 /* Tab */,
-				DDA8166829AE0B8D00963776 /* DecorationViewController.swift */,
-				DD1D6B2F29D0808900085FBE /* DecorationImageViewController.swift */,
+				DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */,
 			);
 			path = Decoration;
 			sourceTree = "<group>";
@@ -1316,7 +1313,6 @@
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
 				DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */,
 				DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */,
-				DDA8166929AE0B8D00963776 /* DecorationViewController.swift in Sources */,
 				DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */,
 				DD61796529CB5FBF005B7527 /* PagerCollectionViewCell.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
@@ -1324,7 +1320,7 @@
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */,
 				DD1D6B2E29D079EA00085FBE /* AddImageDelegate.swift in Sources */,
-				DD1D6B3029D0808900085FBE /* DecorationImageViewController.swift in Sources */,
+				DD1D6B3029D0808900085FBE /* DecorationViewController.swift in Sources */,
 				DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,

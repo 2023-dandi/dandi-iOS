@@ -8,6 +8,8 @@
 import UIKit
 
 final class BackgroundTabViewController: BaseViewController {
+    weak var addImageDelegate: AddImageDelegate?
+
     private let contentView = ImagesWithAddButtonView()
     private lazy var dataSource = ImagesDataSource(collectionView: self.contentView.collectionView)
 
@@ -47,5 +49,22 @@ final class BackgroundTabViewController: BaseViewController {
             ClosetImage(id: 6, image: Image.background6, imageURL: nil),
             ClosetImage(id: 7, image: Image.background7, imageURL: nil)
         ])
+
+        bind()
+    }
+
+    private func bind() {
+        contentView.collectionView.rx.itemSelected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                switch owner.dataSource.itemIdentifier(for: indexPath) {
+                case let .image(item):
+                    guard let image = item.image else { return }
+                    owner.addImageDelegate?.add(self, image: image)
+                default:
+                    return
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
