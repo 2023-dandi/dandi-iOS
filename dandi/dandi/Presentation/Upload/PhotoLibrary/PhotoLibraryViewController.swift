@@ -14,7 +14,7 @@ import YDS
 import YPImagePicker
 
 final class PhotoLibraryViewController: YPImagePicker {
-    var factory: ModulFactoryInterface!
+    var factory: ModuleFactoryInterface!
 
     private var imageList: [UIImage] = []
     init() {

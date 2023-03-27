@@ -25,7 +25,7 @@ final class DecorationViewController: BaseViewController {
     private let menuView = DecorationMenuView()
     private let doneButton = UIButton()
 
-    init(factory: ModulFactoryInterface) {
+    init(factory: ModuleFactoryInterface) {
         super.init()
         super.factory = factory
         setProperties()

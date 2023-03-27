@@ -11,7 +11,7 @@ import RxSwift
 import YDS
 
 class BaseViewController: UIViewController {
-    public var factory: ModulFactoryInterface!
+    public var factory: ModuleFactoryInterface!
     public var disposeBag: DisposeBag = .init()
 
     init() {

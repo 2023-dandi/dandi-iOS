@@ -11,9 +11,9 @@ import UIKit
 import YDS
 
 final class MainTabBarController: YDSBottomBarController {
-    public let factory: ModulFactoryInterface
+    public let factory: ModuleFactoryInterface
 
-    init(factory: ModulFactoryInterface) {
+    init(factory: ModuleFactoryInterface) {
         self.factory = factory
         super.init(nibName: nil, bundle: nil)
     }
