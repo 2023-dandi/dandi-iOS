@@ -28,6 +28,7 @@ protocol ModuleFactoryInterface {
     func makeBackgroundTabViewController() -> BackgroundTabViewController
     func makeStickerTabViewController() -> StickerTabViewController
     func makeClosetTabViewController() -> ClosetTabViewController
+    func makeLocationSettingViewController() -> LocationSettingViewController
 }
 
 final class ModuleFactory {
@@ -188,6 +189,12 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeClosetTabViewController() -> ClosetTabViewController {
         let vc = ClosetTabViewController()
+        vc.factory = self
+        return vc
+    }
+
+    func makeLocationSettingViewController() -> LocationSettingViewController {
+        let vc = LocationSettingViewController()
         vc.factory = self
         return vc
     }

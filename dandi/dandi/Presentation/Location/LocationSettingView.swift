@@ -11,12 +11,13 @@ import Then
 import YDS
 
 final class LocationSettingView: UIView {
-    private let titleLabel: UILabel = .init()
-    private let searchTextField: YDSSearchTextField = .init()
-    private let tableView: UITableView = .init()
+    private(set) lazy var searchTextField: YDSSearchTextField = .init()
+    private(set) lazy var tableView: UITableView = .init()
 
     init() {
         super.init(frame: .zero)
+        setProperties()
+        setLayouts()
     }
 
     @available(*, unavailable)
@@ -27,20 +28,20 @@ final class LocationSettingView: UIView {
 
 extension LocationSettingView {
     private func setProperties() {
-        titleLabel.do {
-            $0.text = "위치 설정"
-            $0.font = YDSFont.title3
-        }
         searchTextField.do {
             $0.placeholder = "위치를 입력해주세요"
         }
     }
 
     private func setLayouts() {
-        addSubviews(titleLabel, searchTextField)
+        addSubviews(searchTextField, tableView)
         searchTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(12)
+            make.leading.trailing.equalToSuperview().inset(12)
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(12)
+            make.leading.bottom.trailing.equalToSuperview()
         }
     }
 }

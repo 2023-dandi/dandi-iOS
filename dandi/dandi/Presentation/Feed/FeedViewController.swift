@@ -9,6 +9,7 @@ import UIKit
 
 import RxCocoa
 import RxSwift
+import YDS
 
 final class FeedViewController: BaseViewController {
     private let feedView: FeedView = .init()
@@ -40,6 +41,14 @@ final class FeedViewController: BaseViewController {
                 default:
                     break
                 }
+            })
+            .disposed(by: disposeBag)
+
+        feedView.locationButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                let vc = owner.factory.makeLocationSettingViewController()
+                owner.present(YDSNavigationController(rootViewController: vc), animated: true)
             })
             .disposed(by: disposeBag)
     }

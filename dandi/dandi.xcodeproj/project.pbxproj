@@ -51,6 +51,7 @@
 		DD1E52D129D1959400550E02 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D029D1959400550E02 /* Season.swift */; };
 		DD1E52D529D1B0D100550E02 /* ClosetMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */; };
 		DD1E52D729D1B2DE00550E02 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D629D1B2DE00550E02 /* ClosetView.swift */; };
+		DD1E52DA29D1F47B00550E02 /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D929D1F47B00550E02 /* ConfirmLocationViewController.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -255,6 +256,7 @@
 		DD1E52D029D1959400550E02 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetMainViewController.swift; sourceTree = "<group>"; };
 		DD1E52D629D1B2DE00550E02 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
+		DD1E52D929D1F47B00550E02 /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -978,6 +980,7 @@
 			children = (
 				DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */,
 				DDA390062966BE51006FBE00 /* LocationSettingView.swift */,
+				DD1E52D929D1F47B00550E02 /* ConfirmLocationViewController.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -1346,6 +1349,7 @@
 				DD1D6B1E29D032C800085FBE /* PagerButton.swift in Sources */,
 				DDE3E30229C376CD007BDBA7 /* PostDTO.swift in Sources */,
 				DD3D9A5629CC429900E298B1 /* PostListUseCase.swift in Sources */,
+				DD1E52DA29D1F47B00550E02 /* ConfirmLocationViewController.swift in Sources */,
 				DD1E52D129D1959400550E02 /* Season.swift in Sources */,
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
 				DD9F6FE129B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift in Sources */,
