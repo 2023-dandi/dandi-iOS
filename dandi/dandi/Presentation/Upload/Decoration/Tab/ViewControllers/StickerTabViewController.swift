@@ -45,7 +45,27 @@ final class StickerTabViewController: BaseViewController {
                 case let .image(item):
                     guard let image = item.image else { return }
                     owner.addImageDelegate?.add(self, image: image)
-                default:
+                case .button:
+                    let library = owner.factory.makePhotoLibraryViewController()
+                    library.modalPresentationStyle = .fullScreen
+                    library.didFinishPicking { [unowned library] items, cancelled in
+                        guard
+                            !cancelled,
+                            let firstItem = items.first
+                        else {
+                            library.dismiss(animated: true, completion: nil)
+                            return
+                        }
+                        switch firstItem {
+                        case let .photo(item):
+                            owner.addImageDelegate?.add(self, image: item.image)
+                        default:
+                            break
+                        }
+                        library.dismiss(animated: true)
+                    }
+                    owner.present(library, animated: true)
+                case .none:
                     return
                 }
             })

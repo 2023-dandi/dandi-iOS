@@ -30,6 +30,8 @@ final class DecorationViewController: BaseViewController {
         super.factory = factory
         setProperties()
         setLayouts()
+        setGesture()
+        setViewControllers()
         bind()
     }
 
@@ -74,12 +76,6 @@ final class DecorationViewController: BaseViewController {
 
     private func setProperties() {
         imageView.isUserInteractionEnabled = true
-        let gesture = UIPanGestureRecognizer(
-            target: self,
-            action: #selector(handleGesture)
-        )
-        menuView.addGestureRecognizer(gesture)
-        menuView.isUserInteractionEnabled = true
         doneButton.setImage(
             YDSIcon.checkLine
                 .withRenderingMode(.alwaysOriginal)
@@ -90,7 +86,9 @@ final class DecorationViewController: BaseViewController {
             UIBarButtonItem(customView: doneButton),
             animated: false
         )
+    }
 
+    private func setViewControllers() {
         let closet = factory.makeClosetTabViewController()
         closet.addImageDeleagte = self
         closet.update(
@@ -105,10 +103,7 @@ final class DecorationViewController: BaseViewController {
         let sticker = factory.makeStickerTabViewController()
         sticker.addImageDelegate = self
 
-        setViewControllers([closet, background, sticker])
-    }
-
-    private func setViewControllers(_ viewControllers: [UIViewController]) {
+        let viewControllers = [closet, background, sticker]
         for (tag, viewController) in viewControllers.enumerated() {
             viewController.view.tag = tag
             viewController.view.isHidden = tag != 0
@@ -126,6 +121,15 @@ final class DecorationViewController: BaseViewController {
             button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         }
         menuView.buttons.forEach { menuView.menuBar.addArrangedSubview($0) }
+    }
+
+    private func setGesture() {
+        let gesture = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(handleGesture)
+        )
+        menuView.addGestureRecognizer(gesture)
+        menuView.isUserInteractionEnabled = true
     }
 
     private func embed(

@@ -7,31 +7,14 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 final class BackgroundTabViewController: BaseViewController {
     weak var addImageDelegate: AddImageDelegate?
 
     private let contentView = ImagesWithAddButtonView()
     private lazy var dataSource = ImagesDataSource(collectionView: self.contentView.collectionView)
-
-    private let backgroundImages = [
-        Image.background1,
-        Image.background2,
-        Image.background3,
-        Image.background4,
-        Image.background5,
-        Image.background6,
-        Image.background7
-    ]
-
-    private let stickerImages = [
-        Image.sticker1,
-        Image.sticker2,
-        Image.sticker3,
-        Image.sticker4,
-        Image.sticker5,
-        Image.sticker6,
-        Image.sticker7
-    ]
 
     override func loadView() {
         view = contentView
@@ -61,7 +44,27 @@ final class BackgroundTabViewController: BaseViewController {
                 case let .image(item):
                     guard let image = item.image else { return }
                     owner.addImageDelegate?.add(self, image: image)
-                default:
+                case .button:
+                    let library = owner.factory.makePhotoLibraryViewController()
+                    library.modalPresentationStyle = .fullScreen
+                    library.didFinishPicking { [unowned library] items, cancelled in
+                        guard
+                            !cancelled,
+                            let firstItem = items.first
+                        else {
+                            library.dismiss(animated: true, completion: nil)
+                            return
+                        }
+                        switch firstItem {
+                        case let .photo(item):
+                            owner.addImageDelegate?.add(self, image: item.image)
+                        default:
+                            break
+                        }
+                        library.dismiss(animated: true)
+                    }
+                    owner.present(library, animated: true)
+                case .none:
                     return
                 }
             })

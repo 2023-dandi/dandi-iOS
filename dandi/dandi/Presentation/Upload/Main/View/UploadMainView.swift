@@ -67,7 +67,7 @@ extension UploadMainView {
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(UIScreen.main.bounds.width * 433 / 375 + 16)
+            heightDimension: .absolute(UIScreen.main.bounds.width * 433 / 375)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
