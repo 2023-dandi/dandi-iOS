@@ -18,20 +18,24 @@ final class ImageCollectionViewCell: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
-            guard type == .check else { return }
-            checkIconView.isHidden = !isSelected
-            backgroundColor = isSelected ?
-                YDSColor.dimNormal : YDSColor.bgNormal
+            let image = isSelected ? YDSIcon.checkcircleFilled : YDSIcon.checkcircleLine
+            checkIconView.image = image
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(YDSColor.buttonPoint)
         }
     }
-    
+
     override var contentMode: UIView.ContentMode {
         didSet {
             imageView.contentMode = contentMode
         }
     }
 
-    var type: CellType = .check
+    var type: CellType = .none {
+        didSet {
+            checkIconView.isHidden = type != .check
+        }
+    }
 
     private let imageView: UIImageView = .init()
     private let checkIconView: UIImageView = .init()
@@ -63,11 +67,8 @@ final class ImageCollectionViewCell: UICollectionViewCell {
 
 extension ImageCollectionViewCell {
     private func setProperties() {
-        checkIconView.image = YDSIcon.checkcircleFilled
-            .withRenderingMode(.alwaysOriginal)
-            .withTintColor(YDSColor.buttonPoint)
+        checkIconView.isHidden = true
         imageView.contentMode = .scaleAspectFit
-        isSelected = false
         contentView.borderColor = YDSColor.borderNormal
         contentView.borderWidth = YDSConstant.Border.thin
     }

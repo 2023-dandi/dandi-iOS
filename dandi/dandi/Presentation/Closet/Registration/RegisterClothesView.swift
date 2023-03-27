@@ -1,5 +1,5 @@
 //
-//  RegistrationClothesView.swift
+//  RegisterClothesView.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/23.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class RegistrationClothesView: UIView {
+final class RegisterClothesView: UIView {
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { [weak self] index, _ in
             switch index {

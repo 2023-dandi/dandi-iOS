@@ -12,47 +12,20 @@ import YDS
 final class ClosetTabViewController: BaseViewController {
     weak var addImageDeleagte: AddImageDelegate?
 
-    private(set) lazy var categoryCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(
-            frame: self.view.bounds,
-            collectionViewLayout: createMainCategoryTabCollectionLayout()
-        )
-        collectionView.register(cell: CategoryTextCollectionViewCell.self)
-        collectionView.bounces = false
-        setCollectionView(collectionView)
-        return collectionView
-    }()
-
-    private(set) lazy var tagCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(
-            frame: self.view.bounds,
-            collectionViewLayout: createTagCollectionViewLayout()
-        )
-        collectionView.register(cell: RoundTagCollectionViewCell.self)
-        collectionView.bounces = false
-        setCollectionView(collectionView)
-        return collectionView
-    }()
-
-    private(set) lazy var photoCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(
-            frame: self.view.bounds,
-            collectionViewLayout: createPhotoCollectionViewLayout()
-        )
-        collectionView.register(cell: ImageCollectionViewCell.self)
-        collectionView.allowsMultipleSelection = true
-        setCollectionView(collectionView)
-        return collectionView
-    }()
+    private let closetView = ClosetView()
 
     private var category: [String] = []
     private var tagList: [String] = []
     private var photo: [UIImage] = []
 
+    override func loadView() {
+        view = closetView
+    }
+
     override init() {
         super.init()
         title = "옷장"
-        render()
+        setCollectionView()
     }
 
     func update(
@@ -64,34 +37,20 @@ final class ClosetTabViewController: BaseViewController {
         self.tagList = tagList
         self.photo = photo
 
-        categoryCollectionView.reloadData()
-        tagCollectionView.reloadData()
-        photoCollectionView.reloadData()
-    }
-
-    private func render() {
-        view.addSubviews(categoryCollectionView, tagCollectionView, photoCollectionView)
-        categoryCollectionView.snp.makeConstraints { make in
-            make.leading.top.trailing.equalToSuperview()
-            make.height.equalTo(36)
-        }
-        tagCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(categoryCollectionView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(42)
-        }
-        photoCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(tagCollectionView.snp.bottom)
-            make.leading.bottom.trailing.equalToSuperview()
+        [closetView.categoryCollectionView,
+         closetView.tagCollectionView,
+         closetView.photoCollectionView].forEach {
+            $0.reloadData()
         }
     }
 
-    private func setCollectionView(_ collectionView: UICollectionView) {
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
+    private func setCollectionView() {
+        [closetView.categoryCollectionView,
+         closetView.tagCollectionView,
+         closetView.photoCollectionView].forEach {
+            $0.delegate = self
+            $0.dataSource = self
+        }
     }
 
     @available(*, unavailable)
@@ -106,11 +65,11 @@ extension ClosetTabViewController: UICollectionViewDataSource {
         numberOfItemsInSection _: Int
     ) -> Int {
         switch collectionView {
-        case categoryCollectionView:
+        case closetView.categoryCollectionView:
             return category.count
-        case tagCollectionView:
+        case closetView.tagCollectionView:
             return tagList.count
-        case photoCollectionView:
+        case closetView.photoCollectionView:
             return photo.count
         default:
             break
@@ -124,18 +83,18 @@ extension ClosetTabViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         switch collectionView {
-        case categoryCollectionView:
+        case closetView.categoryCollectionView:
             let cell: CategoryTextCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.configure(text: category[indexPath.item])
             return cell
 
-        case tagCollectionView:
+        case closetView.tagCollectionView:
             let cell: RoundTagCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.configure(text: tagList[indexPath.item])
 
             return cell
 
-        case photoCollectionView:
+        case closetView.photoCollectionView:
             let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.configure(image: photo[indexPath.item])
             return cell
@@ -152,97 +111,18 @@ extension ClosetTabViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         switch collectionView {
-        case categoryCollectionView:
+        case closetView.categoryCollectionView:
             print("mainCategoryTabCollectionView")
             print(indexPath)
-        case tagCollectionView:
+        case closetView.tagCollectionView:
             print("tagTabCollectionView")
             print(indexPath)
-        case photoCollectionView:
+        case closetView.photoCollectionView:
             print("photoCollectionView")
             print(indexPath)
             addImageDeleagte?.add(self, image: photo[indexPath.item])
         default:
             break
         }
-    }
-}
-
-// MARK: - Create CollectionView Layout
-
-extension ClosetTabViewController {
-    private func createMainCategoryTabCollectionLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(60),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(60),
-            heightDimension: .absolute(36)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitems: [item]
-        )
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: .zero, leading: 16, bottom: .zero, trailing: 16)
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-
-    private func createTagCollectionViewLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(60),
-            heightDimension: .fractionalHeight(1.0)
-        )
-
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(60),
-            heightDimension: .absolute(26)
-        )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitems: [item]
-        )
-        group.interItemSpacing = .fixed(16)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.interGroupSpacing = 16
-        section.contentInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-
-    private func createPhotoCollectionViewLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1 / 3),
-            heightDimension: .fractionalWidth(1 / 3)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: itemSize.heightDimension
-        )
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitem: item,
-            count: 3
-        )
-        group.interItemSpacing = .fixed(2)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 2
-        section.contentInsets = .init(top: .zero, leading: .zero, bottom: 16, trailing: .zero)
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
     }
 }

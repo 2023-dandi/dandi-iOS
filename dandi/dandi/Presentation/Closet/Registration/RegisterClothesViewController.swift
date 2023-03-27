@@ -1,5 +1,5 @@
 //
-//  RegistrationClothesViewController.swift
+//  RegisterClothesViewController.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/23.
@@ -11,8 +11,8 @@ import RxCocoa
 import RxSwift
 import YDS
 
-final class RegistrationClothesViewController: BaseViewController {
-    private let registrationView = RegistrationClothesView()
+final class RegisterClothesViewController: BaseViewController {
+    private let registrationView = RegisterClothesView()
 
     private let navigationBar = YDSTopBar()
     private let backButton = UIButton()
@@ -102,7 +102,7 @@ final class RegistrationClothesViewController: BaseViewController {
     }
 }
 
-extension RegistrationClothesViewController: UICollectionViewDelegate {
+extension RegisterClothesViewController: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
@@ -120,7 +120,7 @@ extension RegistrationClothesViewController: UICollectionViewDelegate {
     }
 }
 
-extension RegistrationClothesViewController: UICollectionViewDataSource {
+extension RegisterClothesViewController: UICollectionViewDataSource {
     func numberOfSections(in _: UICollectionView) -> Int {
         return 3
     }

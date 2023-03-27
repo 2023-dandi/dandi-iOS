@@ -63,7 +63,7 @@ final class PhotoLibraryViewController: YPImagePicker {
             default:
                 break
             }
-            self.pushViewController(self.factory.makeClosetViewController(selectedImages: self.imageList), animated: true)
+            self.pushViewController(self.factory.makeRegisterClothesViewController(selectedImages: self.imageList), animated: true)
         }
     }
 

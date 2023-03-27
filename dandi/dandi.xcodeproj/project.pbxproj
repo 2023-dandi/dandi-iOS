@@ -49,6 +49,8 @@
 		DD1D6B3029D0808900085FBE /* DecorationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */; };
 		DD1E52CF29D194BF00550E02 /* ClothesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */; };
 		DD1E52D129D1959400550E02 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D029D1959400550E02 /* Season.swift */; };
+		DD1E52D529D1B0D100550E02 /* ClosetMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */; };
+		DD1E52D729D1B2DE00550E02 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D629D1B2DE00550E02 /* ClosetView.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -88,8 +90,8 @@
 		DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */; };
 		DD3D9A5C29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5B29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift */; };
 		DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */; };
-		DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */; };
-		DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */; };
+		DD61795A29CB53AF005B7527 /* RegisterClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795929CB53AF005B7527 /* RegisterClothesViewController.swift */; };
+		DD61795D29CB5407005B7527 /* RegisterClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795C29CB5407005B7527 /* RegisterClothesView.swift */; };
 		DD61796129CB5773005B7527 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */; };
 		DD61796329CB5B32005B7527 /* RoundTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */; };
 		DD61796529CB5FBF005B7527 /* PagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */; };
@@ -251,6 +253,8 @@
 		DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationViewController.swift; sourceTree = "<group>"; };
 		DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesCategory.swift; sourceTree = "<group>"; };
 		DD1E52D029D1959400550E02 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetMainViewController.swift; sourceTree = "<group>"; };
+		DD1E52D629D1B2DE00550E02 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -294,8 +298,8 @@
 		DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUseCase.swift; sourceTree = "<group>"; };
 		DD3D9A5B29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
 		DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonViewController.swift; sourceTree = "<group>"; };
-		DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesViewController.swift; sourceTree = "<group>"; };
-		DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationClothesView.swift; sourceTree = "<group>"; };
+		DD61795929CB53AF005B7527 /* RegisterClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClothesViewController.swift; sourceTree = "<group>"; };
+		DD61795C29CB5407005B7527 /* RegisterClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClothesView.swift; sourceTree = "<group>"; };
 		DD61796029CB5773005B7527 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -461,6 +465,24 @@
 				DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DD1E52D229D1B08200550E02 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				DD61795929CB53AF005B7527 /* RegisterClothesViewController.swift */,
+				DD61795C29CB5407005B7527 /* RegisterClothesView.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		DD1E52D329D1B0B800550E02 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */,
+				DD1E52D629D1B2DE00550E02 /* ClosetView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		DD2398D2295D7C8700A898B2 = {
@@ -738,8 +760,8 @@
 		DD61795B29CB53F1005B7527 /* Closet */ = {
 			isa = PBXGroup;
 			children = (
-				DD61795929CB53AF005B7527 /* RegistrationClothesViewController.swift */,
-				DD61795C29CB5407005B7527 /* RegistrationClothesView.swift */,
+				DD1E52D329D1B0B800550E02 /* Main */,
+				DD1E52D229D1B08200550E02 /* Registration */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -1309,15 +1331,16 @@
 				DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */,
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
-				DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */,
+				DD61795A29CB53AF005B7527 /* RegisterClothesViewController.swift in Sources */,
 				DD1E52CF29D194BF00550E02 /* ClothesCategory.swift in Sources */,
 				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
-				DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */,
+				DD61795D29CB5407005B7527 /* RegisterClothesView.swift in Sources */,
 				DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
 				DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
+				DD1E52D729D1B2DE00550E02 /* ClosetView.swift in Sources */,
 				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
 				DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */,
 				DD1D6B1E29D032C800085FBE /* PagerButton.swift in Sources */,
@@ -1383,6 +1406,7 @@
 				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
 				DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */,
 				DDA8167329AE26DB00963776 /* NotificationDataSource.swift in Sources */,
+				DD1E52D529D1B0D100550E02 /* ClosetMainViewController.swift in Sources */,
 				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
 				DD00E81929C8D6F3001536D4 /* DefaultPostLikeUseCase.swift in Sources */,
 				DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */,

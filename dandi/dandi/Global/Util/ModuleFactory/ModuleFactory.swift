@@ -18,7 +18,8 @@ protocol ModuleFactoryInterface {
     func makeHomeButtonViewController() -> HomeButtonViewController
     func makeMyPageViewController() -> MyPageViewController
     func makeFeedViewContontoller() -> FeedViewController
-    func makeClosetViewController(selectedImages: [UIImage]) -> RegistrationClothesViewController
+    func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController
+    func makeClosetMainViewController() -> ClosetMainViewController
     func makePhotoLibraryViewController() -> PhotoLibraryViewController
     func makePostDetailViewController(postID: Int) -> PostDetailViewController
     func makeMyInformationViewController(userProfile: UserProfile) -> MyInformationViewController
@@ -98,8 +99,8 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
 
-    func makeClosetViewController(selectedImages: [UIImage]) -> RegistrationClothesViewController {
-        let vc = RegistrationClothesViewController(selectedImages: selectedImages)
+    func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController {
+        let vc = RegisterClothesViewController(selectedImages: selectedImages)
         vc.factory = self
         return vc
     }
@@ -125,6 +126,12 @@ extension ModuleFactory: ModuleFactoryInterface {
                 )
             )
         )
+        return vc
+    }
+
+    func makeClosetMainViewController() -> ClosetMainViewController {
+        let vc = ClosetMainViewController()
+        vc.factory = self
         return vc
     }
 
