@@ -11,40 +11,21 @@ import RxCocoa
 import RxSwift
 import YDS
 
-struct ClothesCategory {
-    let title: String
-    let sub: [String]
-}
-
 final class RegistrationClothesViewController: BaseViewController {
-    typealias CategoryItems = [Int: [Int]]
+    private let registrationView = RegistrationClothesView()
 
     private let navigationBar = YDSTopBar()
     private let backButton = UIButton()
     private let saveButton = YDSBoxButton()
-    private let registrationView = RegistrationClothesView()
 
-    private let category: [ClothesCategory] = [
-        ClothesCategory(title: "상의", sub: ["티셔츠", "반팔", "맨투맨", "긴팔", "기타"]),
-        ClothesCategory(title: "하의", sub: ["티셔츠", "반팔", "맨투맨", "긴팔", "기타"]),
-        ClothesCategory(title: "아우터", sub: ["티셔츠", "반팔", "맨투맨", "긴팔", "기타"]),
-        ClothesCategory(title: "악세사리", sub: ["티셔츠", "반팔", "맨투맨", "긴팔", "기타"]),
-        ClothesCategory(title: "기타", sub: ["티셔츠", "반팔", "맨투맨", "긴팔", "기타"])
-    ]
+    private let categories: [ClothesCategory] = ClothesCategory.allCases
+    private let seasons: [Season] = Season.allCases
 
-    private let selectedImages: [UIImage]
+    private let images: [UIImage]
     private var selectedCategoryIndex: Int = 0
-    private var visibleImageIndex: Int = 0
-    private var selectedSubCategoryItems = CategoryItems() {
-        didSet {
-            for key in selectedSubCategoryItems.keys {
-                dump(selectedSubCategoryItems[key])
-            }
-        }
-    }
 
     init(selectedImages: [UIImage]) {
-        self.selectedImages = selectedImages
+        self.images = selectedImages
         super.init()
         setCollectionView()
         setProperties()
@@ -119,60 +100,20 @@ final class RegistrationClothesViewController: BaseViewController {
         )
         registrationView.collectionView.allowsMultipleSelection = true
     }
-
-    private func deselectAllItems(exclude: IndexPath, animated: Bool = false) {
-        for indexPath in registrationView.collectionView.indexPathsForSelectedItems ?? [] {
-            if indexPath == exclude { continue }
-            if indexPath.section == 1 {
-                registrationView.collectionView.deselectItem(at: indexPath, animated: animated)
-                registrationView.collectionView.cellForItem(at: indexPath)?.isSelected = false
-            }
-        }
-    }
 }
 
 extension RegistrationClothesViewController: UICollectionViewDelegate {
     func collectionView(
-        _: UICollectionView,
+        _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
         switch indexPath.section {
         case 1:
-            guard let cell = registrationView.collectionView.cellForItem(at: indexPath) else { return }
-            selectedCategoryIndex = indexPath.item
-            deselectAllItems(exclude: indexPath)
-            registrationView.collectionView.reloadSections(IndexSet(integer: 2))
+            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
             cell.isSelected = true
         case 2:
-            guard let cell = registrationView.collectionView.cellForItem(at: indexPath) else { return }
+            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
             cell.isSelected = true
-            guard let selectedSubcategory = selectedSubCategoryItems[selectedCategoryIndex] else {
-                selectedSubCategoryItems[selectedCategoryIndex] = [indexPath.item]
-                return
-            }
-            if !selectedSubcategory.contains(indexPath.item) {
-                selectedSubCategoryItems[selectedCategoryIndex]?.append(indexPath.item)
-            }
-        default:
-            return
-        }
-    }
-
-    func collectionView(
-        _: UICollectionView,
-        didDeselectItemAt indexPath: IndexPath
-    ) {
-        switch indexPath.section {
-        case 2:
-            guard let cell = registrationView.collectionView.cellForItem(at: indexPath) else { return }
-            cell.isSelected = false
-
-            guard let selectedSubcategory = selectedSubCategoryItems[selectedCategoryIndex] else {
-                return
-            }
-            if selectedSubcategory.contains(indexPath.item) {
-                selectedSubCategoryItems[selectedCategoryIndex] = selectedSubcategory.filter { $0 != indexPath.item }
-            }
         default:
             return
         }
@@ -190,11 +131,11 @@ extension RegistrationClothesViewController: UICollectionViewDataSource {
     ) -> Int {
         switch section {
         case 0:
-            return selectedImages.count
+            return images.count
         case 1:
-            return category.count
+            return categories.count
         case 2:
-            return category[selectedCategoryIndex].sub.count
+            return seasons.count
         default:
             break
         }
@@ -202,35 +143,24 @@ extension RegistrationClothesViewController: UICollectionViewDataSource {
     }
 
     func collectionView(
-        _: UICollectionView,
+        _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell: ImageCollectionViewCell = registrationView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.type = .none
-            cell.configure(image: selectedImages[indexPath.item])
+            cell.configure(image: images[indexPath.item])
             return cell
 
         case 1:
-            let cell: PagerCollectionViewCell = registrationView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.configure(text: category[indexPath.item].title)
-            if indexPath.item == selectedCategoryIndex {
-                cell.isSelected = true
-                registrationView.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
-            }
+            let cell: PagerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.configure(text: categories[indexPath.item].text)
             return cell
 
         case 2:
-            let cell: RoundTagCollectionViewCell = registrationView.collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.configure(text: category[selectedCategoryIndex].sub[indexPath.item])
-
-            if let category = selectedSubCategoryItems[selectedCategoryIndex] {
-                if category.contains(indexPath.item) {
-                    cell.isSelected = true
-                    registrationView.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
-                }
-            }
+            let cell: RoundTagCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.configure(text: seasons[indexPath.item].text)
             return cell
 
         default:

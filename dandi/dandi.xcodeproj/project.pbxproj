@@ -47,6 +47,8 @@
 		DD1D6B2C29D0672C00085FBE /* StickerTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */; };
 		DD1D6B2E29D079EA00085FBE /* AddImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2D29D079EA00085FBE /* AddImageDelegate.swift */; };
 		DD1D6B3029D0808900085FBE /* DecorationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */; };
+		DD1E52CF29D194BF00550E02 /* ClothesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */; };
+		DD1E52D129D1959400550E02 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D029D1959400550E02 /* Season.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -247,6 +249,8 @@
 		DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTabViewController.swift; sourceTree = "<group>"; };
 		DD1D6B2D29D079EA00085FBE /* AddImageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageDelegate.swift; sourceTree = "<group>"; };
 		DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationViewController.swift; sourceTree = "<group>"; };
+		DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesCategory.swift; sourceTree = "<group>"; };
+		DD1E52D029D1959400550E02 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -907,6 +911,8 @@
 				DDCDA17329C2F5D600BAB1CF /* ClothesFeeling.swift */,
 				DDCDA17529C2F6E200BAB1CF /* WeatherFeeling.swift */,
 				DD3D9A5129CC410800E298B1 /* MyPost.swift */,
+				DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */,
+				DD1E52D029D1959400550E02 /* Season.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1304,6 +1310,7 @@
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
 				DD61795A29CB53AF005B7527 /* RegistrationClothesViewController.swift in Sources */,
+				DD1E52CF29D194BF00550E02 /* ClothesCategory.swift in Sources */,
 				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
 				DD61795D29CB5407005B7527 /* RegistrationClothesView.swift in Sources */,
 				DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */,
@@ -1316,6 +1323,7 @@
 				DD1D6B1E29D032C800085FBE /* PagerButton.swift in Sources */,
 				DDE3E30229C376CD007BDBA7 /* PostDTO.swift in Sources */,
 				DD3D9A5629CC429900E298B1 /* PostListUseCase.swift in Sources */,
+				DD1E52D129D1959400550E02 /* Season.swift in Sources */,
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
 				DD9F6FE129B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,

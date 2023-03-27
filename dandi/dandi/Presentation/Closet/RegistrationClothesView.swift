@@ -75,7 +75,7 @@ final class RegistrationClothesView: UIView {
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(88),
+            widthDimension: .absolute(80),
             heightDimension: .absolute(46)
         )
         let group = NSCollectionLayoutGroup.horizontal(
