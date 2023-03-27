@@ -145,7 +145,7 @@ extension HomeView {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 8
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: .zero, leading: 12, bottom: .zero, trailing: 12)
+        group.contentInsets = .init(top: .zero, leading: 12, bottom: .zero, trailing: 12)
 
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),

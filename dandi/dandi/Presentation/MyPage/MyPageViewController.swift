@@ -83,23 +83,17 @@ final class MyPageViewController: BaseViewController, View {
             .disposed(by: disposeBag)
     }
 
-    private func bindCollectionView(_ reactor: MyPageReactor) {
+    private func bindCollectionView(_: MyPageReactor) {
         myPageView.collectionView.rx.itemSelected
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 switch owner.myPageDataSource.itemIdentifier(for: indexPath) {
-                case .profile:
-                    guard let profile = reactor.currentState.profile else { return }
-                    owner.navigationController?.pushViewController(
-                        owner.factory.makeMyInformationViewController(userProfile: profile),
-                        animated: true
-                    )
                 case let .post(post):
                     owner.navigationController?.pushViewController(
                         owner.factory.makePostDetailViewController(postID: post.id),
                         animated: true
                     )
-                case .none:
+                default:
                     break
                 }
             })
@@ -117,5 +111,20 @@ final class MyPageViewController: BaseViewController, View {
 
     private func setProperties() {
         navigationItem.setRightBarButton(UIBarButtonItem(customView: rightTopButton), animated: false)
+    }
+}
+
+extension MyPageViewController: MyPageProfileDelegate {
+    func profileViewDidTap() {
+        guard let profile = reactor?.currentState.profile else { return }
+        navigationController?.pushViewController(factory.makeMyInformationViewController(userProfile: profile), animated: true)
+    }
+
+    func historyButtonDidTap() {
+        print("historyButtonDidTap")
+    }
+
+    func closetButtonDidTap() {
+        print("closetButtonDidTap")
     }
 }

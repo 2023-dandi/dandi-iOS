@@ -94,13 +94,15 @@ extension MyPageDataSource {
 
 extension MyPageDataSource {
     private func configureProfileCellRegistration<Cell: ProfileCell>() -> ProfileCellRegistration<Cell> {
-        return ProfileCellRegistration<Cell> { cell, _, profile in
+        return ProfileCellRegistration<Cell> { [weak self] cell, _, profile in
+            guard let delegate = self?.presentingViewController as? MyPageProfileDelegate else { return }
             cell.configure(
                 profileImageURL: profile.profileImageURL,
                 nickname: profile.nickname,
                 location: profile.location,
                 closetCount: profile.closetCount
             )
+            cell.delegate = delegate
         }
     }
 
