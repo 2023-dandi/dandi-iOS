@@ -64,12 +64,13 @@ final class ConfirmLocationViewController: BaseViewController {
 
     private func bind() {
         button.rx.tap
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                UserDefaultHandler.shared.lat = owner.latitude
-                UserDefaultHandler.shared.lon = owner.longitude
-                UserDefaultHandler.shared.locality = owner.locality
-                owner.dismiss(animated: true)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                UserDefaultHandler.shared.lat = self.latitude
+                UserDefaultHandler.shared.lon = self.longitude
+                UserDefaultHandler.shared.address = self.locality
+                NotificationCenterManager.reloadLocation.post()
+                self.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
     }

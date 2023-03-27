@@ -90,9 +90,17 @@ extension LocationSettingViewController: UITableViewDelegate {
                 return
             }
             guard let placemark = response?.mapItems[0].placemark else { return }
+            var address = ""
+            if let locality = placemark.locality {
+                address += locality
+            }
+            if let name = placemark.name {
+                address += " "
+                address += name
+            }
             self.navigationController?.pushViewController(
                 ConfirmLocationViewController(
-                    locality: (placemark.title ?? placemark.locality) ?? "",
+                    locality: address,
                     latitude: placemark.coordinate.latitude,
                     longitude: placemark.coordinate.longitude
                 ),
@@ -137,7 +145,7 @@ extension LocationSettingViewController: UITableViewDataSource {
         cell.textLabel?.text = searchResult.title
         cell.selectedBackgroundView = UIView().then { $0.backgroundColor = YDSColor.bgPressed }
         cell.separatorInset = .init(top: 0, left: 12, bottom: 0, right: 12)
-        
+
         return cell
     }
 }

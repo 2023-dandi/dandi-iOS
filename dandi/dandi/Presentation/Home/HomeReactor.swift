@@ -21,7 +21,6 @@ final class HomeReactor: Reactor {
 
     enum Action {
         case viewWillAppear
-        case updateLocation(lon: Double, lat: Double)
     }
 
     enum Mutation {
@@ -38,20 +37,13 @@ final class HomeReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewWillAppear:
+            let converter: LocationConverter = .init()
+            let (nx, ny): (Int, Int) = converter.convertGrid(lon: UserDefaultHandler.shared.lon, lat: UserDefaultHandler.shared.lat)
+            hourlyWeatherUseCase.fetchWeatherInfo(nx: nx, ny: ny, page: page)
             return Observable.concat([
                 Observable.just(.setLoading(isLoading: true)),
                 hourlyWeatherUseCase.hourlyWeather
                     .map { Mutation.setHourlyWeathers(weathers: $0) },
-                Observable.just(.setLoading(isLoading: false))
-            ])
-        case let .updateLocation(lon, lat):
-            UserDefaultHandler.shared.lon = lon
-            UserDefaultHandler.shared.lat = lat
-            let converter: LocationConverter = .init()
-            let (nx, ny): (Int, Int) = converter.convertGrid(lon: lon, lat: lat)
-            hourlyWeatherUseCase.fetchWeatherInfo(nx: nx, ny: ny, page: page)
-            return Observable.concat([
-                Observable.just(.setLoading(isLoading: true)),
                 hourlyWeatherUseCase.isCompleted
                     .map { Mutation.setUpdateLocationSuccess($0) },
                 Observable.just(.setLoading(isLoading: false))

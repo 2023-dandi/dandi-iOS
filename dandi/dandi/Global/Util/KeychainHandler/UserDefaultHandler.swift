@@ -32,13 +32,13 @@ struct UserDefaultHandler {
     var lat: Double
 
     @UserDefault(key: Key.locality.rawValue, defaultValue: "")
-    var locality: String
+    var address: String
 
     func removeAll() {
         _accessToken.reset()
         _refreshToken.reset()
         _lon.reset()
         _lat.reset()
-        _locality.reset()
+        _address.reset()
     }
 }

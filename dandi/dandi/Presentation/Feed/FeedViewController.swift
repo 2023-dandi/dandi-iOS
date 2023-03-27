@@ -25,7 +25,7 @@ final class FeedViewController: BaseViewController {
     override init() {
         super.init()
         bind()
-        feedView.navigationTitleLabel.text = "현재 상도동은 18도입니다.\n가디건을 걸치고 나가면 어떨까요?"
+        feedView.navigationTitleLabel.text = "\(UserDefaultHandler.shared.address)은 18도입니다.\n가디건을 걸치고 나가면 어떨까요?"
     }
 
     func bind() {
@@ -49,6 +49,14 @@ final class FeedViewController: BaseViewController {
             .subscribe(onNext: { owner, _ in
                 let vc = owner.factory.makeLocationSettingViewController()
                 owner.present(YDSNavigationController(rootViewController: vc), animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        NotificationCenterManager.reloadLocation.addObserver()
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.feedView.navigationTitleLabel.text = "\(UserDefaultHandler.shared.address)은 18도입니다.\n가디건을 걸치고 나가면 어떨까요?"
+
             })
             .disposed(by: disposeBag)
     }

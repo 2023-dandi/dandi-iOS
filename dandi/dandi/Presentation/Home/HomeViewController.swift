@@ -22,17 +22,7 @@ final class HomeViewController: BaseViewController, View {
         presentingViewController: self
     )
     private let locationManager = CLLocationManager()
-    private var coordinate = CLLocationCoordinate2D(
-        /// 혜화역
-        latitude: 37.58306203876132,
-        longitude: 127.0020491941987
-    ) {
-        didSet {
-            coordinatePublisher.accept(coordinate)
-        }
-    }
 
-    private lazy var coordinatePublisher = BehaviorRelay<CLLocationCoordinate2D>(value: coordinate)
     private let addButton: UIButton = .init()
     private let closetButton: UIButton = .init()
     private let writingButton: UIButton = .init()
@@ -51,29 +41,20 @@ final class HomeViewController: BaseViewController, View {
     func bind(reactor: HomeReactor) {
         bindTapAction()
 
-        LocationConverter().fetchAddress(
-            latitude: UserDefaultHandler.shared.lat,
-            longitude: UserDefaultHandler.shared.lon
-        ) { [weak self] text in
-            self?.homeView.bannerView.locationLabel.text = text
-        }
-
-        rx.viewWillAppear
-            .map { _ in Reactor.Action.viewWillAppear }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-
-        coordinatePublisher
-            .distinctUntilChanged()
-            .map { Reactor.Action.updateLocation(lon: $0.longitude, lat: $0.latitude) }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        Observable.merge([
+            rx.viewWillAppear.map { _ in },
+            NotificationCenterManager.reloadLocation.addObserver().map { _ in }
+        ])
+        .map { _ in Reactor.Action.viewWillAppear }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
 
         reactor.state
             .compactMap { $0.hourlyWeathers }
             .withUnretained(self)
             .subscribe(onNext: { owner, hourlyWeathers in
                 DispatchQueue.main.async {
+                    owner.homeView.bannerView.locationLabel.text = UserDefaultHandler.shared.address
                     guard let hourlyWeather = hourlyWeathers.first else { return }
                     owner.homeDataSource.update(
                         recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",

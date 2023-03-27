@@ -10,11 +10,14 @@ import UIKit
 
 enum NotificationCenterManager: NotificationCenterHandler {
     case reloadProfile
+    case reloadLocation
 
     var name: Notification.Name {
         switch self {
         case .reloadProfile:
             return Notification.Name("NotificationCenterManager.reloadProfile")
+        case .reloadLocation:
+            return Notification.Name("NotificationCenterManager.reloadLocation")
         }
     }
 }

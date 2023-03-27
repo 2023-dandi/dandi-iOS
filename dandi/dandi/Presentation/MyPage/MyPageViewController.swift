@@ -71,7 +71,8 @@ final class MyPageViewController: BaseViewController, View {
     private func bindAction(_ reactor: MyPageReactor) {
         Observable.merge([
             rx.viewWillAppear.take(1).map { _ in },
-            NotificationCenterManager.reloadProfile.addObserver().map { _ in }
+            NotificationCenterManager.reloadProfile.addObserver().map { _ in },
+            NotificationCenterManager.reloadLocation.addObserver().map { _ in }
         ])
         .map { _ in Reactor.Action.fetchProfile }
         .bind(to: reactor.action)

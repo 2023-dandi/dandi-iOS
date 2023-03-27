@@ -81,12 +81,20 @@ final class LocationConverter {
 
         let local = Locale(identifier: "Ko-kr")
         geocoder.reverseGeocodeLocation(location, preferredLocale: local) { placemarks, _ in
-            guard
-                let address: [CLPlacemark] = placemarks,
-                let last = address.first
-            else { return }
-            dump(address)
-            completion("\(last.locality ?? "") \(last.subLocality ?? "")")
+            guard let placemark = placemarks?.first else { return }
+            var address = ""
+            if let country = placemark.country {
+                address = country
+            }
+            if let locality = placemark.locality {
+                address += " "
+                address += locality
+            }
+            if let thoroughfare = placemark.thoroughfare {
+                address += " "
+                address += thoroughfare
+            }
+            completion(address)
         }
     }
 }
