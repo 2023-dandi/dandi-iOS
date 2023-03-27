@@ -56,14 +56,11 @@ final class PostCommentTextView: UIView {
             $0.setTitle("등록", for: .normal)
             $0.titleLabel?.font = YDSFont.button4
 
-            $0.setTitleColor(YDSColor.buttonNormal, for: .disabled)
-            $0.setBackgroundColor(YDSColor.buttonBG, for: .disabled)
+            $0.setTitleColor(YDSColor.buttonNormal, for: .normal)
+            $0.setBackgroundColor(YDSColor.buttonBG, for: .normal)
 
-            $0.setTitleColor(YDSColor.buttonPoint, for: .normal)
-            $0.setBackgroundColor(YDSColor.buttonPointBG, for: .normal)
-
-            $0.setTitleColor(YDSColor.buttonPointPressed, for: .highlighted)
-            $0.setBackgroundColor(YDSColor.buttonPointBG, for: .highlighted)
+            $0.setTitleColor(YDSColor.buttonNormal.withAlphaComponent(0.7), for: .highlighted)
+            $0.setBackgroundColor(YDSColor.buttonBG.withAlphaComponent(0.7), for: .highlighted)
         }
     }
 

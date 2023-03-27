@@ -149,8 +149,7 @@ extension ModuleFactory: ModulFactoryInterface {
     }
 
     func makeDecorationViewController() -> DecorationViewController {
-        let vc = DecorationViewController()
-        vc.factory = self
+        let vc = DecorationViewController(factory: self)
         return vc
     }
 

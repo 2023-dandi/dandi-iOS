@@ -25,8 +25,9 @@ final class DecorationViewController: BaseViewController {
     private let menuView = DecorationMenuView()
     private let doneButton = UIButton()
 
-    override init() {
+    init(factory: ModulFactoryInterface) {
         super.init()
+        super.factory = factory
         setProperties()
         setLayouts()
         bind()
@@ -90,7 +91,7 @@ final class DecorationViewController: BaseViewController {
             animated: false
         )
 
-        let closet = ModuleFactory.shared.makeClosetTabViewController()
+        let closet = factory.makeClosetTabViewController()
         closet.addImageDeleagte = self
         closet.update(
             category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
@@ -98,10 +99,10 @@ final class DecorationViewController: BaseViewController {
             photo: [.add, .checkmark, .strokedCheckmark, .remove]
         )
 
-        let background = ModuleFactory.shared.makeBackgroundTabViewController()
+        let background = factory.makeBackgroundTabViewController()
         background.addImageDelegate = self
 
-        let sticker = ModuleFactory.shared.makeStickerTabViewController()
+        let sticker = factory.makeStickerTabViewController()
         sticker.addImageDelegate = self
 
         setViewControllers([closet, background, sticker])
@@ -163,9 +164,7 @@ final class DecorationViewController: BaseViewController {
     }
 }
 
-extension DecorationViewController {
-    
-}
+extension DecorationViewController {}
 
 extension DecorationViewController {
     @objc

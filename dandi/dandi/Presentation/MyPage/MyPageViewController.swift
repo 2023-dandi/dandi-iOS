@@ -29,6 +29,11 @@ final class MyPageViewController: BaseViewController, View {
         view = myPageView
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+
     override init() {
         super.init()
         setProperties()
