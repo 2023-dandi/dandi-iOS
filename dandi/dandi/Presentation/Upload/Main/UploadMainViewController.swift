@@ -116,6 +116,7 @@ final class UploadMainViewController: BaseViewController, View {
                 guard
                     var viewControllers = owner.navigationController?.viewControllers
                 else { return }
+                NotificationCenterManager.reloadPosts.post()
                 viewControllers.removeLast(2)
                 viewControllers.append(owner.factory.makePostDetailViewController(postID: id))
                 owner.navigationController?.setViewControllers(viewControllers, animated: true)

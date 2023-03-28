@@ -2,13 +2,13 @@
 //  PostListUseCase.swift
 //  dandi
 //
-//  Created by 김윤서 on 2023/03/23.
+//  Created by 김윤서 on 2023/03/28.
 //
 
 import RxCocoa
 import RxSwift
 
 protocol PostListUseCase {
-    var postsPublisher: PublishRelay<[MyPost]> { get }
-    func fetchPostList()
+    var postsPublisher: PublishRelay<[Post]> { get }
+    func fetchPostList(min: Int, max: Int)
 }

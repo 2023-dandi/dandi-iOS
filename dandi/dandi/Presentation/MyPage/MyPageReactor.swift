@@ -13,7 +13,7 @@ final class MyPageReactor: Reactor {
     let initialState: State
 
     private let memberInfoUseCase: MemberInfoUseCase
-    private let postListUseCase: PostListUseCase
+    private let postListUseCase: MyPostListUseCase
 
     struct State {
         var isLoading: Bool = false
@@ -33,7 +33,7 @@ final class MyPageReactor: Reactor {
 
     init(
         memberInfoUseCase: MemberInfoUseCase,
-        postListUseCase: PostListUseCase
+        postListUseCase: MyPostListUseCase
     ) {
         self.initialState = State()
         self.memberInfoUseCase = memberInfoUseCase

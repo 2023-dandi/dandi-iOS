@@ -86,10 +86,14 @@
 		DD3D9A5029CC303200E298B1 /* DecorationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4F29CC303200E298B1 /* DecorationMenuView.swift */; };
 		DD3D9A5229CC410800E298B1 /* MyPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5129CC410800E298B1 /* MyPost.swift */; };
 		DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */; };
-		DD3D9A5629CC429900E298B1 /* PostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5529CC429900E298B1 /* PostListUseCase.swift */; };
+		DD3D9A5629CC429900E298B1 /* MyPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5529CC429900E298B1 /* MyPostListUseCase.swift */; };
 		DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5729CC42D600E298B1 /* DefaultMyPostsUseCase.swift */; };
 		DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */; };
 		DD3D9A5C29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A5B29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift */; };
+		DD41E74929D31E1F00893431 /* PostContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41E74829D31E1F00893431 /* PostContentDTO.swift */; };
+		DD41E74B29D31FAB00893431 /* PostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41E74A29D31FAB00893431 /* PostListUseCase.swift */; };
+		DD41E74D29D31FCE00893431 /* DefaultPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41E74C29D31FCE00893431 /* DefaultPostListUseCase.swift */; };
+		DD41E74F29D321A100893431 /* FeedReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41E74E29D321A100893431 /* FeedReactor.swift */; };
 		DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */; };
 		DD61795A29CB53AF005B7527 /* RegisterClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795929CB53AF005B7527 /* RegisterClothesViewController.swift */; };
 		DD61795D29CB5407005B7527 /* RegisterClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61795C29CB5407005B7527 /* RegisterClothesView.swift */; };
@@ -295,10 +299,14 @@
 		DD3D9A4F29CC303200E298B1 /* DecorationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationMenuView.swift; sourceTree = "<group>"; };
 		DD3D9A5129CC410800E298B1 /* MyPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPost.swift; sourceTree = "<group>"; };
 		DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDTO.swift; sourceTree = "<group>"; };
-		DD3D9A5529CC429900E298B1 /* PostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListUseCase.swift; sourceTree = "<group>"; };
+		DD3D9A5529CC429900E298B1 /* MyPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostListUseCase.swift; sourceTree = "<group>"; };
 		DD3D9A5729CC42D600E298B1 /* DefaultMyPostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMyPostsUseCase.swift; sourceTree = "<group>"; };
 		DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUseCase.swift; sourceTree = "<group>"; };
 		DD3D9A5B29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
+		DD41E74829D31E1F00893431 /* PostContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentDTO.swift; sourceTree = "<group>"; };
+		DD41E74A29D31FAB00893431 /* PostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListUseCase.swift; sourceTree = "<group>"; };
+		DD41E74C29D31FCE00893431 /* DefaultPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostListUseCase.swift; sourceTree = "<group>"; };
+		DD41E74E29D321A100893431 /* FeedReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedReactor.swift; sourceTree = "<group>"; };
 		DD61795429C9B5DA005B7527 /* HomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonViewController.swift; sourceTree = "<group>"; };
 		DD61795929CB53AF005B7527 /* RegisterClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClothesViewController.swift; sourceTree = "<group>"; };
 		DD61795C29CB5407005B7527 /* RegisterClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClothesView.swift; sourceTree = "<group>"; };
@@ -687,6 +695,7 @@
 				DD00E7FB29C82F7A001536D4 /* MemberInfoDTO.swift */,
 				DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */,
 				DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */,
+				DD41E74829D31E1F00893431 /* PostContentDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -725,6 +734,7 @@
 				DD00E80F29C8A9BC001536D4 /* DefaultImageUseCase.swift */,
 				DD00E81829C8D6F3001536D4 /* DefaultPostLikeUseCase.swift */,
 				DD3D9A5729CC42D600E298B1 /* DefaultMyPostsUseCase.swift */,
+				DD41E74C29D31FCE00893431 /* DefaultPostListUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -741,7 +751,8 @@
 				DD00E80929C87047001536D4 /* NicknameUseCase.swift */,
 				DD00E80D29C8A9B0001536D4 /* ImageUseCase.swift */,
 				DD00E81629C8D6C3001536D4 /* LikeUseCase.swift */,
-				DD3D9A5529CC429900E298B1 /* PostListUseCase.swift */,
+				DD41E74A29D31FAB00893431 /* PostListUseCase.swift */,
+				DD3D9A5529CC429900E298B1 /* MyPostListUseCase.swift */,
 				DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */,
 			);
 			path = Protocol;
@@ -803,6 +814,7 @@
 				DDA38FFC2965B0B3006FBE00 /* DataSource */,
 				DDA38FFB2965B059006FBE00 /* View */,
 				DD9B06DF295EC80E00A98041 /* FeedViewController.swift */,
+				DD41E74E29D321A100893431 /* FeedReactor.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -1348,7 +1360,7 @@
 				DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */,
 				DD1D6B1E29D032C800085FBE /* PagerButton.swift in Sources */,
 				DDE3E30229C376CD007BDBA7 /* PostDTO.swift in Sources */,
-				DD3D9A5629CC429900E298B1 /* PostListUseCase.swift in Sources */,
+				DD3D9A5629CC429900E298B1 /* MyPostListUseCase.swift in Sources */,
 				DD1E52DA29D1F47B00550E02 /* ConfirmLocationViewController.swift in Sources */,
 				DD1E52D129D1959400550E02 /* Season.swift in Sources */,
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
@@ -1368,6 +1380,7 @@
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */,
+				DD41E74B29D31FAB00893431 /* PostListUseCase.swift in Sources */,
 				DD9B06D7295EC75500A98041 /* MainTabBarController.swift in Sources */,
 				DD61796D29CB7DF9005B7527 /* PostDetailAlertType.swift in Sources */,
 				DD2E52E929BF72960078EA74 /* UploadMainViewController.swift in Sources */,
@@ -1387,6 +1400,7 @@
 				DD61796329CB5B32005B7527 /* RoundTagCollectionViewCell.swift in Sources */,
 				DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */,
 				DDA8167529AE273900963776 /* NotificationItem.swift in Sources */,
+				DD41E74929D31E1F00893431 /* PostContentDTO.swift in Sources */,
 				DDC52200299520E500E2845F /* UserProfile.swift in Sources */,
 				DD61796129CB5773005B7527 /* ImageCollectionViewCell.swift in Sources */,
 				DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */,
@@ -1427,11 +1441,13 @@
 				DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */,
 				DD0B685F29C764B2000A0E24 /* DefaultPostDetailUseCase.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
+				DD41E74D29D31FCE00893431 /* DefaultPostListUseCase.swift in Sources */,
 				DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */,
 				DD00E7E829C77610001536D4 /* HourlyWeatherUseCase.swift in Sources */,
 				DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
+				DD41E74F29D321A100893431 /* FeedReactor.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
 				DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */,
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,

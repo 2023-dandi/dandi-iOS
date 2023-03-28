@@ -96,6 +96,11 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeFeedViewContontoller() -> FeedViewController {
         let vc = FeedViewController()
+        vc.reactor = FeedReactor(
+            postListUseCase: DefaultPostListUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
+            postLikeUseCase: DefaultPostLikeUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
+            temperatureUseCase: DefaultTemperatureUseCase(weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService()))
+        )
         vc.factory = self
         return vc
     }

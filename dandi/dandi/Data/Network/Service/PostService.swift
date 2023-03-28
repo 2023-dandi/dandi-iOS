@@ -10,11 +10,12 @@ import UIKit
 
 enum PostService {
     case postImage(image: UIImage)
-    case postPosts(post: PostDTO)
+    case postPosts(post: PostContentDTO)
     case getDetailPost(id: Int)
     case like(id: Int)
     case deletePost(id: Int)
     case my
+    case feed(min: Int, max: Int, size: Int, page: Int)
 }
 
 extension PostService: BaseTargetType {
@@ -47,6 +48,8 @@ extension PostService: BaseTargetType {
             return "/posts/\(id)"
         case .my:
             return "/posts/my"
+        case .feed:
+            return "posts/feed/weather"
         }
     }
 
@@ -61,6 +64,8 @@ extension PostService: BaseTargetType {
         case .deletePost:
             return .delete
         case .my:
+            return .get
+        case .feed:
             return .get
         }
     }
@@ -91,6 +96,12 @@ extension PostService: BaseTargetType {
 
         case .my:
             return .requestPlain
+
+        case let .feed(min, max, size, page):
+            return .requestParameters(
+                parameters: ["min": min, "max": max, "size": size, "page": page],
+                encoding: URLEncoding.queryString
+            )
         }
     }
 }

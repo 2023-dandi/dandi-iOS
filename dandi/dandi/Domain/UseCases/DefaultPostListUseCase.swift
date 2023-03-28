@@ -1,18 +1,17 @@
 //
-//  DefaultMyPostsUseCase.swift
+//  DefaultPostListUseCase.swift
 //  dandi
 //
-//  Created by 김윤서 on 2023/03/23.
+//  Created by 김윤서 on 2023/03/28.
 //
 
 import Foundation
-import UIKit
 
 import RxCocoa
 import RxSwift
 
-final class DefaultMyPostsUseCase: MyPostListUseCase {
-    let postsPublisher = PublishRelay<[MyPost]>()
+final class DefaultPostListUseCase: PostListUseCase {
+    let postsPublisher = PublishRelay<[Post]>()
 
     private let postRepository: PostRepository
 
@@ -20,8 +19,8 @@ final class DefaultMyPostsUseCase: MyPostListUseCase {
         self.postRepository = postRepository
     }
 
-    func fetchPostList() {
-        postRepository.fetchMyPostList { [weak self] result in
+    func fetchPostList(min: Int, max: Int) {
+        postRepository.fetchPostList(min: min, max: max, size: 500, page: 1) { [weak self] result in
             switch result {
             case let .success(response):
                 self?.postsPublisher.accept(response.toDomain())

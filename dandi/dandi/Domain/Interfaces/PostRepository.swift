@@ -10,7 +10,7 @@ import UIKit
 protocol PostRepository {
     func fetchPost(
         id: Int,
-        completion: @escaping NetworkCompletion<PostDTO>
+        completion: @escaping NetworkCompletion<PostContentDTO>
     )
 
     func uploadImage(
@@ -19,7 +19,7 @@ protocol PostRepository {
     )
 
     func uploadPost(
-        post: PostDTO,
+        post: PostContentDTO,
         completion: @escaping NetworkCompletion<PostIdDTO>
     )
 
@@ -33,5 +33,13 @@ protocol PostRepository {
         completion: @escaping NetworkCompletion<StatusCase>
     )
 
-    func fetchMyPostList(completion: @escaping NetworkCompletion<PostsWithPageDTO>)
+    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPageDTO>)
+
+    func fetchPostList(
+        min: Int,
+        max: Int,
+        size: Int,
+        page: Int,
+        completion: @escaping NetworkCompletion<PostsWithPageDTO>
+    )
 }

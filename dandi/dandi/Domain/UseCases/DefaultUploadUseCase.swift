@@ -41,7 +41,7 @@ final class DefaultUploadUseCase: UploadUseCase {
         weatherFeelings: [WeatherFeeling]
     ) {
         postRepository.uploadPost(
-            post: PostDTO(
+            post: PostContentDTO(
                 postImageURL: imageURL,
                 temperatures: temperatures,
                 outfitFeelings: OutfitFeelings(

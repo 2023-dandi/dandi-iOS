@@ -21,7 +21,7 @@ final class DefaultPostRepository: PostRepository {
 
     func fetchPost(
         id: Int,
-        completion: @escaping NetworkCompletion<PostDTO>
+        completion: @escaping NetworkCompletion<PostContentDTO>
     ) {
         router.request(.getDetailPost(id: id)) { result in
             switch result {
@@ -48,7 +48,7 @@ final class DefaultPostRepository: PostRepository {
     }
 
     func uploadPost(
-        post: PostDTO,
+        post: PostContentDTO,
         completion: @escaping NetworkCompletion<PostIdDTO>
     ) {
         router.request(.postPosts(post: post)) { result in
@@ -89,8 +89,25 @@ final class DefaultPostRepository: PostRepository {
         }
     }
 
-    func fetchMyPostList(completion: @escaping NetworkCompletion<PostsWithPageDTO>) {
+    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPageDTO>) {
         router.request(.my) { result in
+            switch result {
+            case let .success(response):
+                completion(NetworkHandler.requestDecoded(by: response))
+            case .failure:
+                completion(.failure(.networkFail))
+            }
+        }
+    }
+
+    func fetchPostList(
+        min: Int,
+        max: Int,
+        size: Int,
+        page: Int,
+        completion: @escaping NetworkCompletion<PostsWithPageDTO>
+    ) {
+        router.request(.feed(min: min, max: max, size: size, page: page)) { result in
             switch result {
             case let .success(response):
                 completion(NetworkHandler.requestDecoded(by: response))
