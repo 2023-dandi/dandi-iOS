@@ -99,7 +99,7 @@ extension PostService: BaseTargetType {
 
         case let .feed(min, max, size, page):
             return .requestParameters(
-                parameters: ["min": min, "max": max, "size": size, "page": page],
+                parameters: ["min": min, "max": max, "size": size, "page": page, "sort": "createdAt,DESC"],
                 encoding: URLEncoding.queryString
             )
         }

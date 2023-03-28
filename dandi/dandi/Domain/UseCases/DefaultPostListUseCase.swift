@@ -20,7 +20,7 @@ final class DefaultPostListUseCase: PostListUseCase {
     }
 
     func fetchPostList(min: Int, max: Int) {
-        postRepository.fetchPostList(min: min, max: max, size: 500, page: 1) { [weak self] result in
+        postRepository.fetchPostList(min: min, max: max, size: 500, page: 0) { [weak self] result in
             switch result {
             case let .success(response):
                 self?.postsPublisher.accept(response.toDomain())
