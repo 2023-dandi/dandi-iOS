@@ -19,7 +19,7 @@ final class HomeDataSource {
 
     typealias WeahterDetailCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, TimeWeatherInfo>
     typealias ClothesCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, ClosetImage>
-    typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
+    typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Int>
 
     typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
 
@@ -28,9 +28,11 @@ final class HomeDataSource {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
 
     private let collectionView: UICollectionView
-    private var presentingViewController: HomeViewController?
+    private var presentingViewController: (UIViewController & HeartButtonDelegate)?
 
     private lazy var dataSource = createDataSource()
+
+    private var posts: [Int: Post] = .init()
 
     enum Section {
         case timeWeather
@@ -41,10 +43,10 @@ final class HomeDataSource {
     enum Item: Hashable {
         case timeWeatherInfo(TimeWeatherInfo)
         case recommendation(ClosetImage)
-        case post(Post)
+        case post(Int)
     }
 
-    init(collectionView: UICollectionView, presentingViewController: HomeViewController) {
+    init(collectionView: UICollectionView, presentingViewController: UIViewController & HeartButtonDelegate) {
         self.collectionView = collectionView
         self.presentingViewController = presentingViewController
     }
@@ -54,7 +56,7 @@ final class HomeDataSource {
         temperature: String,
         recommendation: [ClosetImage],
         timeWeathers: [TimeWeatherInfo],
-        same: [Post]
+        posts: [Post]
     ) {
         var snapshot = Snapshot()
         snapshot.appendSections([.timeWeather, .recommendation, .same])
@@ -65,8 +67,22 @@ final class HomeDataSource {
         let recommadationItems = recommendation.map { Item.recommendation($0) }
         snapshot.appendItems(recommadationItems, toSection: .recommendation)
 
-        let sameItems = same.map { Item.post($0) }
-        snapshot.appendItems(sameItems, toSection: .same)
+        let ids = posts.map { $0.id }.uniqued().map { Item.post($0) }
+        snapshot.appendItems(ids)
+
+        posts
+            .filter { !self.posts.keys.contains($0.id) }
+            .forEach { self.posts[$0.id] = $0 }
+
+        posts
+            .filter { self.posts.keys.contains($0.id) }
+            .forEach { item in
+                if let oldValue = self.posts.updateValue(item, forKey: item.id),
+                   oldValue != item
+                {
+                    snapshot.reloadItems([Item.post(item.id)])
+                }
+            }
 
         configureHeader(headers: [
             Header(title: "오늘의 추천룩", subtitle: recommedationText),
@@ -75,8 +91,23 @@ final class HomeDataSource {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
+    func getPostItem(id: Int) -> Post? {
+        return posts[id]
+    }
+
     func itemIdentifier(for indexPath: IndexPath) -> Item? {
         return dataSource.itemIdentifier(for: indexPath)
+    }
+
+    func reloadIfNeeded(item: Post) {
+        guard
+            posts.keys.contains(item.id),
+            let oldValue = posts.updateValue(item, forKey: item.id),
+            oldValue != item
+        else { return }
+        var currentSnapshot = dataSource.snapshot()
+        currentSnapshot.reloadItems([Item.post(item.id)])
+        dataSource.apply(currentSnapshot, animatingDifferences: false)
     }
 }
 
@@ -115,7 +146,11 @@ extension HomeDataSource {
     }
 
     private func configureCardCellRegistration<Cell: CardCell>() -> CardCellRegistration<Cell> {
-        return CardCellRegistration<Cell> { cell, _, post in
+        return CardCellRegistration<Cell> { [weak self] cell, _, postID in
+            guard
+                let self = self,
+                let post = self.posts[postID]
+            else { return }
             cell.configure(
                 mainImageURL: post.mainImageURL,
                 profileImageURL: post.profileImageURL,
@@ -124,6 +159,8 @@ extension HomeDataSource {
                 date: post.date,
                 isLiked: post.isLiked
             )
+            cell.id = postID
+            cell.delegate = self.presentingViewController
         }
     }
 
