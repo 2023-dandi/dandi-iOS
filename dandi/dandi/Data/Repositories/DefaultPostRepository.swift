@@ -8,6 +8,7 @@
 import UIKit
 
 import Moya
+import RxSwift
 
 final class DefaultPostRepository: PostRepository {
     let router: MoyaProvider<PostService>
@@ -104,16 +105,9 @@ final class DefaultPostRepository: PostRepository {
         min: Int,
         max: Int,
         size: Int,
-        page: Int,
-        completion: @escaping NetworkCompletion<PostsWithPageDTO>
-    ) {
-        router.request(.feed(min: min, max: max, size: size, page: page)) { result in
-            switch result {
-            case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
-            case .failure:
-                completion(.failure(.networkFail))
-            }
-        }
+        page: Int
+    ) -> RxSwift.Single<NetworkResult<PostsWithPageDTO>> {
+        return router.rx.request(.feed(min: min, max: max, size: size, page: page))
+            .flatMap { NetworkHandler.requestDecoded(by: $0) }
     }
 }

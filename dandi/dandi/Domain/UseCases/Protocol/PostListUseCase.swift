@@ -9,6 +9,5 @@ import RxCocoa
 import RxSwift
 
 protocol PostListUseCase {
-    var postsPublisher: PublishRelay<[Post]> { get }
-    func fetchPostList(min: Int, max: Int)
+    func fetchPostList(min: Int?, max: Int?) -> Single<[Post]>
 }

@@ -17,7 +17,7 @@ struct Post {
     let content: String
     let tag: [WeatherFeeling]
     let isLiked: Bool
-    let isMine: Bool
+    let isMine: Bool?
 }
 
 extension Post: Equatable, Hashable {

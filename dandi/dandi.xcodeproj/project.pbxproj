@@ -81,6 +81,7 @@
 		DD31234B29B2556000443FCE /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234A29B2556000443FCE /* LoginReactor.swift */; };
 		DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */; };
 		DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31235029B2593D00443FCE /* AuthUseCase.swift */; };
+		DD31489829D4028F009B2BA4 /* PostsWithPageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */; };
 		DD3D9A4B29CC204A00E298B1 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = DD3D9A4A29CC204A00E298B1 /* Tabman */; };
 		DD3D9A4D29CC243100E298B1 /* ClosetTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */; };
 		DD3D9A5029CC303200E298B1 /* DecorationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4F29CC303200E298B1 /* DecorationMenuView.swift */; };
@@ -295,6 +296,7 @@
 		DD31234A29B2556000443FCE /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		DD31235029B2593D00443FCE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsWithPageDTO.swift; sourceTree = "<group>"; };
 		DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetTabViewController.swift; sourceTree = "<group>"; };
 		DD3D9A4F29CC303200E298B1 /* DecorationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationMenuView.swift; sourceTree = "<group>"; };
 		DD3D9A5129CC410800E298B1 /* MyPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPost.swift; sourceTree = "<group>"; };
@@ -696,6 +698,7 @@
 				DD00E7FD29C82FA1001536D4 /* DuplicationDTO.swift */,
 				DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */,
 				DD41E74829D31E1F00893431 /* PostContentDTO.swift */,
+				DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1412,6 +1415,7 @@
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
 				DD00E7EC29C776F9001536D4 /* UploadUseCase.swift in Sources */,
 				DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */,
+				DD31489829D4028F009B2BA4 /* PostsWithPageDTO.swift in Sources */,
 				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DD00E80E29C8A9B0001536D4 /* ImageUseCase.swift in Sources */,

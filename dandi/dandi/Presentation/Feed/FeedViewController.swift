@@ -20,6 +20,7 @@ final class FeedViewController: BaseViewController, View {
         collectionView: feedView.collectionView,
         presentingViewController: self
     )
+    private let temperaturePublisher = PublishRelay<Temperatures>()
 
     override func loadView() {
         view = feedView
@@ -38,7 +39,6 @@ final class FeedViewController: BaseViewController, View {
     private func bindState(_ reactor: Reactor) {
         reactor.state
             .compactMap { $0.posts }
-            .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, posts in
                 owner.feedDataSource.update(feed: posts)
@@ -52,6 +52,7 @@ final class FeedViewController: BaseViewController, View {
             .subscribe(onNext: { [weak self] temperature in
                 guard let self = self else { return }
                 self.feedView.navigationTitleLabel.text = "\(UserDefaultHandler.shared.address)은 최고\(temperature.max)/최저\(temperature.min)도입니다."
+                self.temperaturePublisher.accept(temperature)
             })
             .disposed(by: disposeBag)
     }
@@ -72,6 +73,11 @@ final class FeedViewController: BaseViewController, View {
                     max: reactor.currentState.temperature?.max
                 )
             }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        temperaturePublisher
+            .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
