@@ -26,7 +26,7 @@ final class HomeViewController: BaseViewController, View {
     private let writingButton: UIButton = .init()
 
     private let temperaturePublisher = PublishRelay<Temperatures>()
-    private let likePublisher = PublishRelay<Int>()
+    private let likePublisher = PublishSubject<Int>()
 
     override func loadView() {
         view = homeView
@@ -72,7 +72,7 @@ final class HomeViewController: BaseViewController, View {
                 temperature: hourlyWeather.temperature,
                 recommendation: [],
                 timeWeathers: hourlyWeathers,
-                same: posts
+                posts: posts
             )
             self.homeView.configure(
                 temperature: hourlyWeather.temperature,
@@ -95,11 +95,40 @@ final class HomeViewController: BaseViewController, View {
                 owner.temperaturePublisher.accept(temperature)
             })
             .disposed(by: disposeBag)
+
+        Observable.merge([
+            reactor.state
+                .compactMap { $0.likedPostID }
+                .distinctUntilChanged(),
+            NotificationCenterManager.reloadPost.addObserver()
+                .map { postID in
+                    guard let postID = postID as? Int else { return nil }
+                    return postID
+                }
+                .compactMap { $0 }
+        ])
+        .withUnretained(self)
+        .subscribe(onNext: { owner, likedPostID in
+            guard let oldPostItem = owner.homeDataSource.getPostItem(id: likedPostID) else { return }
+            let newPostItem = Post(
+                id: oldPostItem.id,
+                mainImageURL: oldPostItem.mainImageURL,
+                profileImageURL: oldPostItem.profileImageURL,
+                nickname: oldPostItem.nickname,
+                date: oldPostItem.date,
+                content: oldPostItem.content,
+                tag: oldPostItem.tag,
+                isLiked: !oldPostItem.isLiked,
+                isMine: oldPostItem.isMine
+            )
+            owner.homeDataSource.reloadIfNeeded(item: newPostItem)
+        })
+        .disposed(by: disposeBag)
     }
 
     private func bindAction(_ reactor: Reactor) {
         let shouldReload = Observable.merge([
-            rx.viewWillAppear.map { _ in },
+            rx.viewWillAppear.take(1).map { _ in },
             NotificationCenterManager.reloadLocation.addObserver().map { _ in }
         ]).share()
 
@@ -115,6 +144,12 @@ final class HomeViewController: BaseViewController, View {
 
         temperaturePublisher
             .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        likePublisher
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .map { Reactor.Action.like(id: $0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -173,9 +208,9 @@ final class HomeViewController: BaseViewController, View {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 switch owner.homeDataSource.itemIdentifier(for: indexPath) {
-                case let .post(post):
+                case let .post(id):
                     owner.navigationController?.pushViewController(
-                        owner.factory.makePostDetailViewController(postID: post.id),
+                        owner.factory.makePostDetailViewController(postID: id),
                         animated: true
                     )
                 default: break
@@ -194,6 +229,12 @@ final class HomeViewController: BaseViewController, View {
 extension HomeViewController: RotaionDelegate {
     func rotate() {
         addButton.transform = CGAffineTransform(rotationAngle: 0)
+    }
+}
+
+extension HomeViewController: HeartButtonDelegate {
+    func buttonDidTap(postID: Int) {
+        likePublisher.onNext(postID)
     }
 }
 
