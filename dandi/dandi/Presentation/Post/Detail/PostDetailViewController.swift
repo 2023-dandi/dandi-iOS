@@ -116,6 +116,7 @@ extension PostDetailViewController {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, post in
+                dump(post)
                 owner.dataSource.update(post: post, comments: [])
             })
             .disposed(by: disposeBag)
@@ -124,9 +125,8 @@ extension PostDetailViewController {
             .compactMap { $0.isLiked }
             .distinctUntilChanged()
             .withUnretained(self)
-            .subscribe(onNext: { _, isLiked in
-                // TODO: - 게시물 리스트 업데이트 로직 심기
-                dump(isLiked)
+            .subscribe(onNext: { owner, _ in
+                NotificationCenterManager.reloadPost.post(object: owner.postID)
             })
             .disposed(by: disposeBag)
 

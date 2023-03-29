@@ -99,7 +99,7 @@ extension PostContentCollectionViewCell {
         mainImageView.snp.makeConstraints {
             $0.top.equalTo(profileView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(UIScreen.main.bounds.width * 433 / 375 + 16)
+            $0.height.equalTo(Int(UIScreen.main.bounds.width * 433 / 375 + 16)).priority(.high)
         }
         contentStackView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
@@ -116,8 +116,8 @@ extension PostContentCollectionViewCell {
 
     @objc
     private func heartButtonDidTap() {
-        heartButton.isSelected.toggle()
         guard let postID = postID else { return }
         heartButtonDelegate?.buttonDidTap(postID: postID)
+        heartButton.isSelected.toggle()
     }
 }

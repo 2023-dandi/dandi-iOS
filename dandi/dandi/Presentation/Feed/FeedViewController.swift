@@ -62,15 +62,34 @@ final class FeedViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
 
-        reactor.state
-            .compactMap { $0.isLiked }
-            .distinctUntilChanged()
-            .withUnretained(self)
-            .subscribe(onNext: { _, isLiked in
-                // TODO: - 게시물 리스트 업데이트 로직 심기
-                dump(isLiked)
-            })
-            .disposed(by: disposeBag)
+        Observable.merge([
+            reactor.state
+                .compactMap { $0.likedPostID }
+                .distinctUntilChanged(),
+            NotificationCenterManager.reloadPost.addObserver()
+                .map { postID in
+                    guard let postID = postID as? Int else { return nil }
+                    return postID
+                }
+                .compactMap { $0 }
+        ])
+        .withUnretained(self)
+        .subscribe(onNext: { owner, likedPostID in
+            guard let oldPostItem = owner.feedDataSource.getPostItem(id: likedPostID) else { return }
+            let newPostItem = Post(
+                id: oldPostItem.id,
+                mainImageURL: oldPostItem.mainImageURL,
+                profileImageURL: oldPostItem.profileImageURL,
+                nickname: oldPostItem.nickname,
+                date: oldPostItem.date,
+                content: oldPostItem.content,
+                tag: oldPostItem.tag,
+                isLiked: !oldPostItem.isLiked,
+                isMine: oldPostItem.isMine
+            )
+            owner.feedDataSource.reloadIfNeeded(item: newPostItem)
+        })
+        .disposed(by: disposeBag)
     }
 
     private func bindAction(_ reactor: Reactor) {

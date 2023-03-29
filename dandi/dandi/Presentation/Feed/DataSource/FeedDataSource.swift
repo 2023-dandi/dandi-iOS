@@ -109,6 +109,21 @@ final class FeedDataSource {
             return nil
         }
     }
+
+    func getPostItem(id: Int) -> Post? {
+        return posts[id]
+    }
+
+    func reloadIfNeeded(item: Post) {
+        guard
+            posts.keys.contains(item.id),
+            let oldValue = posts.updateValue(item, forKey: item.id),
+            oldValue != item
+        else { return }
+        var currentSnapshot = dataSource.snapshot()
+        currentSnapshot.reloadItems([Item.post(item.id)])
+        dataSource.apply(currentSnapshot, animatingDifferences: false)
+    }
 }
 
 extension Sequence where Element: Hashable {

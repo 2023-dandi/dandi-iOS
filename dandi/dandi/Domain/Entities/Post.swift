@@ -8,7 +8,7 @@
 import Foundation
 
 struct Post {
-    let uuid = UUID()
+//    let uuid = UUID()
     let id: Int
     let mainImageURL: String
     let profileImageURL: String?
@@ -22,11 +22,10 @@ struct Post {
 
 extension Post: Equatable, Hashable {
     static func == (lhs: Post, rhs: Post) -> Bool {
-        return lhs.uuid == rhs.uuid
-            && lhs.id == rhs.id
+        return lhs.id == rhs.id
             && lhs.mainImageURL == rhs.mainImageURL
             && lhs.profileImageURL == rhs.profileImageURL
-            && lhs.nickname == rhs.profileImageURL
+            && lhs.nickname == rhs.nickname
             && lhs.date == rhs.date
             && lhs.content == rhs.content
             && lhs.tag == rhs.tag
@@ -35,6 +34,6 @@ extension Post: Equatable, Hashable {
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
+        hasher.combine(id)
     }
 }
