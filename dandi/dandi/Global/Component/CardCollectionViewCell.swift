@@ -12,6 +12,9 @@ import Then
 import YDS
 
 final class CardCollectionViewCell: UICollectionViewCell {
+    weak var delegate: HeartButtonDelegate?
+    public var id: Int?
+
     private let mainImageView: UIImageView = .init()
     private let profileInfoView: ProfileInfoView = .init()
     private let contentLabel: YDSLabel = .init()
@@ -59,6 +62,15 @@ final class CardCollectionViewCell: UICollectionViewCell {
 }
 
 extension CardCollectionViewCell {
+    @objc
+    private func buttonDidTap() {
+        guard let id = id else { return }
+        delegate?.buttonDidTap(postID: id)
+        heartButton.isSelected.toggle()
+    }
+}
+
+extension CardCollectionViewCell {
     private func setProperties() {
         contentView.do {
             $0.borderColor = YDSColor.borderThin
@@ -80,12 +92,22 @@ extension CardCollectionViewCell {
             $0.isLayoutMarginsRelativeArrangement = true
             $0.layoutMargins = UIEdgeInsets(top: .zero, left: 2, bottom: .zero, right: 2)
         }
-        // TODO: - 아이콘 교체
         heartButton.do {
-            $0.setImage(YDSIcon.commentLine.withTintColor(
-                YDSColor.buttonNormal,
-                renderingMode: .alwaysOriginal
-            ), for: .normal)
+            $0.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+            $0.setImage(
+                YDSIcon.heartLine.withTintColor(
+                    YDSColor.buttonNormal,
+                    renderingMode: .alwaysOriginal
+                ).resize(newWidth: 20),
+                for: .normal
+            )
+            $0.setImage(
+                YDSIcon.heartFilled.withTintColor(
+                    YDSColor.buttonNormal,
+                    renderingMode: .alwaysOriginal
+                ).resize(newWidth: 20),
+                for: .selected
+            )
         }
     }
 

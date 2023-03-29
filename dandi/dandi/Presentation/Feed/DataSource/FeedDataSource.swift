@@ -15,27 +15,29 @@ final class FeedDataSource {
 
     typealias CardCell = CardCollectionViewCell
     typealias CellProvider = (UICollectionView, IndexPath, Item) -> UICollectionViewCell?
-    typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Post>
+    typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Int>
 
     typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
 
     private let collectionView: UICollectionView
-    private var presentingViewController: UIViewController?
+    private var presentingViewController: (UIViewController & HeartButtonDelegate)?
 
     private lazy var dataSource = createDataSource()
+
+    private var posts: [Int: Post] = .init()
 
     enum Section {
         case feed
     }
 
     enum Item: Hashable {
-        case post(Post)
+        case post(Int)
     }
 
     // MARK: - Initialize
 
-    init(collectionView: UICollectionView, presentingViewController: UIViewController) {
+    init(collectionView: UICollectionView, presentingViewController: UIViewController & HeartButtonDelegate) {
         self.collectionView = collectionView
         self.presentingViewController = presentingViewController
     }
@@ -56,7 +58,11 @@ final class FeedDataSource {
     }
 
     private func configureCardCellRegistration<Cell: CardCell>() -> CardCellRegistration<Cell> {
-        return CardCellRegistration<Cell> { cell, _, post in
+        return CardCellRegistration<Cell> { [weak self] cell, _, postID in
+            guard
+                let self = self,
+                let post = self.posts[postID]
+            else { return }
             cell.configure(
                 mainImageURL: post.mainImageURL,
                 profileImageURL: post.profileImageURL,
@@ -65,18 +71,49 @@ final class FeedDataSource {
                 date: post.date,
                 isLiked: post.isLiked
             )
+            cell.id = post.id
+            cell.delegate = self.presentingViewController
         }
     }
 
     func update(feed: [Post]) {
         var snapshot = Snapshot()
-        snapshot.appendSections([.feed])
-        let feedItems = feed.map { Item.post($0) }
-        snapshot.appendItems(feedItems, toSection: .feed)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        if !snapshot.sectionIdentifiers.contains(.feed) {
+            snapshot.appendSections([.feed])
+        }
+
+        let ids = feed.map { $0.id }.uniqued().map { Item.post($0) }
+        snapshot.appendItems(ids)
+
+        feed
+            .filter { !self.posts.keys.contains($0.id) }
+            .forEach { self.posts[$0.id] = $0 }
+
+        feed
+            .filter { self.posts.keys.contains($0.id) }
+            .forEach { item in
+                if let oldValue = self.posts.updateValue(item, forKey: item.id),
+                   oldValue != item
+                {
+                    snapshot.reloadItems([Item.post(item.id)])
+                }
+            }
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 
-    func itemIdentifier(for indexPath: IndexPath) -> Item? {
-        return dataSource.itemIdentifier(for: indexPath)
+    func itemIdentifier(for indexPath: IndexPath) -> Post? {
+        switch dataSource.itemIdentifier(for: indexPath) {
+        case let .post(postID):
+            return posts[postID]
+        default:
+            return nil
+        }
+    }
+}
+
+extension Sequence where Element: Hashable {
+    func uniqued() -> [Element] {
+        var set = Set<Element>()
+        return filter { set.insert($0).inserted }
     }
 }

@@ -23,6 +23,15 @@ struct Post {
 extension Post: Equatable, Hashable {
     static func == (lhs: Post, rhs: Post) -> Bool {
         return lhs.uuid == rhs.uuid
+            && lhs.id == rhs.id
+            && lhs.mainImageURL == rhs.mainImageURL
+            && lhs.profileImageURL == rhs.profileImageURL
+            && lhs.nickname == rhs.profileImageURL
+            && lhs.date == rhs.date
+            && lhs.content == rhs.content
+            && lhs.tag == rhs.tag
+            && lhs.isLiked == rhs.isLiked
+            && lhs.isMine == rhs.isMine
     }
 
     func hash(into hasher: inout Hasher) {

@@ -21,6 +21,7 @@ final class FeedViewController: BaseViewController, View {
         presentingViewController: self
     )
     private let temperaturePublisher = PublishRelay<Temperatures>()
+    private let likePublisher = PublishSubject<Int>()
 
     override func loadView() {
         view = feedView
@@ -60,6 +61,16 @@ final class FeedViewController: BaseViewController, View {
                 self.temperaturePublisher.accept(temperature)
             })
             .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.isLiked }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { _, isLiked in
+                // TODO: - 게시물 리스트 업데이트 로직 심기
+                dump(isLiked)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindAction(_ reactor: Reactor) {
@@ -82,7 +93,13 @@ final class FeedViewController: BaseViewController, View {
             .disposed(by: disposeBag)
 
         temperaturePublisher
-            .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max)}
+            .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        likePublisher
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .map { Reactor.Action.like(id: $0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -91,15 +108,11 @@ final class FeedViewController: BaseViewController, View {
         feedView.collectionView.rx.itemSelected
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
-                switch owner.feedDataSource.itemIdentifier(for: indexPath) {
-                case let .post(post):
-                    owner.navigationController?.pushViewController(
-                        owner.factory.makePostDetailViewController(postID: post.id),
-                        animated: true
-                    )
-                default:
-                    break
-                }
+                guard let post = owner.feedDataSource.itemIdentifier(for: indexPath) else { return }
+                owner.navigationController?.pushViewController(
+                    owner.factory.makePostDetailViewController(postID: post.id),
+                    animated: true
+                )
             })
             .disposed(by: disposeBag)
 
@@ -110,5 +123,11 @@ final class FeedViewController: BaseViewController, View {
                 owner.present(YDSNavigationController(rootViewController: vc), animated: true)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension FeedViewController: HeartButtonDelegate {
+    func buttonDidTap(postID: Int) {
+        likePublisher.onNext(postID)
     }
 }

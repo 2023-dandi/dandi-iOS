@@ -19,18 +19,20 @@ final class FeedReactor: Reactor {
         var posts: [Post]?
         var isLoading: Bool?
         var temperature: Temperatures?
+        var isLiked: Bool?
     }
 
     enum Action {
         case fetchTemperature
         case fetchPostList(min: Int?, max: Int?)
+        case like(id: Int)
     }
 
     enum Mutation {
         case setLoading(isLoading: Bool)
         case setPostList(posts: [Post])
         case setTemperature(temperature: Temperatures)
-//        case setInformation(temperature: Temperatures, posts: [Post])
+        case setLikeButtonStatus(isLiked: Bool)
     }
 
     init(
@@ -73,6 +75,11 @@ final class FeedReactor: Reactor {
                     .map { Mutation.setPostList(posts: $0) },
                 .just(.setLoading(isLoading: false))
             ])
+        case let .like(id):
+            postLikeUseCase.like(id: id)
+            return postLikeUseCase.completionPublisher
+                .compactMap { $0 }
+                .map { Mutation.setLikeButtonStatus(isLiked: $0) }
         }
     }
 
@@ -85,6 +92,8 @@ final class FeedReactor: Reactor {
             newState.posts = posts
         case let .setTemperature(temperature):
             newState.temperature = temperature
+        case let .setLikeButtonStatus(isLiked):
+            newState.isLiked = isLiked
         }
         return newState
     }
