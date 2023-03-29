@@ -30,6 +30,11 @@ final class FeedViewController: BaseViewController, View {
         super.init()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+
     func bind(reactor: Reactor) {
         bindState(reactor)
         bindAction(reactor)
@@ -77,7 +82,7 @@ final class FeedViewController: BaseViewController, View {
             .disposed(by: disposeBag)
 
         temperaturePublisher
-            .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max) }
+            .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
