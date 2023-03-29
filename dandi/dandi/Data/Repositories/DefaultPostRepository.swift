@@ -110,4 +110,14 @@ final class DefaultPostRepository: PostRepository {
         return router.rx.request(.feed(min: min, max: max, size: size, page: page))
             .flatMap { NetworkHandler.requestDecoded(by: $0) }
     }
+
+    func fetchMyTemperaturePostList(
+        min: Int,
+        max: Int,
+        size: Int,
+        page: Int
+    ) -> RxSwift.Single<NetworkResult<MyTemperaturePostWithPageDTO>> {
+        return router.rx.request(.myFeed(min: min, max: max, size: size, page: page))
+            .flatMap { NetworkHandler.requestDecoded(by: $0) }
+    }
 }

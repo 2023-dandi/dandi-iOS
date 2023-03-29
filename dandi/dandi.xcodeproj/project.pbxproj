@@ -47,6 +47,8 @@
 		DD1D6B2C29D0672C00085FBE /* StickerTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */; };
 		DD1D6B2E29D079EA00085FBE /* AddImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2D29D079EA00085FBE /* AddImageDelegate.swift */; };
 		DD1D6B3029D0808900085FBE /* DecorationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */; };
+		DD1E216529D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E216429D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift */; };
+		DD1E216729D4493800A249B1 /* MyTemperaturePostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E216629D4493800A249B1 /* MyTemperaturePostListUseCase.swift */; };
 		DD1E52CF29D194BF00550E02 /* ClothesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */; };
 		DD1E52D129D1959400550E02 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D029D1959400550E02 /* Season.swift */; };
 		DD1E52D529D1B0D100550E02 /* ClosetMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */; };
@@ -257,6 +259,8 @@
 		DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerTabViewController.swift; sourceTree = "<group>"; };
 		DD1D6B2D29D079EA00085FBE /* AddImageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageDelegate.swift; sourceTree = "<group>"; };
 		DD1D6B2F29D0808900085FBE /* DecorationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationViewController.swift; sourceTree = "<group>"; };
+		DD1E216429D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTemperaturePostWithPageDTO.swift; sourceTree = "<group>"; };
+		DD1E216629D4493800A249B1 /* MyTemperaturePostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTemperaturePostListUseCase.swift; sourceTree = "<group>"; };
 		DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesCategory.swift; sourceTree = "<group>"; };
 		DD1E52D029D1959400550E02 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetMainViewController.swift; sourceTree = "<group>"; };
@@ -699,6 +703,7 @@
 				DD3D9A5329CC411C00E298B1 /* MyPostDTO.swift */,
 				DD41E74829D31E1F00893431 /* PostContentDTO.swift */,
 				DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */,
+				DD1E216429D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -738,6 +743,7 @@
 				DD00E81829C8D6F3001536D4 /* DefaultPostLikeUseCase.swift */,
 				DD3D9A5729CC42D600E298B1 /* DefaultMyPostsUseCase.swift */,
 				DD41E74C29D31FCE00893431 /* DefaultPostListUseCase.swift */,
+				DD1E216629D4493800A249B1 /* MyTemperaturePostListUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1347,6 +1353,7 @@
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
 				DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */,
 				DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */,
+				DD1E216729D4493800A249B1 /* MyTemperaturePostListUseCase.swift in Sources */,
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
 				DD61795A29CB53AF005B7527 /* RegisterClothesViewController.swift in Sources */,
@@ -1470,6 +1477,7 @@
 				DD2E52E429BF38560078EA74 /* DecorationImageView.swift in Sources */,
 				DDCDA17629C2F6E200BAB1CF /* WeatherFeeling.swift in Sources */,
 				DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */,
+				DD1E216529D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,

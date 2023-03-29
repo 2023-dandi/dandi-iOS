@@ -64,7 +64,7 @@ extension PostContentDTO {
         return Post(
             id: id,
             mainImageURL: postImageURL,
-            profileImageURL: nil,
+            profileImageURL: writer?.profileImageURL,
             nickname: writer?.nickname ?? "",
             date: createdAt ?? "",
             content: "\(temperatures.min)도~\(temperatures.max)도에, \(ClothesFeeling(rawValue: outfitFeelings.feelingIndex)?.text ?? "").",
@@ -78,7 +78,7 @@ extension PostContentDTO {
         return Post(
             id: id ?? -1,
             mainImageURL: postImageURL,
-            profileImageURL: nil,
+            profileImageURL: writer?.profileImageURL,
             nickname: writer?.nickname ?? "",
             date: createdAt ?? "",
             content: "\(temperatures.min)도~\(temperatures.max)도에, \(ClothesFeeling(rawValue: outfitFeelings.feelingIndex)?.text ?? "").",

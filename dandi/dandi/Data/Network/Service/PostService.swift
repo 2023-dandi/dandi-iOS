@@ -16,6 +16,7 @@ enum PostService {
     case deletePost(id: Int)
     case my
     case feed(min: Int, max: Int, size: Int, page: Int)
+    case myFeed(min: Int, max: Int, size: Int, page: Int)
 }
 
 extension PostService: BaseTargetType {
@@ -49,7 +50,9 @@ extension PostService: BaseTargetType {
         case .my:
             return "/posts/my"
         case .feed:
-            return "posts/feed/weather"
+            return "posts/feed/temperature"
+        case .myFeed:
+            return "posts/my/temperature"
         }
     }
 
@@ -66,6 +69,8 @@ extension PostService: BaseTargetType {
         case .my:
             return .get
         case .feed:
+            return .get
+        case .myFeed:
             return .get
         }
     }
@@ -98,6 +103,12 @@ extension PostService: BaseTargetType {
             return .requestPlain
 
         case let .feed(min, max, size, page):
+            return .requestParameters(
+                parameters: ["min": min, "max": max, "size": size, "page": page, "sort": "createdAt,DESC"],
+                encoding: URLEncoding.queryString
+            )
+
+        case let .myFeed(min, max, size, page):
             return .requestParameters(
                 parameters: ["min": min, "max": max, "size": size, "page": page, "sort": "createdAt,DESC"],
                 encoding: URLEncoding.queryString

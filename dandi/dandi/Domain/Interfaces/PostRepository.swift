@@ -42,4 +42,11 @@ protocol PostRepository {
         size: Int,
         page: Int
     ) -> Single<NetworkResult<PostsWithPageDTO>>
+
+    func fetchMyTemperaturePostList(
+        min: Int,
+        max: Int,
+        size: Int,
+        page: Int
+    ) -> Single<NetworkResult<MyTemperaturePostWithPageDTO>>
 }

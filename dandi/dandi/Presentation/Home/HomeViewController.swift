@@ -21,11 +21,12 @@ final class HomeViewController: BaseViewController, View {
         collectionView: homeView.collectionView,
         presentingViewController: self
     )
-    private let locationManager = CLLocationManager()
-
     private let addButton: UIButton = .init()
     private let closetButton: UIButton = .init()
     private let writingButton: UIButton = .init()
+
+    private let temperaturePublisher = PublishRelay<Temperatures>()
+    private let likePublisher = PublishRelay<Int>()
 
     override func loadView() {
         view = homeView
@@ -40,40 +41,81 @@ final class HomeViewController: BaseViewController, View {
 
     func bind(reactor: HomeReactor) {
         bindTapAction()
+        bindState(reactor)
+        bindAction(reactor)
+    }
 
-        Observable.merge([
-            rx.viewWillAppear.map { _ in },
-            NotificationCenterManager.reloadLocation.addObserver().map { _ in }
-        ])
-        .map { _ in Reactor.Action.viewWillAppear }
-        .bind(to: reactor.action)
+    private func bindState(_ reactor: Reactor) {
+        let hourlyWeathers = reactor.state
+            .compactMap { $0.hourlyWeathers }
+            .distinctUntilChanged()
+
+        let posts = reactor.state
+            .compactMap { $0.posts }
+            .distinctUntilChanged()
+
+        let temperatures = reactor.state
+            .compactMap { $0.temperature }
+            .distinctUntilChanged()
+            .share()
+
+        Observable.combineLatest(hourlyWeathers, posts, temperatures) { hourlyWeathers, posts, temperatures in
+            (hourlyWeathers, posts, temperatures)
+        }
+        .observe(on: MainScheduler.asyncInstance)
+        .subscribe(onNext: { [weak self] hourlyWeathers, posts, temperatures in
+            guard let self = self else { return }
+            self.homeView.bannerView.locationLabel.text = UserDefaultHandler.shared.address
+            guard let hourlyWeather = hourlyWeathers.first else { return }
+            self.homeDataSource.update(
+                recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
+                temperature: hourlyWeather.temperature,
+                recommendation: [],
+                timeWeathers: hourlyWeathers,
+                same: posts
+            )
+            self.homeView.configure(
+                temperature: hourlyWeather.temperature,
+                description: "최고\(temperatures.max)/최저\(temperatures.min)"
+            )
+        })
         .disposed(by: disposeBag)
 
         reactor.state
-            .compactMap { $0.hourlyWeathers }
-            .withUnretained(self)
-            .subscribe(onNext: { owner, hourlyWeathers in
-                DispatchQueue.main.async {
-                    owner.homeView.bannerView.locationLabel.text = UserDefaultHandler.shared.address
-                    guard let hourlyWeather = hourlyWeathers.first else { return }
-                    owner.homeDataSource.update(
-                        recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
-                        temperature: hourlyWeather.temperature,
-                        recommendation: [ClosetImage(id: 1, image: nil, imageURL: nil), ClosetImage(id: 1, image: nil, imageURL: nil), ClosetImage(id: 1, image: nil, imageURL: nil)],
-                        timeWeathers: hourlyWeathers,
-                        same: [Post(id: 12, mainImageURL: "", profileImageURL: "", nickname: "", date: "", content: "", tag: [], isLiked: true, isMine: true)]
-                    )
-                    owner.homeView.configure(
-                        temperature: hourlyWeather.temperature,
-                        description: "한 낮에는 더워도\n 밤에는 쌀쌀할 수 있어요!"
-                    )
-                }
+            .map { $0.updateLocationSuccess }
+            .distinctUntilChanged()
+            .subscribe(onNext: { success in
+                dump(success)
             })
             .disposed(by: disposeBag)
 
-        reactor.state
-            .map { $0.updateLocationSuccess }
-            .subscribe()
+        temperatures
+            .withUnretained(self)
+            .subscribe(onNext: { owner, temperature in
+                owner.temperaturePublisher.accept(temperature)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func bindAction(_ reactor: Reactor) {
+        let shouldReload = Observable.merge([
+            rx.viewWillAppear.map { _ in },
+            NotificationCenterManager.reloadLocation.addObserver().map { _ in }
+        ]).share()
+
+        shouldReload
+            .map { _ in Reactor.Action.fetchWeatherInfo }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        shouldReload
+            .map { _ in Reactor.Action.fetchTemperatures }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        temperaturePublisher
+            .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max) }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
 

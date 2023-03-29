@@ -64,11 +64,10 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = HomeViewController()
         vc.factory = self
         vc.reactor = HomeReactor(
-            hourlyWeatherUseCase: DefaultHourlyWeatherUseCase(
-                weatherRepository: DefaultWeatherRepository(
-                    weatherService: DefaultWeatherService()
-                )
-            )
+            postLikeUseCase: DefaultPostLikeUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
+            hourlyWeatherUseCase: DefaultHourlyWeatherUseCase(weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService())),
+            postListUseCase: MyTemperaturePostListUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
+            temperatureUseCase: DefaultTemperatureUseCase(weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService()))
         )
         return vc
     }

@@ -45,6 +45,7 @@ final class FeedViewController: BaseViewController, View {
     private func bindState(_ reactor: Reactor) {
         reactor.state
             .compactMap { $0.posts }
+            .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, posts in
                 owner.feedDataSource.update(feed: posts)
