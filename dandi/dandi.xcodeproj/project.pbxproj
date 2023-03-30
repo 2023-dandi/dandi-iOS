@@ -35,6 +35,8 @@
 		DD0B685B29C760C5000A0E24 /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685A29C760C5000A0E24 /* StatusCase.swift */; };
 		DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */; };
 		DD0B685F29C764B2000A0E24 /* DefaultPostDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B685E29C764B2000A0E24 /* DefaultPostDetailUseCase.swift */; };
+		DD0C093B29D57548002CAB37 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C093A29D57548002CAB37 /* NetworkMonitor.swift */; };
+		DD0C093D29D5768C002CAB37 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C093C29D5768C002CAB37 /* NetworkErrorView.swift */; };
 		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
@@ -247,6 +249,8 @@
 		DD0B685A29C760C5000A0E24 /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
 		DD0B685C29C7613C000A0E24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		DD0B685E29C764B2000A0E24 /* DefaultPostDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailUseCase.swift; sourceTree = "<group>"; };
+		DD0C093A29D57548002CAB37 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		DD0C093C29D5768C002CAB37 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
@@ -453,6 +457,22 @@
 			path = NotificationHandler;
 			sourceTree = "<group>";
 		};
+		DD030C3529D574CE005B36DA /* NetworkError */ = {
+			isa = PBXGroup;
+			children = (
+				DD0C093C29D5768C002CAB37 /* NetworkErrorView.swift */,
+			);
+			path = NetworkError;
+			sourceTree = "<group>";
+		};
+		DD030C3629D5751A005B36DA /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				DD0C093A29D57548002CAB37 /* NetworkMonitor.swift */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
 		DD1721DC29B64FF000757C55 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +595,7 @@
 				DDC522092995E69C00E2845F /* Post */,
 				DD61795B29CB53F1005B7527 /* Closet */,
 				DDDBD43E29740AE800452F01 /* Upload */,
+				DD030C3529D574CE005B36DA /* NetworkError */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -868,6 +889,7 @@
 		DD9B06EB295ECF0100A98041 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				DD030C3629D5751A005B36DA /* NetworkMonitor */,
 				DD61796E29CB7DFD005B7527 /* Alert */,
 				DD00E81129C8C8D7001536D4 /* NotificationHandler */,
 				DDCDA17729C311C600BAB1CF /* Reusable */,
@@ -1381,6 +1403,7 @@
 				DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */,
 				DD61796529CB5FBF005B7527 /* PagerCollectionViewCell.swift in Sources */,
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
+				DD0C093B29D57548002CAB37 /* NetworkMonitor.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadUseCase.swift in Sources */,
@@ -1483,6 +1506,7 @@
 				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */,
+				DD0C093D29D5768C002CAB37 /* NetworkErrorView.swift in Sources */,
 				DDB23BA42993954A000735FB /* MyPageView.swift in Sources */,
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,

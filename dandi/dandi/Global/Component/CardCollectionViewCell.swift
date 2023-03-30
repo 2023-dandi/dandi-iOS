@@ -99,14 +99,14 @@ extension CardCollectionViewCell {
                 YDSIcon.heartLine.withTintColor(
                     YDSColor.buttonNormal,
                     renderingMode: .alwaysOriginal
-                ).resize(newWidth: 20),
+                ).resize(newWidth: 20).withInset(UIEdgeInsets(top: .zero, left: 2, bottom: .zero, right: 2)),
                 for: .normal
             )
             $0.setImage(
                 YDSIcon.heartFilled.withTintColor(
                     YDSColor.buttonNormal,
                     renderingMode: .alwaysOriginal
-                ).resize(newWidth: 20),
+                ).resize(newWidth: 20).withInset(UIEdgeInsets(top: .zero, left: 2, bottom: .zero, right: 2)),
                 for: .selected
             )
         }
@@ -131,11 +131,12 @@ extension CardCollectionViewCell {
         }
         contentStackView.snp.makeConstraints { make in
             make.top.equalTo(profileInfoView.snp.bottom)
-            make.leading.trailing.equalToSuperview().inset(8)
-            make.height.equalTo(28).priority(.high)
+            make.leading.equalToSuperview().inset(8)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(32).priority(.high)
         }
         heartButton.snp.makeConstraints { make in
-            make.size.equalTo(20).priority(.high)
+            make.size.equalTo(32).priority(.high)
         }
     }
 }
