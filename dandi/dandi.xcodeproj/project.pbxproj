@@ -46,6 +46,7 @@
 		DD0C094D29D5D970002CAB37 /* RegisterClothesReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C094C29D5D970002CAB37 /* RegisterClothesReactor.swift */; };
 		DD0C094F29D5EED7002CAB37 /* ClothesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */; };
 		DD0C095329D5F0C6002CAB37 /* UploadClothesImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */; };
+		DD0C095929D60108002CAB37 /* ModuleFactoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C095829D60108002CAB37 /* ModuleFactoryInterface.swift */; };
 		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
@@ -269,6 +270,7 @@
 		DD0C094C29D5D970002CAB37 /* RegisterClothesReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClothesReactor.swift; sourceTree = "<group>"; };
 		DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesInfo.swift; sourceTree = "<group>"; };
 		DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadClothesImageUseCase.swift; sourceTree = "<group>"; };
+		DD0C095829D60108002CAB37 /* ModuleFactoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryInterface.swift; sourceTree = "<group>"; };
 		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
@@ -891,6 +893,7 @@
 		DD9B06E6295ECC3F00A98041 /* ModuleFactory */ = {
 			isa = PBXGroup;
 			children = (
+				DD0C095829D60108002CAB37 /* ModuleFactoryInterface.swift */,
 				DD9B06E4295EC8A600A98041 /* ModuleFactory.swift */,
 			);
 			path = ModuleFactory;
@@ -1435,6 +1438,7 @@
 				DD0C093B29D57548002CAB37 /* NetworkMonitor.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
+				DD0C095929D60108002CAB37 /* ModuleFactoryInterface.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadPostUseCase.swift in Sources */,
 				DD1D6B2E29D079EA00085FBE /* AddImageDelegate.swift in Sources */,
 				DD0C094B29D5D69B002CAB37 /* UploadPostImageUseCase.swift in Sources */,

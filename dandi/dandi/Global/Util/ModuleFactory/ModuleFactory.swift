@@ -8,29 +8,6 @@
 import Foundation
 import UIKit
 
-import YPImagePicker
-
-protocol ModuleFactoryInterface {
-    func makeSplahViewController() -> SplashViewController
-    func makeTabBarViewController() -> MainTabBarController
-    func makeLoginViewController() -> LoginViewController
-    func makeHomeViewController() -> HomeViewController
-    func makeHomeButtonViewController() -> HomeButtonViewController
-    func makeMyPageViewController() -> MyPageViewController
-    func makeFeedViewContontoller() -> FeedViewController
-    func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController
-    func makeClosetMainViewController() -> ClosetMainViewController
-    func makePhotoLibraryViewController() -> PhotoLibraryViewController
-    func makePostDetailViewController(postID: Int) -> PostDetailViewController
-    func makeMyInformationViewController(userProfile: UserProfile) -> MyInformationViewController
-    func makeDecorationViewController() -> DecorationViewController
-    func makeUploadMainViewController(image: UIImage) -> UploadMainViewController
-    func makeBackgroundTabViewController() -> BackgroundTabViewController
-    func makeStickerTabViewController() -> StickerTabViewController
-    func makeClosetTabViewController() -> ClosetTabViewController
-    func makeLocationSettingViewController() -> LocationSettingViewController
-}
-
 final class ModuleFactory {
     static let shared = ModuleFactory()
     private init() {}
@@ -49,26 +26,29 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeLoginViewController() -> LoginViewController {
         let vc = LoginViewController()
-        vc.reactor = LoginReactor(
-            authUseCase: DefaultAuthUseCase(
-                authRepository: DefaultAuthRepository(
-                    interceptor: Interceptor()
-                )
-            )
-        )
+        let authRepository = DefaultAuthRepository(interceptor: Interceptor())
+        let authUseCase = DefaultAuthUseCase(authRepository: authRepository)
+        let reactor = LoginReactor(authUseCase: authUseCase)
         vc.factory = self
         return vc
     }
 
     func makeHomeViewController() -> HomeViewController {
         let vc = HomeViewController()
-        vc.factory = self
+        let postRepository = DefaultPostRepository(interceptor: Interceptor())
+        let weatherRepository = DefaultWeatherRepository(weatherService: DefaultWeatherService())
+
+        let postListUseCase = DefaultPostListUseCase(postRepository: postRepository)
+        let temperatureUseCase = DefaultTemperatureUseCase(weatherRepository: weatherRepository)
+        let postLikeUseCase = DefaultPostLikeUseCase(postRepository: postRepository)
+        let hourlyWeatherUseCase = DefaultHourlyWeatherUseCase(weatherRepository: weatherRepository)
         vc.reactor = HomeReactor(
-            postLikeUseCase: DefaultPostLikeUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
-            hourlyWeatherUseCase: DefaultHourlyWeatherUseCase(weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService())),
-            postListUseCase: MyTemperaturePostListUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
-            temperatureUseCase: DefaultTemperatureUseCase(weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService()))
+            postLikeUseCase: postLikeUseCase,
+            hourlyWeatherUseCase: hourlyWeatherUseCase,
+            postListUseCase: postListUseCase,
+            temperatureUseCase: temperatureUseCase
         )
+        vc.factory = self
         return vc
     }
 
@@ -80,35 +60,45 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeMyPageViewController() -> MyPageViewController {
         let vc = MyPageViewController()
+        let locationConverter = LocationConverter()
+
+        let memberRepository = DefaultMemberRepository(interceptor: Interceptor())
+        let postRepository = DefaultPostRepository(interceptor: Interceptor())
+
+        let memberInfoUseCase = DefaultMemberInfoUseCase(memberRepository: memberRepository, converter: locationConverter)
+        let postListUseCase = DefaultMyPostsUseCase(postRepository: postRepository)
+
+        vc.reactor = MyPageReactor(memberInfoUseCase: memberInfoUseCase, postListUseCase: postListUseCase)
         vc.factory = self
-        vc.reactor = MyPageReactor(
-            memberInfoUseCase: DefaultMemberInfoUseCase(
-                memberRepository: DefaultMemberRepository(interceptor: Interceptor()),
-                converter: LocationConverter()
-            ),
-            postListUseCase: DefaultMyPostsUseCase(
-                postRepository: DefaultPostRepository(interceptor: Interceptor())
-            )
-        )
+
         return vc
     }
 
     func makeFeedViewContontoller() -> FeedViewController {
+        let postRepository = DefaultPostRepository(interceptor: Interceptor())
+        let weatherRepository = DefaultWeatherRepository(weatherService: DefaultWeatherService())
+
+        let postListUseCase = DefaultPostListUseCase(postRepository: postRepository)
+        let postLikeUseCase = DefaultPostLikeUseCase(postRepository: postRepository)
+        let temperatureUseCase = DefaultTemperatureUseCase(weatherRepository: weatherRepository)
+
         let vc = FeedViewController()
         vc.reactor = FeedReactor(
-            postListUseCase: DefaultPostListUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
-            postLikeUseCase: DefaultPostLikeUseCase(postRepository: DefaultPostRepository(interceptor: Interceptor())),
-            temperatureUseCase: DefaultTemperatureUseCase(weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService()))
+            postListUseCase: postListUseCase,
+            postLikeUseCase: postLikeUseCase,
+            temperatureUseCase: temperatureUseCase
         )
         vc.factory = self
         return vc
     }
 
     func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController {
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
+
         let vc = RegisterClothesViewController(selectedImages: selectedImages)
         vc.reactor = RegisterClothesReactor(
-            imageUseCase: UploadClothesImageUseCase(clothesRepository: DefaultClothesRepository(interceptor: Interceptor())),
-            clothesUseCase: DefaultRegisterClothesUseCase(clothesRepository: DefaultClothesRepository(interceptor: Interceptor()))
+            imageUseCase: UploadClothesImageUseCase(clothesRepository: clothesRepository),
+            clothesUseCase: DefaultRegisterClothesUseCase(clothesRepository: clothesRepository)
         )
         vc.factory = self
         return vc
@@ -121,20 +111,14 @@ extension ModuleFactory: ModuleFactoryInterface {
     }
 
     func makePostDetailViewController(postID: Int) -> PostDetailViewController {
+        let postRepository = DefaultPostRepository(interceptor: Interceptor())
+
         let vc = PostDetailViewController(postID: postID)
-        vc.factory = self
         vc.reactor = PostDetailReactor(
-            postDetailUseCase: DefaultPostDetailUseCase(
-                postRepository: DefaultPostRepository(
-                    interceptor: Interceptor()
-                )
-            ),
-            postLikeUseCase: DefaultPostLikeUseCase(
-                postRepository: DefaultPostRepository(
-                    interceptor: Interceptor()
-                )
-            )
+            postDetailUseCase: DefaultPostDetailUseCase(postRepository: postRepository),
+            postLikeUseCase: DefaultPostLikeUseCase(postRepository: postRepository)
         )
+        vc.factory = self
         return vc
     }
 
@@ -145,44 +129,42 @@ extension ModuleFactory: ModuleFactoryInterface {
     }
 
     func makeMyInformationViewController(userProfile: UserProfile) -> MyInformationViewController {
+        let memberRepository = DefaultMemberRepository(interceptor: Interceptor())
+
+        let nicknameUseCase = DefaultNicknameUseCase(memberRepository: memberRepository)
+        let imageUseCase = UploadProfileImageUseCase(memberRepository: memberRepository)
+
         let vc = MyInformationViewController()
-        vc.factory = self
         vc.reactor = MyInformationReactor(
             userProfile: userProfile,
-            nicknameUseCase: DefaultNicknameUseCase(
-                memberRepository: DefaultMemberRepository(
-                    interceptor: Interceptor(
-                    )
-                )
-            ),
-            imageUseCase: UploadProfileImageUseCase(
-                memberRepository: DefaultMemberRepository(
-                    interceptor: Interceptor()
-                )
-            )
+            nicknameUseCase: nicknameUseCase,
+            imageUseCase: imageUseCase
         )
+        vc.factory = self
         return vc
     }
 
     func makeDecorationViewController() -> DecorationViewController {
-        let vc = DecorationViewController(factory: self)
-        return vc
+        return DecorationViewController(factory: self)
     }
 
     func makeUploadMainViewController(image: UIImage) -> UploadMainViewController {
-        let vc = UploadMainViewController(image: image)
-        vc.factory = self
-        vc.reactor = UploadMainReactor(
-            weatherUseCase: DefaultTemperatureUseCase(
-                weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService())
-            ),
-            uploadUseCase: DefaultUploadPostUseCase(
-                postRepository: DefaultPostRepository(interceptor: Interceptor())
-            ),
-            imageUseCase: UploadPostImageUseCase(
-                postRepository: DefaultPostRepository(interceptor: Interceptor())
-            )
+        let postRepository = DefaultPostRepository(interceptor: Interceptor())
+        let weatherRepository = DefaultWeatherRepository(weatherService: DefaultWeatherService())
+
+        let weatherUseCase = DefaultTemperatureUseCase(weatherRepository: weatherRepository)
+        let uploadUseCase = DefaultUploadPostUseCase(postRepository: postRepository)
+        let imageUseCase = UploadPostImageUseCase(postRepository: postRepository)
+
+        let reactor = UploadMainReactor(
+            weatherUseCase: weatherUseCase,
+            uploadUseCase: uploadUseCase,
+            imageUseCase: imageUseCase
         )
+
+        let vc = UploadMainViewController(image: image)
+        vc.reactor = reactor
+        vc.factory = self
         return vc
     }
 
