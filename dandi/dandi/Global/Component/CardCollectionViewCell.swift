@@ -34,6 +34,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
         profileInfoView.dateLabel.text = nil
         profileInfoView.profileImageView.image = nil
         heartButton.isSelected = false
+        id = nil
     }
 
     public func configure(

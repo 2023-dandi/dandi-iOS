@@ -96,34 +96,35 @@ final class HomeViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
 
-        Observable.merge([
-            reactor.state
-                .compactMap { $0.likedPostID }
-                .distinctUntilChanged(),
-            NotificationCenterManager.reloadPost.addObserver()
-                .map { postID in
-                    guard let postID = postID as? Int else { return nil }
-                    return postID
-                }
-                .compactMap { $0 }
-        ])
-        .withUnretained(self)
-        .subscribe(onNext: { owner, likedPostID in
-            guard let oldPostItem = owner.homeDataSource.getPostItem(id: likedPostID) else { return }
-            let newPostItem = Post(
-                id: oldPostItem.id,
-                mainImageURL: oldPostItem.mainImageURL,
-                profileImageURL: oldPostItem.profileImageURL,
-                nickname: oldPostItem.nickname,
-                date: oldPostItem.date,
-                content: oldPostItem.content,
-                tag: oldPostItem.tag,
-                isLiked: !oldPostItem.isLiked,
-                isMine: oldPostItem.isMine
-            )
-            owner.homeDataSource.reloadIfNeeded(item: newPostItem)
-        })
-        .disposed(by: disposeBag)
+        NotificationCenterManager.reloadPost.addObserver()
+            .map { postID in
+                guard let postID = postID as? Int else { return nil }
+                return postID
+            }
+            .compactMap { $0 }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, likedPostID in
+                guard let oldPostItem = owner.homeDataSource.getPostItem(id: likedPostID) else { return }
+                let newPostItem = Post(
+                    id: oldPostItem.id,
+                    mainImageURL: oldPostItem.mainImageURL,
+                    profileImageURL: oldPostItem.profileImageURL,
+                    nickname: oldPostItem.nickname,
+                    date: oldPostItem.date,
+                    content: oldPostItem.content,
+                    tag: oldPostItem.tag,
+                    isLiked: !oldPostItem.isLiked,
+                    isMine: oldPostItem.isMine
+                )
+                owner.homeDataSource.reloadIfNeeded(item: newPostItem)
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.likedPostID }
+            .distinctUntilChanged()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
 
     private func bindAction(_ reactor: Reactor) {
@@ -235,6 +236,7 @@ extension HomeViewController: RotaionDelegate {
 extension HomeViewController: HeartButtonDelegate {
     func buttonDidTap(postID: Int) {
         likePublisher.onNext(postID)
+        NotificationCenterManager.reloadPost.post(object: postID)
     }
 }
 
