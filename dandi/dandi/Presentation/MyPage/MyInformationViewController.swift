@@ -30,10 +30,7 @@ final class MyInformationViewController: BaseViewController, View {
     private let contentStackView = UIStackView()
     private let textFieldView = YDSSimpleTextFieldView()
     private let locationTitleLabel = PaddingLabel()
-    private let locationItem = YDSListItem(title: "서울특별시 상도동", showNextIconView: true)
-    private let historyTitleLabel = PaddingLabel()
-    private let closetItem = YDSListItem(title: "내 옷장", showNextIconView: true)
-    private let likeItem = YDSListItem(title: "좋아요", showNextIconView: true)
+    private let locationItem = ListItem()
 
     private var isNicknameChanged: Bool = false
     private var isProfileChanged: Bool = false
@@ -116,6 +113,14 @@ final class MyInformationViewController: BaseViewController, View {
             }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
+        locationItem.rx.tapGesture
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                let vc = owner.factory.makeLocationSettingViewController()
+                owner.present(YDSNavigationController(rootViewController: vc), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindTapAction() {
@@ -143,6 +148,12 @@ final class MyInformationViewController: BaseViewController, View {
                     library.dismiss(animated: true)
                 }
                 owner.present(library, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        NotificationCenterManager.reloadLocation.addObserver()
+            .subscribe(onNext: { [weak self] _ in
+                self?.locationItem.text = UserDefaultHandler.shared.address
             })
             .disposed(by: disposeBag)
     }
@@ -176,12 +187,12 @@ final class MyInformationViewController: BaseViewController, View {
             $0.fieldLabelText = "닉네임"
             $0.helperLabelText = " "
         }
-        [locationTitleLabel, historyTitleLabel].forEach {
+        locationTitleLabel.do {
             $0.textColor = YDSColor.textSecondary
             $0.font = YDSFont.subtitle2
+            $0.text = "위치"
         }
-        locationTitleLabel.text = "위치"
-        historyTitleLabel.text = "내 기록"
+        locationItem.text = UserDefaultHandler.shared.address
     }
 
     private func setLayouts() {
@@ -191,10 +202,7 @@ final class MyInformationViewController: BaseViewController, View {
         view.addSubviews(profileImageView, cameraIconView, textFieldView, contentStackView)
         contentStackView.addArrangedSubviews(
             locationTitleLabel,
-            locationItem,
-            historyTitleLabel,
-            closetItem,
-            likeItem
+            locationItem
         )
         profileImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(32)
@@ -217,8 +225,58 @@ final class MyInformationViewController: BaseViewController, View {
         locationTitleLabel.snp.makeConstraints {
             $0.height.equalTo(42).priority(.high)
         }
-        historyTitleLabel.snp.makeConstraints {
-            $0.height.equalTo(42).priority(.high)
+        locationItem.snp.makeConstraints {
+            $0.height.equalTo(48).priority(.high)
         }
+    }
+}
+
+private class ListItem: UIView {
+    var text: String? {
+        didSet {
+            guard let text = text else { return }
+            titleLabel.text = text
+        }
+    }
+
+    private let titleLabel: YDSLabel = {
+        let label = YDSLabel(style: .body1)
+        label.textColor = YDSColor.textSecondary
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+
+    private let nextIconView: UIImageView = {
+        let icon = UIImageView()
+        icon.tintColor = YDSColor.buttonNormal
+        icon.image = YDSIcon.arrowRightLine
+        return icon
+    }()
+
+    init() {
+        super.init(frame: .zero)
+        render()
+    }
+
+    private func render() {
+        addSubview(titleLabel)
+        addSubview(nextIconView)
+        titleLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(20)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(nextIconView.snp.leading).inset(20)
+        }
+        nextIconView.snp.makeConstraints {
+            $0.size.equalTo(24).priority(.high)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(20)
+        }
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
