@@ -1,5 +1,5 @@
 //
-//  DefaultUploadUseCase.swift
+//  DefaultUploadPostUseCase.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/17.
@@ -11,27 +11,13 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class DefaultUploadUseCase: UploadUseCase {
-    let imagePublisher = PublishRelay<String?>()
+final class DefaultUploadPostUseCase: UploadPostUseCase {
     let postIdPublusher = PublishRelay<Int?>()
 
     private let postRepository: PostRepository
-    private let disposeBag = DisposeBag()
 
     init(postRepository: PostRepository) {
         self.postRepository = postRepository
-    }
-
-    func uploadImage(image: UIImage) {
-        postRepository.uploadImage(image: image) { [weak self] result in
-            switch result {
-            case let .success(postImage):
-                self?.imagePublisher.accept(postImage.postImageUrl)
-            case let .failure(error):
-                DandiLog.error(error)
-                self?.imagePublisher.accept(nil)
-            }
-        }
     }
 
     func uploadPost(

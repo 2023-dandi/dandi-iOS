@@ -12,3 +12,7 @@ struct PostImageDTO: Decodable {
 struct ProfileImageDTO: Decodable {
     let profileImageUrl: String
 }
+
+struct ClothesImageDTO: Decodable {
+    let clothesImageUrl: String
+}
