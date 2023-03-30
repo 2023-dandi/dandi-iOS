@@ -55,7 +55,7 @@ final class RegisterClothesReactor: Reactor {
                             clothesImageURL: imageURL
                         )
                     }
-                    .flatMap { self.clothesUseCase.uploadPublisher }
+                    .flatMap { self.clothesUseCase.uploadSuccessPublisher }
                     .compactMap { Mutation.setUploadStatus($0) },
                 Observable.just(.setLoading(isLoading: false))
             ])

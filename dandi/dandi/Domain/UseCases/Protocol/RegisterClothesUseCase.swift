@@ -13,14 +13,10 @@ import RxCocoa
 import RxSwift
 
 protocol RegisterClothesUseCase {
-    var uploadPublisher: PublishRelay<Bool> { get }
-    var deleteSuccessPublisher: PublishRelay<Bool> { get }
-
+    var uploadSuccessPublisher: PublishRelay<Bool> { get }
     func upload(
         category: String,
         seasons: [String],
         clothesImageURL: String
     )
-
-    func delete(id: Int)
 }
