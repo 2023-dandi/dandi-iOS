@@ -106,6 +106,10 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController {
         let vc = RegisterClothesViewController(selectedImages: selectedImages)
+        vc.reactor = RegisterClothesReactor(
+            imageUseCase: UploadClothesImageUseCase(clothesRepository: DefaultClothesRepository(interceptor: Interceptor())),
+            clothesUseCase: DefaultRegisterClothesUseCase(clothesRepository: DefaultClothesRepository(interceptor: Interceptor()))
+        )
         vc.factory = self
         return vc
     }
@@ -151,7 +155,7 @@ extension ModuleFactory: ModuleFactoryInterface {
                     )
                 )
             ),
-            imageUseCase: DefaultProfileImageUseCase(
+            imageUseCase: UploadProfileImageUseCase(
                 memberRepository: DefaultMemberRepository(
                     interceptor: Interceptor()
                 )
@@ -172,7 +176,10 @@ extension ModuleFactory: ModuleFactoryInterface {
             weatherUseCase: DefaultTemperatureUseCase(
                 weatherRepository: DefaultWeatherRepository(weatherService: DefaultWeatherService())
             ),
-            uploadUseCase: DefaultUploadUseCase(
+            uploadUseCase: DefaultUploadPostUseCase(
+                postRepository: DefaultPostRepository(interceptor: Interceptor())
+            ),
+            imageUseCase: UploadPostImageUseCase(
                 postRepository: DefaultPostRepository(interceptor: Interceptor())
             )
         )

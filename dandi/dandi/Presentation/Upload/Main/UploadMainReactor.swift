@@ -14,7 +14,8 @@ final class UploadMainReactor: Reactor {
     let initialState: State
 
     private let weatherUseCase: TemperatureUseCase
-    private let uploadUseCase: UploadUseCase
+    private let uploadUseCase: UploadPostUseCase
+    private let imageUseCase: ImageUseCase
 
     struct State {
         var isLoading: Bool = false
@@ -39,11 +40,13 @@ final class UploadMainReactor: Reactor {
 
     init(
         weatherUseCase: TemperatureUseCase,
-        uploadUseCase: UploadUseCase
+        uploadUseCase: UploadPostUseCase,
+        imageUseCase: UploadPostImageUseCase
     ) {
         self.initialState = State()
         self.weatherUseCase = weatherUseCase
         self.uploadUseCase = uploadUseCase
+        self.imageUseCase = imageUseCase
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -59,10 +62,10 @@ final class UploadMainReactor: Reactor {
                 .compactMap { $0 }
                 .map { Mutation.setTemparature($0) }
         case let .upload(image, clothesFeeling, weatherFeelings):
-            uploadUseCase.uploadImage(image: image)
+            imageUseCase.uploadImage(image: image)
             return Observable.concat([
                 Observable.just(.setLoading(isLoading: true)),
-                uploadUseCase.imagePublisher
+                imageUseCase.imagePublisher
                     .compactMap { $0 }
                     .map { [weak self] imageURL in
                         guard
@@ -78,7 +81,8 @@ final class UploadMainReactor: Reactor {
                         )
                     }
                     .flatMap { self.uploadUseCase.postIdPublusher }
-                    .compactMap { Mutation.setPostID($0) }
+                    .compactMap { Mutation.setPostID($0) },
+                Observable.just(.setLoading(isLoading: false))
             ])
         }
     }

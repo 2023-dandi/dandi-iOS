@@ -7,11 +7,14 @@
 
 import UIKit
 
+import ReactorKit
 import RxCocoa
 import RxSwift
 import YDS
 
-final class RegisterClothesViewController: BaseViewController {
+final class RegisterClothesViewController: BaseViewController, View {
+    typealias Reactor = RegisterClothesReactor
+
     private let registrationView = RegisterClothesView()
 
     private let navigationBar = YDSTopBar()
@@ -24,13 +27,18 @@ final class RegisterClothesViewController: BaseViewController {
     private let images: [UIImage]
     private var selectedCategoryIndex: Int = 0
 
+    private var selectedIndexPaths = Set<IndexPath>() {
+        didSet {
+            dump(selectedIndexPaths)
+        }
+    }
+
     init(selectedImages: [UIImage]) {
         self.images = selectedImages
         super.init()
         setCollectionView()
         setProperties()
         setLayouts()
-        bind()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,15 +51,48 @@ final class RegisterClothesViewController: BaseViewController {
         navigationController?.navigationBar.isHidden = false
     }
 
-    func bind() {
+    func bind(reactor: Reactor) {
+        bindTapActions()
+        bindState(reactor)
+        bindAction(reactor)
+    }
+
+    private func bindState(_ reactor: Reactor) {
+        reactor.state
+            .map { $0.successUpload }
+            .distinctUntilChanged()
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] isFinished in
+                if isFinished {
+                    self?.navigationController?.dismiss(animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func bindAction(_ reactor: Reactor) {
+        saveButton.rx.tap
+            .map { [weak self] _ -> ClothesInfo? in
+                guard
+                    let self = self,
+                    let selectedCategory: Int = self.selectedIndexPaths.filter({ $0.section == 1 }).first?.item,
+                    let clothesCategory: ClothesCategory = ClothesCategory(rawValue: selectedCategory),
+                    let image = self.images.first
+                else { return nil }
+                let selectedSeasons = self.selectedIndexPaths.filter { $0.section == 2 }.map { $0.item }
+                let seasons: [Season] = selectedSeasons.compactMap { Season(rawValue: $0) }.compactMap { $0 }
+                return ClothesInfo(category: clothesCategory, seasons: seasons, image: image)
+            }
+            .compactMap { $0 }
+            .map { Reactor.Action.upload(category: $0.category, seasons: $0.seasons, clothesImage: $0.image) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindTapActions() {
         backButton.rx.tap
             .bind(onNext: { [weak self] _ in
                 self?.navigationController?.popViewController(animated: true)
-            })
-            .disposed(by: disposeBag)
-        saveButton.rx.tap
-            .bind(onNext: { [weak self] _ in
-                self?.navigationController?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -105,17 +146,42 @@ final class RegisterClothesViewController: BaseViewController {
 extension RegisterClothesViewController: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
+        shouldSelectItemAt indexPath: IndexPath
+    ) -> Bool {
+        if indexPath.section == 1 {
+            if selectedIndexPaths.contains(indexPath) {
+                selectedIndexPaths.remove(indexPath)
+                collectionView.deselectItem(at: indexPath, animated: true)
+                return false
+            }
+            selectedIndexPaths.forEach { selectedIndexPath in
+                if selectedIndexPath.section == 1 {
+                    selectedIndexPaths.remove(selectedIndexPath)
+                    collectionView.deselectItem(at: selectedIndexPath, animated: true)
+                }
+            }
+            selectedIndexPaths.insert(indexPath)
+        } else {
+            selectedIndexPaths.insert(indexPath)
+        }
+        return true
+    }
+
+    func collectionView(
+        _: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        switch indexPath.section {
-        case 1:
-            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-            cell.isSelected = true
-        case 2:
-            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-            cell.isSelected = true
-        default:
-            return
+        if indexPath.section == 2 {
+            selectedIndexPaths.insert(indexPath)
+        }
+    }
+
+    func collectionView(
+        _: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath
+    ) {
+        if indexPath.section == 2 {
+            selectedIndexPaths.remove(indexPath)
         }
     }
 }

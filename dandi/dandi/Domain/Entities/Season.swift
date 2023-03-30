@@ -21,4 +21,13 @@ enum Season: Int, CaseIterable {
         case .winter: return "겨울"
         }
     }
+
+    var toString: String {
+        switch self {
+        case .spring: return "SPRING"
+        case .summer: return "SUMMER"
+        case .fall: return "FALL"
+        case .winter: return "WINTER"
+        }
+    }
 }

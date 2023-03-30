@@ -1,5 +1,5 @@
 //
-//  DefaultImageUseCase.swift
+//  UploadProfileImageUseCase.swift
 //  dandi
 //
 //  Created by 김윤서 on 2023/03/20.
@@ -11,7 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class DefaultProfileImageUseCase: ImageUseCase {
+final class UploadProfileImageUseCase: ImageUseCase {
     let imagePublisher = PublishRelay<String?>()
 
     private let memberRepository: MemberRepository
