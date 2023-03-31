@@ -21,7 +21,11 @@ final class UploadPostImageUseCase: ImageUseCase {
     }
 
     func uploadImage(image: UIImage) {
-        postRepository.uploadImage(image: image) { [weak self] result in
+        guard let imageData = image.jpegData(compressionQuality: .greatestFiniteMagnitude) else {
+            imagePublisher.accept(nil)
+            return
+        }
+        postRepository.uploadImage(imageData: imageData) { [weak self] result in
             switch result {
             case let .success(postImageURL):
                 self?.imagePublisher.accept(postImageURL)

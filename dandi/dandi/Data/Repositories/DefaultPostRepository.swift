@@ -5,7 +5,7 @@
 //  Created by 김윤서 on 2023/03/17.
 //
 
-import UIKit
+import Foundation
 
 import Moya
 import RxSwift
@@ -44,10 +44,10 @@ final class DefaultPostRepository: PostRepository {
     }
 
     func uploadImage(
-        image: UIImage,
+        imageData: Data,
         completion: @escaping NetworkCompletion<String>
     ) {
-        router.request(.postImage(image: image)) { result in
+        router.request(.postImage(imageData: imageData)) { result in
             switch result {
             case let .success(response):
                 let decodedResponse: NetworkResult<PostImageDTO> = NetworkHandler.requestDecoded(by: response)

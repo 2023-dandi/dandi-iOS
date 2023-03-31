@@ -15,7 +15,7 @@ protocol PostRepository {
     )
 
     func uploadImage(
-        image: UIImage,
+        imageData: Data,
         completion: @escaping NetworkCompletion<String>
     )
 
