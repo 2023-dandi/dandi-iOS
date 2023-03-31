@@ -62,6 +62,34 @@ enum WeatherCategoryDTO: String, Decodable {
 }
 
 extension WeatherDTO {
+    func toDomain() -> TodayWeatherInfo {
+        let timeWeahtherInfos = response.body.items.item
+            .filter { $0.category == .tmp }
+            .filter {
+                ($0.fcstTime.toInt() >= String(format: "%02d00", Calendar.current.component(.hour, from: Date())).toInt()
+                    && $0.fcstDate.toInt() == Date().dateToString().toInt())
+                    || ($0.fcstDate.toInt() > Date().dateToString().toInt())
+            }
+            .map { TimeWeatherInfo(
+                image: .add,
+                time: TimeConverter().convert24hoursTo12hours(time: $0.fcstTime.toInt() / 100),
+                temperature: $0.fcstValue
+            ) }
+
+        let min = response.body.items.item
+            .filter { $0.category == .tmn }
+            .map { $0.fcstValue.toDouble() }
+            .first
+
+        let max = response.body.items.item
+            .filter { $0.category == .tmx }
+            .map { $0.fcstValue.toDouble() }
+            .first
+
+        let temperatures = Temperatures(min: Int(min ?? -1), max: Int(max ?? -1))
+        return TodayWeatherInfo(temperatures: temperatures, timeWeahtherInfos: timeWeahtherInfos)
+    }
+
     func toDomain() -> [TimeWeatherInfo] {
         return response.body.items.item
             .filter { $0.category == .tmp }

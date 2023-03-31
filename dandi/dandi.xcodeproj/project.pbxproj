@@ -196,6 +196,7 @@
 		DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17829C311E900BAB1CF /* ReusableView.swift */; };
 		DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */; };
 		DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */; };
+		DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */; };
 		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
 		DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */; };
 		DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */; };
@@ -413,6 +414,7 @@
 		DDCDA17829C311E900BAB1CF /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+ReusableView.swift"; sourceTree = "<group>"; };
 		DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reuseable.swift"; sourceTree = "<group>"; };
+		DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostContent.swift; sourceTree = "<group>"; };
 		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
 		DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -1010,6 +1012,7 @@
 				DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */,
 				DD1E52D029D1959400550E02 /* Season.swift */,
 				DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */,
+				DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1444,6 +1447,7 @@
 				DD0C094B29D5D69B002CAB37 /* UploadPostImageUseCase.swift in Sources */,
 				DD1D6B3029D0808900085FBE /* DecorationViewController.swift in Sources */,
 				DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */,
+				DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */,

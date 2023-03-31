@@ -7,9 +7,9 @@
 
 struct PostDTO: Decodable {
     let id: Int
-    let writer: Writer
+    let writer: WriterDTO
     let liked: Bool
-    let temperatures: Temperatures
+    let temperatures: TemperaturesDTO
     let feelingIndex: Int
     let postImageUrl: String
     let createdAt: String

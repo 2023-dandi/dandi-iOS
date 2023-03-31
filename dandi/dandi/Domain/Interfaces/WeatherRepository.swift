@@ -16,6 +16,6 @@ protocol WeatherRepository {
         base_time: String,
         nx: Int,
         ny: Int,
-        completion: @escaping (NetworkResult<WeatherDTO>) -> Void
+        completion: @escaping (NetworkResult<TodayWeatherInfo>) -> Void
     )
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct MyTemperaturePostWithPageDTO: Decodable {
     let posts: [MyTemperaturePostDTO]
-    let writer: Writer
+    let writer: WriterDTO
     let lastPage: Bool
 }
 
@@ -17,7 +17,7 @@ struct MyTemperaturePostDTO: Decodable {
     let id, feelingIndex: Int
     let postImageURL: String
     let liked: Bool
-    let temperatures: Temperatures?
+    let temperatures: TemperaturesDTO?
     let createdAt: String?
 
     enum CodingKeys: String, CodingKey {

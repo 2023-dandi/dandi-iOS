@@ -36,7 +36,7 @@ final class DefaultTemperatureUseCase: TemperatureUseCase {
         ) { [weak self] result in
             switch result {
             case let .success(response):
-                self?.temperatureInfo.accept(response.toDomain())
+                self?.temperatureInfo.accept(response.temperatures)
             case .failure:
                 self?.temperatureInfo.accept(nil)
             }
