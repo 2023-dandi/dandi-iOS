@@ -31,8 +31,8 @@ final class DefaultPostRepository: PostRepository {
 
                 switch decodedResponse {
                 case let .success(postDTO):
-                    let post = postDTO.toDomain()
-                    completion(.success(post))
+                    completion(.success(postDTO.toDomain()))
+
                 case let .failure(error):
                     completion(.failure(error))
                 }
@@ -54,8 +54,8 @@ final class DefaultPostRepository: PostRepository {
 
                 switch decodedResponse {
                 case let .success(postImageDTO):
-                    let postImageUrl = postImageDTO.postImageUrl
-                    completion(.success(postImageUrl))
+                    completion(.success(postImageDTO.postImageUrl))
+
                 case let .failure(error):
                     completion(.failure(error))
                 }
@@ -67,13 +67,34 @@ final class DefaultPostRepository: PostRepository {
     }
 
     func uploadPost(
-        post: PostContentDTO,
-        completion: @escaping NetworkCompletion<PostIdDTO>
+        post: UploadPostContent,
+        completion: @escaping NetworkCompletion<Int>
     ) {
-        router.request(.postPosts(post: post)) { result in
+        let temperatures = TemperaturesDTO(min: post.temperatures.min, max: post.temperatures.max)
+        let outfitFeelings = OutfitFeelingsDTO(
+            feelingIndex: post.clothesFeeling.rawValue,
+            additionalFeelingIndices: post.weatherFeelings.map { $0.rawValue }
+        )
+
+        let postDTO = PostContentDTO(
+            postImageURL: post.postImageURL,
+            temperatures: temperatures,
+            outfitFeelings: outfitFeelings
+        )
+
+        router.request(.postPosts(post: postDTO)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<PostIdDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postIdDTO):
+                    let postId = postIdDTO.postId
+                    completion(.success(postId))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             case .failure:
                 completion(.failure(.networkFail))
             }

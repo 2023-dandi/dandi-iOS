@@ -20,8 +20,8 @@ protocol PostRepository {
     )
 
     func uploadPost(
-        post: PostContentDTO,
-        completion: @escaping NetworkCompletion<PostIdDTO>
+        post: UploadPostContent,
+        completion: @escaping NetworkCompletion<Int>
     )
 
     func deletePost(
