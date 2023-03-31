@@ -28,7 +28,7 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = LoginViewController()
         let authRepository = DefaultAuthRepository(interceptor: Interceptor())
         let authUseCase = DefaultAuthUseCase(authRepository: authRepository)
-        let reactor = LoginReactor(authUseCase: authUseCase)
+        vc.reactor = LoginReactor(authUseCase: authUseCase)
         vc.factory = self
         return vc
     }

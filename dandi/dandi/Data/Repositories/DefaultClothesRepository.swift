@@ -50,7 +50,7 @@ final class DefaultClothesRepository: ClothesRepository {
                 case let .failure(error):
                     completion(.failure(error))
                 }
-                
+
                 return completion(NetworkHandler.requestDecoded(by: response))
             case .failure:
                 return completion(.failure(.networkFail))
