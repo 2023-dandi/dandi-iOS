@@ -213,6 +213,8 @@
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
 		DDF848A429D6D0F70003097A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A329D6D0F70003097A /* Token.swift */; };
+		DDF848A629D6D3A40003097A /* PostsWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A529D6D3A40003097A /* PostsWithPage.swift */; };
+		DDF848A829D6D3D90003097A /* MyPostsWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */; };
 		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
 /* End PBXBuildFile section */
 
@@ -433,6 +435,8 @@
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		DDF848A329D6D0F70003097A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DDF848A529D6D3A40003097A /* PostsWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsWithPage.swift; sourceTree = "<group>"; };
+		DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsWithPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1019,6 +1023,8 @@
 				DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */,
 				DDA59B4029D6C03700C085E1 /* Location.swift */,
 				DDF848A329D6D0F70003097A /* Token.swift */,
+				DDF848A529D6D3A40003097A /* PostsWithPage.swift */,
+				DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1529,6 +1535,7 @@
 				DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
+				DDF848A829D6D3D90003097A /* MyPostsWithPage.swift in Sources */,
 				DD41E74F29D321A100893431 /* FeedReactor.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
 				DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */,
@@ -1552,6 +1559,7 @@
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,
+				DDF848A629D6D3A40003097A /* PostsWithPage.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */,
 				DD0C093D29D5768C002CAB37 /* NetworkErrorView.swift in Sources */,

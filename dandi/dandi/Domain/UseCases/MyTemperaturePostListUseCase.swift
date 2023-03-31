@@ -23,7 +23,7 @@ final class MyTemperaturePostListUseCase: PostListUseCase {
             .map { result in
                 switch result {
                 case let .success(response):
-                    return response.toDomain()
+                    return response.posts
                 case .failure:
                     return []
                 }

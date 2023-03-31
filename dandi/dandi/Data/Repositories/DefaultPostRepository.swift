@@ -129,11 +129,20 @@ final class DefaultPostRepository: PostRepository {
         }
     }
 
-    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPageDTO>) {
+    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPage>) {
         router.request(.my) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: Result<MyPostsWithPageDTO, NetworkError> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(myPostsWithPageDTO):
+                    completion(.success(myPostsWithPageDTO.toDomain()))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -145,9 +154,19 @@ final class DefaultPostRepository: PostRepository {
         max: Int,
         size: Int,
         page: Int
-    ) -> RxSwift.Single<NetworkResult<PostsWithPageDTO>> {
+    ) -> RxSwift.Single<NetworkResult<PostsWithPage>> {
         return router.rx.request(.feed(min: min, max: max, size: size, page: page))
-            .flatMap { NetworkHandler.requestDecoded(by: $0) }
+            .map { response in
+                let decodedResponse: NetworkResult<PostsWithPageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postDTO):
+                    return .success(postDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 
     func fetchMyTemperaturePostList(
@@ -155,8 +174,18 @@ final class DefaultPostRepository: PostRepository {
         max: Int,
         size: Int,
         page: Int
-    ) -> RxSwift.Single<NetworkResult<MyTemperaturePostWithPageDTO>> {
+    ) -> RxSwift.Single<NetworkResult<PostsWithPage>> {
         return router.rx.request(.myFeed(min: min, max: max, size: size, page: page))
-            .flatMap { NetworkHandler.requestDecoded(by: $0) }
+            .map { response in
+                let decodedResponse: NetworkResult<MyTemperaturePostWithPageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postDTO):
+                    return .success(postDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 }

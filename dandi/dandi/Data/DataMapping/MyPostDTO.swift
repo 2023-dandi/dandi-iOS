@@ -16,7 +16,8 @@ struct MyPostDTO: Decodable {
 }
 
 extension MyPostsWithPageDTO {
-    func toDomain() -> [MyPost] {
-        return posts.map { MyPost(id: $0.id, postImageUrl: $0.postImageUrl) }
+    func toDomain() -> MyPostsWithPage {
+        let posts = posts.map { MyPost(id: $0.id, postImageUrl: $0.postImageUrl) }
+        return MyPostsWithPage(posts: posts, lastPage: lastPage)
     }
 }
