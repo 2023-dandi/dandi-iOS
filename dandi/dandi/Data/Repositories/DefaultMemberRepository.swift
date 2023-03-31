@@ -50,12 +50,20 @@ final class DefaultMemberRepository: MemberRepository {
     func updateLocation(
         latitude: Double,
         longitude: Double,
-        completion: @escaping NetworkCompletion<LocationDTO>
+        completion: @escaping NetworkCompletion<Location>
     ) {
         router.request(.patchLocation(latitude: latitude, longitude: longitude)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<LocationDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(locationDTO):
+                    completion(.success(locationDTO.toDomain()))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             case .failure:
                 completion(.failure(.networkFail))
             }

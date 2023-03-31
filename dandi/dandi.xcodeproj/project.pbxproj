@@ -160,6 +160,7 @@
 		DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FFF2965BA33006FBE00 /* UIImage+.swift */; };
 		DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */; };
 		DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390062966BE51006FBE00 /* LocationSettingView.swift */; };
+		DDA59B4129D6C03700C085E1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA59B4029D6C03700C085E1 /* Location.swift */; };
 		DDA8164929AC94D300963776 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164829AC94D300963776 /* ProfileView.swift */; };
 		DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */; };
 		DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */; };
@@ -379,6 +380,7 @@
 		DDA38FFF2965BA33006FBE00 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingViewController.swift; sourceTree = "<group>"; };
 		DDA390062966BE51006FBE00 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
+		DDA59B4029D6C03700C085E1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		DDA8164829AC94D300963776 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1013,6 +1015,7 @@
 				DD1E52D029D1959400550E02 /* Season.swift */,
 				DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */,
 				DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */,
+				DDA59B4029D6C03700C085E1 /* Location.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1449,6 +1452,7 @@
 				DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */,
 				DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
+				DDA59B4129D6C03700C085E1 /* Location.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */,
 				DD41E74B29D31FAB00893431 /* PostListUseCase.swift in Sources */,

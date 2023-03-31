@@ -9,3 +9,9 @@ struct LocationDTO: Decodable {
     let latitude: Double
     let longitude: Double
 }
+
+extension LocationDTO {
+    func toDomain() -> Location {
+        return Location(latitude: latitude, longitude: longitude)
+    }
+}
