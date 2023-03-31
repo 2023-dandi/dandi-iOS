@@ -8,7 +8,6 @@
 import Foundation
 
 struct Post {
-//    let uuid = UUID()
     let id: Int
     let mainImageURL: String
     let profileImageURL: String?

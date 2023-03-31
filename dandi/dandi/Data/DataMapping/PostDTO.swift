@@ -6,7 +6,7 @@
 //
 
 struct PostDTO: Decodable {
-    let id: Int
+    let id: Int?
     let writer: WriterDTO
     let liked: Bool
     let temperatures: TemperaturesDTO
@@ -16,7 +16,7 @@ struct PostDTO: Decodable {
 }
 
 extension PostDTO {
-    func toDomain() -> Post {
+    func toDomain(id: Int) -> Post {
         return Post(
             id: id,
             mainImageURL: postImageUrl,

@@ -27,11 +27,11 @@ final class DefaultPostRepository: PostRepository {
         router.request(.getDetailPost(id: id)) { result in
             switch result {
             case let .success(response):
-                let decodedResponse: NetworkResult<PostDTO> = NetworkHandler.requestDecoded(by: response)
+                let decodedResponse: NetworkResult<PostContentDTO> = NetworkHandler.requestDecoded(by: response)
 
                 switch decodedResponse {
                 case let .success(postDTO):
-                    completion(.success(postDTO.toDomain()))
+                    completion(.success(postDTO.toDomain(id: id)))
 
                 case let .failure(error):
                     completion(.failure(error))
