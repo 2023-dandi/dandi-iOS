@@ -21,14 +21,14 @@ final class UploadClothesImageUseCase: ImageUseCase {
     }
 
     func uploadImage(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+        guard let imageData = image.jpegData(compressionQuality: .leastNormalMagnitude) else {
             imagePublisher.accept(nil)
             return
         }
         clothesRepository.uploadImage(imageData: imageData) { [weak self] result in
             switch result {
-            case let .success(clothesImage):
-                self?.imagePublisher.accept(clothesImage.clothesImageUrl)
+            case let .success(clothesImageUrl):
+                self?.imagePublisher.accept(clothesImageUrl)
             case let .failure(error):
                 DandiLog.error(error)
                 self?.imagePublisher.accept(nil)

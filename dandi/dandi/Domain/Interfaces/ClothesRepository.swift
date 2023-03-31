@@ -17,7 +17,7 @@ protocol ClothesRepository {
 
     func uploadImage(
         imageData: Data,
-        completion: @escaping NetworkCompletion<ClothesImageDTO>
+        completion: @escaping NetworkCompletion<String>
     )
 
     func delete(

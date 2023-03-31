@@ -36,11 +36,21 @@ final class DefaultClothesRepository: ClothesRepository {
 
     func uploadImage(
         imageData: Data,
-        completion: @escaping NetworkCompletion<ClothesImageDTO>
+        completion: @escaping NetworkCompletion<String>
     ) {
         router.request(.postClothesImage(imageData: imageData)) { result in
             switch result {
             case let .success(response):
+                let decodedResponse: NetworkResult<ClothesImageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(clothesImageDTO):
+                    completion(.success(clothesImageDTO.clothesImageUrl))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+                
                 return completion(NetworkHandler.requestDecoded(by: response))
             case .failure:
                 return completion(.failure(.networkFail))
