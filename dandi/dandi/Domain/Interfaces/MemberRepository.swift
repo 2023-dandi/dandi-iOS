@@ -9,8 +9,8 @@ import UIKit
 
 protocol MemberRepository {
     func updateProfileImage(
-        image: UIImage,
-        completion: @escaping NetworkCompletion<ProfileImageDTO>
+        imageData: Data,
+        completion: @escaping NetworkCompletion<String>
     )
 
     func updateNickname(
@@ -25,11 +25,11 @@ protocol MemberRepository {
     )
 
     func fetchMemberInfo(
-        completion: @escaping NetworkCompletion<MemberInfoDTO>
+        completion: @escaping NetworkCompletion<UserProfile>
     )
 
     func confirmNicknameDuplication(
         nickname: String,
-        completion: @escaping NetworkCompletion<DuplicationDTO>
+        completion: @escaping NetworkCompletion<Bool>
     )
 }

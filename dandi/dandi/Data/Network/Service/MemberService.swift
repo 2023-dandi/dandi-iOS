@@ -5,12 +5,12 @@
 //  Created by 김윤서 on 2023/03/20.
 //
 
-import UIKit
+import Foundation
 
 import Moya
 
 enum MemberService {
-    case putProfileImage(UIImage)
+    case putProfileImage(Data)
     case patchNickname(nickname: String)
     case patchLocation(latitude: Double, longitude: Double)
     case getMemberInfo
@@ -61,8 +61,7 @@ extension MemberService: BaseTargetType {
 
     var task: Moya.Task {
         switch self {
-        case let .putProfileImage(image):
-            let imageData = image.jpegData(compressionQuality: .greatestFiniteMagnitude) ?? Data()
+        case let .putProfileImage(imageData):
             let data = MultipartFormData(
                 provider: .data(imageData),
                 name: "profileImage",
