@@ -21,16 +21,34 @@ final class DefaultAuthRepository: AuthRepository {
     func refreshToken(
         accessToken: String,
         refreshToken: String
-    ) -> Single<NetworkResult<TokenDTO>> {
+    ) -> Single<NetworkResult<Token>> {
         return router.rx.request(.refresh(refreshToken: refreshToken, accessToken: accessToken))
-            .flatMap { NetworkHandler.requestDecoded(by: $0) }
+            .map { response in
+                let decodedResponse: NetworkResult<TokenDTO> = NetworkHandler.requestDecoded(by: response)
+                switch decodedResponse {
+                case let .success(tokenDTO):
+                    return .success(tokenDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 
     func fetchUserInfo(
         fcmToken _: String,
         idToken: String
-    ) -> Single<NetworkResult<TokenDTO>> {
+    ) -> Single<NetworkResult<Token>> {
         return router.rx.request(.login(idToken: idToken))
-            .flatMap { NetworkHandler.requestDecoded(by: $0) }
+            .map { response in
+                let decodedResponse: NetworkResult<TokenDTO> = NetworkHandler.requestDecoded(by: response)
+                switch decodedResponse {
+                case let .success(tokenDTO):
+                    return .success(tokenDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 }

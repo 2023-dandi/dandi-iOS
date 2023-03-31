@@ -212,6 +212,7 @@
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
+		DDF848A429D6D0F70003097A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A329D6D0F70003097A /* Token.swift */; };
 		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
 /* End PBXBuildFile section */
 
@@ -431,6 +432,7 @@
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		DDF848A329D6D0F70003097A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1016,6 +1018,7 @@
 				DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */,
 				DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */,
 				DDA59B4029D6C03700C085E1 /* Location.swift */,
+				DDF848A329D6D0F70003097A /* Token.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1559,6 +1562,7 @@
 				DD31234929B2519900443FCE /* LoginViewController.swift in Sources */,
 				DDCDA17229C2EF8600BAB1CF /* TagCollectionViewCell.swift in Sources */,
 				DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */,
+				DDF848A429D6D0F70003097A /* Token.swift in Sources */,
 				DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */,
 				DD00E7F429C82B1B001536D4 /* MemberRepository.swift in Sources */,
 				DDA8166629AE017A00963776 /* MyPagePostCollectionViewCell.swift in Sources */,

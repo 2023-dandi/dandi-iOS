@@ -53,8 +53,10 @@ final class NetworkLogPlugin: PluginType {
             response.response?.allHeaderFields.forEach {
                 log.append("\($0): \($1)\n")
             }
+
             if let json = try? JSONSerialization.jsonObject(with: response.data, options: .mutableContainers),
                let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            // swiftlint:disbale opening_brace
             {
                 log.append(String(decoding: jsonData, as: UTF8.self))
             } else {
