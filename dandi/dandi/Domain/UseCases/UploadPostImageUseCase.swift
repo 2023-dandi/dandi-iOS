@@ -23,8 +23,8 @@ final class UploadPostImageUseCase: ImageUseCase {
     func uploadImage(image: UIImage) {
         postRepository.uploadImage(image: image) { [weak self] result in
             switch result {
-            case let .success(postImage):
-                self?.imagePublisher.accept(postImage.postImageUrl)
+            case let .success(postImageURL):
+                self?.imagePublisher.accept(postImageURL)
             case let .failure(error):
                 DandiLog.error(error)
                 self?.imagePublisher.accept(nil)

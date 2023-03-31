@@ -11,12 +11,12 @@ import UIKit.UIImage
 protocol PostRepository {
     func fetchPost(
         id: Int,
-        completion: @escaping NetworkCompletion<PostContentDTO>
+        completion: @escaping NetworkCompletion<Post>
     )
 
     func uploadImage(
         image: UIImage,
-        completion: @escaping NetworkCompletion<PostImageDTO>
+        completion: @escaping NetworkCompletion<String>
     )
 
     func uploadPost(

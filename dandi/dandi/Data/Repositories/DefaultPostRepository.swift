@@ -22,12 +22,21 @@ final class DefaultPostRepository: PostRepository {
 
     func fetchPost(
         id: Int,
-        completion: @escaping NetworkCompletion<PostContentDTO>
+        completion: @escaping NetworkCompletion<Post>
     ) {
         router.request(.getDetailPost(id: id)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<PostDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postDTO):
+                    let post = postDTO.toDomain()
+                    completion(.success(post))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -36,12 +45,21 @@ final class DefaultPostRepository: PostRepository {
 
     func uploadImage(
         image: UIImage,
-        completion: @escaping NetworkCompletion<PostImageDTO>
+        completion: @escaping NetworkCompletion<String>
     ) {
         router.request(.postImage(image: image)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<PostImageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postImageDTO):
+                    let postImageUrl = postImageDTO.postImageUrl
+                    completion(.success(postImageUrl))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+
             case .failure:
                 completion(.failure(.networkFail))
             }
