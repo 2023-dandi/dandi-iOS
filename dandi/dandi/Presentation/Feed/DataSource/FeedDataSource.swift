@@ -92,11 +92,10 @@ final class FeedDataSource {
         feed
             .filter { self.posts.keys.contains($0.id) }
             .forEach { item in
-                if let oldValue = self.posts.updateValue(item, forKey: item.id),
-                   oldValue != item
-                {
-                    snapshot.reloadItems([Item.post(item.id)])
-                }
+                guard
+                    let oldValue = self.posts.updateValue(item, forKey: item.id), oldValue != item
+                else { return }
+                snapshot.reloadItems([Item.post(item.id)])
             }
         dataSource.apply(snapshot, animatingDifferences: true)
     }

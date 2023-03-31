@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+struct TodayWeatherInfo {
+    let temperatures: Temperatures
+    let timeWeahtherInfos: [TimeWeatherInfo]
+}
+
 struct TimeWeatherInfo {
     let uuid = UUID()
     let image: UIImage
@@ -22,5 +27,23 @@ extension TimeWeatherInfo: Equatable, Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(uuid)
+    }
+}
+
+struct Temperatures: Codable {
+    let min: Int
+    let max: Int
+    let description: String?
+
+    init(min: Int, max: Int, description: String? = nil) {
+        self.min = min
+        self.max = max
+        self.description = description
+    }
+}
+
+extension Temperatures: Equatable {
+    static func == (lhs: Temperatures, rhs: Temperatures) -> Bool {
+        return lhs.min == rhs.min || lhs.max == rhs.max
     }
 }

@@ -12,11 +12,11 @@ protocol AuthRepository {
     func refreshToken(
         accessToken: String,
         refreshToken: String
-    ) -> Single<NetworkResult<TokenDTO>>
+    ) -> Single<NetworkResult<Token>>
 
     /// 애플 로그인
     func fetchUserInfo(
         fcmToken: String,
         idToken: String
-    ) -> Single<NetworkResult<TokenDTO>>
+    ) -> Single<NetworkResult<Token>>
 }

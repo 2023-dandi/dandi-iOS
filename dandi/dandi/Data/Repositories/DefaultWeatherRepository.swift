@@ -22,7 +22,7 @@ final class DefaultWeatherRepository: WeatherRepository {
         base_time: String,
         nx: Int,
         ny: Int,
-        completion: @escaping (NetworkResult<WeatherDTO>) -> Void
+        completion: @escaping (NetworkResult<TodayWeatherInfo>) -> Void
     ) {
         weatherService.getWeathers(
             numOfRows: numOfRows,
@@ -35,7 +35,7 @@ final class DefaultWeatherRepository: WeatherRepository {
             switch result {
             case let .success(response):
                 dump(response)
-                completion(.success(response))
+                completion(.success(response.toDomain()))
             case let .failure(error):
                 completion(.failure(.error(error)))
             }

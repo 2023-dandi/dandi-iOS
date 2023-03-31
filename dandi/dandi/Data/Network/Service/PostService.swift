@@ -5,11 +5,12 @@
 //  Created by 김윤서 on 2023/03/17.
 //
 
+import Foundation
+
 import Moya
-import UIKit
 
 enum PostService {
-    case postImage(image: UIImage)
+    case postImage(imageData: Data)
     case postPosts(post: PostContentDTO)
     case getDetailPost(id: Int)
     case like(id: Int)
@@ -77,8 +78,7 @@ extension PostService: BaseTargetType {
 
     var task: Moya.Task {
         switch self {
-        case let .postImage(image):
-            let imageData = image.jpegData(compressionQuality: .greatestFiniteMagnitude) ?? Data()
+        case let .postImage(imageData):
             let data = MultipartFormData(
                 provider: .data(imageData),
                 name: "postImage",

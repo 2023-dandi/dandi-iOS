@@ -21,10 +21,13 @@ final class UploadProfileImageUseCase: ImageUseCase {
     }
 
     func uploadImage(image: UIImage) {
-        memberRepository.updateProfileImage(image: image) { [weak self] result in
+        guard let imageData = image.jpegData(compressionQuality: .leastNormalMagnitude) else {
+            return imagePublisher.accept(nil)
+        }
+        memberRepository.updateProfileImage(imageData: imageData) { [weak self] result in
             switch result {
-            case let .success(profileImage):
-                self?.imagePublisher.accept(profileImage.profileImageUrl)
+            case let .success(profileImageUrl):
+                self?.imagePublisher.accept(profileImageUrl)
             case let .failure(error):
                 DandiLog.error(error)
                 self?.imagePublisher.accept(nil)

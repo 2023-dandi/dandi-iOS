@@ -11,17 +11,17 @@ import UIKit.UIImage
 protocol PostRepository {
     func fetchPost(
         id: Int,
-        completion: @escaping NetworkCompletion<PostContentDTO>
+        completion: @escaping NetworkCompletion<Post>
     )
 
     func uploadImage(
-        image: UIImage,
-        completion: @escaping NetworkCompletion<PostImageDTO>
+        imageData: Data,
+        completion: @escaping NetworkCompletion<String>
     )
 
     func uploadPost(
-        post: PostContentDTO,
-        completion: @escaping NetworkCompletion<PostIdDTO>
+        post: UploadPostContent,
+        completion: @escaping NetworkCompletion<Int>
     )
 
     func deletePost(
@@ -34,19 +34,19 @@ protocol PostRepository {
         completion: @escaping NetworkCompletion<StatusCase>
     )
 
-    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPageDTO>)
+    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPage>)
 
     func fetchPostList(
         min: Int,
         max: Int,
         size: Int,
         page: Int
-    ) -> Single<NetworkResult<PostsWithPageDTO>>
+    ) -> Single<NetworkResult<PostsWithPage>>
 
     func fetchMyTemperaturePostList(
         min: Int,
         max: Int,
         size: Int,
         page: Int
-    ) -> Single<NetworkResult<MyTemperaturePostWithPageDTO>>
+    ) -> Single<NetworkResult<PostsWithPage>>
 }

@@ -160,6 +160,7 @@
 		DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FFF2965BA33006FBE00 /* UIImage+.swift */; };
 		DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */; };
 		DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA390062966BE51006FBE00 /* LocationSettingView.swift */; };
+		DDA59B4129D6C03700C085E1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA59B4029D6C03700C085E1 /* Location.swift */; };
 		DDA8164929AC94D300963776 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164829AC94D300963776 /* ProfileView.swift */; };
 		DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */; };
 		DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */; };
@@ -196,6 +197,7 @@
 		DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17829C311E900BAB1CF /* ReusableView.swift */; };
 		DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */; };
 		DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */; };
+		DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */; };
 		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
 		DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */; };
 		DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */; };
@@ -210,6 +212,9 @@
 		DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FD2960457A007427BD /* UIStackView+.swift */; };
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
+		DDF848A429D6D0F70003097A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A329D6D0F70003097A /* Token.swift */; };
+		DDF848A629D6D3A40003097A /* PostsWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A529D6D3A40003097A /* PostsWithPage.swift */; };
+		DDF848A829D6D3D90003097A /* MyPostsWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */; };
 		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
 /* End PBXBuildFile section */
 
@@ -378,6 +383,7 @@
 		DDA38FFF2965BA33006FBE00 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingViewController.swift; sourceTree = "<group>"; };
 		DDA390062966BE51006FBE00 /* LocationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingView.swift; sourceTree = "<group>"; };
+		DDA59B4029D6C03700C085E1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		DDA8164829AC94D300963776 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DDA8164A29AC953600963776 /* PostContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA8164C29AC9FAE00963776 /* PostCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -413,6 +419,7 @@
 		DDCDA17829C311E900BAB1CF /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		DDCDA17A29C3120100BAB1CF /* UICollection+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+ReusableView.swift"; sourceTree = "<group>"; };
 		DDCDA17C29C3121800BAB1CF /* UITableView+Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reuseable.swift"; sourceTree = "<group>"; };
+		DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostContent.swift; sourceTree = "<group>"; };
 		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
 		DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -427,6 +434,9 @@
 		DDF636FD2960457A007427BD /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		DDF848A329D6D0F70003097A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DDF848A529D6D3A40003097A /* PostsWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsWithPage.swift; sourceTree = "<group>"; };
+		DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsWithPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1010,6 +1020,11 @@
 				DD1E52CE29D194BF00550E02 /* ClothesCategory.swift */,
 				DD1E52D029D1959400550E02 /* Season.swift */,
 				DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */,
+				DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */,
+				DDA59B4029D6C03700C085E1 /* Location.swift */,
+				DDF848A329D6D0F70003097A /* Token.swift */,
+				DDF848A529D6D3A40003097A /* PostsWithPage.swift */,
+				DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1444,7 +1459,9 @@
 				DD0C094B29D5D69B002CAB37 /* UploadPostImageUseCase.swift in Sources */,
 				DD1D6B3029D0808900085FBE /* DecorationViewController.swift in Sources */,
 				DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */,
+				DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
+				DDA59B4129D6C03700C085E1 /* Location.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */,
 				DD41E74B29D31FAB00893431 /* PostListUseCase.swift in Sources */,
@@ -1518,6 +1535,7 @@
 				DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
+				DDF848A829D6D3D90003097A /* MyPostsWithPage.swift in Sources */,
 				DD41E74F29D321A100893431 /* FeedReactor.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
 				DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */,
@@ -1541,6 +1559,7 @@
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,
+				DDF848A629D6D3A40003097A /* PostsWithPage.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */,
 				DD0C093D29D5768C002CAB37 /* NetworkErrorView.swift in Sources */,
@@ -1551,6 +1570,7 @@
 				DD31234929B2519900443FCE /* LoginViewController.swift in Sources */,
 				DDCDA17229C2EF8600BAB1CF /* TagCollectionViewCell.swift in Sources */,
 				DD9B06F4295EDA1300A98041 /* HomeView.swift in Sources */,
+				DDF848A429D6D0F70003097A /* Token.swift in Sources */,
 				DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */,
 				DD00E7F429C82B1B001536D4 /* MemberRepository.swift in Sources */,
 				DDA8166629AE017A00963776 /* MyPagePostCollectionViewCell.swift in Sources */,

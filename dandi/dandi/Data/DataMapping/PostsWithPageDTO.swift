@@ -13,7 +13,12 @@ struct PostsWithPageDTO: Decodable {
 }
 
 extension PostsWithPageDTO {
-    func toDomain() -> [Post] {
-        return posts.map { $0.toDomain() }
+    func toDomain() -> PostsWithPage {
+        let posts = self.posts.compactMap { postDTO -> Post? in
+            guard let id = postDTO.id else { return nil }
+            return postDTO.toDomain(id: id)
+        }
+
+        return PostsWithPage(posts: posts, lastPage: lastPage)
     }
 }

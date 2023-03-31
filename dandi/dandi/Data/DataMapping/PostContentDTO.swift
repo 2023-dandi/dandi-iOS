@@ -11,19 +11,19 @@ struct PostContentDTO: Codable {
     let id: Int?
     let mine: Bool?
     let liked: Bool?
-    let temperatures: Temperatures
+    let temperatures: TemperaturesDTO
     let createdAt: String?
     let postImageURL: String
-    let outfitFeelings: OutfitFeelings
-    let writer: Writer?
+    let outfitFeelings: OutfitFeelingsDTO
+    let writer: WriterDTO?
 
     init(
         id: Int? = nil,
         mine: Bool? = nil,
-        writer: Writer? = nil,
+        writer: WriterDTO? = nil,
         postImageURL: String,
-        temperatures: Temperatures,
-        outfitFeelings: OutfitFeelings,
+        temperatures: TemperaturesDTO,
+        outfitFeelings: OutfitFeelingsDTO,
         createdAt: String? = nil,
         liked: Bool? = nil
     ) {
@@ -46,9 +46,9 @@ struct PostContentDTO: Codable {
     }
 }
 
-// MARK: - Writer
+// MARK: - WriterDTO
 
-struct Writer: Codable {
+struct WriterDTO: Codable {
     let id: Int
     let nickname: String
     let profileImageURL: String
@@ -89,7 +89,7 @@ extension PostContentDTO {
     }
 }
 
-struct Temperatures: Codable {
+struct TemperaturesDTO: Codable {
     let min: Int
     let max: Int
     let description: String?
@@ -101,13 +101,13 @@ struct Temperatures: Codable {
     }
 }
 
-extension Temperatures: Equatable {
-    static func == (lhs: Temperatures, rhs: Temperatures) -> Bool {
+extension TemperaturesDTO: Equatable {
+    static func == (lhs: TemperaturesDTO, rhs: TemperaturesDTO) -> Bool {
         return lhs.min == rhs.min || lhs.max == rhs.max
     }
 }
 
-struct OutfitFeelings: Codable {
+struct OutfitFeelingsDTO: Codable {
     let feelingIndex: Int
     let additionalFeelingIndices: [Int]?
 }

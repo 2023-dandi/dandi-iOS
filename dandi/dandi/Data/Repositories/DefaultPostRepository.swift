@@ -5,7 +5,7 @@
 //  Created by 김윤서 on 2023/03/17.
 //
 
-import UIKit
+import Foundation
 
 import Moya
 import RxSwift
@@ -22,12 +22,21 @@ final class DefaultPostRepository: PostRepository {
 
     func fetchPost(
         id: Int,
-        completion: @escaping NetworkCompletion<PostContentDTO>
+        completion: @escaping NetworkCompletion<Post>
     ) {
         router.request(.getDetailPost(id: id)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<PostContentDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postDTO):
+                    completion(.success(postDTO.toDomain(id: id)))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -35,13 +44,22 @@ final class DefaultPostRepository: PostRepository {
     }
 
     func uploadImage(
-        image: UIImage,
-        completion: @escaping NetworkCompletion<PostImageDTO>
+        imageData: Data,
+        completion: @escaping NetworkCompletion<String>
     ) {
-        router.request(.postImage(image: image)) { result in
+        router.request(.postImage(imageData: imageData)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<PostImageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postImageDTO):
+                    completion(.success(postImageDTO.postImageUrl))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -49,13 +67,34 @@ final class DefaultPostRepository: PostRepository {
     }
 
     func uploadPost(
-        post: PostContentDTO,
-        completion: @escaping NetworkCompletion<PostIdDTO>
+        post: UploadPostContent,
+        completion: @escaping NetworkCompletion<Int>
     ) {
-        router.request(.postPosts(post: post)) { result in
+        let temperatures = TemperaturesDTO(min: post.temperatures.min, max: post.temperatures.max)
+        let outfitFeelings = OutfitFeelingsDTO(
+            feelingIndex: post.clothesFeeling.rawValue,
+            additionalFeelingIndices: post.weatherFeelings.map { $0.rawValue }
+        )
+
+        let postDTO = PostContentDTO(
+            postImageURL: post.postImageURL,
+            temperatures: temperatures,
+            outfitFeelings: outfitFeelings
+        )
+
+        router.request(.postPosts(post: postDTO)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<PostIdDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postIdDTO):
+                    let postId = postIdDTO.postId
+                    completion(.success(postId))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -90,11 +129,20 @@ final class DefaultPostRepository: PostRepository {
         }
     }
 
-    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPageDTO>) {
+    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPage>) {
         router.request(.my) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: Result<MyPostsWithPageDTO, NetworkError> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(myPostsWithPageDTO):
+                    completion(.success(myPostsWithPageDTO.toDomain()))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -106,9 +154,19 @@ final class DefaultPostRepository: PostRepository {
         max: Int,
         size: Int,
         page: Int
-    ) -> RxSwift.Single<NetworkResult<PostsWithPageDTO>> {
+    ) -> RxSwift.Single<NetworkResult<PostsWithPage>> {
         return router.rx.request(.feed(min: min, max: max, size: size, page: page))
-            .flatMap { NetworkHandler.requestDecoded(by: $0) }
+            .map { response in
+                let decodedResponse: NetworkResult<PostsWithPageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postDTO):
+                    return .success(postDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 
     func fetchMyTemperaturePostList(
@@ -116,8 +174,18 @@ final class DefaultPostRepository: PostRepository {
         max: Int,
         size: Int,
         page: Int
-    ) -> RxSwift.Single<NetworkResult<MyTemperaturePostWithPageDTO>> {
+    ) -> RxSwift.Single<NetworkResult<PostsWithPage>> {
         return router.rx.request(.myFeed(min: min, max: max, size: size, page: page))
-            .flatMap { NetworkHandler.requestDecoded(by: $0) }
+            .map { response in
+                let decodedResponse: NetworkResult<MyTemperaturePostWithPageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postDTO):
+                    return .success(postDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 }

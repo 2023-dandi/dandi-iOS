@@ -26,8 +26,8 @@ final class DefaultNicknameUseCase: NicknameUseCase {
         if isValid(nickname), nickname.count <= 25, nickname.count >= 8 {
             memberRepository.confirmNicknameDuplication(nickname: nickname) { [weak self] result in
                 switch result {
-                case let .success(duplicationDTO):
-                    if duplicationDTO.duplicated {
+                case let .success(duplicated):
+                    if duplicated {
                         self?.nicknameValidationPublisher.accept(("이미 사용 중인 아이디입니다.", false))
                         return
                     }

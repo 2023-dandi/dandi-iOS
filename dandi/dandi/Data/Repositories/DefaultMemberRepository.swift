@@ -5,7 +5,7 @@
 //  Created by 김윤서 on 2023/03/20.
 //
 
-import UIKit
+import Foundation
 
 import Moya
 
@@ -20,13 +20,22 @@ final class DefaultMemberRepository: MemberRepository {
     }
 
     func updateProfileImage(
-        image: UIImage,
-        completion: @escaping NetworkCompletion<ProfileImageDTO>
+        imageData: Data,
+        completion: @escaping NetworkCompletion<String>
     ) {
-        router.request(.putProfileImage(image)) { result in
+        router.request(.putProfileImage(imageData)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<ProfileImageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(imageDTO):
+                    completion(.success(imageDTO.profileImageUrl))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -50,23 +59,39 @@ final class DefaultMemberRepository: MemberRepository {
     func updateLocation(
         latitude: Double,
         longitude: Double,
-        completion: @escaping NetworkCompletion<LocationDTO>
+        completion: @escaping NetworkCompletion<Location>
     ) {
         router.request(.patchLocation(latitude: latitude, longitude: longitude)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<LocationDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(locationDTO):
+                    completion(.success(locationDTO.toDomain()))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             case .failure:
                 completion(.failure(.networkFail))
             }
         }
     }
 
-    func fetchMemberInfo(completion: @escaping NetworkCompletion<MemberInfoDTO>) {
+    func fetchMemberInfo(completion: @escaping NetworkCompletion<UserProfile>) {
         router.request(.getMemberInfo) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<MemberInfoDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(memberInfoDTO):
+                    // TODO: 추후 리팩토링
+                    completion(.success(memberInfoDTO.toDomain(location: UserDefaultHandler.shared.address)))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             case .failure:
                 completion(.failure(.networkFail))
             }
@@ -75,12 +100,20 @@ final class DefaultMemberRepository: MemberRepository {
 
     func confirmNicknameDuplication(
         nickname: String,
-        completion: @escaping NetworkCompletion<DuplicationDTO>
+        completion: @escaping NetworkCompletion<Bool>
     ) {
         router.request(.confirmNicknameDulication(nickname: nickname)) { result in
             switch result {
             case let .success(response):
-                completion(NetworkHandler.requestDecoded(by: response))
+                let decodedResponse: NetworkResult<DuplicationDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(duplicationDTO):
+                    completion(.success(duplicationDTO.duplicated))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             case .failure:
                 completion(.failure(.networkFail))
             }

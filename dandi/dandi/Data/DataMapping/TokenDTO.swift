@@ -9,3 +9,9 @@ struct TokenDTO: Decodable {
     let accessToken: String
     let refreshToken: String
 }
+
+extension TokenDTO {
+    func toDomain() -> Token {
+        return Token(accessToken: accessToken, refreshToken: refreshToken)
+    }
+}

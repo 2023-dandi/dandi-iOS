@@ -25,8 +25,8 @@ final class DefaultPostDetailUseCase: PostDetailUseCase {
     func fetchPost(id: Int) {
         postRepository.fetchPost(id: id) { [weak self] result in
             switch result {
-            case let .success(postDTO):
-                self?.postPublisher.accept(postDTO.toDomain(id: id))
+            case let .success(post):
+                self?.postPublisher.accept(post)
             case .failure:
                 // TODO: 에러처리
                 self?.postPublisher.accept(nil)

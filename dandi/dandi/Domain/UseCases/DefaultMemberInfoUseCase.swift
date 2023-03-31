@@ -29,8 +29,8 @@ final class DefaultMemberInfoUseCase: MemberInfoUseCase {
     func fetchUserInfo() {
         memberRepository.fetchMemberInfo { [weak self] result in
             switch result {
-            case let .success(memberInfoDTO):
-                self?.memberInfoPublisher.accept(memberInfoDTO.toDomain(location: UserDefaultHandler.shared.address))
+            case let .success(userProfile):
+                self?.memberInfoPublisher.accept(userProfile)
             case .failure:
                 self?.memberInfoPublisher.accept(nil)
             }

@@ -9,7 +9,7 @@ import Foundation
 
 struct MyTemperaturePostWithPageDTO: Decodable {
     let posts: [MyTemperaturePostDTO]
-    let writer: Writer
+    let writer: WriterDTO
     let lastPage: Bool
 }
 
@@ -17,7 +17,7 @@ struct MyTemperaturePostDTO: Decodable {
     let id, feelingIndex: Int
     let postImageURL: String
     let liked: Bool
-    let temperatures: Temperatures?
+    let temperatures: TemperaturesDTO?
     let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
@@ -29,8 +29,8 @@ struct MyTemperaturePostDTO: Decodable {
 }
 
 extension MyTemperaturePostWithPageDTO {
-    func toDomain() -> [Post] {
-        return posts.map {
+    func toDomain() -> PostsWithPage {
+        let posts = posts.map {
             Post(
                 id: $0.id,
                 mainImageURL: $0.postImageURL,
@@ -43,5 +43,6 @@ extension MyTemperaturePostWithPageDTO {
                 isMine: true
             )
         }
+        return PostsWithPage(posts: posts, lastPage: lastPage)
     }
 }
