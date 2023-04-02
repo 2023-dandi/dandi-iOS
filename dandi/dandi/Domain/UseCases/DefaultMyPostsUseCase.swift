@@ -24,7 +24,7 @@ final class DefaultMyPostsUseCase: MyPostListUseCase {
         postRepository.fetchMyPostList { [weak self] result in
             switch result {
             case let .success(response):
-                self?.postsPublisher.accept(response.posts)
+                self?.postsPublisher.accept(response.list)
             case .failure:
                 self?.postsPublisher.accept([])
             }

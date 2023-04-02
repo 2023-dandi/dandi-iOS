@@ -24,4 +24,12 @@ protocol ClothesRepository {
         clothesID: Int,
         completion: @escaping NetworkCompletion<StatusCase>
     )
+
+    func fetchList(
+        size: Int,
+        page: Int,
+        category: String,
+        seasons: [String],
+        completion: @escaping NetworkCompletion<ListWithPage<Clothes>>
+    )
 }

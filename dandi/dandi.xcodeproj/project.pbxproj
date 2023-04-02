@@ -116,6 +116,11 @@
 		DD61796329CB5B32005B7527 /* RoundTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */; };
 		DD61796529CB5FBF005B7527 /* PagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */; };
 		DD61796D29CB7DF9005B7527 /* PostDetailAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61796C29CB7DF9005B7527 /* PostDetailAlertType.swift */; };
+		DD66C02F29D950BD00A262F2 /* ClothesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C02E29D950BD00A262F2 /* ClothesDTO.swift */; };
+		DD66C03129D9514E00A262F2 /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03029D9514E00A262F2 /* Clothes.swift */; };
+		DD66C03329D951A100A262F2 /* ListWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03229D951A100A262F2 /* ListWithPage.swift */; };
+		DD66C03529D958A600A262F2 /* ClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03429D958A600A262F2 /* ClosetUseCase.swift */; };
+		DD66C03729D9590D00A262F2 /* DefaultClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -213,8 +218,6 @@
 		DDF63700296048CE007427BD /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */; };
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
 		DDF848A429D6D0F70003097A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A329D6D0F70003097A /* Token.swift */; };
-		DDF848A629D6D3A40003097A /* PostsWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A529D6D3A40003097A /* PostsWithPage.swift */; };
-		DDF848A829D6D3D90003097A /* MyPostsWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */; };
 		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
 /* End PBXBuildFile section */
 
@@ -349,6 +352,11 @@
 		DD61796229CB5B32005B7527 /* RoundTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD61796C29CB7DF9005B7527 /* PostDetailAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailAlertType.swift; sourceTree = "<group>"; };
+		DD66C02E29D950BD00A262F2 /* ClothesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesDTO.swift; sourceTree = "<group>"; };
+		DD66C03029D9514E00A262F2 /* Clothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothes.swift; sourceTree = "<group>"; };
+		DD66C03229D951A100A262F2 /* ListWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithPage.swift; sourceTree = "<group>"; };
+		DD66C03429D958A600A262F2 /* ClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetUseCase.swift; sourceTree = "<group>"; };
+		DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClosetUseCase.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -435,8 +443,6 @@
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		DDF848A329D6D0F70003097A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		DDF848A529D6D3A40003097A /* PostsWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsWithPage.swift; sourceTree = "<group>"; };
-		DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsWithPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -758,6 +764,7 @@
 				DD41E74829D31E1F00893431 /* PostContentDTO.swift */,
 				DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */,
 				DD1E216429D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift */,
+				DD66C02E29D950BD00A262F2 /* ClothesDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -802,6 +809,7 @@
 				DD00E80F29C8A9BC001536D4 /* UploadProfileImageUseCase.swift */,
 				DD0C094A29D5D69B002CAB37 /* UploadPostImageUseCase.swift */,
 				DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */,
+				DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -822,6 +830,7 @@
 				DD3D9A5529CC429900E298B1 /* MyPostListUseCase.swift */,
 				DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */,
 				DD0C094429D5D214002CAB37 /* RegisterClothesUseCase.swift */,
+				DD66C03429D958A600A262F2 /* ClosetUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1023,8 +1032,8 @@
 				DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */,
 				DDA59B4029D6C03700C085E1 /* Location.swift */,
 				DDF848A329D6D0F70003097A /* Token.swift */,
-				DDF848A529D6D3A40003097A /* PostsWithPage.swift */,
-				DDF848A729D6D3D90003097A /* MyPostsWithPage.swift */,
+				DD66C03029D9514E00A262F2 /* Clothes.swift */,
+				DD66C03229D951A100A262F2 /* ListWithPage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1409,6 +1418,7 @@
 				DDA38FEF29655B2C006FBE00 /* WeatherBannerView.swift in Sources */,
 				DD3D9A5C29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
+				DD66C03329D951A100A262F2 /* ListWithPage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
 				DD3D9A4D29CC243100E298B1 /* ClosetTabViewController.swift in Sources */,
 				DD2E52DE29BF1F370078EA74 /* StickerEditorViewControl.swift in Sources */,
@@ -1503,6 +1513,7 @@
 				DD00E80E29C8A9B0001536D4 /* ImageUseCase.swift in Sources */,
 				DD0C094129D5CC4F002CAB37 /* ClothesRepository.swift in Sources */,
 				DDA8164929AC94D300963776 /* ProfileView.swift in Sources */,
+				DD66C02F29D950BD00A262F2 /* ClothesDTO.swift in Sources */,
 				DD00E7F829C82EA8001536D4 /* NicknameDTO.swift in Sources */,
 				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
 				DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */,
@@ -1524,6 +1535,7 @@
 				DDA8165929ACEA0000963776 /* PaddingLabel.swift in Sources */,
 				DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */,
 				DD31232929B1BAF100443FCE /* URLConstant.swift in Sources */,
+				DD66C03729D9590D00A262F2 /* DefaultClosetUseCase.swift in Sources */,
 				DDA38FF629657C7C006FBE00 /* WeatherDetailCollectionViewCell.swift in Sources */,
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
 				DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */,
@@ -1535,7 +1547,6 @@
 				DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */,
 				DD9B06E3295EC83100A98041 /* MyPageViewController.swift in Sources */,
 				DD31234629B1F4AD00443FCE /* NetworkLogPlugin.swift in Sources */,
-				DDF848A829D6D3D90003097A /* MyPostsWithPage.swift in Sources */,
 				DD41E74F29D321A100893431 /* FeedReactor.swift in Sources */,
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
 				DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */,
@@ -1559,7 +1570,6 @@
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,
-				DDF848A629D6D3A40003097A /* PostsWithPage.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
 				DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */,
 				DD0C093D29D5768C002CAB37 /* NetworkErrorView.swift in Sources */,
@@ -1590,11 +1600,13 @@
 				DDA8166429ADB5A000963776 /* UIView+Reactive.swift in Sources */,
 				DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */,
 				DD9F6FDB29B4EF5B002BD4B4 /* WeatherService.swift in Sources */,
+				DD66C03129D9514E00A262F2 /* Clothes.swift in Sources */,
 				DD1D6B1C29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift in Sources */,
 				DD0C094D29D5D970002CAB37 /* RegisterClothesReactor.swift in Sources */,
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 				DD31234229B1EDDB00443FCE /* NetworkHandler.swift in Sources */,
 				DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */,
+				DD66C03529D958A600A262F2 /* ClosetUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

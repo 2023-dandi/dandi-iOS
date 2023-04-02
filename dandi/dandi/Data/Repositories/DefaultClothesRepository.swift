@@ -50,10 +50,8 @@ final class DefaultClothesRepository: ClothesRepository {
                 case let .failure(error):
                     completion(.failure(error))
                 }
-
-                return completion(NetworkHandler.requestDecoded(by: response))
             case .failure:
-                return completion(.failure(.networkFail))
+                completion(.failure(.networkFail))
             }
         }
     }
@@ -65,9 +63,34 @@ final class DefaultClothesRepository: ClothesRepository {
         router.request(.deleteClothes(clothesID: clothesID)) { result in
             switch result {
             case let .success(response):
-                return completion(NetworkHandler.requestStatusCaseDecoded(by: response))
+                completion(NetworkHandler.requestStatusCaseDecoded(by: response))
             case .failure:
-                return completion(.failure(.networkFail))
+                completion(.failure(.networkFail))
+            }
+        }
+    }
+
+    func fetchList(
+        size: Int,
+        page: Int,
+        category: String,
+        seasons: [String],
+        completion: @escaping NetworkCompletion<ListWithPage<Clothes>>
+    ) {
+        router.request(.getClothesList(size: size, page: page, category: category, seasons: seasons)) { result in
+            switch result {
+            case let .success(response):
+                let decodedResponse: NetworkResult<ClothesWithPageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(clothesDTO):
+                    completion(.success(clothesDTO.toDomain()))
+
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+            case .failure:
+                completion(.failure(.networkFail))
             }
         }
     }

@@ -13,6 +13,7 @@ enum ClothesService {
     case postClothes(category: String, seasons: [String], clothesImageURL: String)
     case postClothesImage(imageData: Data)
     case deleteClothes(clothesID: Int)
+    case getClothesList(size: Int, page: Int, category: String, seasons: [String])
 }
 
 extension ClothesService: BaseTargetType {
@@ -24,6 +25,8 @@ extension ClothesService: BaseTargetType {
             return "/clothes/image"
         case let .deleteClothes(clothesID):
             return "/clothes/\(clothesID)"
+        case .getClothesList:
+            return "/clothes"
         }
     }
 
@@ -35,6 +38,8 @@ extension ClothesService: BaseTargetType {
             return .post
         case .deleteClothes:
             return .delete
+        case .getClothesList:
+            return .get
         }
     }
 
@@ -59,6 +64,15 @@ extension ClothesService: BaseTargetType {
             return .uploadMultipart([data])
         case .deleteClothes:
             return .requestPlain
+        case let .getClothesList(size, page, category, seasons):
+            return .requestParameters(
+                parameters: [
+                    "size": size,
+                    "page": page,
+                    "category": category,
+                    "season": seasons
+                ], encoding: URLEncoding.queryString
+            )
         }
     }
 }

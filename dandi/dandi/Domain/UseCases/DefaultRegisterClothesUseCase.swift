@@ -13,8 +13,6 @@ import RxSwift
 final class DefaultRegisterClothesUseCase: RegisterClothesUseCase {
     let uploadPublisher = PublishRelay<Bool>()
 
-    let deleteSuccessPublisher = PublishRelay<Bool>()
-
     private let clothesRepository: ClothesRepository
 
     init(clothesRepository: ClothesRepository) {
@@ -30,17 +28,6 @@ final class DefaultRegisterClothesUseCase: RegisterClothesUseCase {
             switch result {
             case let .success(statusCase):
                 self?.uploadPublisher.accept(statusCase == .created)
-            case .failure:
-                self?.uploadPublisher.accept(false)
-            }
-        }
-    }
-
-    func delete(id: Int) {
-        clothesRepository.delete(clothesID: id) { [weak self] result in
-            switch result {
-            case let .success(statusCase):
-                self?.uploadPublisher.accept(statusCase == .noContent)
             case .failure:
                 self?.uploadPublisher.accept(false)
             }
