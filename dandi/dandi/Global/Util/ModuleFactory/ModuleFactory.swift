@@ -92,10 +92,10 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
 
-    func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController {
+    func makeRegisterClothesViewController(selectedImage: UIImage) -> RegisterClothesViewController {
         let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
 
-        let vc = RegisterClothesViewController(selectedImages: selectedImages)
+        let vc = RegisterClothesViewController(selectedImage: selectedImage)
         vc.reactor = RegisterClothesReactor(
             imageUseCase: UploadClothesImageUseCase(clothesRepository: clothesRepository),
             clothesUseCase: DefaultRegisterClothesUseCase(clothesRepository: clothesRepository)

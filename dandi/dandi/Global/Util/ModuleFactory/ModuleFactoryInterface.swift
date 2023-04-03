@@ -18,7 +18,7 @@ protocol ModuleFactoryInterface {
     func makeHomeButtonViewController() -> HomeButtonViewController
     func makeMyPageViewController() -> MyPageViewController
     func makeFeedViewContontoller() -> FeedViewController
-    func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController
+    func makeRegisterClothesViewController(selectedImage: UIImage) -> RegisterClothesViewController
     func makeClosetMainViewController() -> ClosetMainViewController
     func makePhotoLibraryViewController() -> PhotoLibraryViewController
     func makePostDetailViewController(postID: Int) -> PostDetailViewController

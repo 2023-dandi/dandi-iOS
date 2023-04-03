@@ -9,7 +9,7 @@ import RxCocoa
 import RxSwift
 
 protocol HoulryWeatherUseCase {
-    var hourlyWeather: PublishRelay<[TimeWeatherInfo]> { get }
+    var hourlyWeather: PublishRelay<TodayWeatherInfo> { get }
     var isCompleted: PublishSubject<Bool> { get }
 
     /// 날씨정보 가져오기

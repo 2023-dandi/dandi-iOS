@@ -61,7 +61,6 @@ final class MyPageViewController: BaseViewController, View {
             .compactMap { $0.posts }
             .withUnretained(self)
             .subscribe(onNext: { owner, posts in
-                dump(posts)
                 owner.posts = posts
                 owner.myPageDataSource.update(user: owner.profile, feed: owner.posts)
             })
@@ -78,10 +77,13 @@ final class MyPageViewController: BaseViewController, View {
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
 
-        rx.viewWillAppear.take(1)
-            .map { _ in Reactor.Action.fetchMyPosts }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        Observable.merge([
+            NotificationCenterManager.reloadPosts.addObserver().map { _ in },
+            rx.viewWillAppear.take(1).map { _ in }
+        ])
+        .map { _ in Reactor.Action.fetchMyPosts }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
     }
 
     private func bindCollectionView(_: MyPageReactor) {

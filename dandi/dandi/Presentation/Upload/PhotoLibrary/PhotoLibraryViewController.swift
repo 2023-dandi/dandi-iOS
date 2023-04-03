@@ -16,7 +16,8 @@ import YPImagePicker
 final class PhotoLibraryViewController: YPImagePicker {
     var factory: ModuleFactoryInterface!
 
-    private var imageList: [UIImage] = []
+    private var image: UIImage?
+
     init() {
         var config = YPImagePickerConfiguration()
 
@@ -63,7 +64,11 @@ final class PhotoLibraryViewController: YPImagePicker {
             default:
                 break
             }
-            self.pushViewController(self.factory.makeRegisterClothesViewController(selectedImages: self.imageList), animated: true)
+            guard let image = self.image else { return }
+            self.pushViewController(
+                self.factory.makeRegisterClothesViewController(selectedImage: image),
+                animated: true
+            )
         }
     }
 
@@ -88,7 +93,7 @@ final class PhotoLibraryViewController: YPImagePicker {
         UIGraphicsEndImageContext()
 
         guard let image2 = image2 else { return }
-        imageList.append(image2)
+        self.image = image2
     }
 
     private func convertItemToImage(with item: YPMediaItem) -> UIImage? {
