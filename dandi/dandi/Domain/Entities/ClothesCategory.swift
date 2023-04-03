@@ -45,4 +45,8 @@ enum ClothesCategory: Int, CaseIterable {
         case .etc: return "ETC"
         }
     }
+
+    static var allCases: [ClothesCategory] {
+        return [.top, .bottom, .outer, .onePiece, .shoes, .cap, .bag, .etc]
+    }
 }

@@ -75,11 +75,11 @@ final class RegisterClothesViewController: BaseViewController, View {
                 guard
                     let self = self,
                     let selectedCategory: Int = self.selectedIndexPaths.filter({ $0.section == 1 }).first?.item,
-                    let clothesCategory: ClothesCategory = ClothesCategory(rawValue: selectedCategory),
+                    let clothesCategory: ClothesCategory = ClothesCategory(rawValue: selectedCategory + 1),
                     let image = self.images.first
                 else { return nil }
                 let selectedSeasons = self.selectedIndexPaths.filter { $0.section == 2 }.map { $0.item }
-                let seasons: [Season] = selectedSeasons.compactMap { Season(rawValue: $0) }.compactMap { $0 }
+                let seasons: [Season] = selectedSeasons.compactMap { Season(rawValue: $0 + 1) }.compactMap { $0 }
                 return ClothesInfo(category: clothesCategory, seasons: seasons, image: image)
             }
             .compactMap { $0 }

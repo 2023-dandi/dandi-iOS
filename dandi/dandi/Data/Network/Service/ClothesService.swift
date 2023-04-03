@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Alamofire
 import Moya
 
 enum ClothesService {
@@ -17,6 +18,30 @@ enum ClothesService {
 }
 
 extension ClothesService: BaseTargetType {
+    var baseURL: URL {
+        switch self {
+        case let .getClothesList(size, page, category, seasons):
+            var queryItems = [URLQueryItem]()
+            queryItems.append(URLQueryItem(name: "category", value: category))
+            queryItems.append(URLQueryItem(name: "page", value: "\(page)"))
+            queryItems.append(URLQueryItem(name: "size", value: "\(size)"))
+            seasons.forEach { season in
+                queryItems.append(URLQueryItem(name: "season", value: season))
+            }
+
+            var urlComponents = URLComponents()
+            urlComponents.queryItems = queryItems
+
+            let encodedQuery = urlComponents.percentEncodedQuery ?? ""
+            let urlString = Environment.baseURL + "/clothes" + (encodedQuery.isEmpty ? "" : "?") + encodedQuery
+
+            return URL(string: urlString)!
+
+        default:
+            return URL(string: Environment.baseURL)!
+        }
+    }
+
     var path: String {
         switch self {
         case .postClothes:
@@ -26,7 +51,7 @@ extension ClothesService: BaseTargetType {
         case let .deleteClothes(clothesID):
             return "/clothes/\(clothesID)"
         case .getClothesList:
-            return "/clothes"
+            return ""
         }
     }
 
@@ -64,19 +89,8 @@ extension ClothesService: BaseTargetType {
             return .uploadMultipart([data])
         case .deleteClothes:
             return .requestPlain
-        case let .getClothesList(size, page, category, seasons):
-            var parameters: [String: Any] = [
-                "size": size,
-                "page": page,
-                "category": category
-            ]
-            seasons.forEach {
-                parameters["season"] = $0
-            }
-            return .requestParameters(
-                parameters: parameters,
-                encoding: URLEncoding.queryString
-            )
+        case .getClothesList:
+            return .requestPlain
         }
     }
 }

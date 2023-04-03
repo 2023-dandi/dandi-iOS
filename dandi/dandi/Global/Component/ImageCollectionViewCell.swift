@@ -69,6 +69,7 @@ extension ImageCollectionViewCell {
     private func setProperties() {
         checkIconView.isHidden = true
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
         contentView.borderColor = YDSColor.borderNormal
         contentView.borderWidth = YDSConstant.Border.thin
     }
