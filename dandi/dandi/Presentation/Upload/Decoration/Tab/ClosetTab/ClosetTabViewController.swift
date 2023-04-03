@@ -168,7 +168,9 @@ extension ClosetTabViewController: UICollectionViewDelegate {
         guard collectionView == closetView.tagCollectionView else { return true }
 
         if indexPath.item == 0 {
-            collectionView.deselectAllItems(animated: false)
+            collectionView.indexPathsForSelectedItems?.forEach {
+                collectionView.deselectItem(at: $0, animated: false)
+            }
             selectedTags = [0]
             return true
         }
@@ -226,14 +228,6 @@ extension ClosetTabViewController: UICollectionViewDelegate {
 
         default:
             break
-        }
-    }
-}
-
-extension UICollectionView {
-    func deselectAllItems(animated: Bool) {
-        indexPathsForSelectedItems?.forEach {
-            deselectItem(at: $0, animated: animated)
         }
     }
 }

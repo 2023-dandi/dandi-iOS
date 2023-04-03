@@ -18,7 +18,7 @@ final class UploadMainReactor: Reactor {
     private let imageUseCase: ImageUseCase
 
     struct State {
-        var isLoading: Bool = false
+        var isLoading: Bool?
         var temparature: Temperatures = .init(min: 0, max: 0)
         var postID: Int?
     }

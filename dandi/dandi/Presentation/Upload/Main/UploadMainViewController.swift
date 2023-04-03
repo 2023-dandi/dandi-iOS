@@ -26,8 +26,14 @@ final class UploadMainViewController: BaseViewController, View {
     private let gradientBackgroundView = UIView()
     private let image: UIImage
 
-    private var clothesFeeling: ClothesFeeling?
-    private var weatherFeelings: [WeatherFeeling] = []
+    private var clothesFeeling: ClothesFeeling? {
+        didSet { setButtonEnabled() }
+    }
+
+    private var weatherFeelings: [WeatherFeeling] = [] {
+        didSet { setButtonEnabled() }
+    }
+
     private var temperature: Temperatures? {
         didSet {
             DispatchQueue.main.async {
@@ -100,7 +106,7 @@ final class UploadMainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
 
         reactor.state
-            .map { $0.isLoading }
+            .compactMap { $0.isLoading }
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, isLoading in
@@ -189,7 +195,6 @@ final class UploadMainViewController: BaseViewController, View {
     private func setPropeties() {
         uploadButton.text = "업로드"
         uploadButton.rounding = .r8
-
         uploadView.collectionView.do {
             $0.dataSource = self
             $0.register(cell: ImageCollectionViewCell.self)
@@ -202,6 +207,7 @@ final class UploadMainViewController: BaseViewController, View {
             )
             $0.allowsMultipleSelection = true
         }
+        uploadButton.isDisabled = true
     }
 
     private func setLayouts() {
@@ -215,6 +221,10 @@ final class UploadMainViewController: BaseViewController, View {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(48)
         }
+    }
+
+    private func setButtonEnabled() {
+        uploadButton.isDisabled = clothesFeeling == nil || weatherFeelings.isEmpty
     }
 }
 

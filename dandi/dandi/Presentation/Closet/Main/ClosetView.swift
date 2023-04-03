@@ -41,6 +41,7 @@ final class ClosetView: UIView {
         )
         collectionView.register(cell: ImageCollectionViewCell.self)
         collectionView.allowsMultipleSelection = true
+        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 250, right: .zero)
         setCollectionView(collectionView)
         return collectionView
     }()
