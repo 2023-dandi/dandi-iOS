@@ -199,4 +199,14 @@ extension ModuleFactory: ModuleFactoryInterface {
         vc.factory = self
         return vc
     }
+
+    func makeDetailClothesViewController(id: Int) -> DetailClothesViewController {
+        let vc = DetailClothesViewController()
+        vc.factory = self
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
+        let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
+        let reactor = DetailClothesReactor(id: id, clothesUseCase: closetUseCase)
+        vc.reactor = reactor
+        return vc
+    }
 }

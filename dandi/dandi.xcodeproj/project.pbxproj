@@ -207,6 +207,9 @@
 		DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */; };
 		DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD44D2979338800452F01 /* ClosetImage.swift */; };
 		DDDF93D629DAD85200DEB027 /* ClosetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDF93D529DAD85200DEB027 /* ClosetView.swift */; };
+		DDDF93D929DAEDDE00DEB027 /* DetailClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDF93D829DAEDDE00DEB027 /* DetailClothesViewController.swift */; };
+		DDDF93DB29DAEE8D00DEB027 /* DetailClothesReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDF93DA29DAEE8D00DEB027 /* DetailClothesReactor.swift */; };
+		DDDF93DD29DAF2C600DEB027 /* ClothesDetailAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDF93DC29DAF2C600DEB027 /* ClothesDetailAlertType.swift */; };
 		DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */; };
 		DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */; };
 		DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3E2FB29C36F39007BDBA7 /* PostService.swift */; };
@@ -435,6 +438,9 @@
 		DDCDFA9829D6AF820016E582 /* UploadPostContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostContent.swift; sourceTree = "<group>"; };
 		DDDBD44D2979338800452F01 /* ClosetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetImage.swift; sourceTree = "<group>"; };
 		DDDF93D529DAD85200DEB027 /* ClosetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetView.swift; sourceTree = "<group>"; };
+		DDDF93D829DAEDDE00DEB027 /* DetailClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClothesViewController.swift; sourceTree = "<group>"; };
+		DDDF93DA29DAEE8D00DEB027 /* DetailClothesReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClothesReactor.swift; sourceTree = "<group>"; };
+		DDDF93DC29DAF2C600DEB027 /* ClothesDetailAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesDetailAlertType.swift; sourceTree = "<group>"; };
 		DDE3E2F529C33087007BDBA7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDE3E2F929C3322C007BDBA7 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		DDE3E2FB29C36F39007BDBA7 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
@@ -866,6 +872,7 @@
 		DD61795B29CB53F1005B7527 /* Closet */ = {
 			isa = PBXGroup;
 			children = (
+				DDDF93D729DAEDD000DEB027 /* Detail */,
 				DD1E52D329D1B0B800550E02 /* Main */,
 				DD1E52D229D1B08200550E02 /* Registration */,
 			);
@@ -876,6 +883,7 @@
 			isa = PBXGroup;
 			children = (
 				DD61796C29CB7DF9005B7527 /* PostDetailAlertType.swift */,
+				DDDF93DC29DAF2C600DEB027 /* ClothesDetailAlertType.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -1215,6 +1223,15 @@
 			path = Upload;
 			sourceTree = "<group>";
 		};
+		DDDF93D729DAEDD000DEB027 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DDDF93D829DAEDDE00DEB027 /* DetailClothesViewController.swift */,
+				DDDF93DA29DAEE8D00DEB027 /* DetailClothesReactor.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		DDE3E2F429C33073007BDBA7 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -1543,6 +1560,7 @@
 				DDA8167329AE26DB00963776 /* NotificationDataSource.swift in Sources */,
 				DD1E52D529D1B0D100550E02 /* ClosetMainViewController.swift in Sources */,
 				DDA8164B29AC953600963776 /* PostContentCollectionViewCell.swift in Sources */,
+				DDDF93D929DAEDDE00DEB027 /* DetailClothesViewController.swift in Sources */,
 				DD00E81929C8D6F3001536D4 /* DefaultPostLikeUseCase.swift in Sources */,
 				DD00E7FC29C82F7A001536D4 /* MemberInfoDTO.swift in Sources */,
 				DD9F6FD729B32C2F002BD4B4 /* UIViewController+Alert.swift in Sources */,
@@ -1561,6 +1579,7 @@
 				DD0B685F29C764B2000A0E24 /* DefaultPostDetailUseCase.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD41E74D29D31FCE00893431 /* DefaultPostListUseCase.swift in Sources */,
+				DDDF93DD29DAF2C600DEB027 /* ClothesDetailAlertType.swift in Sources */,
 				DD0B685D29C7613C000A0E24 /* ErrorResponse.swift in Sources */,
 				DD00E7E829C77610001536D4 /* HourlyWeatherUseCase.swift in Sources */,
 				DD1D6B2829D03FDA00085FBE /* ImagesWithAddButtonView.swift in Sources */,
@@ -1594,6 +1613,7 @@
 				DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */,
 				DD0C093D29D5768C002CAB37 /* NetworkErrorView.swift in Sources */,
 				DDB23BA42993954A000735FB /* MyPageView.swift in Sources */,
+				DDDF93DB29DAEE8D00DEB027 /* DetailClothesReactor.swift in Sources */,
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
 				DDA8166F29AE0E6200963776 /* NotificationCollectionViewCell.swift in Sources */,

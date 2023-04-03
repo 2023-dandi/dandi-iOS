@@ -11,7 +11,9 @@ import RxCocoa
 import RxSwift
 
 final class DefaultClosetUseCase: ClosetUseCase {
-    let clothesPublisher = PublishRelay<[Clothes]>()
+    let clothesPublisher = PublishRelay<DetailClothesInfo?>()
+
+    let clothesListPublisher = PublishRelay<[Clothes]>()
 
     let deleteSuccessPublisher = PublishRelay<Bool>()
 
@@ -32,7 +34,11 @@ final class DefaultClosetUseCase: ClosetUseCase {
         }
     }
 
-    func fetch(
+    func fetch(id: Int) -> Single<DetailClothesInfo?> {
+        return Single.just(.init(id: id, imageURL: "", category: .bottom, seasons: Season.allCases))
+    }
+
+    func fetchClothesList(
         size: Int,
         page: Int,
         category: ClothesCategory,
@@ -48,9 +54,9 @@ final class DefaultClosetUseCase: ClosetUseCase {
         ) { [weak self] result in
             switch result {
             case let .success(clothesWithPage):
-                self?.clothesPublisher.accept(clothesWithPage.list)
+                self?.clothesListPublisher.accept(clothesWithPage.list)
             case .failure:
-                self?.clothesPublisher.accept([])
+                self?.clothesListPublisher.accept([])
             }
         }
     }

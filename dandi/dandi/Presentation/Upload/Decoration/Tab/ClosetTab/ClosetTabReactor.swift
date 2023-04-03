@@ -42,10 +42,10 @@ final class ClosetTabReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .fetchClothes(category, seasons):
-            closetUseCase.fetch(size: 500, page: 0, category: category, seasons: seasons)
+            closetUseCase.fetchClothesList(size: 500, page: 0, category: category, seasons: seasons)
             return Observable.concat([
                 .just(.setLoading(isLoading: true)),
-                closetUseCase.clothesPublisher.compactMap { Mutation.setClothesList(clothes: $0) },
+                closetUseCase.clothesListPublisher.compactMap { Mutation.setClothesList(clothes: $0) },
                 .just(.setLoading(isLoading: false))
             ])
         case .fetchCategory:

@@ -20,25 +20,6 @@ final class ClosetMainViewController: BaseViewController, View {
         set { super.hidesBottomBarWhenPushed = newValue }
     }
 
-    enum ViewType {
-        case `default`
-        case isEditing
-
-        var text: String {
-            switch self {
-            case .default: return "편집"
-            case .isEditing: return "취소"
-            }
-        }
-
-        var cellType: ImageCollectionViewCell.CellType {
-            switch self {
-            case .default: return .none
-            case .isEditing: return .check
-            }
-        }
-    }
-
     private var categoryList: [CategoryInfo] = [] {
         didSet {
             category = categoryList.map { $0.category.text }
@@ -61,21 +42,11 @@ final class ClosetMainViewController: BaseViewController, View {
     private var selectedCategoryPublisher = PublishSubject<CategoryInfo>()
 
     private let closetView = ClosetView()
-    private let rightTopButton = UIButton()
-    private var viewType: ViewType = .default {
-        didSet {
-            deleteButton.isHidden = viewType == .default
-            rightTopButton.setTitle(viewType.text, for: .normal)
-            closetView.photoCollectionView.reloadData()
-        }
-    }
-
-    private let deleteButton = YDSBoxButton()
 
     /// DataSource
     private var category: [String] = []
     private var tagList: [String] = []
-    private var imageURLList: [String] = [] {
+    private var clothes: [Clothes] = [] {
         didSet {
             self.closetView.photoCollectionView.reloadData()
         }
@@ -88,12 +59,10 @@ final class ClosetMainViewController: BaseViewController, View {
     override init() {
         super.init()
         setProperties()
-        setLayouts()
         setCollectionView()
     }
 
     func bind(reactor: Reactor) {
-        bindTapAction()
         bindAction(reactor)
         bindState(reactor)
     }
@@ -136,33 +105,13 @@ final class ClosetMainViewController: BaseViewController, View {
         reactor.state
             .compactMap { $0.clothes }
             .subscribe(onNext: { [weak self] clothes in
-                self?.imageURLList = clothes.map { $0.imageURL }
+                self?.clothes = clothes
             })
             .disposed(by: disposeBag)
     }
 
     private func setProperties() {
         title = "옷장"
-        rightTopButton.setTitleColor(YDSColor.buttonNormal, for: .normal)
-        rightTopButton.titleLabel?.font = YDSFont.button0
-        navigationItem.setRightBarButton(UIBarButtonItem(customView: rightTopButton), animated: false)
-
-        deleteButton.text = "삭제"
-        deleteButton.size = .large
-        deleteButton.rounding = .r8
-        deleteButton.type = .filled
-
-        viewType = .default
-    }
-
-    private func bindTapAction() {
-        rightTopButton.rx.tap
-            .withUnretained(self)
-            .bind(onNext: { owner, _ in
-                let isDefault = owner.viewType == .default
-                owner.viewType = isDefault ? .isEditing : .default
-            })
-            .disposed(by: disposeBag)
     }
 
     private func reloadData() {
@@ -179,17 +128,6 @@ final class ClosetMainViewController: BaseViewController, View {
             $0.dataSource = self
         }
     }
-
-    private func setLayouts() {
-        rightTopButton.snp.makeConstraints { make in
-            make.size.equalTo(44).priority(.high)
-        }
-        view.addSubview(deleteButton)
-        deleteButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(23)
-        }
-    }
 }
 
 extension ClosetMainViewController: UICollectionViewDataSource {
@@ -203,7 +141,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
         case closetView.tagCollectionView:
             return tagList.count
         case closetView.photoCollectionView:
-            return imageURLList.count
+            return clothes.count
         default:
             return 0
         }
@@ -226,8 +164,8 @@ extension ClosetMainViewController: UICollectionViewDataSource {
 
         case closetView.photoCollectionView:
             let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.configure(imageURL: imageURLList[indexPath.item])
-            cell.type = viewType.cellType
+            cell.configure(imageURL: clothes[indexPath.item].imageURL)
+            cell.type = .none
             return cell
 
         default:
@@ -293,6 +231,9 @@ extension ClosetMainViewController: UICollectionViewDelegate {
                     seasons: selectedTags.compactMap { Season(rawValue: $0) }
                 )
             )
+        case closetView.photoCollectionView:
+            let vc = factory.makeDetailClothesViewController(id: clothes[indexPath.item].id)
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
