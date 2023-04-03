@@ -69,23 +69,16 @@ final class ClosetMainViewController: BaseViewController, View {
 
     private func bindAction(_ reactor: Reactor) {
         let viewWillAppear = rx.viewWillAppear.map { _ in }.share()
-        let reloadCloset = NotificationCenterManager.reloadCloset.addObserver().map { _ in }.share()
 
-//        Observable.merge([
-//            reloadCloset,
-//        ])
         viewWillAppear
-            .map { Reactor.Action.fetchCategory }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        .map { Reactor.Action.fetchCategory }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
 
-//        Observable.merge([
-//            reloadCloset,
-//        ])
         viewWillAppear
-            .map { Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        .map { Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
 
         selectedCategoryPublisher
             .distinctUntilChanged()
@@ -97,7 +90,6 @@ final class ClosetMainViewController: BaseViewController, View {
     private func bindState(_ reactor: Reactor) {
         reactor.state
             .compactMap { $0.category }
-//            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] categoryList in
                 self?.categoryList = categoryList
                 self?.initializeCollectionView()
