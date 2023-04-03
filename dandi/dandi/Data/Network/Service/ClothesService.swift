@@ -83,8 +83,8 @@ extension ClothesService: BaseTargetType {
             let data = MultipartFormData(
                 provider: .data(imageData),
                 name: "clothesImage",
-                fileName: "clothes_image.jpeg",
-                mimeType: "image/jpeg"
+                fileName: "clothes_image.png",
+                mimeType: "image/png"
             )
             return .uploadMultipart([data])
         case .deleteClothes:

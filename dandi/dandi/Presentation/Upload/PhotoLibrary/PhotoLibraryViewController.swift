@@ -70,7 +70,25 @@ final class PhotoLibraryViewController: YPImagePicker {
     private func addImage(_ item: YPMediaItem) {
         guard let image = convertItemToImage(with: item) else { return }
         let removeBackgroundImage = BackgroundRemoval().removeBackground(image: image, maskOnly: false)
-        imageList.append(removeBackgroundImage)
+        let imageView = UIImageView(image: removeBackgroundImage)
+
+        // 레이어를 생성합니다.
+        let layer = imageView.layer
+
+        // 컨텍스트를 생성합니다.
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.isOpaque, 0.0)
+
+        // 레이어를 그립니다.
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+
+        // 이미지를 생성합니다.
+        let image2 = UIGraphicsGetImageFromCurrentImageContext()
+
+        // 컨텍스트를 종료합니다.
+        UIGraphicsEndImageContext()
+
+        guard let image2 = image2 else { return }
+        imageList.append(image2)
     }
 
     private func convertItemToImage(with item: YPMediaItem) -> UIImage? {

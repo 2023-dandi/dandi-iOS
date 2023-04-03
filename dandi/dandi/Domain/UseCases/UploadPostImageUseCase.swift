@@ -21,7 +21,7 @@ final class UploadPostImageUseCase: ImageUseCase {
     }
 
     func uploadImage(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: .greatestFiniteMagnitude) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             imagePublisher.accept(nil)
             return
         }
