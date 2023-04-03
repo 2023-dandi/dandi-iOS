@@ -61,9 +61,15 @@ final class ClosetTabViewController: BaseViewController, View {
     }
 
     private func bindAction(_ reactor: Reactor) {
-        rx.viewWillAppear
-            .take(1)
-            .map { _ in Reactor.Action.fetchCategory }
+        let viewWillAppear = rx.viewWillAppear.take(1).share().map { _ in }
+
+        viewWillAppear
+            .map { Reactor.Action.fetchCategory }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        viewWillAppear
+            .map { Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 

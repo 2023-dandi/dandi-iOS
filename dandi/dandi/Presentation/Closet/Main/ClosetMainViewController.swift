@@ -68,9 +68,22 @@ final class ClosetMainViewController: BaseViewController, View {
     }
 
     private func bindAction(_ reactor: Reactor) {
-        rx.viewWillAppear
-            .take(1)
-            .map { _ in Reactor.Action.fetchCategory }
+        let viewWillAppear = rx.viewWillAppear.map { _ in }.share()
+        let reloadCloset = NotificationCenterManager.reloadCloset.addObserver().map { _ in }.share()
+
+//        Observable.merge([
+//            reloadCloset,
+//        ])
+        viewWillAppear
+            .map { Reactor.Action.fetchCategory }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+//        Observable.merge([
+//            reloadCloset,
+//        ])
+        viewWillAppear
+            .map { Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
@@ -84,21 +97,10 @@ final class ClosetMainViewController: BaseViewController, View {
     private func bindState(_ reactor: Reactor) {
         reactor.state
             .compactMap { $0.category }
-            .distinctUntilChanged()
+//            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] categoryList in
                 self?.categoryList = categoryList
-                self?.selectedCategory = 0
-                self?.closetView.categoryCollectionView.reloadData()
-                self?.closetView.categoryCollectionView.selectItem(
-                    at: IndexPath(item: 0, section: 0),
-                    animated: false,
-                    scrollPosition: []
-                )
-                self?.closetView.tagCollectionView.selectItem(
-                    at: IndexPath(item: 0, section: 0),
-                    animated: false,
-                    scrollPosition: []
-                )
+                self?.initializeCollectionView()
             })
             .disposed(by: disposeBag)
 
@@ -110,14 +112,25 @@ final class ClosetMainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
     }
 
-    private func setProperties() {
-        title = "옷장"
+    private func initializeCollectionView() {
+        selectedCategory = 0
+        closetView.categoryCollectionView.reloadData()
+        let first = IndexPath(item: 0, section: 0)
+        closetView.categoryCollectionView.selectItem(
+            at: first,
+            animated: false,
+            scrollPosition: []
+        )
+
+        closetView.tagCollectionView.selectItem(
+            at: first,
+            animated: false,
+            scrollPosition: []
+        )
     }
 
-    private func reloadData() {
-        closetView.categoryCollectionView.reloadData()
-        closetView.tagCollectionView.reloadData()
-        closetView.photoCollectionView.reloadData()
+    private func setProperties() {
+        title = "옷장"
     }
 
     private func setCollectionView() {
@@ -233,6 +246,13 @@ extension ClosetMainViewController: UICollectionViewDelegate {
             )
         case closetView.photoCollectionView:
             let vc = factory.makeDetailClothesViewController(id: clothes[indexPath.item].id)
+            closetView.tagCollectionView.indexPathsForSelectedItems?.forEach {
+                closetView.tagCollectionView.deselectItem(at: $0, animated: false)
+            }
+            closetView.categoryCollectionView.indexPathsForSelectedItems?.forEach {
+                closetView.categoryCollectionView.deselectItem(at: $0, animated: false)
+            }
+            selectedCategory = 0
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

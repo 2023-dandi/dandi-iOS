@@ -13,6 +13,7 @@ enum NotificationCenterManager: NotificationCenterHandler {
     case reloadLocation
     case reloadPosts
     case reloadPost
+    case reloadCloset
 
     var name: Notification.Name {
         switch self {
@@ -24,6 +25,8 @@ enum NotificationCenterManager: NotificationCenterHandler {
             return Notification.Name("NotificationCenterManager.reloadPosts")
         case .reloadPost:
             return Notification.Name("NotificationCenterManager.reloadPost")
+        case .reloadCloset:
+            return Notification.Name("NotificationCenterManager.reloadCloset")
         }
     }
 }

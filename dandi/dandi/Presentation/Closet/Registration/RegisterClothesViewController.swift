@@ -81,6 +81,7 @@ final class RegisterClothesViewController: BaseViewController, View {
                 else { return nil }
                 let selectedSeasons = self.selectedIndexPaths.filter { $0.section == 2 }.map { $0.item }
                 let seasons: [Season] = selectedSeasons.compactMap { Season(rawValue: $0 + 1) }.compactMap { $0 }
+                self.saveButton.isDisabled = true
                 return ClothesInfo(category: clothesCategory, seasons: seasons, image: self.image)
             }
             .compactMap { $0 }

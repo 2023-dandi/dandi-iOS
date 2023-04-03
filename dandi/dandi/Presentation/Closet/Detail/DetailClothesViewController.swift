@@ -72,6 +72,7 @@ final class DetailClothesViewController: BaseViewController, View {
             .withUnretained(self)
             .subscribe(onNext: { owner, isDeleted in
                 if isDeleted {
+                    NotificationCenterManager.reloadCloset.post()
                     owner.navigationController?.popViewController(animated: true)
                 }
             })
