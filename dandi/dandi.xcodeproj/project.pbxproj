@@ -96,6 +96,7 @@
 		DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */; };
 		DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31235029B2593D00443FCE /* AuthUseCase.swift */; };
 		DD31489829D4028F009B2BA4 /* PostsWithPageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */; };
+		DD372B5D29D9603F00674E4E /* ClosetTabReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD372B5C29D9603F00674E4E /* ClosetTabReactor.swift */; };
 		DD3D9A4B29CC204A00E298B1 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = DD3D9A4A29CC204A00E298B1 /* Tabman */; };
 		DD3D9A4D29CC243100E298B1 /* ClosetTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */; };
 		DD3D9A5029CC303200E298B1 /* DecorationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D9A4F29CC303200E298B1 /* DecorationMenuView.swift */; };
@@ -152,6 +153,7 @@
 		DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */; };
 		DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */; };
 		DD9F6FE129B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9F6FE029B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift */; };
+		DDA2A03029DA710900685AE3 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2A02F29DA710900685AE3 /* CategoryList.swift */; };
 		DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE329641AFF006FBE00 /* HomeReactor.swift */; };
 		DDA38FE629641BEE006FBE00 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */; };
 		DDA38FE929641CCB006FBE00 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38FE829641CCB006FBE00 /* Post.swift */; };
@@ -333,6 +335,7 @@
 		DD31234D29B2592B00443FCE /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		DD31235029B2593D00443FCE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsWithPageDTO.swift; sourceTree = "<group>"; };
+		DD372B5C29D9603F00674E4E /* ClosetTabReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetTabReactor.swift; sourceTree = "<group>"; };
 		DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetTabViewController.swift; sourceTree = "<group>"; };
 		DD3D9A4F29CC303200E298B1 /* DecorationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorationMenuView.swift; sourceTree = "<group>"; };
 		DD3D9A5129CC410800E298B1 /* MyPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPost.swift; sourceTree = "<group>"; };
@@ -378,6 +381,7 @@
 		DD9F6FDC29B4F573002BD4B4 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		DD9F6FDE29B4F613002BD4B4 /* DefaultWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWeatherRepository.swift; sourceTree = "<group>"; };
 		DD9F6FE029B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHourlyWeatherUseCase.swift; sourceTree = "<group>"; };
+		DDA2A02F29DA710900685AE3 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		DDA38FE329641AFF006FBE00 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		DDA38FE529641BEE006FBE00 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		DDA38FE829641CCB006FBE00 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -534,7 +538,6 @@
 			children = (
 				DD1D6B2529D03F5300085FBE /* BackgroundTabViewController.swift */,
 				DD1D6B2B29D0672C00085FBE /* StickerTabViewController.swift */,
-				DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -835,9 +838,19 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		DD372B5B29D9602100674E4E /* ClosetTab */ = {
+			isa = PBXGroup;
+			children = (
+				DD3D9A4C29CC243100E298B1 /* ClosetTabViewController.swift */,
+				DD372B5C29D9603F00674E4E /* ClosetTabReactor.swift */,
+			);
+			path = ClosetTab;
+			sourceTree = "<group>";
+		};
 		DD3D9A4E29CC243400E298B1 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				DD372B5B29D9602100674E4E /* ClosetTab */,
 				DD1E52CD29D1757100550E02 /* ViewControllers */,
 				DD1D6B2D29D079EA00085FBE /* AddImageDelegate.swift */,
 				DD1D6B2729D03FDA00085FBE /* ImagesWithAddButtonView.swift */,
@@ -1034,6 +1047,7 @@
 				DDF848A329D6D0F70003097A /* Token.swift */,
 				DD66C03029D9514E00A262F2 /* Clothes.swift */,
 				DD66C03229D951A100A262F2 /* ListWithPage.swift */,
+				DDA2A02F29DA710900685AE3 /* CategoryList.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1504,6 +1518,7 @@
 				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
 				DD1D6B2A29D0429500085FBE /* ImagesDataSource.swift in Sources */,
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
+				DD372B5D29D9603F00674E4E /* ClosetTabReactor.swift in Sources */,
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
 				DD00E7EC29C776F9001536D4 /* UploadPostUseCase.swift in Sources */,
 				DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */,
@@ -1565,6 +1580,7 @@
 				DD1D6B2C29D0672C00085FBE /* StickerTabViewController.swift in Sources */,
 				DD2E52E429BF38560078EA74 /* DecorationImageView.swift in Sources */,
 				DDCDA17629C2F6E200BAB1CF /* WeatherFeeling.swift in Sources */,
+				DDA2A03029DA710900685AE3 /* CategoryList.swift in Sources */,
 				DD2E52E029BF1FF10078EA74 /* DashBorderView.swift in Sources */,
 				DD1E216529D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift in Sources */,
 				DDA38FFA2965B055006FBE00 /* FeedView.swift in Sources */,

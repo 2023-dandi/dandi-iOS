@@ -35,14 +35,16 @@ final class DefaultClosetUseCase: ClosetUseCase {
     func fetch(
         size: Int,
         page: Int,
-        category: String,
-        seasons: [String]
+        category: ClothesCategory,
+        seasons: [Season]
     ) {
         clothesRepository.fetchList(
             size: size,
             page: page,
-            category: category,
-            seasons: seasons
+            category: category.toString,
+            seasons: seasons.contains(.all)
+                ? Season.allCases.map { $0.toString }
+                : seasons.map { $0.toString }
         ) { [weak self] result in
             switch result {
             case let .success(clothesWithPage):

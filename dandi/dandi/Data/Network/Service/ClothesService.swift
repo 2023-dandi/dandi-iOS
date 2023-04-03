@@ -65,13 +65,17 @@ extension ClothesService: BaseTargetType {
         case .deleteClothes:
             return .requestPlain
         case let .getClothesList(size, page, category, seasons):
+            var parameters: [String: Any] = [
+                "size": size,
+                "page": page,
+                "category": category
+            ]
+            seasons.forEach {
+                parameters["season"] = $0
+            }
             return .requestParameters(
-                parameters: [
-                    "size": size,
-                    "page": page,
-                    "category": category,
-                    "season": seasons
-                ], encoding: URLEncoding.queryString
+                parameters: parameters,
+                encoding: URLEncoding.queryString
             )
         }
     }

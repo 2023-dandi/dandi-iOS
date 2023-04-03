@@ -183,6 +183,10 @@ extension ModuleFactory: ModuleFactoryInterface {
     func makeClosetTabViewController() -> ClosetTabViewController {
         let vc = ClosetTabViewController()
         vc.factory = self
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
+        let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
+        let reactor = ClosetTabReactor(closetUseCase: closetUseCase)
+        vc.reactor = reactor
         return vc
     }
 

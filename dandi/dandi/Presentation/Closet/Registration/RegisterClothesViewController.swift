@@ -25,7 +25,6 @@ final class RegisterClothesViewController: BaseViewController, View {
     private let seasons: [Season] = Season.allCases
 
     private let images: [UIImage]
-    private var selectedCategoryIndex: Int = 0
 
     private var selectedIndexPaths = Set<IndexPath>() {
         didSet {

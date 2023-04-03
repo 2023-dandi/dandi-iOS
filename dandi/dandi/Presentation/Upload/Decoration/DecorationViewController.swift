@@ -91,11 +91,6 @@ final class DecorationViewController: BaseViewController {
     private func setViewControllers() {
         let closet = factory.makeClosetTabViewController()
         closet.addImageDeleagte = self
-        closet.update(
-            category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
-            tagList: ["봄", "겨울", "가을", "겨울"],
-            photo: [.add, .checkmark, .strokedCheckmark, .remove]
-        )
 
         let background = factory.makeBackgroundTabViewController()
         background.addImageDelegate = self

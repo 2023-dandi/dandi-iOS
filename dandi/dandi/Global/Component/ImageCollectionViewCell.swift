@@ -37,7 +37,7 @@ final class ImageCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    private let imageView: UIImageView = .init()
+    private(set) lazy var imageView: UIImageView = .init()
     private let checkIconView: UIImageView = .init()
 
     override init(frame: CGRect) {

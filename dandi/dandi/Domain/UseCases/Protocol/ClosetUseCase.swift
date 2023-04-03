@@ -20,7 +20,7 @@ protocol ClosetUseCase {
     func fetch(
         size: Int,
         page: Int,
-        category: String,
-        seasons: [String]
+        category: ClothesCategory,
+        seasons: [Season]
     )
 }

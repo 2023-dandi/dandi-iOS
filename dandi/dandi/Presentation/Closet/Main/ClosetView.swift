@@ -29,6 +29,7 @@ final class ClosetView: UIView {
         )
         collectionView.register(cell: RoundTagCollectionViewCell.self)
         collectionView.bounces = false
+        collectionView.allowsMultipleSelection = true
         setCollectionView(collectionView)
         return collectionView
     }()
