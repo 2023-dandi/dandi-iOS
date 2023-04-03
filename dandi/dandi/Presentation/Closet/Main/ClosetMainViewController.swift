@@ -7,11 +7,14 @@
 
 import UIKit
 
+import ReactorKit
 import RxCocoa
 import RxSwift
 import YDS
 
-final class ClosetMainViewController: BaseViewController {
+final class ClosetMainViewController: BaseViewController, View {
+    typealias Reactor = ClosetTabReactor
+
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
         set { super.hidesBottomBarWhenPushed = newValue }
@@ -36,6 +39,27 @@ final class ClosetMainViewController: BaseViewController {
         }
     }
 
+    private var categoryList: [CategoryInfo] = [] {
+        didSet {
+            category = categoryList.map { $0.category.text }
+        }
+    }
+
+    private var selectedCategory: Int? {
+        didSet {
+            guard let selectedCategory = selectedCategory else { return }
+            tagList = categoryList[selectedCategory].seasons.map { $0.text }
+        }
+    }
+
+    private var selectedTags: [Int] = [0] {
+        didSet {
+            dump(selectedTags)
+        }
+    }
+
+    private var selectedCategoryPublisher = PublishSubject<CategoryInfo>()
+
     private let closetView = ClosetView()
     private let rightTopButton = UIButton()
     private var viewType: ViewType = .default {
@@ -48,9 +72,14 @@ final class ClosetMainViewController: BaseViewController {
 
     private let deleteButton = YDSBoxButton()
 
+    /// DataSource
     private var category: [String] = []
     private var tagList: [String] = []
-    private var photo: [UIImage] = []
+    private var imageURLList: [String] = [] {
+        didSet {
+            self.closetView.photoCollectionView.reloadData()
+        }
+    }
 
     override func loadView() {
         view = closetView
@@ -61,18 +90,55 @@ final class ClosetMainViewController: BaseViewController {
         setProperties()
         setLayouts()
         setCollectionView()
-        bind()
     }
 
-    func update(
-        category: [String],
-        tagList: [String],
-        photo: [UIImage]
-    ) {
-        self.category = category
-        self.tagList = tagList
-        self.photo = photo
-        reloadData()
+    func bind(reactor: Reactor) {
+        bindTapAction()
+        bindAction(reactor)
+        bindState(reactor)
+    }
+
+    private func bindAction(_ reactor: Reactor) {
+        rx.viewWillAppear
+            .take(1)
+            .map { _ in Reactor.Action.fetchCategory }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        selectedCategoryPublisher
+            .distinctUntilChanged()
+            .map { Reactor.Action.fetchClothes(category: $0.category, seasons: $0.seasons) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindState(_ reactor: Reactor) {
+        reactor.state
+            .compactMap { $0.category }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] categoryList in
+                self?.categoryList = categoryList
+                self?.selectedCategory = 0
+                self?.closetView.categoryCollectionView.reloadData()
+                self?.closetView.categoryCollectionView.selectItem(
+                    at: IndexPath(item: 0, section: 0),
+                    animated: false,
+                    scrollPosition: []
+                )
+                self?.closetView.tagCollectionView.selectItem(
+                    at: IndexPath(item: 0, section: 0),
+                    animated: false,
+                    scrollPosition: []
+                )
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.clothes }
+            .subscribe(onNext: { [weak self] clothes in
+                self?.imageURLList = clothes.map { $0.imageURL }
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setProperties() {
@@ -89,7 +155,7 @@ final class ClosetMainViewController: BaseViewController {
         viewType = .default
     }
 
-    func bind() {
+    private func bindTapAction() {
         rightTopButton.rx.tap
             .withUnretained(self)
             .bind(onNext: { owner, _ in
@@ -137,7 +203,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
         case closetView.tagCollectionView:
             return tagList.count
         case closetView.photoCollectionView:
-            return photo.count
+            return imageURLList.count
         default:
             return 0
         }
@@ -149,7 +215,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch collectionView {
         case closetView.categoryCollectionView:
-            let cell: CategoryTextCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell: PagerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.configure(text: category[indexPath.item])
             return cell
 
@@ -160,8 +226,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
 
         case closetView.photoCollectionView:
             let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.configure(image: photo[indexPath.item])
-            dump(viewType.cellType)
+            cell.configure(imageURL: imageURLList[indexPath.item])
             cell.type = viewType.cellType
             return cell
 
@@ -174,18 +239,100 @@ extension ClosetMainViewController: UICollectionViewDataSource {
 extension ClosetMainViewController: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
+        shouldSelectItemAt indexPath: IndexPath
+    ) -> Bool {
+        guard collectionView == closetView.tagCollectionView else { return true }
+
+        if indexPath.item == 0 {
+            collectionView.indexPathsForSelectedItems?.forEach {
+                collectionView.deselectItem(at: $0, animated: false)
+            }
+            selectedTags = [0]
+            return true
+        }
+
+        if selectedTags.contains(0) {
+            selectedTags = selectedTags.filter { $0 != 0 }
+            collectionView.deselectItem(at: IndexPath(item: 0, section: 0), animated: false)
+            return true
+        }
+        return true
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
         switch collectionView {
         case closetView.categoryCollectionView:
-            print("mainCategoryTabCollectionView")
-            print(indexPath)
+            selectedCategory = indexPath.item
+
+            selectedTags = [0]
+            closetView.tagCollectionView.reloadData()
+
+            closetView.tagCollectionView.selectItem(
+                at: IndexPath(item: 0, section: 0),
+                animated: false,
+                scrollPosition: []
+            )
+
+            selectedCategoryPublisher.onNext(
+                CategoryInfo(
+                    category: categoryList[indexPath.item].category,
+                    seasons: [.all]
+                )
+            )
+
         case closetView.tagCollectionView:
-            print("tagTabCollectionView")
-            print(indexPath)
-        case closetView.photoCollectionView:
-            print("photoCollectionView")
-            print(indexPath)
+            selectedTags.append(indexPath.item)
+
+            guard let selectedCategory = selectedCategory else { return }
+            selectedCategoryPublisher.onNext(
+                CategoryInfo(
+                    category: categoryList[selectedCategory].category,
+                    seasons: selectedTags.compactMap { Season(rawValue: $0) }
+                )
+            )
+        default:
+            break
+        }
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        shouldDeselectItemAt _: IndexPath
+    ) -> Bool {
+        switch collectionView {
+        case closetView.categoryCollectionView:
+            return false
+
+        case closetView.tagCollectionView:
+            if selectedTags.count <= 1 {
+                return false
+            } else {
+                return true
+            }
+        default:
+            return true
+        }
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath
+    ) {
+        switch collectionView {
+        case closetView.tagCollectionView:
+            selectedTags = selectedTags.filter { $0 != indexPath.item }
+
+            guard let selectedCategory = selectedCategory else { return }
+            selectedCategoryPublisher.onNext(
+                CategoryInfo(
+                    category: categoryList[selectedCategory].category,
+                    seasons: selectedTags.compactMap { Season(rawValue: $0) }
+                )
+            )
+
         default:
             break
         }

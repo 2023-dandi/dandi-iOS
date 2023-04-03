@@ -17,7 +17,7 @@ final class ClosetTabViewController: BaseViewController, View {
 
     weak var addImageDeleagte: AddImageDelegate?
 
-    private let closetView = ClosetView()
+    private let closetView = ClosetTabView()
 
     private var categoryList: [CategoryInfo] = [] {
         didSet {

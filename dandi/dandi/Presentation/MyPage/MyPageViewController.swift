@@ -127,11 +127,6 @@ extension MyPageViewController: MyPageProfileDelegate {
 
     func closetButtonDidTap() {
         let closet = factory.makeClosetMainViewController()
-        closet.update(
-            category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
-            tagList: ["전체", "봄", "여름", "가을", "겨울"],
-            photo: [.add, .checkmark, .strokedCheckmark, .remove]
-        )
         navigationController?.pushViewController(closet, animated: true)
     }
 }

@@ -124,6 +124,10 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeClosetMainViewController() -> ClosetMainViewController {
         let vc = ClosetMainViewController()
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
+        let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
+        let reactor = ClosetTabReactor(closetUseCase: closetUseCase)
+        vc.reactor = reactor
         vc.factory = self
         return vc
     }

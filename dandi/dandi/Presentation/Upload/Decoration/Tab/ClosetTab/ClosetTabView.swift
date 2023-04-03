@@ -1,8 +1,8 @@
 //
-//  ClosetView.swift
+//  ClosetTabView.swift
 //  dandi
 //
-//  Created by 김윤서 on 2023/04/03.
+//  Created by 김윤서 on 2023/03/27.
 //
 
 import UIKit
@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 import YDS
 
-final class ClosetView: UIView {
+final class ClosetTabView: UIView {
     private(set) lazy var categoryCollectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: self.bounds,
             collectionViewLayout: createMainCategoryTabCollectionLayout()
         )
-        collectionView.register(cell: PagerCollectionViewCell.self)
+        collectionView.register(cell: CategoryTextCollectionViewCell.self)
         collectionView.bounces = false
         setCollectionView(collectionView)
         return collectionView
@@ -41,7 +41,7 @@ final class ClosetView: UIView {
         )
         collectionView.register(cell: ImageCollectionViewCell.self)
         collectionView.allowsMultipleSelection = true
-        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 20, right: .zero)
+        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 250, right: .zero)
         setCollectionView(collectionView)
         return collectionView
     }()
@@ -55,7 +55,7 @@ final class ClosetView: UIView {
         addSubviews(categoryCollectionView, tagCollectionView, photoCollectionView)
         categoryCollectionView.snp.makeConstraints { make in
             make.leading.top.trailing.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(48)
+            make.height.equalTo(36)
         }
         tagCollectionView.snp.makeConstraints { make in
             make.top.equalTo(categoryCollectionView.snp.bottom)
@@ -82,16 +82,16 @@ final class ClosetView: UIView {
 
 // MARK: - Create CollectionView Layout
 
-extension ClosetView {
+extension ClosetTabView {
     private func createMainCategoryTabCollectionLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
+            widthDimension: .estimated(60),
             heightDimension: .fractionalHeight(1.0)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(80),
-            heightDimension: .absolute(48)
+            widthDimension: .estimated(60),
+            heightDimension: .absolute(36)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
