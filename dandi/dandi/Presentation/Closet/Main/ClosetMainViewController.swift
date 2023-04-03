@@ -312,6 +312,7 @@ extension ClosetMainViewController: UICollectionViewDelegate {
             } else {
                 return true
             }
+
         default:
             return true
         }
@@ -321,20 +322,16 @@ extension ClosetMainViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didDeselectItemAt indexPath: IndexPath
     ) {
-        switch collectionView {
-        case closetView.tagCollectionView:
-            selectedTags = selectedTags.filter { $0 != indexPath.item }
+        guard collectionView == closetView.tagCollectionView else { return }
 
-            guard let selectedCategory = selectedCategory else { return }
-            selectedCategoryPublisher.onNext(
-                CategoryInfo(
-                    category: categoryList[selectedCategory].category,
-                    seasons: selectedTags.compactMap { Season(rawValue: $0) }
-                )
+        selectedTags = selectedTags.filter { $0 != indexPath.item }
+
+        guard let selectedCategory = selectedCategory else { return }
+        selectedCategoryPublisher.onNext(
+            CategoryInfo(
+                category: categoryList[selectedCategory].category,
+                seasons: selectedTags.compactMap { Season(rawValue: $0) }
             )
-
-        default:
-            break
-        }
+        )
     }
 }

@@ -32,7 +32,7 @@ final class ClosetTabViewController: BaseViewController, View {
         }
     }
 
-    private var selectedTags: [Int] = []
+    private var selectedTags: [Int] = [0]
 
     private var selectedCategoryPublisher = PublishSubject<CategoryInfo>()
 
@@ -175,9 +175,8 @@ extension ClosetTabViewController: UICollectionViewDelegate {
             return true
         }
 
-        selectedTags.append(indexPath.item)
         if selectedTags.contains(0) {
-            selectedTags.removeAll(where: { $0 == indexPath.item })
+            selectedTags = selectedTags.filter { $0 != 0 }
             collectionView.deselectItem(at: IndexPath(item: 0, section: 0), animated: false)
             return true
         }
@@ -194,6 +193,7 @@ extension ClosetTabViewController: UICollectionViewDelegate {
 
             selectedTags = [0]
             closetView.tagCollectionView.reloadData()
+
             closetView.tagCollectionView.selectItem(
                 at: IndexPath(item: 0, section: 0),
                 animated: false,
@@ -208,6 +208,7 @@ extension ClosetTabViewController: UICollectionViewDelegate {
             )
 
         case closetView.tagCollectionView:
+            selectedTags.append(indexPath.item)
 
             guard let selectedCategory = selectedCategory else { return }
             selectedCategoryPublisher.onNext(
@@ -227,7 +228,43 @@ extension ClosetTabViewController: UICollectionViewDelegate {
             addImageDeleagte?.add(self, image: image)
 
         default:
-            break
+            return
         }
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        shouldDeselectItemAt _: IndexPath
+    ) -> Bool {
+        switch collectionView {
+        case closetView.categoryCollectionView:
+            return false
+
+        case closetView.tagCollectionView:
+            if selectedTags.count <= 1 {
+                return false
+            } else {
+                return true
+            }
+        default:
+            return true
+        }
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath
+    ) {
+        guard collectionView == closetView.tagCollectionView else { return }
+
+        selectedTags = selectedTags.filter { $0 != indexPath.item }
+
+        guard let selectedCategory = selectedCategory else { return }
+        selectedCategoryPublisher.onNext(
+            CategoryInfo(
+                category: categoryList[selectedCategory].category,
+                seasons: selectedTags.compactMap { Season(rawValue: $0) }
+            )
+        )
     }
 }
