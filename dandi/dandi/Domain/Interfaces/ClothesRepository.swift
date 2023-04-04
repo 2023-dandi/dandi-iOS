@@ -5,7 +5,8 @@
 //  Created by 김윤서 on 2023/03/30.
 //
 
-import UIKit
+import Foundation
+import RxSwift
 
 protocol ClothesRepository {
     func upload(
@@ -32,4 +33,6 @@ protocol ClothesRepository {
         seasons: [String],
         completion: @escaping NetworkCompletion<ListWithPage<Clothes>>
     )
+
+    func fetchCategory() -> Single<NetworkResult<[CategoryInfo]>>
 }

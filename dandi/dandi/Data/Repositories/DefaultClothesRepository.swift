@@ -8,6 +8,8 @@
 import Foundation
 import Moya
 
+import RxSwift
+
 final class DefaultClothesRepository: ClothesRepository {
     private let router: MoyaProvider<ClothesService>
 
@@ -93,5 +95,19 @@ final class DefaultClothesRepository: ClothesRepository {
                 completion(.failure(.networkFail))
             }
         }
+    }
+
+    func fetchCategory() -> Single<NetworkResult<[CategoryInfo]>> {
+        return router.rx.request(.getClothesCategory)
+            .map { response in
+                let decodedResponse: NetworkResult<ClothesCategoryListDTO> = NetworkHandler.requestDecoded(by: response)
+                switch decodedResponse {
+                case let .success(category):
+                    return .success(category.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 }

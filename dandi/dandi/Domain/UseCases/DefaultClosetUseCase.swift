@@ -38,6 +38,18 @@ final class DefaultClosetUseCase: ClosetUseCase {
         return Single.just(.init(id: id, imageURL: "", category: .bottom, seasons: Season.allCases))
     }
 
+    func fetchCategories() -> Single<[CategoryInfo]> {
+        return clothesRepository.fetchCategory()
+            .map { result in
+                switch result {
+                case let .success(list):
+                    return list
+                case .failure:
+                    return []
+                }
+            }
+    }
+
     func fetchClothesList(
         size: Int,
         page: Int,

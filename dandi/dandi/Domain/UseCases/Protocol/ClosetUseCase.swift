@@ -19,6 +19,7 @@ protocol ClosetUseCase {
 
     func delete(id: Int)
     func fetch(id: Int) -> Single<DetailClothesInfo?>
+    func fetchCategories() -> Single<[CategoryInfo]>
     func fetchClothesList(
         size: Int,
         page: Int,

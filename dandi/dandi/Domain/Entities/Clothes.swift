@@ -9,3 +9,9 @@ struct Clothes {
     let id: Int
     let imageURL: String
 }
+
+extension Clothes: Equatable {
+    static func == (lhs: Clothes, rhs: Clothes) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

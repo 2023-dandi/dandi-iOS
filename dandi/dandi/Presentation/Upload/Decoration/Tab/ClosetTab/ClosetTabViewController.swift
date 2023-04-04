@@ -21,14 +21,14 @@ final class ClosetTabViewController: BaseViewController, View {
 
     private var categoryList: [CategoryInfo] = [] {
         didSet {
-            category = categoryList.map { $0.category.text }
+            category = categoryList.map { $0.category }
         }
     }
 
     private var selectedCategory: Int? {
         didSet {
             guard let selectedCategory = selectedCategory else { return }
-            tagList = categoryList[selectedCategory].seasons.map { $0.text }
+            tagList = categoryList[selectedCategory].seasons
         }
     }
 
@@ -37,8 +37,8 @@ final class ClosetTabViewController: BaseViewController, View {
     private var selectedCategoryPublisher = PublishSubject<CategoryInfo>()
 
     /// DataSource
-    private var category: [String] = []
-    private var tagList: [String] = []
+    private var category: [ClothesCategory] = []
+    private var tagList: [Season] = []
     private var imageURLList: [String] = [] {
         didSet {
             self.closetView.photoCollectionView.reloadData()
@@ -85,6 +85,7 @@ final class ClosetTabViewController: BaseViewController, View {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] categoryList in
                 self?.categoryList = categoryList
+                guard !categoryList.isEmpty else { return }
                 self?.selectedCategory = 0
                 self?.closetView.categoryCollectionView.reloadData()
                 self?.closetView.categoryCollectionView.selectItem(
@@ -147,12 +148,12 @@ extension ClosetTabViewController: UICollectionViewDataSource {
         switch collectionView {
         case closetView.categoryCollectionView:
             let cell: CategoryTextCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.configure(text: category[indexPath.item])
+            cell.configure(text: category[indexPath.item].text)
             return cell
 
         case closetView.tagCollectionView:
             let cell: RoundTagCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.configure(text: tagList[indexPath.item])
+            cell.configure(text: tagList[indexPath.item].text)
             return cell
 
         case closetView.photoCollectionView:

@@ -51,13 +51,9 @@ final class ClosetTabReactor: Reactor {
         case .fetchCategory:
             return Observable.concat([
                 .just(.setLoading(isLoading: true)),
-                .just(.setCategory(category: [
-                    CategoryInfo(category: .all, seasons: [.all, .spring, .summer, .fall, .winter]),
-                    CategoryInfo(category: .bottom, seasons: [.all, .spring, .fall]),
-                    CategoryInfo(category: .top, seasons: [.all, .spring, .winter]),
-                    CategoryInfo(category: .bag, seasons: [.all, .spring, .fall]),
-                    CategoryInfo(category: .onePiece, seasons: [.all, .winter])
-                ])),
+                closetUseCase.fetchCategories()
+                    .asObservable()
+                    .map { Mutation.setCategory(category: $0) },
                 .just(.setLoading(isLoading: false))
             ])
         }

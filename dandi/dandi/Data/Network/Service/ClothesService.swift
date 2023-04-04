@@ -15,6 +15,7 @@ enum ClothesService {
     case postClothesImage(imageData: Data)
     case deleteClothes(clothesID: Int)
     case getClothesList(size: Int, page: Int, category: String, seasons: [String])
+    case getClothesCategory
 }
 
 extension ClothesService: BaseTargetType {
@@ -52,6 +53,8 @@ extension ClothesService: BaseTargetType {
             return "/clothes/\(clothesID)"
         case .getClothesList:
             return ""
+        case .getClothesCategory:
+            return "/clothes/categories-seasons"
         }
     }
 
@@ -64,6 +67,8 @@ extension ClothesService: BaseTargetType {
         case .deleteClothes:
             return .delete
         case .getClothesList:
+            return .get
+        case .getClothesCategory:
             return .get
         }
     }
@@ -79,6 +84,7 @@ extension ClothesService: BaseTargetType {
                 ],
                 encoding: JSONEncoding.default
             )
+
         case let .postClothesImage(imageData):
             let data = MultipartFormData(
                 provider: .data(imageData),
@@ -87,9 +93,14 @@ extension ClothesService: BaseTargetType {
                 mimeType: "image/png"
             )
             return .uploadMultipart([data])
+
         case .deleteClothes:
             return .requestPlain
+
         case .getClothesList:
+            return .requestPlain
+
+        case .getClothesCategory:
             return .requestPlain
         }
     }

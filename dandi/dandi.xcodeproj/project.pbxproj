@@ -193,6 +193,7 @@
 		DDC52200299520E500E2845F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC521FF299520E500E2845F /* UserProfile.swift */; };
 		DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */; };
 		DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */; };
+		DDC6E7D329DBFEB400F8C14F /* ClothesCategoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6E7D229DBFEB400F8C14F /* ClothesCategoryDTO.swift */; };
 		DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16629C2DE5000BAB1CF /* Date+.swift */; };
 		DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16829C2E05500BAB1CF /* Color.swift */; };
 		DDCDA16B29C2E89E00BAB1CF /* UploadMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDA16A29C2E89E00BAB1CF /* UploadMainView.swift */; };
@@ -424,6 +425,7 @@
 		DDC521FF299520E500E2845F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		DDC5220D2995E6EE00E2845F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		DDC52214299A28DA00E2845F /* PostDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailDataSource.swift; sourceTree = "<group>"; };
+		DDC6E7D229DBFEB400F8C14F /* ClothesCategoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesCategoryDTO.swift; sourceTree = "<group>"; };
 		DDCDA16629C2DE5000BAB1CF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		DDCDA16829C2E05500BAB1CF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DDCDA16A29C2E89E00BAB1CF /* UploadMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMainView.swift; sourceTree = "<group>"; };
@@ -776,6 +778,7 @@
 				DD31489729D4028F009B2BA4 /* PostsWithPageDTO.swift */,
 				DD1E216429D4486900A249B1 /* MyTemperaturePostWithPageDTO.swift */,
 				DD66C02E29D950BD00A262F2 /* ClothesDTO.swift */,
+				DDC6E7D229DBFEB400F8C14F /* ClothesCategoryDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1482,6 +1485,7 @@
 				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
 				DD31232129B1B9F500443FCE /* Interceptor.swift in Sources */,
 				DD1D6B1E29D032C800085FBE /* PagerButton.swift in Sources */,
+				DDC6E7D329DBFEB400F8C14F /* ClothesCategoryDTO.swift in Sources */,
 				DDE3E30229C376CD007BDBA7 /* PostDTO.swift in Sources */,
 				DD3D9A5629CC429900E298B1 /* MyPostListUseCase.swift in Sources */,
 				DD1E52DA29D1F47B00550E02 /* ConfirmLocationViewController.swift in Sources */,
