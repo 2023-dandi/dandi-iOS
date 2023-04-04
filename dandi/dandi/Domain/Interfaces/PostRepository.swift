@@ -34,19 +34,19 @@ protocol PostRepository {
         completion: @escaping NetworkCompletion<StatusCase>
     )
 
-    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPage>)
+    func fetchMyPostList(completion: @escaping NetworkCompletion<ListWithPage<MyPost>>)
 
     func fetchPostList(
         min: Int,
         max: Int,
         size: Int,
         page: Int
-    ) -> Single<NetworkResult<PostsWithPage>>
+    ) -> Single<NetworkResult<ListWithPage<Post>>>
 
     func fetchMyTemperaturePostList(
         min: Int,
         max: Int,
         size: Int,
         page: Int
-    ) -> Single<NetworkResult<PostsWithPage>>
+    ) -> Single<NetworkResult<ListWithPage<Post>>>
 }

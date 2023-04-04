@@ -129,7 +129,7 @@ final class DefaultPostRepository: PostRepository {
         }
     }
 
-    func fetchMyPostList(completion: @escaping NetworkCompletion<MyPostsWithPage>) {
+    func fetchMyPostList(completion: @escaping NetworkCompletion<ListWithPage<MyPost>>) {
         router.request(.my) { result in
             switch result {
             case let .success(response):
@@ -154,7 +154,7 @@ final class DefaultPostRepository: PostRepository {
         max: Int,
         size: Int,
         page: Int
-    ) -> RxSwift.Single<NetworkResult<PostsWithPage>> {
+    ) -> RxSwift.Single<NetworkResult<ListWithPage<Post>>> {
         return router.rx.request(.feed(min: min, max: max, size: size, page: page))
             .map { response in
                 let decodedResponse: NetworkResult<PostsWithPageDTO> = NetworkHandler.requestDecoded(by: response)
@@ -174,7 +174,7 @@ final class DefaultPostRepository: PostRepository {
         max: Int,
         size: Int,
         page: Int
-    ) -> RxSwift.Single<NetworkResult<PostsWithPage>> {
+    ) -> RxSwift.Single<NetworkResult<ListWithPage<Post>>> {
         return router.rx.request(.myFeed(min: min, max: max, size: size, page: page))
             .map { response in
                 let decodedResponse: NetworkResult<MyTemperaturePostWithPageDTO> = NetworkHandler.requestDecoded(by: response)

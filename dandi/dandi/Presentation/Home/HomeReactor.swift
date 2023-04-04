@@ -26,16 +26,14 @@ final class HomeReactor: Reactor {
 
     enum Action {
         case fetchWeatherInfo
-        case fetchTemperatures
         case fetchPostList(min: Int?, max: Int?)
         case like(id: Int)
     }
 
     enum Mutation {
-        case setHourlyWeathers(weathers: [TimeWeatherInfo])
+        case setWeathers(weathers: TodayWeatherInfo)
         case setLoading(isLoading: Bool)
         case setUpdateLocationSuccess(Bool)
-        case setTemperature(temperature: Temperatures)
         case setPostList(posts: [Post])
         case setLikedPostID(postID: Int)
     }
@@ -63,16 +61,7 @@ final class HomeReactor: Reactor {
             return Observable.concat([
                 Observable.just(.setLoading(isLoading: true)),
                 hourlyWeatherUseCase.hourlyWeather
-                    .map { Mutation.setHourlyWeathers(weathers: $0) },
-                Observable.just(.setLoading(isLoading: false))
-            ])
-        case .fetchTemperatures:
-            temperatureUseCase.fetchWeatherInfo(nx: nx, ny: ny, page: 1)
-            return Observable.concat([
-                Observable.just(.setLoading(isLoading: true)),
-                temperatureUseCase.temperatureInfo
-                    .compactMap { $0 }
-                    .map { Mutation.setTemperature(temperature: $0) },
+                    .map { Mutation.setWeathers(weathers: $0) },
                 Observable.just(.setLoading(isLoading: false))
             ])
 
@@ -101,12 +90,11 @@ final class HomeReactor: Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
-        case let .setHourlyWeathers(weathers):
-            newState.hourlyWeathers = weathers
+        case let .setWeathers(weathers):
+            newState.hourlyWeathers = weathers.timeWeahtherInfos
+            newState.temperature = weathers.temperatures
         case let .setUpdateLocationSuccess(isCompleted):
             newState.updateLocationSuccess = isCompleted
-        case let .setTemperature(temperature):
-            newState.temperature = temperature
         case let .setPostList(posts):
             newState.posts = posts
         case let .setLikedPostID(postID):

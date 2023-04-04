@@ -1,8 +1,8 @@
 //
-//  ClosetMainViewController.swift
+//  ClosetTabViewController.swift
 //  dandi
 //
-//  Created by 김윤서 on 2023/03/27.
+//  Created by 김윤서 on 2023/03/23.
 //
 
 import UIKit
@@ -12,13 +12,12 @@ import RxCocoa
 import RxSwift
 import YDS
 
-final class ClosetMainViewController: BaseViewController, View {
+final class ClosetTabViewController: BaseViewController, View {
     typealias Reactor = ClosetTabReactor
 
-    override var hidesBottomBarWhenPushed: Bool {
-        get { navigationController?.topViewController == self }
-        set { super.hidesBottomBarWhenPushed = newValue }
-    }
+    weak var addImageDeleagte: AddImageDelegate?
+
+    private let closetView = ClosetTabView()
 
     private var categoryList: [CategoryInfo] = [] {
         didSet {
@@ -26,26 +25,17 @@ final class ClosetMainViewController: BaseViewController, View {
         }
     }
 
-    private var selectedCategory: Int = 0 {
+    private var selectedCategory: Int? {
         didSet {
-            guard !categoryList.isEmpty else {
-                tagList = []
-                return
-            }
+            guard let selectedCategory = selectedCategory else { return }
             tagList = categoryList[selectedCategory].seasons
             closetView.tagCollectionView.reloadData()
         }
     }
 
-    private var selectedTags: [Season] = [.all] {
-        didSet {
-            selectedTags = selectedTags.uniqued()
-        }
-    }
+    private var selectedTags: [Season] = [.all]
 
     private var selectedCategoryPublisher = PublishSubject<CategoryInfo>()
-
-    private let closetView = ClosetView()
 
     /// DataSource
     private var category: [ClothesCategory] = []
@@ -55,7 +45,7 @@ final class ClosetMainViewController: BaseViewController, View {
         }
     }
 
-    private var clothes: [Clothes] = [] {
+    private var imageURLList: [String] = [] {
         didSet {
             self.closetView.photoCollectionView.reloadData()
         }
@@ -67,7 +57,7 @@ final class ClosetMainViewController: BaseViewController, View {
 
     override init() {
         super.init()
-        setProperties()
+        title = "옷장"
         setCollectionView()
     }
 
@@ -77,31 +67,19 @@ final class ClosetMainViewController: BaseViewController, View {
     }
 
     private func bindAction(_ reactor: Reactor) {
-        let viewWillAppear = rx.viewWillAppear.map { _ in }.share()
-        let reload = NotificationCenterManager.reloadCloset.addObserver().map { _ in }.share()
-
-        Observable.merge([
-            reload, viewWillAppear.take(1)
-        ])
-        .map { Reactor.Action.fetchCategory }
-        .bind(to: reactor.action)
-        .disposed(by: disposeBag)
-
-        Observable.merge([
-            reload, viewWillAppear.take(1)
-        ])
-        .map { Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
-        .bind(to: reactor.action)
-        .disposed(by: disposeBag)
+        let viewWillAppear = rx.viewWillAppear.take(1).share().map { _ in }
 
         viewWillAppear
-            .subscribe(onNext: { [weak self] _ in
-                self?.setCollectionViewSelectItem()
-            })
+            .map { Reactor.Action.fetchCategory }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        viewWillAppear
+            .map { Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
         selectedCategoryPublisher
-            .distinctUntilChanged()
             .map { Reactor.Action.fetchClothes(category: $0.category, seasons: $0.seasons) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -112,42 +90,29 @@ final class ClosetMainViewController: BaseViewController, View {
             .compactMap { $0.category }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] categoryList in
-                if categoryList.isEmpty { return }
-
                 self?.categoryList = categoryList
+                guard !categoryList.isEmpty else { return }
                 self?.selectedCategory = 0
-                self?.setCollectionViewSelectItem()
+                self?.closetView.categoryCollectionView.reloadData()
+                self?.closetView.categoryCollectionView.selectItem(
+                    at: IndexPath(item: 0, section: 0),
+                    animated: false,
+                    scrollPosition: []
+                )
+                self?.closetView.tagCollectionView.selectItem(
+                    at: IndexPath(item: 0, section: 0),
+                    animated: false,
+                    scrollPosition: []
+                )
             })
             .disposed(by: disposeBag)
 
         reactor.state
             .compactMap { $0.clothes }
             .subscribe(onNext: { [weak self] clothes in
-                self?.clothes = clothes
+                self?.imageURLList = clothes.map { $0.imageURL }
             })
             .disposed(by: disposeBag)
-    }
-
-    private func setCollectionViewSelectItem() {
-        closetView.categoryCollectionView.reloadData()
-
-        closetView.categoryCollectionView.selectItem(
-            at: IndexPath(item: selectedCategory, section: 0),
-            animated: false,
-            scrollPosition: []
-        )
-
-        selectedTags.forEach { _ in
-            closetView.tagCollectionView.selectItem(
-                at: IndexPath(item: 0, section: 0),
-                animated: false,
-                scrollPosition: []
-            )
-        }
-    }
-
-    private func setProperties() {
-        title = "옷장"
     }
 
     private func setCollectionView() {
@@ -158,9 +123,14 @@ final class ClosetMainViewController: BaseViewController, View {
             $0.dataSource = self
         }
     }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
-extension ClosetMainViewController: UICollectionViewDataSource {
+extension ClosetTabViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection _: Int
@@ -171,7 +141,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
         case closetView.tagCollectionView:
             return tagList.count
         case closetView.photoCollectionView:
-            return clothes.count
+            return imageURLList.count
         default:
             return 0
         }
@@ -183,7 +153,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch collectionView {
         case closetView.categoryCollectionView:
-            let cell: PagerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell: CategoryTextCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.configure(text: category[indexPath.item].text)
             return cell
 
@@ -194,8 +164,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
 
         case closetView.photoCollectionView:
             let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.configure(imageURL: clothes[indexPath.item].imageURL)
-            cell.type = .none
+            cell.configure(imageURL: imageURLList[indexPath.item])
             return cell
 
         default:
@@ -204,7 +173,7 @@ extension ClosetMainViewController: UICollectionViewDataSource {
     }
 }
 
-extension ClosetMainViewController: UICollectionViewDelegate {
+extension ClosetTabViewController: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
         shouldSelectItemAt indexPath: IndexPath
@@ -253,6 +222,7 @@ extension ClosetMainViewController: UICollectionViewDelegate {
         case closetView.tagCollectionView:
             selectedTags.append(tagList[indexPath.item])
 
+            guard let selectedCategory = selectedCategory else { return }
             selectedCategoryPublisher.onNext(
                 CategoryInfo(
                     category: categoryList[selectedCategory].category,
@@ -261,18 +231,16 @@ extension ClosetMainViewController: UICollectionViewDelegate {
             )
 
         case closetView.photoCollectionView:
-            let vc = factory.makeDetailClothesViewController(id: clothes[indexPath.item].id)
-            closetView.tagCollectionView.indexPathsForSelectedItems?.forEach {
-                closetView.tagCollectionView.deselectItem(at: $0, animated: false)
+            guard
+                let imageCell = closetView.photoCollectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell,
+                let image = imageCell.imageView.image
+            else {
+                return
             }
-            closetView.categoryCollectionView.indexPathsForSelectedItems?.forEach {
-                closetView.categoryCollectionView.deselectItem(at: $0, animated: false)
-            }
-            selectedCategory = 0
-            navigationController?.pushViewController(vc, animated: true)
+            addImageDeleagte?.add(self, image: image)
 
         default:
-            break
+            return
         }
     }
 
@@ -290,7 +258,6 @@ extension ClosetMainViewController: UICollectionViewDelegate {
             } else {
                 return true
             }
-
         default:
             return true
         }
@@ -304,6 +271,7 @@ extension ClosetMainViewController: UICollectionViewDelegate {
 
         selectedTags = selectedTags.filter { $0 != tagList[indexPath.item] }
 
+        guard let selectedCategory = selectedCategory else { return }
         selectedCategoryPublisher.onNext(
             CategoryInfo(
                 category: categoryList[selectedCategory].category,

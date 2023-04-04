@@ -61,7 +61,6 @@ final class MyPageViewController: BaseViewController, View {
             .compactMap { $0.posts }
             .withUnretained(self)
             .subscribe(onNext: { owner, posts in
-                dump(posts)
                 owner.posts = posts
                 owner.myPageDataSource.update(user: owner.profile, feed: owner.posts)
             })
@@ -78,10 +77,13 @@ final class MyPageViewController: BaseViewController, View {
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
 
-        rx.viewWillAppear.take(1)
-            .map { _ in Reactor.Action.fetchMyPosts }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        Observable.merge([
+            NotificationCenterManager.reloadPosts.addObserver().map { _ in },
+            rx.viewWillAppear.take(1).map { _ in }
+        ])
+        .map { _ in Reactor.Action.fetchMyPosts }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
     }
 
     private func bindCollectionView(_: MyPageReactor) {
@@ -125,11 +127,6 @@ extension MyPageViewController: MyPageProfileDelegate {
 
     func closetButtonDidTap() {
         let closet = factory.makeClosetMainViewController()
-        closet.update(
-            category: ["전체", "상의", "아우터", "악세사리", "기타패션"],
-            tagList: ["전체", "봄", "여름", "가을", "겨울"],
-            photo: [.add, .checkmark, .strokedCheckmark, .remove]
-        )
         navigationController?.pushViewController(closet, animated: true)
     }
 }

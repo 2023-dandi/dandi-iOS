@@ -71,7 +71,7 @@ extension FeedView {
         navigationBar.addSubviews(navigationTitleLabel, locationButton)
         addSubviews(navigationBar, collectionView)
         navigationBar.snp.makeConstraints { make in
-            make.height.equalTo(108)
+            make.height.equalTo(108).priority(.high)
             make.leading.top.trailing.equalTo(safeAreaLayoutGuide)
         }
         navigationTitleLabel.snp.makeConstraints { make in
@@ -124,7 +124,7 @@ extension FeedView: UICollectionViewDelegate {
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
             self.navigationBar.snp.updateConstraints {
-                $0.height.equalTo(height)
+                $0.height.equalTo(height).priority(.high)
             }
             self.navigationTitleLabel.alpha = alpha
             self.layoutIfNeeded()

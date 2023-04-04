@@ -62,22 +62,24 @@ final class HomeViewController: BaseViewController, View {
         Observable.combineLatest(hourlyWeathers, posts, temperatures) { hourlyWeathers, posts, temperatures in
             (hourlyWeathers, posts, temperatures)
         }
-        .observe(on: MainScheduler.asyncInstance)
         .subscribe(onNext: { [weak self] hourlyWeathers, posts, temperatures in
             guard let self = self else { return }
             self.homeView.bannerView.locationLabel.text = UserDefaultHandler.shared.address
+
             guard let hourlyWeather = hourlyWeathers.first else { return }
-            self.homeDataSource.update(
-                recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
-                temperature: hourlyWeather.temperature,
-                recommendation: [],
-                timeWeathers: hourlyWeathers,
-                posts: posts
-            )
-            self.homeView.configure(
-                temperature: hourlyWeather.temperature,
-                description: "최고\(temperatures.max)/최저\(temperatures.min)"
-            )
+            DispatchQueue.main.async {
+                self.homeDataSource.update(
+                    recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
+                    temperature: hourlyWeather.temperature,
+                    recommendation: [],
+                    timeWeathers: hourlyWeathers,
+                    posts: posts
+                )
+                self.homeView.configure(
+                    temperature: hourlyWeather.temperature,
+                    description: "최고\(temperatures.max)/최저\(temperatures.min)"
+                )
+            }
         })
         .disposed(by: disposeBag)
 
@@ -128,25 +130,22 @@ final class HomeViewController: BaseViewController, View {
     }
 
     private func bindAction(_ reactor: Reactor) {
-        let shouldReload = Observable.merge([
+        Observable.merge([
             rx.viewWillAppear.take(1).map { _ in },
             NotificationCenterManager.reloadLocation.addObserver().map { _ in }
-        ]).share()
+        ])
+        .map { _ in Reactor.Action.fetchWeatherInfo }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
 
-        shouldReload
-            .map { _ in Reactor.Action.fetchWeatherInfo }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-
-        shouldReload
-            .map { _ in Reactor.Action.fetchTemperatures }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-
-        temperaturePublisher
-            .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max) }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        Observable.merge([
+            temperaturePublisher.asObservable(),
+            NotificationCenterManager.reloadPosts.addObserver()
+                .compactMap { [weak self] _ in self?.reactor?.currentState.temperature }
+        ])
+        .map { Reactor.Action.fetchPostList(min: $0.min, max: $0.max) }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
 
         likePublisher
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)

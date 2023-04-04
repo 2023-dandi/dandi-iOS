@@ -92,10 +92,10 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
 
-    func makeRegisterClothesViewController(selectedImages: [UIImage]) -> RegisterClothesViewController {
+    func makeRegisterClothesViewController(selectedImage: UIImage) -> RegisterClothesViewController {
         let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
 
-        let vc = RegisterClothesViewController(selectedImages: selectedImages)
+        let vc = RegisterClothesViewController(selectedImage: selectedImage)
         vc.reactor = RegisterClothesReactor(
             imageUseCase: UploadClothesImageUseCase(clothesRepository: clothesRepository),
             clothesUseCase: DefaultRegisterClothesUseCase(clothesRepository: clothesRepository)
@@ -124,6 +124,10 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeClosetMainViewController() -> ClosetMainViewController {
         let vc = ClosetMainViewController()
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
+        let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
+        let reactor = ClosetTabReactor(closetUseCase: closetUseCase)
+        vc.reactor = reactor
         vc.factory = self
         return vc
     }
@@ -183,12 +187,26 @@ extension ModuleFactory: ModuleFactoryInterface {
     func makeClosetTabViewController() -> ClosetTabViewController {
         let vc = ClosetTabViewController()
         vc.factory = self
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
+        let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
+        let reactor = ClosetTabReactor(closetUseCase: closetUseCase)
+        vc.reactor = reactor
         return vc
     }
 
     func makeLocationSettingViewController() -> LocationSettingViewController {
         let vc = LocationSettingViewController()
         vc.factory = self
+        return vc
+    }
+
+    func makeDetailClothesViewController(id: Int) -> DetailClothesViewController {
+        let vc = DetailClothesViewController()
+        vc.factory = self
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
+        let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
+        let reactor = DetailClothesReactor(id: id, clothesUseCase: closetUseCase)
+        vc.reactor = reactor
         return vc
     }
 }

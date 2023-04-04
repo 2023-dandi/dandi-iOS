@@ -37,7 +37,7 @@ final class ImageCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    private let imageView: UIImageView = .init()
+    private(set) lazy var imageView: UIImageView = .init()
     private let checkIconView: UIImageView = .init()
 
     override init(frame: CGRect) {
@@ -69,6 +69,7 @@ extension ImageCollectionViewCell {
     private func setProperties() {
         checkIconView.isHidden = true
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
         contentView.borderColor = YDSColor.borderNormal
         contentView.borderWidth = YDSConstant.Border.thin
     }

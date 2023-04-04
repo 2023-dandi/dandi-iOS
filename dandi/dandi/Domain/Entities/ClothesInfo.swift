@@ -12,3 +12,16 @@ struct ClothesInfo {
     let seasons: [Season]
     let image: UIImage
 }
+
+struct DetailClothesInfo {
+    let id: Int
+    let imageURL: String
+    let category: ClothesCategory
+    let seasons: [Season]
+}
+
+extension DetailClothesInfo: Equatable {
+    static func == (lhs: DetailClothesInfo, rhs: DetailClothesInfo) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

@@ -21,7 +21,7 @@ final class UploadProfileImageUseCase: ImageUseCase {
     }
 
     func uploadImage(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: .leastNormalMagnitude) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             return imagePublisher.accept(nil)
         }
         memberRepository.updateProfileImage(imageData: imageData) { [weak self] result in

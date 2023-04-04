@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 
 final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
-    let hourlyWeather = PublishRelay<[TimeWeatherInfo]>()
+    let hourlyWeather = PublishRelay<TodayWeatherInfo>()
     let isCompleted = PublishSubject<Bool>()
 
     private let weatherRepository: WeatherRepository
@@ -36,7 +36,7 @@ final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
         ) { [weak self] result in
             switch result {
             case let .success(response):
-                self?.hourlyWeather.accept(response.timeWeahtherInfos)
+                self?.hourlyWeather.accept(response)
                 self?.isCompleted.onNext(true)
             case .failure:
                 self?.isCompleted.onNext(false)

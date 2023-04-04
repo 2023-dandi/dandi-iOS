@@ -29,7 +29,7 @@ struct MyTemperaturePostDTO: Decodable {
 }
 
 extension MyTemperaturePostWithPageDTO {
-    func toDomain() -> PostsWithPage {
+    func toDomain() -> ListWithPage<Post> {
         let posts = posts.map {
             Post(
                 id: $0.id,
@@ -43,6 +43,6 @@ extension MyTemperaturePostWithPageDTO {
                 isMine: true
             )
         }
-        return PostsWithPage(posts: posts, lastPage: lastPage)
+        return ListWithPage<Post>(list: posts, lastPage: lastPage)
     }
 }

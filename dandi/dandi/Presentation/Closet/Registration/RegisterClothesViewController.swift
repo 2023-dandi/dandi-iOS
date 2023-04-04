@@ -24,17 +24,18 @@ final class RegisterClothesViewController: BaseViewController, View {
     private let categories: [ClothesCategory] = ClothesCategory.allCases
     private let seasons: [Season] = Season.allCases
 
-    private let images: [UIImage]
-    private var selectedCategoryIndex: Int = 0
+    private let image: UIImage
 
     private var selectedIndexPaths = Set<IndexPath>() {
         didSet {
-            dump(selectedIndexPaths)
+            let selectedCategory: Int? = selectedIndexPaths.filter { $0.section == 1 }.first?.item
+            let selectedSeasons = selectedIndexPaths.filter { $0.section == 2 }.map { $0.item }
+            saveButton.isDisabled = selectedCategory == nil || selectedSeasons.isEmpty
         }
     }
 
-    init(selectedImages: [UIImage]) {
-        self.images = selectedImages
+    init(selectedImage: UIImage) {
+        self.image = selectedImage
         super.init()
         setCollectionView()
         setProperties()
@@ -76,12 +77,12 @@ final class RegisterClothesViewController: BaseViewController, View {
                 guard
                     let self = self,
                     let selectedCategory: Int = self.selectedIndexPaths.filter({ $0.section == 1 }).first?.item,
-                    let clothesCategory: ClothesCategory = ClothesCategory(rawValue: selectedCategory),
-                    let image = self.images.first
+                    let clothesCategory: ClothesCategory = ClothesCategory(rawValue: selectedCategory + 1)
                 else { return nil }
                 let selectedSeasons = self.selectedIndexPaths.filter { $0.section == 2 }.map { $0.item }
-                let seasons: [Season] = selectedSeasons.compactMap { Season(rawValue: $0) }.compactMap { $0 }
-                return ClothesInfo(category: clothesCategory, seasons: seasons, image: image)
+                let seasons: [Season] = selectedSeasons.compactMap { Season(rawValue: $0 + 1) }.compactMap { $0 }
+                self.saveButton.isDisabled = true
+                return ClothesInfo(category: clothesCategory, seasons: seasons, image: self.image)
             }
             .compactMap { $0 }
             .map { Reactor.Action.upload(category: $0.category, seasons: $0.seasons, clothesImage: $0.image) }
@@ -106,10 +107,9 @@ final class RegisterClothesViewController: BaseViewController, View {
                 UIBarButtonItem(customView: backButton),
                 animated: false
             )
-        saveButton.setBackgroundColor(YDSColor.buttonPoint, for: .normal)
-        saveButton.setBackgroundColor(YDSColor.buttonDisabledBG, for: .disabled)
         saveButton.text = "업로드"
         saveButton.rounding = .r8
+        saveButton.isDisabled = true
     }
 
     private func setLayouts() {
@@ -197,7 +197,7 @@ extension RegisterClothesViewController: UICollectionViewDataSource {
     ) -> Int {
         switch section {
         case 0:
-            return images.count
+            return 1
         case 1:
             return categories.count
         case 2:
@@ -216,7 +216,7 @@ extension RegisterClothesViewController: UICollectionViewDataSource {
         case 0:
             let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             cell.type = .none
-            cell.configure(image: images[indexPath.item])
+            cell.configure(image: image)
             return cell
 
         case 1:

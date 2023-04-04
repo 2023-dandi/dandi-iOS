@@ -23,7 +23,7 @@ final class DefaultPostListUseCase: PostListUseCase {
             .map { result in
                 switch result {
                 case let .success(response):
-                    return response.posts
+                    return response.list
                 case .failure:
                     return []
                 }

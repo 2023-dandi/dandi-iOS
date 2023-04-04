@@ -21,26 +21,26 @@ final class DefaultUploadPostUseCase: UploadPostUseCase {
     }
 
     func uploadPost(
-        imageURL _: String,
-        temperatures _: Temperatures,
-        clothesFeeling _: ClothesFeeling,
-        weatherFeelings _: [WeatherFeeling]
+        imageURL: String,
+        temperatures: Temperatures,
+        clothesFeeling: ClothesFeeling,
+        weatherFeelings: [WeatherFeeling]
     ) {
-//        postRepository.uploadPost(
-//            post: UploadPostContent(
-//                postImageURL: imageURL,
-//                clothesFeeling: clothesFeeling,
-//                weatherFeelings: weatherFeelings,
-//                temperatures: temperatures
-//            )
-//        ) { [weak self] result in
-//            switch result {
-//            case let .success(postId):
-//                self?.postIdPublusher.accept(postId)
-//            case let .failure(error):
-//                DandiLog.error(error)
-//                self?.postIdPublusher.accept(nil)
-//            }
-//        }
+        postRepository.uploadPost(
+            post: UploadPostContent(
+                postImageURL: imageURL,
+                clothesFeeling: clothesFeeling,
+                weatherFeelings: weatherFeelings,
+                temperatures: temperatures
+            )
+        ) { [weak self] result in
+            switch result {
+            case let .success(postId):
+                self?.postIdPublusher.accept(postId)
+            case let .failure(error):
+                DandiLog.error(error)
+                self?.postIdPublusher.accept(nil)
+            }
+        }
     }
 }
