@@ -144,7 +144,7 @@ final class PostDetailDataSource {
                 nickname: comment.nickname,
                 content: comment.content,
                 date: comment.date,
-                isMine: comment.isMine
+                isPostWriter: comment.isPostWriter
             )
         }
     }

@@ -308,6 +308,8 @@ extension PostDetailViewController {
                     completion(true)
                 }
                 reportAction.image = YDSIcon.warningcircleLine
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(YDSColor.buttonNormal)
                 reportAction.backgroundColor = YDSColor.bgRecomment
                 return UISwipeActionsConfiguration(actions: [reportAction])
             }
