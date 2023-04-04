@@ -178,6 +178,10 @@ extension PostDetailViewController {
                 self.commentBottomTextView.snp.updateConstraints {
                     $0.bottom.equalToSuperview().offset(-height)
                 }
+                self.collectionView.snp.remakeConstraints {
+                    $0.leading.top.trailing.equalTo(self.view.safeAreaLayoutGuide)
+                    $0.bottom.equalTo(self.commentBottomTextView.snp.top)
+                }
             })
             .disposed(by: disposeBag)
 
@@ -192,6 +196,9 @@ extension PostDetailViewController {
                 self.isKeyboardPresented = false
                 self.commentBottomTextView.snp.updateConstraints {
                     $0.bottom.equalToSuperview().offset(-12)
+                }
+                self.collectionView.snp.remakeConstraints {
+                    $0.edges.equalToSuperview()
                 }
             })
             .disposed(by: disposeBag)
