@@ -38,6 +38,7 @@ final class PostDetailViewController: BaseViewController, View {
 
     private let likePublisher = PublishSubject<Int>()
     private let shouldReloadCommentsPublisher = PublishSubject<Void>()
+    private let shouldDeleteCommentPublisher = PublishSubject<Int>()
 
     override init() {
         super.init()
@@ -88,6 +89,11 @@ extension PostDetailViewController {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        shouldDeleteCommentPublisher
+            .map { Reactor.Action.deleteComment(commentID: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         likePublisher
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .withUnretained(self)
@@ -119,6 +125,17 @@ extension PostDetailViewController {
             .compactMap { $0 }
             .filter { !$0.isEmpty }
             .map { Reactor.Action.postComment(content: $0) }
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.commentBottomTextView.innerTextView.text = ""
+                self.commentBottomTextView.placeholderLabel.isHidden = false
+                let lastSectionIndex = self.collectionView.numberOfSections - 1
+                let lastItemIndex = self.collectionView.numberOfItems(inSection: lastSectionIndex) - 1
+                if lastSectionIndex > 0, lastItemIndex > 0 {
+                    let lastItemIndexPath = IndexPath(item: lastItemIndex, section: lastSectionIndex)
+                    self.collectionView.scrollToItem(at: lastItemIndexPath, at: .bottom, animated: true)
+                }
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -298,10 +315,12 @@ extension PostDetailViewController {
                 style: .normal,
                 title: nil
             ) { _, _, completion in
-                // delete 함수 구현
+                self.shouldDeleteCommentPublisher.onNext(item.id)
                 completion(true)
             }
             deleteAction.image = YDSIcon.trashcanLine
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(YDSColor.buttonWarned)
             deleteAction.backgroundColor = YDSColor.buttonWarnedBG
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }

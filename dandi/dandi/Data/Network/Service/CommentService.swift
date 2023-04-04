@@ -22,8 +22,8 @@ extension CommentService: BaseTargetType {
             return "/posts/\(postID)/comments"
         case let .postComment(postID, _):
             return "/posts/\(postID)/comments"
-        case let .deleteComment(postID, commentID):
-            return "/posts/\(postID)/comments/\(commentID)"
+        case let .deleteComment(_, commentID):
+            return "/comments/\(commentID)"
         }
     }
 

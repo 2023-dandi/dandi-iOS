@@ -26,6 +26,7 @@ struct CommentDTO: Codable {
     let writer: WriterDTO
     let postWriter: Bool
     let createdAt, content: String
+    let mine: Bool
 }
 
 extension CommentDTO {
@@ -36,7 +37,7 @@ extension CommentDTO {
             nickname: writer.nickname,
             date: createdAt,
             content: content,
-            isMine: true,
+            isMine: mine,
             isPostWriter: postWriter
         )
     }

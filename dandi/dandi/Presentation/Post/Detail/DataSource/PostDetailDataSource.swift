@@ -68,16 +68,20 @@ final class PostDetailDataSource {
 
     func reloadCommentSection(items: [Comment]) {
         var currentSnapshot = dataSource.snapshot()
-        let existingComments = currentSnapshot.itemIdentifiers(inSection: .comment)
+        let currentComments = currentSnapshot.itemIdentifiers(inSection: .comment)
             .compactMap { item -> Comment? in
                 guard case let .comment(comment) = item else { return nil }
                 return comment
             }
         let newComments = items.filter { comment in
-            !existingComments.contains(where: { $0.isChanged(from: comment) })
+            !currentComments.contains(where: { $0.isChanged(from: comment) })
         }
+        let deletedComments = currentComments.filter { comment in
+            !items.contains(where: { $0.id == comment.id })
+        }
+        currentSnapshot.deleteItems(deletedComments.map { Item.comment($0) })
         currentSnapshot.appendItems(newComments.map { Item.comment($0) }, toSection: .comment)
-        dataSource.apply(currentSnapshot, animatingDifferences: false)
+        dataSource.apply(currentSnapshot, animatingDifferences: true)
     }
 
     func itemIdentifier(for indexPath: IndexPath) -> Item? {

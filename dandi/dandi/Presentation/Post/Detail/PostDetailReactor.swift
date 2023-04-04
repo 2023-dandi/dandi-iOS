@@ -24,8 +24,6 @@ final class PostDetailReactor: Reactor {
         var post: Post?
         var isDeleted: Bool = false
         var comments: [Comment]?
-        var isDeletedComment: Bool = false
-        var isFinishedPostComment: Bool?
     }
 
     enum Action {
@@ -44,8 +42,6 @@ final class PostDetailReactor: Reactor {
         case setLikeButtonStatus(isLiked: Bool)
         case setDeleteStatus(Bool)
         case setComments([Comment])
-        case setCommentDeleteStatus(Bool)
-        case setCommentPostStatus(Bool)
     }
 
     init(
@@ -88,15 +84,13 @@ final class PostDetailReactor: Reactor {
         case let .postComment(content):
             return commentUseCase.postComment(postID: postID, content: content)
                 .filter { $0 }
-                .map { _ in
-                    self.commentUseCase.fetchComments(postID: self.postID)
-                }
-                .flatMap { $0 }
+                .flatMap { _ in self.commentUseCase.fetchComments(postID: self.postID) }
                 .map { Mutation.setComments($0) }
 
         case let .deleteComment(commentID):
             return commentUseCase.deleteComment(postID: postID, commentID: commentID)
-                .map { Mutation.setCommentDeleteStatus($0) }
+                .flatMap { _ in self.commentUseCase.fetchComments(postID: self.postID) }
+                .map { Mutation.setComments($0) }
         }
     }
 
@@ -113,10 +107,6 @@ final class PostDetailReactor: Reactor {
             newState.isDeleted = isDeleted
         case let .setComments(comments):
             newState.comments = comments
-        case let .setCommentDeleteStatus(isDeleted):
-            newState.isDeletedComment = isDeleted
-        case let .setCommentPostStatus(isFinished):
-            newState.isFinishedPostComment = isFinished
         }
         return newState
     }

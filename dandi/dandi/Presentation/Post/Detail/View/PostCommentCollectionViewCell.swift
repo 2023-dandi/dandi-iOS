@@ -59,6 +59,7 @@ final class PostCommentCollectionViewCell: UICollectionViewCell {
 
 extension PostCommentCollectionViewCell {
     private func setProperties() {
+        contentView.backgroundColor = YDSColor.bgNormal
         profileImageView.do {
             $0.size = .small
         }

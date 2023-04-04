@@ -36,7 +36,7 @@ final class DefaultCommentUseCase: CommentUseCase {
             .map { result in
                 switch result {
                 case let .success(statusCase):
-                    return statusCase == .noContent
+                    return statusCase == .created
                 case .failure:
                     return false
                 }
