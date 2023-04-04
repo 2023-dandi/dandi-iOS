@@ -110,4 +110,19 @@ final class DefaultClothesRepository: ClothesRepository {
                 }
             }
     }
+
+    func fetchClothesDetail(id: Int) -> Single<NetworkResult<ClothesDetailInfo>> {
+        return router.rx.request(.getClothesDetail(clothesID: id))
+            .map { response in
+                let decodedResponse: NetworkResult<ClothesDetailInfoDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(category):
+                    return .success(category.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
+    }
 }

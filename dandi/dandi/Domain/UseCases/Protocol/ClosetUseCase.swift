@@ -13,12 +13,12 @@ import RxCocoa
 import RxSwift
 
 protocol ClosetUseCase {
-    var clothesPublisher: PublishRelay<DetailClothesInfo?> { get }
+    var clothesPublisher: PublishRelay<ClothesDetailInfo?> { get }
     var clothesListPublisher: PublishRelay<[Clothes]> { get }
     var deleteSuccessPublisher: PublishRelay<Bool> { get }
 
     func delete(id: Int)
-    func fetch(id: Int) -> Single<DetailClothesInfo?>
+    func fetch(id: Int) -> Single<ClothesDetailInfo?>
     func fetchCategories() -> Single<[CategoryInfo]>
     func fetchClothesList(
         size: Int,
