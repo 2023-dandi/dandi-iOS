@@ -29,16 +29,22 @@ final class ClosetTabViewController: BaseViewController, View {
         didSet {
             guard let selectedCategory = selectedCategory else { return }
             tagList = categoryList[selectedCategory].seasons
+            closetView.tagCollectionView.reloadData()
         }
     }
 
-    private var selectedTags: [Int] = [0]
+    private var selectedTags: [Season] = [.all]
 
     private var selectedCategoryPublisher = PublishSubject<CategoryInfo>()
 
     /// DataSource
     private var category: [ClothesCategory] = []
-    private var tagList: [Season] = []
+    private var tagList: [Season] = [] {
+        didSet {
+            tagList = tagList.uniqued()
+        }
+    }
+
     private var imageURLList: [String] = [] {
         didSet {
             self.closetView.photoCollectionView.reloadData()
@@ -178,12 +184,12 @@ extension ClosetTabViewController: UICollectionViewDelegate {
             collectionView.indexPathsForSelectedItems?.forEach {
                 collectionView.deselectItem(at: $0, animated: false)
             }
-            selectedTags = [0]
+            selectedTags = [.all]
             return true
         }
 
-        if selectedTags.contains(0) {
-            selectedTags = selectedTags.filter { $0 != 0 }
+        if selectedTags.contains(.all) {
+            selectedTags = selectedTags.filter { $0 != .all }
             collectionView.deselectItem(at: IndexPath(item: 0, section: 0), animated: false)
             return true
         }
@@ -198,8 +204,7 @@ extension ClosetTabViewController: UICollectionViewDelegate {
         case closetView.categoryCollectionView:
             selectedCategory = indexPath.item
 
-            selectedTags = [0]
-            closetView.tagCollectionView.reloadData()
+            selectedTags = [.all]
 
             closetView.tagCollectionView.selectItem(
                 at: IndexPath(item: 0, section: 0),
@@ -215,13 +220,13 @@ extension ClosetTabViewController: UICollectionViewDelegate {
             )
 
         case closetView.tagCollectionView:
-            selectedTags.append(indexPath.item)
+            selectedTags.append(tagList[indexPath.item])
 
             guard let selectedCategory = selectedCategory else { return }
             selectedCategoryPublisher.onNext(
                 CategoryInfo(
                     category: categoryList[selectedCategory].category,
-                    seasons: selectedTags.compactMap { Season(rawValue: $0) }
+                    seasons: selectedTags
                 )
             )
 
@@ -264,13 +269,13 @@ extension ClosetTabViewController: UICollectionViewDelegate {
     ) {
         guard collectionView == closetView.tagCollectionView else { return }
 
-        selectedTags = selectedTags.filter { $0 != indexPath.item }
+        selectedTags = selectedTags.filter { $0 != tagList[indexPath.item] }
 
         guard let selectedCategory = selectedCategory else { return }
         selectedCategoryPublisher.onNext(
             CategoryInfo(
                 category: categoryList[selectedCategory].category,
-                seasons: selectedTags.compactMap { Season(rawValue: $0) }
+                seasons: selectedTags
             )
         )
     }

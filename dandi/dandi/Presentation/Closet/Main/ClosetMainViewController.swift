@@ -39,7 +39,7 @@ final class ClosetMainViewController: BaseViewController, View {
 
     private var selectedTags: [Season] = [.all] {
         didSet {
-            dump(selectedTags)
+            selectedTags = selectedTags.uniqued()
         }
     }
 
@@ -49,7 +49,12 @@ final class ClosetMainViewController: BaseViewController, View {
 
     /// DataSource
     private var category: [ClothesCategory] = []
-    private var tagList: [Season] = []
+    private var tagList: [Season] = [] {
+        didSet {
+            tagList = tagList.uniqued()
+        }
+    }
+
     private var clothes: [Clothes] = [] {
         didSet {
             self.closetView.photoCollectionView.reloadData()
@@ -231,7 +236,6 @@ extension ClosetMainViewController: UICollectionViewDelegate {
             selectedCategory = indexPath.item
 
             selectedTags = [.all]
-            closetView.tagCollectionView.reloadData()
 
             closetView.tagCollectionView.selectItem(
                 at: IndexPath(item: 0, section: 0),
