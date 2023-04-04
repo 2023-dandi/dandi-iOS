@@ -28,12 +28,9 @@ final class ClosetMainViewController: BaseViewController, View {
 
     private var selectedCategory: Int = 0 {
         didSet {
-            guard !categoryList.isEmpty else {
-                tagList = []
-                return
+            if selectedCategory < categoryList.count {
+                tagList = categoryList[selectedCategory].seasons
             }
-            tagList = categoryList[selectedCategory].seasons
-            closetView.tagCollectionView.reloadData()
         }
     }
 
@@ -44,14 +41,21 @@ final class ClosetMainViewController: BaseViewController, View {
     }
 
     private var selectedCategoryPublisher = PublishSubject<CategoryInfo>()
+    private var shouledLoadClothesPublisher = PublishSubject<Bool>()
 
     private let closetView = ClosetView()
 
     /// DataSource
-    private var category: [ClothesCategory] = []
+    private var category: [ClothesCategory] = [] {
+        didSet {
+            closetView.categoryCollectionView.reloadData()
+        }
+    }
+
     private var tagList: [Season] = [] {
         didSet {
             tagList = tagList.uniqued()
+            closetView.tagCollectionView.reloadData()
         }
     }
 
@@ -87,12 +91,11 @@ final class ClosetMainViewController: BaseViewController, View {
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
 
-        Observable.merge([
-            reload, viewWillAppear.take(1)
-        ])
-        .map { Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
-        .bind(to: reactor.action)
-        .disposed(by: disposeBag)
+        shouledLoadClothesPublisher
+            .filter { $0 }
+            .map { _ in Reactor.Action.fetchClothes(category: .all, seasons: [.all]) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
 
         viewWillAppear
             .subscribe(onNext: { [weak self] _ in
@@ -112,16 +115,22 @@ final class ClosetMainViewController: BaseViewController, View {
             .compactMap { $0.category }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] categoryList in
-                if categoryList.isEmpty { return }
-
+                if categoryList.isEmpty {
+                    self?.categoryList = []
+                    self?.tagList = []
+                    self?.clothes = []
+                    return
+                }
                 self?.categoryList = categoryList
                 self?.selectedCategory = 0
                 self?.setCollectionViewSelectItem()
+                self?.shouledLoadClothesPublisher.onNext(true)
             })
             .disposed(by: disposeBag)
 
         reactor.state
             .compactMap { $0.clothes }
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] clothes in
                 self?.clothes = clothes
             })

@@ -15,7 +15,7 @@ final class DetailClothesReactor: Reactor {
     struct State {
         var isLoading: Bool = false
         var isDeleted: Bool?
-        var clothes: DetailClothesInfo?
+        var clothes: ClothesDetailInfo?
     }
 
     enum Action {
@@ -25,7 +25,7 @@ final class DetailClothesReactor: Reactor {
 
     enum Mutation {
         case setLoading(isLoading: Bool)
-        case setClothes(clotehs: DetailClothesInfo)
+        case setClothes(clotehs: ClothesDetailInfo)
         case setDeleteStatus(isDeleted: Bool)
     }
 
@@ -43,7 +43,6 @@ final class DetailClothesReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .fetch:
-
             return Observable.concat([
                 .just(Mutation.setLoading(isLoading: true)),
                 clothesUseCase.fetch(id: id)

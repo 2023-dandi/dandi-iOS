@@ -34,5 +34,7 @@ protocol ClothesRepository {
         completion: @escaping NetworkCompletion<ListWithPage<Clothes>>
     )
 
+    func fetchClothesDetail(id: Int) -> Single<NetworkResult<ClothesDetailInfo>>
+
     func fetchCategory() -> Single<NetworkResult<[CategoryInfo]>>
 }

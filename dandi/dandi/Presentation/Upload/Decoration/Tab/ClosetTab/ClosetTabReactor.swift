@@ -48,6 +48,7 @@ final class ClosetTabReactor: Reactor {
                 closetUseCase.clothesListPublisher.compactMap { Mutation.setClothesList(clothes: $0) },
                 .just(.setLoading(isLoading: false))
             ])
+
         case .fetchCategory:
             return Observable.concat([
                 .just(.setLoading(isLoading: true)),
