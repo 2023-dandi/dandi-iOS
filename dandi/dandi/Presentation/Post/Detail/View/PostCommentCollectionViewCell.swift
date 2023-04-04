@@ -39,14 +39,14 @@ final class PostCommentCollectionViewCell: UICollectionViewCell {
         nickname: String,
         content: String,
         date: String,
-        isMine: Bool
+        isPostWriter: Bool
     ) {
         profileImageView.image(url: profileImageURL, defaultImage: .add)
         nicknameLabel.text = nickname
         contentLabel.text = content
         dateLabel.text = date
 
-        nicknameLabel.textColor = isMine
+        nicknameLabel.textColor = isPostWriter
             ? YDSColor.textPointed
             : YDSColor.textPrimary
     }
@@ -59,6 +59,7 @@ final class PostCommentCollectionViewCell: UICollectionViewCell {
 
 extension PostCommentCollectionViewCell {
     private func setProperties() {
+        contentView.backgroundColor = YDSColor.bgNormal
         profileImageView.do {
             $0.size = .small
         }

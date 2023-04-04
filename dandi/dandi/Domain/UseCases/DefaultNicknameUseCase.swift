@@ -66,11 +66,11 @@ extension DefaultNicknameUseCase {
     private func isValid(_ nickname: String) -> Bool {
         let pattern = "^[A-Za-z0-9._]+$"
         let regex = try? NSRegularExpression(pattern: pattern)
-        if let _ = regex?.firstMatch(
+        if (regex?.firstMatch(
             in: nickname,
             options: [],
             range: NSRange(location: 0, length: nickname.count)
-        ) {
+        )) != nil {
             return true
         }
         return false
