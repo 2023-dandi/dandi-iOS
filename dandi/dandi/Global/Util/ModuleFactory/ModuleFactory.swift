@@ -112,11 +112,18 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makePostDetailViewController(postID: Int) -> PostDetailViewController {
         let postRepository = DefaultPostRepository(interceptor: Interceptor())
+        let commentRepository = DefaultCommentRepository(interceptor: Interceptor())
 
-        let vc = PostDetailViewController(postID: postID)
+        let detailUseCase = DefaultPostDetailUseCase(postRepository: postRepository)
+        let likeUseCase = DefaultPostLikeUseCase(postRepository: postRepository)
+        let commentUseCase = DefaultCommentUseCase(commentRepository: commentRepository)
+
+        let vc = PostDetailViewController()
         vc.reactor = PostDetailReactor(
-            postDetailUseCase: DefaultPostDetailUseCase(postRepository: postRepository),
-            postLikeUseCase: DefaultPostLikeUseCase(postRepository: postRepository)
+            postID: postID,
+            postDetailUseCase: detailUseCase,
+            postLikeUseCase: likeUseCase,
+            commentUseCase: commentUseCase
         )
         vc.factory = self
         return vc

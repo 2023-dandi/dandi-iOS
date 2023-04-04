@@ -35,12 +35,11 @@ final class PostDetailViewController: BaseViewController, View {
     private let moreButton: UIButton = .init()
     private let commentBottomTextView: PostCommentTextView = .init()
     private var isKeyboardPresented = false
-    private let postID: Int
 
     private let likePublisher = PublishSubject<Int>()
+    private let shouldReloadCommentsPublisher = PublishSubject<Void>()
 
-    init(postID: Int) {
-        self.postID = postID
+    override init() {
         super.init()
         setLayout()
         setProperties()
@@ -79,16 +78,20 @@ final class PostDetailViewController: BaseViewController, View {
 
 extension PostDetailViewController {
     private func bindAction(_ reactor: Reactor) {
-        rx.viewWillAppear
-            .withUnretained(self)
-            .map { owner, _ in Reactor.Action.fetchPostDetail(id: owner.postID) }
+        rx.viewWillAppear.take(1).map { _ in }.share()
+            .map { Reactor.Action.fetchPostDetail }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        shouldReloadCommentsPublisher
+            .map { Reactor.Action.fetchComments }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
         likePublisher
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .withUnretained(self)
-            .map { owner, _ in Reactor.Action.like(id: owner.postID) }
+            .map { _, _ in Reactor.Action.like }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
@@ -105,7 +108,17 @@ extension PostDetailViewController {
 
         moreButtonDidTap.filter { $0 == .delete }
             .withUnretained(self)
-            .map { owner, _ in Reactor.Action.delete(id: owner.postID) }
+            .map { _, _ in Reactor.Action.delete }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        commentBottomTextView.uploadButton.rx.tap
+            .map { [weak self] _ -> String? in
+                self?.commentBottomTextView.innerTextView.text
+            }
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+            .map { Reactor.Action.postComment(content: $0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -116,8 +129,17 @@ extension PostDetailViewController {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, post in
-                dump(post)
                 owner.dataSource.update(post: post, comments: [])
+                owner.shouldReloadCommentsPublisher.onNext(())
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.comments }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, comments in
+                owner.dataSource.reloadCommentSection(items: comments)
             })
             .disposed(by: disposeBag)
 
@@ -125,8 +147,9 @@ extension PostDetailViewController {
             .compactMap { $0.isLiked }
             .distinctUntilChanged()
             .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                NotificationCenterManager.reloadPost.post(object: owner.postID)
+            .subscribe(onNext: { _, _ in
+                guard let postID = reactor.currentState.post?.id else { return }
+                NotificationCenterManager.reloadPost.post(object: postID)
             })
             .disposed(by: disposeBag)
 

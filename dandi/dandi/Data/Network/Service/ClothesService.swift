@@ -5,9 +5,8 @@
 //  Created by 김윤서 on 2023/03/30.
 //
 
-import UIKit
+import Foundation
 
-import Alamofire
 import Moya
 
 enum ClothesService {
