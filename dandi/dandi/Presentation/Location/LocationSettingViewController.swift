@@ -36,11 +36,19 @@ final class LocationSettingViewController: BaseViewController {
         }
     }
 
+    private let from: From
+
+    enum From {
+        case onboarding
+        case `default`
+    }
+
     override func loadView() {
         view = contentView
     }
 
-    override init() {
+    init(from: From) {
+        self.from = from
         super.init()
         title = "위치 설정"
         bindTextField()
@@ -102,7 +110,8 @@ extension LocationSettingViewController: UITableViewDelegate {
                 ConfirmLocationViewController(
                     locality: address,
                     latitude: placemark.coordinate.latitude,
-                    longitude: placemark.coordinate.longitude
+                    longitude: placemark.coordinate.longitude,
+                    from: self.from
                 ),
                 animated: true
             )

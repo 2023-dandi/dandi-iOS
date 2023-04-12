@@ -106,8 +106,8 @@ final class MyPageViewController: BaseViewController, View {
     private func bindTapAction() {
         rightTopButton.rx.tap
             .withUnretained(self)
-            .subscribe(onNext: { _, _ in
-                // 설정창 연결
+            .subscribe(onNext: { owner, _ in
+                owner.navigationController?.pushViewController(owner.factory.makeSettingViewController(), animated: true)
             })
             .disposed(by: disposeBag)
     }

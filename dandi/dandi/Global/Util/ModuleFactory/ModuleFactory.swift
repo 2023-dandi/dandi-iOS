@@ -201,8 +201,8 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
 
-    func makeLocationSettingViewController() -> LocationSettingViewController {
-        let vc = LocationSettingViewController()
+    func makeLocationSettingViewController(from: LocationSettingViewController.From) -> LocationSettingViewController {
+        let vc = LocationSettingViewController(from: from)
         vc.factory = self
         return vc
     }
@@ -214,6 +214,12 @@ extension ModuleFactory: ModuleFactoryInterface {
         let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
         let reactor = DetailClothesReactor(id: id, clothesUseCase: closetUseCase)
         vc.reactor = reactor
+        return vc
+    }
+
+    func makeSettingViewController() -> SettingViewController {
+        let vc = SettingViewController()
+        vc.factory = self
         return vc
     }
 }

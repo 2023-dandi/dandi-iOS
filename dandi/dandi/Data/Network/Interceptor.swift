@@ -53,7 +53,7 @@ final class Interceptor: RequestInterceptor {
         ]
 
         let dataTask = AF.request(
-            Environment.baseURL + "/auth/refresh",
+            URLConstant.baseURL + "/auth/refresh",
             method: .post,
             encoding: JSONEncoding.default,
             headers: headers

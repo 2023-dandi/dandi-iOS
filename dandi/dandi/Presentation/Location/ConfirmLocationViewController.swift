@@ -19,7 +19,10 @@ final class ConfirmLocationViewController: BaseViewController {
     private let latitude: Double
     private let longitude: Double
 
-    init(locality: String, latitude: Double, longitude: Double) {
+    let from: LocationSettingViewController.From
+
+    init(locality: String, latitude: Double, longitude: Double, from: LocationSettingViewController.From) {
+        self.from = from
         self.locality = locality
         self.latitude = latitude
         self.longitude = longitude
@@ -69,8 +72,15 @@ final class ConfirmLocationViewController: BaseViewController {
                 UserDefaultHandler.shared.lat = self.latitude
                 UserDefaultHandler.shared.lon = self.longitude
                 UserDefaultHandler.shared.address = self.locality
-                NotificationCenterManager.reloadLocation.post()
-                self.dismiss(animated: true)
+                
+                switch self.from {
+                case .default:
+                    NotificationCenterManager.reloadLocation.post()
+                    self.dismiss(animated: true)
+                case .onboarding:
+                    RootSwitcher.update(.main)
+                }
+
             })
             .disposed(by: disposeBag)
     }

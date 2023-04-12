@@ -117,7 +117,7 @@ final class MyInformationViewController: BaseViewController, View {
         locationItem.rx.tapGesture
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                let vc = owner.factory.makeLocationSettingViewController()
+                let vc = owner.factory.makeLocationSettingViewController(from: .default)
                 owner.present(YDSNavigationController(rootViewController: vc), animated: true)
             })
             .disposed(by: disposeBag)
