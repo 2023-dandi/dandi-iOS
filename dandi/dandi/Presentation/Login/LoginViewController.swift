@@ -50,8 +50,11 @@ final class LoginViewController: BaseViewController, View {
         reactor.state
             .compactMap { $0.isSuccessLogin }
             .withUnretained(self)
-            .subscribe(onNext: { _, _ in
-                RootSwitcher.update(.main)
+            .subscribe(onNext: { owner, _ in
+                let vc = owner.factory.makeLocationSettingViewController(from: .onboarding)
+                let nvc = YDSNavigationController(rootViewController: vc)
+                nvc.modalPresentationStyle = .fullScreen
+                owner.present(nvc, animated: true)
             })
             .disposed(by: disposeBag)
     }

@@ -28,6 +28,7 @@ protocol ModuleFactoryInterface {
     func makeBackgroundTabViewController() -> BackgroundTabViewController
     func makeStickerTabViewController() -> StickerTabViewController
     func makeClosetTabViewController() -> ClosetTabViewController
-    func makeLocationSettingViewController() -> LocationSettingViewController
+    func makeLocationSettingViewController(from: LocationSettingViewController.From) -> LocationSettingViewController
     func makeDetailClothesViewController(id: Int) -> DetailClothesViewController
+    func makeSettingViewController() -> SettingViewController
 }

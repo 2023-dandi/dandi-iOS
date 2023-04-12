@@ -34,12 +34,12 @@ extension ClothesService: BaseTargetType {
             urlComponents.queryItems = queryItems
 
             let encodedQuery = urlComponents.percentEncodedQuery ?? ""
-            let urlString = Environment.baseURL + "/clothes" + (encodedQuery.isEmpty ? "" : "?") + encodedQuery
+            let urlString = URLConstant.baseURL + "/clothes" + (encodedQuery.isEmpty ? "" : "?") + encodedQuery
 
             return URL(string: urlString)!
 
         default:
-            return URL(string: Environment.baseURL)!
+            return URL(string: URLConstant.baseURL)!
         }
     }
 

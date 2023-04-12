@@ -140,7 +140,7 @@ final class FeedViewController: BaseViewController, View {
         feedView.locationButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                let vc = owner.factory.makeLocationSettingViewController()
+                let vc = owner.factory.makeLocationSettingViewController(from: .default)
                 owner.present(YDSNavigationController(rootViewController: vc), animated: true)
             })
             .disposed(by: disposeBag)
