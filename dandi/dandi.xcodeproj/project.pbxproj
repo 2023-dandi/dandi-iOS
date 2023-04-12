@@ -1279,10 +1279,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD239908295D7C8800A898B2 /* Build configuration list for PBXNativeTarget "dandi" */;
 			buildPhases = (
-				DD239911295D7CE500A898B2 /* SwiftFormat Script */,
 				DD2398D7295D7C8700A898B2 /* Sources */,
 				DD2398D8295D7C8700A898B2 /* Frameworks */,
 				DD2398D9295D7C8700A898B2 /* Resources */,
+				DD239911295D7CE500A898B2 /* SwiftFormat Script */,
 				DD239912295D7D0000A898B2 /* SwiftLint Script */,
 			);
 			buildRules = (
@@ -1431,6 +1431,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		DD239911295D7CE500A898B2 /* SwiftFormat Script */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1449,6 +1450,7 @@
 		};
 		DD239912295D7D0000A898B2 /* SwiftLint Script */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

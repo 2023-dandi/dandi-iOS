@@ -62,24 +62,24 @@ final class HomeViewController: BaseViewController, View {
         Observable.combineLatest(hourlyWeathers, posts, temperatures) { hourlyWeathers, posts, temperatures in
             (hourlyWeathers, posts, temperatures)
         }
+        .observe(on: MainScheduler.asyncInstance)
         .subscribe(onNext: { [weak self] hourlyWeathers, posts, temperatures in
             guard let self = self else { return }
             self.homeView.bannerView.locationLabel.text = UserDefaultHandler.shared.address
 
             guard let hourlyWeather = hourlyWeathers.first else { return }
-            DispatchQueue.main.async {
-                self.homeDataSource.update(
-                    recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
-                    temperature: hourlyWeather.temperature,
-                    recommendation: [],
-                    timeWeathers: hourlyWeathers,
-                    posts: posts
-                )
-                self.homeView.configure(
-                    temperature: hourlyWeather.temperature,
-                    description: "최고\(temperatures.max)/최저\(temperatures.min)"
-                )
-            }
+            self.homeDataSource.update(
+                recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
+                temperature: hourlyWeather.temperature,
+                recommendation: [],
+                timeWeathers: hourlyWeathers,
+                posts: posts
+            )
+            self.homeView.configure(
+                temperature: hourlyWeather.temperature,
+                description: "최고\(temperatures.max)/최저\(temperatures.min)"
+            )
+
         })
         .disposed(by: disposeBag)
 
@@ -148,7 +148,7 @@ final class HomeViewController: BaseViewController, View {
         .disposed(by: disposeBag)
 
         likePublisher
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
             .map { Reactor.Action.like(id: $0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -191,7 +191,7 @@ final class HomeViewController: BaseViewController, View {
 
     private func bindTapAction() {
         addButton.rx.tap
-            .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.asyncInstance)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.addButton.transform = CGAffineTransform(rotationAngle: 180)
