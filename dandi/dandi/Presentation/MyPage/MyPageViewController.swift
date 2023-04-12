@@ -15,7 +15,7 @@ import YDS
 final class MyPageViewController: BaseViewController, View {
     typealias Reactor = MyPageReactor
 
-    private let rightTopButton = YDSTopBarButton(image: YDSIcon.boardLine)
+    private let rightTopButton = YDSTopBarButton(image: Image.settingLine)
     private let myPageView: MyPageView = .init()
     private lazy var myPageDataSource: MyPageDataSource = .init(
         collectionView: myPageView.collectionView,

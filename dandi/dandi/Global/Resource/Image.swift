@@ -10,11 +10,12 @@ import UIKit
 struct Image {
     static let logo = UIImage(named: "img.logo")!
     static let textLogo = UIImage(named: "img.text.logo")!
-    
+
     static let defaultProfile = UIImage(named: "img.defaultProfile")!
 
     static let btnDelete = UIImage(named: "btnDelete")!
     static let btnRotation = UIImage(named: "btnRotation")!
+    static let settingLine = UIImage(named: "ic_setting_line")!
 
     static let background1 = UIImage(named: "img.background1")!
     static let background2 = UIImage(named: "img.background2")!
