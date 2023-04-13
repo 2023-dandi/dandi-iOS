@@ -122,6 +122,7 @@
 		DD66C03329D951A100A262F2 /* ListWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03229D951A100A262F2 /* ListWithPage.swift */; };
 		DD66C03529D958A600A262F2 /* ClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03429D958A600A262F2 /* ClosetUseCase.swift */; };
 		DD66C03729D9590D00A262F2 /* DefaultClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */; };
+		DD797BBE29E7C4F5000FFA9A /* WeatherImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -377,6 +378,7 @@
 		DD66C03229D951A100A262F2 /* ListWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithPage.swift; sourceTree = "<group>"; };
 		DD66C03429D958A600A262F2 /* ClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetUseCase.swift; sourceTree = "<group>"; };
 		DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClosetUseCase.swift; sourceTree = "<group>"; };
+		DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageType.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -1097,6 +1099,7 @@
 				DD66C03029D9514E00A262F2 /* Clothes.swift */,
 				DD66C03229D951A100A262F2 /* ListWithPage.swift */,
 				DDA2A02F29DA710900685AE3 /* CategoryList.swift */,
+				DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1592,6 +1595,7 @@
 				DDB23BA729939561000735FB /* MyPageDataSource.swift in Sources */,
 				DDA38FF129656099006FBE00 /* DayWeatherInfo.swift in Sources */,
 				DD1D6B2A29D0429500085FBE /* ImagesDataSource.swift in Sources */,
+				DD797BBE29E7C4F5000FFA9A /* WeatherImageType.swift in Sources */,
 				DD9B06FA295EDCE600A98041 /* UIView+.swift in Sources */,
 				DD372B5D29D9603F00674E4E /* ClosetTabReactor.swift in Sources */,
 				DD31233E29B1E56000443FCE /* AuthService.swift in Sources */,
