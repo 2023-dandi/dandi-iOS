@@ -20,7 +20,12 @@ final class DecorationViewController: BaseViewController {
 
     private var initialMenuViewCenter: CGPoint = .zero
 
-    private var stickers: [StickerEditorView] = []
+    private var stickers: [StickerEditorView] = [] {
+        didSet {
+            doneButton.isEnabled = !stickers.isEmpty
+        }
+    }
+
     private lazy var imageView = DecorationImageView()
     private let menuView = DecorationMenuView()
     private let doneButton = UIButton()
@@ -86,7 +91,7 @@ final class DecorationViewController: BaseViewController {
             YDSIcon.checkLine
                 .withRenderingMode(.alwaysOriginal)
                 .withTintColor(YDSColor.buttonDisabled),
-            for: .normal
+            for: .disabled
         )
         navigationItem.setRightBarButton(
             UIBarButtonItem(customView: doneButton),
@@ -246,6 +251,6 @@ extension DecorationViewController: AddImageDelegate {
 
 extension DecorationViewController: CheckButtonDelegate {
     func disableButton(isDisabled: Bool) {
-        doneButton.isEnabled = !isDisabled
+        doneButton.isEnabled = !isDisabled && (!stickers.isEmpty)
     }
 }
