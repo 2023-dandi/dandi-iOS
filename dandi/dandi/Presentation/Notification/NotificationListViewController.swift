@@ -19,9 +19,11 @@ final class NotificationListViewController: BaseViewController {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = YDSColor.bgNormal
         return collectionView
     }()
+
+    private let emptyLabel = EmptyLabel(text: "받은 알림이 없어요.\n설정에서 날씨 알림을 받을 수 있어요.")
 
     private lazy var dataSource = NotificationDataSource(
         collectionView: self.collectionView
@@ -31,12 +33,8 @@ final class NotificationListViewController: BaseViewController {
         super.init()
         title = "알림"
         setLayouts()
-        dataSource.update(list: [
-            NotificationItem(id: 1, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구", type: .heart),
-            NotificationItem(id: 2, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구", type: .comment),
-            NotificationItem(id: 3, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: "어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구", type: .new),
-            NotificationItem(id: 4, title: "11월 24일 오후 3시 게시물에 하트가 달렸어요.", description: nil, type: .heart)
-        ])
+        dataSource.update(list: [])
+        collectionView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,9 +66,13 @@ extension NotificationListViewController {
 
 extension NotificationListViewController {
     private func setLayouts() {
-        view.addSubview(collectionView)
+        view.addSubviews(emptyLabel, collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        emptyLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.centerY.equalTo(view.safeAreaLayoutGuide).offset(-30)
         }
     }
 }

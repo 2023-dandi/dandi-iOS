@@ -22,6 +22,7 @@ final class FeedViewController: BaseViewController, View {
     )
     private let temperaturePublisher = PublishRelay<Temperatures>()
     private let likePublisher = PublishSubject<Int>()
+    private let emptyLabel = EmptyLabel(text: "아직 참고할 수 있는 날씨 옷이 없어요.\n직접 날씨옷을 기록해보는 건 어떨까요?")
 
     override func loadView() {
         view = feedView
@@ -29,6 +30,7 @@ final class FeedViewController: BaseViewController, View {
 
     override init() {
         super.init()
+        setLayouts()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +50,8 @@ final class FeedViewController: BaseViewController, View {
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { owner, posts in
+                owner.emptyLabel.isHidden = !posts.isEmpty
+                owner.feedView.collectionView.isHidden = posts.isEmpty
                 owner.feedDataSource.update(feed: posts)
             })
             .disposed(by: disposeBag)
@@ -144,6 +148,14 @@ final class FeedViewController: BaseViewController, View {
                 owner.present(YDSNavigationController(rootViewController: vc), animated: true)
             })
             .disposed(by: disposeBag)
+    }
+
+    private func setLayouts() {
+        emptyLabel.isHidden = true
+        view.addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.center.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 

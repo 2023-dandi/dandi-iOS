@@ -28,6 +28,32 @@ final class HomeViewController: BaseViewController, View {
     private let temperaturePublisher = PublishRelay<Temperatures>()
     private let likePublisher = PublishSubject<Int>()
 
+    private(set) lazy var collectionViewLayout: UICollectionViewLayout = {
+        let layout = UICollectionViewCompositionalLayout { [weak self] index, _ in
+            guard
+                let self = self,
+                let sectionIdentifier = self.homeDataSource.sectionIdentifier(for: index)
+            else {
+                return self?.homeView.createCardSectionLayout()
+            }
+
+            switch sectionIdentifier {
+            case .timeWeather:
+                return self.homeView.createWeatherDetailSectionLayout()
+            case .recommendation:
+                return self.homeView.createRecommandationSectionLayout()
+            case .post:
+                return self.homeView.createCardSectionLayout()
+            case .emptyRecommandation:
+                return self.homeView.createEmptySectionLayout()
+            case .emptyPost:
+                return self.homeView.createEmptySectionLayout()
+            }
+        }
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        return layout
+    }()
+
     override func loadView() {
         view = homeView
     }
@@ -37,6 +63,7 @@ final class HomeViewController: BaseViewController, View {
         setGradientColors()
         setLayouts()
         setProperties()
+        homeView.collectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
     }
 
     func bind(reactor: HomeReactor) {

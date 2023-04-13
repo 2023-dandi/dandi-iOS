@@ -23,7 +23,14 @@ final class MyPageViewController: BaseViewController, View {
     )
 
     private var profile = UserProfile()
-    private var posts: [MyPost] = []
+    private var posts: [MyPost] = [] {
+        didSet {
+            emptyLabel.isHidden = !posts.isEmpty
+            myPageView.collectionView.bounces = !posts.isEmpty
+        }
+    }
+
+    private let emptyLabel = EmptyLabel(text: "아직 작성한 날씨옷이 없어요!\n홈에서 '+' 아이콘을 눌러 날씨옷을 기록해보세요.")
 
     override func loadView() {
         view = myPageView
@@ -37,6 +44,7 @@ final class MyPageViewController: BaseViewController, View {
     override init() {
         super.init()
         setProperties()
+        setLayouts()
     }
 
     func bind(reactor: MyPageReactor) {
@@ -114,6 +122,14 @@ final class MyPageViewController: BaseViewController, View {
 
     private func setProperties() {
         navigationItem.setRightBarButton(UIBarButtonItem(customView: rightTopButton), animated: false)
+    }
+
+    private func setLayouts() {
+        view.addSubviews(emptyLabel)
+        emptyLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(400)
+            $0.centerX.equalToSuperview()
+        }
     }
 }
 

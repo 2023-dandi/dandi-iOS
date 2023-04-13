@@ -20,7 +20,12 @@ final class DecorationViewController: BaseViewController {
 
     private var initialMenuViewCenter: CGPoint = .zero
 
-    private var stickers: [StickerEditorView] = []
+    private var stickers: [StickerEditorView] = [] {
+        didSet {
+            doneButton.isEnabled = !stickers.isEmpty
+        }
+    }
+
     private lazy var imageView = DecorationImageView()
     private let menuView = DecorationMenuView()
     private let doneButton = UIButton()
@@ -82,6 +87,12 @@ final class DecorationViewController: BaseViewController {
                 .withTintColor(YDSColor.buttonNormal),
             for: .normal
         )
+        doneButton.setImage(
+            YDSIcon.checkLine
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(YDSColor.buttonDisabled),
+            for: .disabled
+        )
         navigationItem.setRightBarButton(
             UIBarButtonItem(customView: doneButton),
             animated: false
@@ -91,6 +102,7 @@ final class DecorationViewController: BaseViewController {
     private func setViewControllers() {
         let closet = factory.makeClosetTabViewController()
         closet.addImageDeleagte = self
+        closet.checkButtonDelegate = self
 
         let background = factory.makeBackgroundTabViewController()
         background.addImageDelegate = self
@@ -234,5 +246,11 @@ extension DecorationViewController: AddImageDelegate {
         default:
             return
         }
+    }
+}
+
+extension DecorationViewController: CheckButtonDelegate {
+    func disableButton(isDisabled: Bool) {
+        doneButton.isEnabled = !isDisabled && (!stickers.isEmpty)
     }
 }

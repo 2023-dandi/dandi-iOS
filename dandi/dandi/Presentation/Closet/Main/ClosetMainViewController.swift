@@ -44,6 +44,7 @@ final class ClosetMainViewController: BaseViewController, View {
     private var shouledLoadClothesPublisher = PublishSubject<Bool>()
 
     private let closetView = ClosetView()
+    private let emptyLabel = EmptyLabel(text: "아직 등록된 옷이 없어요.\n홈에서 '+' 아이콘을 눌러 옷을 등록할 수 있어요.")
 
     /// DataSource
     private var category: [ClothesCategory] = [] {
@@ -62,6 +63,7 @@ final class ClosetMainViewController: BaseViewController, View {
     private var clothes: [Clothes] = [] {
         didSet {
             self.closetView.photoCollectionView.reloadData()
+            self.emptyLabel.isHidden = !clothes.isEmpty
         }
     }
 
@@ -73,6 +75,7 @@ final class ClosetMainViewController: BaseViewController, View {
         super.init()
         setProperties()
         setCollectionView()
+        setLayouts()
     }
 
     func bind(reactor: Reactor) {
@@ -157,6 +160,13 @@ final class ClosetMainViewController: BaseViewController, View {
 
     private func setProperties() {
         title = "옷장"
+    }
+
+    private func setLayouts() {
+        view.addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.center.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 
     private func setCollectionView() {

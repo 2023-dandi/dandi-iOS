@@ -14,23 +14,9 @@ import YDS
 final class HomeView: UIView {
     private(set) lazy var notificationButton = YDSTopBarButton(image: YDSIcon.bellLine)
     private(set) lazy var bannerView = WeatherBannerView()
-    private lazy var collectionViewLayout: UICollectionViewLayout = {
-        let layout = UICollectionViewCompositionalLayout { [weak self] index, _ in
-            switch index {
-            case 0:
-                return self?.createWeatherDetailSectionLayout()
-            case 1:
-                return self?.createRecommandationSectionLayout()
-            default:
-                return self?.createCardSectionLayout()
-            }
-        }
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        return layout
-    }()
-
+    
     private(set) lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: collectionViewLayout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 60, right: .zero)
@@ -103,7 +89,7 @@ extension HomeView {
         }
     }
 
-    private func createWeatherDetailSectionLayout() -> NSCollectionLayoutSection {
+    func createWeatherDetailSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
@@ -126,7 +112,7 @@ extension HomeView {
         return section
     }
 
-    private func createRecommandationSectionLayout() -> NSCollectionLayoutSection {
+    func createRecommandationSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
@@ -161,7 +147,42 @@ extension HomeView {
         return section
     }
 
-    private func createCardSectionLayout() -> NSCollectionLayoutSection {
+    func createEmptySectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(125)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.orthogonalScrollingBehavior = .continuous
+        group.contentInsets = .init(top: .zero, leading: 12, bottom: .zero, trailing: 12)
+
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(96)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        header.pinToVisibleBounds = true
+        section.boundarySupplementaryItems = [header]
+        return section
+    }
+
+    func createCardSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.5),
             heightDimension: .fractionalHeight(1.0)
