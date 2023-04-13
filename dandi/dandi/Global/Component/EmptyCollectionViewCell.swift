@@ -10,7 +10,7 @@ import UIKit
 import YDS
 
 final class EmptyCollectionViewCell: UICollectionViewCell {
-    private let label = UILabel()
+    private let label = EmptyLabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,15 +22,30 @@ final class EmptyCollectionViewCell: UICollectionViewCell {
     }
 
     private func render() {
-        label.numberOfLines = 0
-        label.font = YDSFont.caption1
-        label.textAlignment = .center
-        label.textColor = YDSColor.textTertiary
-
         contentView.addSubview(label)
         label.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+final class EmptyLabel: UILabel {
+    convenience init(text: String) {
+        self.init()
+        self.text = text
+    }
+
+    init() {
+        super.init(frame: .zero)
+        self.numberOfLines = 0
+        self.font = YDSFont.caption1
+        self.textAlignment = .center
+        self.textColor = YDSColor.textTertiary
     }
 
     @available(*, unavailable)
