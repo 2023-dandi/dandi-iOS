@@ -82,6 +82,12 @@ final class DecorationViewController: BaseViewController {
                 .withTintColor(YDSColor.buttonNormal),
             for: .normal
         )
+        doneButton.setImage(
+            YDSIcon.checkLine
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(YDSColor.buttonDisabled),
+            for: .normal
+        )
         navigationItem.setRightBarButton(
             UIBarButtonItem(customView: doneButton),
             animated: false
@@ -91,6 +97,7 @@ final class DecorationViewController: BaseViewController {
     private func setViewControllers() {
         let closet = factory.makeClosetTabViewController()
         closet.addImageDeleagte = self
+        closet.checkButtonDelegate = self
 
         let background = factory.makeBackgroundTabViewController()
         background.addImageDelegate = self
@@ -234,5 +241,11 @@ extension DecorationViewController: AddImageDelegate {
         default:
             return
         }
+    }
+}
+
+extension DecorationViewController: CheckButtonDelegate {
+    func disableButton(isDisabled: Bool) {
+        doneButton.isEnabled = !isDisabled
     }
 }

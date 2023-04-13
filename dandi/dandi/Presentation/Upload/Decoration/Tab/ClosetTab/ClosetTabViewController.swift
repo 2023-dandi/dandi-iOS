@@ -12,12 +12,15 @@ import RxCocoa
 import RxSwift
 import YDS
 
+protocol CheckButtonDelegate: AnyObject {
+    func disableButton(isDisabled: Bool)
+}
+
 final class ClosetTabViewController: BaseViewController, View {
     typealias Reactor = ClosetTabReactor
 
     weak var addImageDeleagte: AddImageDelegate?
-
-    private let closetView = ClosetTabView()
+    weak var checkButtonDelegate: CheckButtonDelegate?
 
     private var categoryList: [CategoryInfo] = [] {
         didSet {
@@ -45,12 +48,22 @@ final class ClosetTabViewController: BaseViewController, View {
         }
     }
 
-    private var imageURLList: [String] = [] {
+    var imageURLList: [String] = [] {
         didSet {
-            self.closetView.photoCollectionView.reloadData()
+            closetView.photoCollectionView.reloadData()
+            emptyLabel.isHidden = !imageURLList.isEmpty
+            checkButtonDelegate?.disableButton(isDisabled: imageURLList.isEmpty)
         }
     }
 
+    private let closetView = ClosetTabView()
+    private let emptyLabel = EmptyLabel(text:
+        """
+        "이럴수가, 옷장에 옷이 없어요!
+        옷장에 옷을 등록해야 옷을 꺼낼 수 있어요.
+
+        홈에서 [플로팅 버튼>옷 등록]을 해보세요!
+        """)
     override func loadView() {
         view = closetView
     }
@@ -59,6 +72,7 @@ final class ClosetTabViewController: BaseViewController, View {
         super.init()
         title = "옷장"
         setCollectionView()
+        setLayout()
     }
 
     func bind(reactor: Reactor) {
@@ -113,6 +127,14 @@ final class ClosetTabViewController: BaseViewController, View {
                 self?.imageURLList = clothes.map { $0.imageURL }
             })
             .disposed(by: disposeBag)
+    }
+
+    private func setLayout() {
+        view.addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(70)
+        }
     }
 
     private func setCollectionView() {
