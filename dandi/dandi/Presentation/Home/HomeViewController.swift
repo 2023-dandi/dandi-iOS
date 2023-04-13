@@ -42,9 +42,11 @@ final class HomeViewController: BaseViewController, View {
                 return self.homeView.createWeatherDetailSectionLayout()
             case .recommendation:
                 return self.homeView.createRecommandationSectionLayout()
-            case .same:
+            case .post:
                 return self.homeView.createCardSectionLayout()
-            case .empty:
+            case .emptyRecommandation:
+                return self.homeView.createEmptySectionLayout()
+            case .emptyPost:
                 return self.homeView.createEmptySectionLayout()
             }
         }

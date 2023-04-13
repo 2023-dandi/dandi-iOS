@@ -39,8 +39,9 @@ final class HomeDataSource {
     enum Section {
         case timeWeather
         case recommendation
-        case same
-        case empty
+        case post
+        case emptyRecommandation
+        case emptyPost
     }
 
     enum Item: Hashable {
@@ -69,8 +70,8 @@ final class HomeDataSource {
         snapshot.appendItems(timeWeatherItems, toSection: .timeWeather)
 
         if recommendation.isEmpty {
-            snapshot.appendSections([.empty])
-            snapshot.appendItems([Item.empty("추천에 해당하는 옷이 옷장에 없어요.\n옷을 더 등록해보는 건 어떨까요?")], toSection: .empty)
+            snapshot.appendSections([.emptyRecommandation])
+            snapshot.appendItems([Item.empty("추천에 해당하는 옷이 옷장에 없어요.\n옷을 더 등록해보는 건 어떨까요?")], toSection: .emptyRecommandation)
         } else {
             snapshot.appendSections([.recommendation])
             let recommadationItems = recommendation.map { Item.recommendation($0) }
@@ -78,12 +79,12 @@ final class HomeDataSource {
         }
 
         if posts.isEmpty {
-            snapshot.appendSections([.empty])
-            snapshot.appendItems([Item.empty("추천에 해당하는 옷이 옷장에 없어요.\n옷을 더 등록해보는 건 어떨까요?")], toSection: .empty)
+            snapshot.appendSections([.emptyPost])
+            snapshot.appendItems([Item.empty("참고할 수 있는 기록이 없어요.\n날씨옷을 더 기록해보면 어떨까요?")], toSection: .emptyPost)
         } else {
-            snapshot.appendSections([.same])
+            snapshot.appendSections([.post])
             let ids = posts.map { $0.id }.uniqued().map { Item.post($0) }
-            snapshot.appendItems(ids, toSection: .same)
+            snapshot.appendItems(ids, toSection: .post)
         }
 
         posts
