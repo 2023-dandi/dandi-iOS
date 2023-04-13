@@ -123,6 +123,7 @@
 		DD66C03529D958A600A262F2 /* ClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03429D958A600A262F2 /* ClosetUseCase.swift */; };
 		DD66C03729D9590D00A262F2 /* DefaultClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */; };
 		DD797BBE29E7C4F5000FFA9A /* WeatherImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */; };
+		DD797BC029E80098000FFA9A /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -379,6 +380,7 @@
 		DD66C03429D958A600A262F2 /* ClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetUseCase.swift; sourceTree = "<group>"; };
 		DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClosetUseCase.swift; sourceTree = "<group>"; };
 		DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageType.swift; sourceTree = "<group>"; };
+		DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -1051,6 +1053,7 @@
 				DD61796429CB5FBF005B7527 /* PagerCollectionViewCell.swift */,
 				DD1D6B1B29D02D6E00085FBE /* CategoryTextCollectionViewCell.swift */,
 				DD1D6B1D29D032C800085FBE /* PagerButton.swift */,
+				DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1562,6 +1565,7 @@
 				DD3D9A5A29CCAC0100E298B1 /* LocationUseCase.swift in Sources */,
 				DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
+				DD797BC029E80098000FFA9A /* EmptyCollectionViewCell.swift in Sources */,
 				DDA59B4129D6C03700C085E1 /* Location.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */,

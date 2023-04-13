@@ -16,10 +16,12 @@ final class HomeDataSource {
     typealias WeatherDetailCell = WeatherDetailCollectionViewCell
     typealias ClothesCell = ImageCollectionViewCell
     typealias CardCell = CardCollectionViewCell
+    typealias EmptyCell = EmptyCollectionViewCell
 
     typealias WeahterDetailCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, TimeWeatherInfo>
     typealias ClothesCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, ClosetImage>
     typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Int>
+    typealias EmptyCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, String>
 
     typealias SectionHeaderRegistration<Header: UICollectionReusableView> = UICollectionView.SupplementaryRegistration<CardHeaderView>
 
@@ -38,12 +40,14 @@ final class HomeDataSource {
         case timeWeather
         case recommendation
         case same
+        case empty
     }
 
     enum Item: Hashable {
         case timeWeatherInfo(TimeWeatherInfo)
         case recommendation(ClosetImage)
         case post(Int)
+        case empty(String)
     }
 
     init(collectionView: UICollectionView, presentingViewController: UIViewController & HeartButtonDelegate) {
@@ -59,16 +63,28 @@ final class HomeDataSource {
         posts: [Post]
     ) {
         var snapshot = Snapshot()
-        snapshot.appendSections([.timeWeather, .recommendation, .same])
+        snapshot.appendSections([.timeWeather])
 
         let timeWeatherItems = timeWeathers.map { Item.timeWeatherInfo($0) }
         snapshot.appendItems(timeWeatherItems, toSection: .timeWeather)
 
-        let recommadationItems = recommendation.map { Item.recommendation($0) }
-        snapshot.appendItems(recommadationItems, toSection: .recommendation)
+        if recommendation.isEmpty {
+            snapshot.appendSections([.empty])
+            snapshot.appendItems([Item.empty("추천에 해당하는 옷이 옷장에 없어요.\n옷을 더 등록해보는 건 어떨까요?")], toSection: .empty)
+        } else {
+            snapshot.appendSections([.recommendation])
+            let recommadationItems = recommendation.map { Item.recommendation($0) }
+            snapshot.appendItems(recommadationItems, toSection: .recommendation)
+        }
 
-        let ids = posts.map { $0.id }.uniqued().map { Item.post($0) }
-        snapshot.appendItems(ids)
+        if posts.isEmpty {
+            snapshot.appendSections([.empty])
+            snapshot.appendItems([Item.empty("추천에 해당하는 옷이 옷장에 없어요.\n옷을 더 등록해보는 건 어떨까요?")], toSection: .empty)
+        } else {
+            snapshot.appendSections([.same])
+            let ids = posts.map { $0.id }.uniqued().map { Item.post($0) }
+            snapshot.appendItems(ids, toSection: .same)
+        }
 
         posts
             .filter { !self.posts.keys.contains($0.id) }
@@ -99,6 +115,10 @@ final class HomeDataSource {
         return dataSource.itemIdentifier(for: indexPath)
     }
 
+    func sectionIdentifier(for index: Int) -> Section? {
+        return dataSource.sectionIdentifier(for: index).map { $0 }
+    }
+
     func reloadIfNeeded(item: Post) {
         guard
             posts.keys.contains(item.id),
@@ -116,6 +136,7 @@ extension HomeDataSource {
         let cardRegistration: CardCellRegistration<CardCell> = configureCardCellRegistration()
         let imageRegistration: ClothesCellRegistration<ClothesCell> = configureRecommendationCellRegistration()
         let weatherDetailRegistration: WeahterDetailCellRegistration<WeatherDetailCell> = configureDetailBannerCellRegistration()
+        let emptyRegistration: EmptyCellRegistration<EmptyCell> = configureEmptyCellRegistration()
 
         let cellProvider: CellProvider = { collectionView, indexPath, item in
             switch item {
@@ -136,6 +157,12 @@ extension HomeDataSource {
                     using: imageRegistration,
                     for: indexPath,
                     item: item
+                )
+            case let .empty(text):
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: emptyRegistration,
+                    for: indexPath,
+                    item: text
                 )
             }
         }
@@ -178,6 +205,12 @@ extension HomeDataSource {
                 time: info.time,
                 temperature: info.temperature
             )
+        }
+    }
+
+    private func configureEmptyCellRegistration<Cell: EmptyCell>() -> EmptyCellRegistration<Cell> {
+        return EmptyCellRegistration { cell, _, text in
+            cell.configure(text: text)
         }
     }
 

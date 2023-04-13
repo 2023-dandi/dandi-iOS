@@ -49,7 +49,6 @@ extension WeatherDetailCollectionViewCell {
     private func setProperties() {
         mainImageView.do {
             $0.contentMode = .scaleAspectFill
-            $0.alpha = 0.3
         }
         timeLabel.do {
             $0.textAlignment = .center
