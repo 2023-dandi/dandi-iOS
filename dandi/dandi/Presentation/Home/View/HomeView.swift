@@ -33,7 +33,7 @@ final class HomeView: UIView {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 16, right: .zero)
+        collectionView.contentInset = .init(top: .zero, left: .zero, bottom: 60, right: .zero)
         collectionView.delegate = self
         return collectionView
     }()

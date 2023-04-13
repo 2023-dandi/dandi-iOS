@@ -36,6 +36,7 @@ final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
         ) { [weak self] result in
             switch result {
             case let .success(response):
+                dump(response.temperatures)
                 self?.hourlyWeather.accept(response)
                 self?.isCompleted.onNext(true)
             case .failure:

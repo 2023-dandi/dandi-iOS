@@ -63,19 +63,41 @@ enum WeatherCategoryDTO: String, Decodable {
 
 extension WeatherDTO {
     func toDomain() -> TodayWeatherInfo {
-        let timeWeahtherInfos = response.body.items.item
-            .filter { $0.category == .tmp }
+        let weatherItems: [WeatherItemDTO] = response.body.items.item
             .filter {
                 ($0.fcstTime.toInt() >= String(format: "%02d00", Calendar.current.component(.hour, from: Date())).toInt()
                     && $0.fcstDate.toInt() == Date().dateToString().toInt())
                     || ($0.fcstDate.toInt() > Date().dateToString().toInt())
             }
-            .map { TimeWeatherInfo(
-                image: .add,
-                time: TimeConverter().convert24hoursTo12hours(time: $0.fcstTime.toInt() / 100),
-                temperature: $0.fcstValue
-            ) }
 
+        var weatherInfoDictionary: [Int: [WeatherItemDTO]] = [:]
+        for weatherItem in weatherItems {
+            let key = Int(weatherItem.fcstDate + weatherItem.fcstTime) ?? 0
+            if weatherInfoDictionary[key] == nil {
+                weatherInfoDictionary[key] = [weatherItem]
+            } else {
+                weatherInfoDictionary[key]?.append(weatherItem)
+            }
+        }
+
+        let sortedKeys = weatherInfoDictionary.keys.sorted()
+
+        var timeWeahtherInfos: [TimeWeatherInfo] = []
+
+        for key in sortedKeys {
+            if let weatherItems = weatherInfoDictionary[key] {
+                let sky = weatherItems.filter { $0.category == .sky }.first?.fcstValue.toInt()
+                let pty = weatherItems.filter { $0.category == .pty }.first?.fcstValue.toInt()
+                let tmp = weatherItems.filter { $0.category == .tmp }.first?.fcstValue
+                let time = String(String(key).suffix(4))
+                let weatherInfo = TimeWeatherInfo(
+                    image: WeatherImageType(SKY: sky ?? 0, PTY: pty ?? 0).image,
+                    time: TimeConverter().convert24hoursTo12hours(time: time.toInt() / 100),
+                    temperature: tmp ?? "0"
+                )
+                timeWeahtherInfos.append(weatherInfo)
+            }
+        }
         let min = response.body.items.item
             .filter { $0.category == .tmn }
             .map { $0.fcstValue.toDouble() }
@@ -88,37 +110,5 @@ extension WeatherDTO {
 
         let temperatures = Temperatures(min: Int(min ?? -1), max: Int(max ?? -1))
         return TodayWeatherInfo(temperatures: temperatures, timeWeahtherInfos: timeWeahtherInfos)
-    }
-
-    func toDomain() -> [TimeWeatherInfo] {
-        return response.body.items.item
-            .filter { $0.category == .tmp }
-            .filter {
-                ($0.fcstTime.toInt() >= String(format: "%02d00", Calendar.current.component(.hour, from: Date())).toInt()
-                    && $0.fcstDate.toInt() == Date().dateToString().toInt())
-                    || ($0.fcstDate.toInt() > Date().dateToString().toInt())
-            }
-            .map { TimeWeatherInfo(
-                image: .add,
-                time: TimeConverter().convert24hoursTo12hours(time: $0.fcstTime.toInt() / 100),
-                temperature: $0.fcstValue
-            ) }
-    }
-
-    func toDomain() -> Temperatures {
-        let min = response.body.items.item
-            .filter { $0.category == .tmn }
-            .map { $0.fcstValue.toDouble() }
-            .first
-
-        let max = response.body.items.item
-            .filter { $0.category == .tmx }
-            .map { $0.fcstValue.toDouble() }
-            .first
-
-        dump(min)
-        dump(max)
-
-        return Temperatures(min: Int(min ?? -1), max: Int(max ?? -1))
     }
 }

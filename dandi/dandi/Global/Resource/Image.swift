@@ -46,8 +46,10 @@ struct Image {
     static let cloudyLine = UIImage(named: "ic_cloudy_line")!
     static let raindropsLine = UIImage(named: "ic_raindrops_line")!
     static let rainyLine = UIImage(named: "ic_rainy_line")!
+    static let rainysnowy = UIImage(named: "ic_rainysnowy_line")!
     static let snowLine = UIImage(named: "ic_snow_line")!
     static let snowrainLine = UIImage(named: "ic_snowrain_line")!
-    static let snowyLine = UIImage(named: "ic_snowy_line")
-    static let sunnyLine = UIImage(named: "ic_sunny_line")
+    static let snowyLine = UIImage(named: "ic_snowy_line")!
+    static let sunnyLine = UIImage(named: "ic_sunny_line")!
+    static let moonLine = UIImage(named: "ic_moon_line")!
 }
