@@ -98,12 +98,12 @@ extension WeatherDTO {
                 timeWeahtherInfos.append(weatherInfo)
             }
         }
-        let min = response.body.items.item
+        let min = weatherItems
             .filter { $0.category == .tmp }
             .map { $0.fcstValue.toDouble() }
             .min()
 
-        let max = response.body.items.item
+        let max = weatherItems
             .filter { $0.category == .tmp }
             .map { $0.fcstValue.toDouble() }
             .max()

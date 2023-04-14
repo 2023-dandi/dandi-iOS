@@ -59,7 +59,7 @@ final class FeedViewController: BaseViewController, View {
         reactor.state
             .compactMap { $0.temperature }
             .distinctUntilChanged()
-            .observe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] temperature in
                 guard let self = self else { return }
                 self.feedView.navigationTitleLabel.text = "\(UserDefaultHandler.shared.address)은 최고\(temperature.max)/최저\(temperature.min)도입니다."
