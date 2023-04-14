@@ -99,14 +99,14 @@ extension WeatherDTO {
             }
         }
         let min = response.body.items.item
-            .filter { $0.category == .tmn }
+            .filter { $0.category == .tmp }
             .map { $0.fcstValue.toDouble() }
-            .first
+            .min()
 
         let max = response.body.items.item
-            .filter { $0.category == .tmx }
+            .filter { $0.category == .tmp }
             .map { $0.fcstValue.toDouble() }
-            .first
+            .max()
 
         let temperatures = Temperatures(min: Int(min ?? -1), max: Int(max ?? -1))
         return TodayWeatherInfo(temperatures: temperatures, timeWeahtherInfos: timeWeahtherInfos)
