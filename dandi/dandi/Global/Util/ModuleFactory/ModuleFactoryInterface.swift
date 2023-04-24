@@ -29,6 +29,7 @@ protocol ModuleFactoryInterface {
     func makeStickerTabViewController() -> StickerTabViewController
     func makeClosetTabViewController() -> ClosetTabViewController
     func makeLocationSettingViewController(from: LocationSettingViewController.From) -> LocationSettingViewController
+    func makeConfirmLocationViewController(locality: String, latitude: Double, longitude: Double, from: LocationSettingViewController.From) -> ConfirmLocationViewController
     func makeDetailClothesViewController(id: Int) -> DetailClothesViewController
     func makeSettingViewController() -> SettingViewController
 }

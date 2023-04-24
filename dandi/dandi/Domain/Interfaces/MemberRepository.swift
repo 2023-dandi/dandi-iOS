@@ -21,7 +21,7 @@ protocol MemberRepository {
     func updateLocation(
         latitude: Double,
         longitude: Double,
-        completion: @escaping NetworkCompletion<Location>
+        completion: @escaping NetworkCompletion<StatusCase>
     )
 
     func fetchMemberInfo(

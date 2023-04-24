@@ -34,7 +34,7 @@ final class DefaultWeatherService: WeatherService {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let queryParams: [String: Any] = [
-            "serviceKey": "sS9mlDemZwGQFvXmlknhraaS5PBNGwBDGPp0IZfmHPhFRED34lQ3MiSoUgbiBlJtymQ9WPnw3eJBkvIxdO%2Fi8w%3D%3D",
+            "serviceKey": URLConstant.weatherToken,
             "numOfRows": numOfRows,
             "pageNo": page,
             "dataType": "json",

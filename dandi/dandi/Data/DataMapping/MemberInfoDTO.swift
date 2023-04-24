@@ -10,6 +10,7 @@ struct MemberInfoDTO: Decodable {
     let latitude: Double
     let longitude: Double
     let profileImageUrl: String
+    let postCount: Int
 }
 
 extension MemberInfoDTO {
@@ -18,7 +19,7 @@ extension MemberInfoDTO {
             profileImageURL: profileImageUrl,
             nickname: nickname,
             location: location,
-            closetCount: 11
+            postCount: postCount
         )
     }
 }
