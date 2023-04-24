@@ -39,6 +39,7 @@ final class PostDetailViewController: BaseViewController, View {
     private let likePublisher = PublishSubject<Int>()
     private let shouldReloadCommentsPublisher = PublishSubject<Void>()
     private let shouldDeleteCommentPublisher = PublishSubject<Int>()
+    private let shouldReportCommentPublisher = PublishSubject<Int>()
 
     override init() {
         super.init()
@@ -94,6 +95,11 @@ extension PostDetailViewController {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        shouldReportCommentPublisher
+            .map { Reactor.Action.reportComment(commentID: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         likePublisher
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .withUnretained(self)
@@ -104,17 +110,37 @@ extension PostDetailViewController {
         let moreButtonDidTap = moreButton.rx.tap
             .withUnretained(self)
             .flatMapLatest { owner, _ -> Observable<PostDetailAlertType> in
-                let actions: [PostDetailAlertType] = [.share, .delete]
+                let isMine = owner.reactor?.currentState.post?.isMine ?? false
+                let actions: [PostDetailAlertType] = isMine
+                    ? [.share, .delete]
+                    : [.report, .block]
                 return owner.rx.makeActionSheet(
                     title: "게시물을 어떻게 하시겠어요?",
                     actions: actions,
                     closeAction: Alert(title: "닫기", style: .cancel)
                 )
             }
+            .share()
 
         moreButtonDidTap.filter { $0 == .delete }
-            .withUnretained(self)
-            .map { _, _ in Reactor.Action.delete }
+            .map { _ in Reactor.Action.delete }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        moreButtonDidTap.filter { $0 == .block }
+            .map { [weak self] _ -> Int? in
+                guard let self = self else { return nil }
+                return self.reactor?.currentState.post?.writerId
+            }
+            .compactMap { $0 }
+            .map { Reactor.Action.blockUser(userID: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        moreButtonDidTap.filter { $0 == .report }
+            .map { _ in
+                Reactor.Action.reportPost
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
@@ -173,11 +199,32 @@ extension PostDetailViewController {
         reactor.state
             .map { $0.isDeleted }
             .distinctUntilChanged()
+            .filter { $0 }
             .withUnretained(self)
-            .subscribe(onNext: { owner, isDeleted in
-                if isDeleted {
-                    owner.navigationController?.popViewController(animated: true)
-                }
+            .subscribe(onNext: { owner, _ in
+                owner.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.isBlockedUser }
+            .distinctUntilChanged()
+            .filter { $0 }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.navigationController?.popViewController(animated: true)
+                NotificationCenterManager.reloadPosts.post()
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .map { $0.isReportedPost }
+            .distinctUntilChanged()
+            .filter { $0 }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.navigationController?.popViewController(animated: true)
+                NotificationCenterManager.reloadPosts.post()
             })
             .disposed(by: disposeBag)
     }
@@ -297,34 +344,38 @@ extension PostDetailViewController {
         config.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
             guard
                 let self = self,
-                let item = self.dataSource.commentItemIdentifier(for: indexPath),
-                item.isMine
+                let item = self.dataSource.commentItemIdentifier(for: indexPath)
             else {
-                let reportAction = UIContextualAction(
+                return nil
+            }
+
+            if item.isMine {
+                let deleteAction = UIContextualAction(
                     style: .normal,
                     title: nil
                 ) { _, _, completion in
-                    // report 함수 구현
+                    self.shouldDeleteCommentPublisher.onNext(item.id)
                     completion(true)
                 }
-                reportAction.image = YDSIcon.warningcircleLine
+                deleteAction.image = YDSIcon.trashcanLine
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(YDSColor.buttonNormal)
-                reportAction.backgroundColor = YDSColor.bgRecomment
-                return UISwipeActionsConfiguration(actions: [reportAction])
+                    .withTintColor(YDSColor.buttonWarned)
+                deleteAction.backgroundColor = YDSColor.buttonWarnedBG
+                return UISwipeActionsConfiguration(actions: [deleteAction])
             }
-            let deleteAction = UIContextualAction(
+
+            let reportAction = UIContextualAction(
                 style: .normal,
                 title: nil
             ) { _, _, completion in
-                self.shouldDeleteCommentPublisher.onNext(item.id)
+                self.shouldReportCommentPublisher.onNext(item.id)
                 completion(true)
             }
-            deleteAction.image = YDSIcon.trashcanLine
+            reportAction.image = YDSIcon.warningcircleLine
                 .withRenderingMode(.alwaysOriginal)
-                .withTintColor(YDSColor.buttonWarned)
-            deleteAction.backgroundColor = YDSColor.buttonWarnedBG
-            return UISwipeActionsConfiguration(actions: [deleteAction])
+                .withTintColor(YDSColor.buttonNormal)
+            reportAction.backgroundColor = YDSColor.bgRecomment
+            return UISwipeActionsConfiguration(actions: [reportAction])
         }
 
         let section = NSCollectionLayoutSection.list(

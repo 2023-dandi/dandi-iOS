@@ -8,6 +8,7 @@
 import Foundation
 
 import Moya
+import RxSwift
 
 final class DefaultMemberRepository: MemberRepository {
     let router: MoyaProvider<MemberService>
@@ -110,5 +111,20 @@ final class DefaultMemberRepository: MemberRepository {
                 completion(.failure(.networkFail))
             }
         }
+    }
+
+    func blockUser(userID: Int) -> Single<NetworkResult<StatusCase>> {
+        return router.rx.request(.blockUser(userID: userID))
+            .map { response in
+                let decodedResponse: NetworkResult<StatusCase> = NetworkHandler.requestStatusCaseDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(statusCase):
+                    return .success(statusCase)
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
     }
 }

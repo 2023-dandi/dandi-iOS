@@ -80,6 +80,7 @@ final class FeedViewController: BaseViewController, View {
                     id: oldPostItem.id,
                     mainImageURL: oldPostItem.mainImageURL,
                     profileImageURL: oldPostItem.profileImageURL,
+                    writerId: oldPostItem.writerId,
                     nickname: oldPostItem.nickname,
                     date: oldPostItem.date,
                     content: oldPostItem.content,

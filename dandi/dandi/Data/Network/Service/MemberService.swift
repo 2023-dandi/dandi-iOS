@@ -15,6 +15,7 @@ enum MemberService {
     case patchLocation(latitude: Double, longitude: Double)
     case getMemberInfo
     case confirmNicknameDulication(nickname: String)
+    case blockUser(userID: Int)
 }
 
 extension MemberService: BaseTargetType {
@@ -45,6 +46,8 @@ extension MemberService: BaseTargetType {
             return "/members"
         case .confirmNicknameDulication:
             return "/members/nickname/duplication"
+        case .blockUser:
+            return "/members/blocks"
         }
     }
 
@@ -56,6 +59,8 @@ extension MemberService: BaseTargetType {
             return .patch
         case .getMemberInfo, .confirmNicknameDulication:
             return .get
+        case .blockUser:
+            return .post
         }
     }
 
@@ -89,6 +94,11 @@ extension MemberService: BaseTargetType {
             return .requestParameters(
                 parameters: ["nickname": nickname],
                 encoding: URLEncoding.queryString
+            )
+        case let .blockUser(userID):
+            return .requestParameters(
+                parameters: ["blockerMemberId": userID],
+                encoding: JSONEncoding.default
             )
         }
     }

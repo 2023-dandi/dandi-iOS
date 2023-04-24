@@ -90,6 +90,7 @@ extension Reactive where Base: UIViewController {
             alertController.addAction(cancelAlertAction)
 
             base?.present(alertController, animated: animated, completion: completion)
+
             return Disposables.create {
                 alertController.dismiss(animated: animated)
             }
