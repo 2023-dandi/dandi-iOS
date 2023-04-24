@@ -35,6 +35,7 @@ extension MyTemperaturePostWithPageDTO {
                 id: $0.id,
                 mainImageURL: $0.postImageURL,
                 profileImageURL: writer.profileImageURL,
+                writerId: writer.id,
                 nickname: writer.nickname,
                 date: $0.createdAt ?? "",
                 content: "\($0.temperatures?.min ?? 0)도/\($0.temperatures?.max ?? 0)도에, \(ClothesFeeling(rawValue: $0.feelingIndex)?.text ?? "").",

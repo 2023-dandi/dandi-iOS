@@ -16,6 +16,7 @@ final class PostDetailReactor: Reactor {
     private let postDetailUseCase: PostDetailUseCase
     private let postLikeUseCase: LikeUseCase
     private let commentUseCase: CommentUseCase
+    private let reportAndBlockUseCase: ReportAndBlockUseCase
     private let postID: Int
 
     struct State {
@@ -23,6 +24,9 @@ final class PostDetailReactor: Reactor {
         var isLoading: Bool = false
         var post: Post?
         var isDeleted: Bool = false
+        var isReportedPost: Bool = false
+        var isReportedComment: Bool = false
+        var isBlockedUser: Bool = false
         var comments: [Comment]?
     }
 
@@ -31,9 +35,11 @@ final class PostDetailReactor: Reactor {
         case like
         case delete
         case fetchComments
+        case reportPost
+        case blockUser(userID: Int)
         case postComment(content: String)
         case deleteComment(commentID: Int)
-//        case reportComment(commentID: Int)
+        case reportComment(commentID: Int)
     }
 
     enum Mutation {
@@ -41,6 +47,9 @@ final class PostDetailReactor: Reactor {
         case setPost(Post)
         case setLikeButtonStatus(isLiked: Bool)
         case setDeleteStatus(Bool)
+        case setReportPostStatus(Bool)
+        case setReportCommentStatus(Bool)
+        case setBlockUserStatus(Bool)
         case setComments([Comment])
     }
 
@@ -48,19 +57,20 @@ final class PostDetailReactor: Reactor {
         postID: Int,
         postDetailUseCase: PostDetailUseCase,
         postLikeUseCase: LikeUseCase,
-        commentUseCase: CommentUseCase
+        commentUseCase: CommentUseCase,
+        reportAndBlockUseCase: ReportAndBlockUseCase
     ) {
         self.initialState = State()
         self.postDetailUseCase = postDetailUseCase
         self.postLikeUseCase = postLikeUseCase
         self.commentUseCase = commentUseCase
+        self.reportAndBlockUseCase = reportAndBlockUseCase
         self.postID = postID
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .fetchPostDetail:
-
             postDetailUseCase.fetchPost(id: postID)
             return postDetailUseCase.postPublisher
                 .compactMap { $0 }
@@ -91,6 +101,22 @@ final class PostDetailReactor: Reactor {
             return commentUseCase.deleteComment(postID: postID, commentID: commentID)
                 .flatMap { _ in self.commentUseCase.fetchComments(postID: self.postID) }
                 .map { Mutation.setComments($0) }
+
+        case .reportPost:
+            return reportAndBlockUseCase.reportPost(postId: postID)
+                .asObservable()
+                .map { Mutation.setReportPostStatus($0) }
+
+        case let .reportComment(commentID):
+            return reportAndBlockUseCase.reportComment(commentId: commentID)
+                .asObservable()
+                .flatMap { _ in self.commentUseCase.fetchComments(postID: self.postID) }
+                .map { Mutation.setComments($0) }
+
+        case let .blockUser(userID):
+            return reportAndBlockUseCase.blockUser(userId: userID)
+                .asObservable()
+                .map { Mutation.setBlockUserStatus($0) }
         }
     }
 
@@ -107,6 +133,12 @@ final class PostDetailReactor: Reactor {
             newState.isDeleted = isDeleted
         case let .setComments(comments):
             newState.comments = comments
+        case let .setReportPostStatus(isReportedPost):
+            newState.isReportedPost = isReportedPost
+        case let .setReportCommentStatus(isReportedComment):
+            newState.isReportedComment = isReportedComment
+        case let .setBlockUserStatus(isBlockedUser):
+            newState.isBlockedUser = isBlockedUser
         }
         return newState
     }

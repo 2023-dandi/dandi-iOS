@@ -11,4 +11,5 @@ protocol CommentRepository {
     func fetchComments(postID: Int) -> Single<NetworkResult<ListWithPage<Comment>>>
     func postComment(postID: Int, content: String) -> Single<NetworkResult<StatusCase>>
     func deleteComment(postID: Int, commentID: Int) -> Single<NetworkResult<StatusCase>>
+    func reportComment(commentID: Int) -> Single<NetworkResult<StatusCase>>
 }

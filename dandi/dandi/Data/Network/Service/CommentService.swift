@@ -13,6 +13,7 @@ enum CommentService {
     case getComments(postID: Int)
     case postComment(postID: Int, content: String)
     case deleteComment(postID: Int, commentID: Int)
+    case reportComment(commentID: Int)
 }
 
 extension CommentService: BaseTargetType {
@@ -24,6 +25,8 @@ extension CommentService: BaseTargetType {
             return "/posts/\(postID)/comments"
         case let .deleteComment(_, commentID):
             return "/comments/\(commentID)"
+        case let .reportComment(commentID):
+            return "/comments/\(commentID)/reports"
         }
     }
 
@@ -35,6 +38,8 @@ extension CommentService: BaseTargetType {
             return .post
         case .deleteComment:
             return .delete
+        case .reportComment:
+            return .post
         }
     }
 
@@ -48,6 +53,8 @@ extension CommentService: BaseTargetType {
                 encoding: JSONEncoding.default
             )
         case .deleteComment:
+            return .requestPlain
+        case .reportComment:
             return .requestPlain
         }
     }

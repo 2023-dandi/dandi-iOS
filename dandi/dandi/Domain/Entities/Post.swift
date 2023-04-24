@@ -11,6 +11,7 @@ struct Post {
     let id: Int
     let mainImageURL: String
     let profileImageURL: String?
+    let writerId: Int
     let nickname: String
     let date: String
     let content: String

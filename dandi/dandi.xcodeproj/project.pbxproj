@@ -126,6 +126,8 @@
 		DD797BC029E80098000FFA9A /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */; };
 		DD8F0DBF29F651E8008F85DF /* ConfirmLocationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DBE29F651E8008F85DF /* ConfirmLocationReactor.swift */; };
 		DD8F0DC129F65593008F85DF /* DefaultLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */; };
+		DD8F0DC329F663A8008F85DF /* ReportAndBlockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */; };
+		DD8F0DC529F668B7008F85DF /* DefaultReportAndBlockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -385,6 +387,8 @@
 		DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD8F0DBE29F651E8008F85DF /* ConfirmLocationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationReactor.swift; sourceTree = "<group>"; };
 		DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationUseCase.swift; sourceTree = "<group>"; };
+		DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAndBlockUseCase.swift; sourceTree = "<group>"; };
+		DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReportAndBlockUseCase.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -864,6 +868,7 @@
 				DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */,
 				DDC6E7DE29DC34AB00F8C14F /* DefaultCommentUseCase.swift */,
 				DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */,
+				DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -886,6 +891,7 @@
 				DD0C094429D5D214002CAB37 /* RegisterClothesUseCase.swift */,
 				DD66C03429D958A600A262F2 /* ClosetUseCase.swift */,
 				DDC6E7E029DC364B00F8C14F /* CommentUseCase.swift */,
+				DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1565,6 +1571,7 @@
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDC6E7DF29DC34AB00F8C14F /* DefaultCommentUseCase.swift in Sources */,
 				DD0C095929D60108002CAB37 /* ModuleFactoryInterface.swift in Sources */,
+				DD8F0DC329F663A8008F85DF /* ReportAndBlockUseCase.swift in Sources */,
 				DDE3E30C29C380A0007BDBA7 /* DefaultUploadPostUseCase.swift in Sources */,
 				DD1D6B2E29D079EA00085FBE /* AddImageDelegate.swift in Sources */,
 				DD0C094B29D5D69B002CAB37 /* UploadPostImageUseCase.swift in Sources */,
@@ -1623,6 +1630,7 @@
 				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
 				DDC6E7DB29DC316A00F8C14F /* CommentDTO.swift in Sources */,
 				DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */,
+				DD8F0DC529F668B7008F85DF /* DefaultReportAndBlockUseCase.swift in Sources */,
 				DDDF93D629DAD85200DEB027 /* ClosetView.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
 				DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */,

@@ -49,4 +49,6 @@ protocol PostRepository {
         size: Int,
         page: Int
     ) -> Single<NetworkResult<ListWithPage<Post>>>
+
+    func reportPost(id: Int) -> Single<NetworkResult<StatusCase>>
 }

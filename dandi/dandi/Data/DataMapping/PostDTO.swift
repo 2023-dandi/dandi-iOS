@@ -21,6 +21,7 @@ extension PostDTO {
             id: id,
             mainImageURL: postImageUrl,
             profileImageURL: writer.profileImageURL,
+            writerId: writer.id,
             nickname: writer.nickname,
             date: createdAt,
             content: "\(temperatures.min)도~\(temperatures.max)도에, \(ClothesFeeling(rawValue: feelingIndex)?.text ?? "").",

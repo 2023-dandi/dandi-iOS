@@ -10,6 +10,8 @@ import UIKit
 enum PostDetailAlertType: AlertType {
     case delete
     case share
+    case report
+    case block
 
     var title: String {
         switch self {
@@ -17,12 +19,16 @@ enum PostDetailAlertType: AlertType {
             return "이미지 공유"
         case .delete:
             return "게시물 삭제"
+        case .report:
+            return "게시물 신고"
+        case .block:
+            return "사용자 차단"
         }
     }
 
     var style: UIAlertAction.Style {
         switch self {
-        case .delete:
+        case .delete, .block, .report:
             return .destructive
         case .share:
             return .default
