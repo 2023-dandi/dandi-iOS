@@ -7,11 +7,12 @@
 
 import UIKit
 
+import ReactorKit
 import RxCocoa
 import RxSwift
 import YDS
 
-final class ConfirmLocationViewController: BaseViewController {
+final class ConfirmLocationViewController: BaseViewController, View {
     private let label = UILabel()
     private let button = YDSBoxButton()
 
@@ -30,8 +31,38 @@ final class ConfirmLocationViewController: BaseViewController {
         super.init()
         title = "위치 설정"
         render()
-        bind()
         setText(locality)
+    }
+
+    func bind(reactor: ConfirmLocationReactor) {
+        button.rx.tap
+            .withUnretained(self)
+            .map { owner, _ in
+                Reactor.Action.setLoaction(
+                    lat: owner.latitude,
+                    lon: owner.longitude,
+                    address: owner.locality
+                )
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.isSuccessChangeLocation }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                switch self.from {
+                case .default:
+                    NotificationCenterManager.reloadLocation.post()
+                    self.dismiss(animated: true)
+                case .onboarding:
+                    RootSwitcher.update(.main)
+                }
+
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setText(_ locality: String) {
@@ -63,25 +94,5 @@ final class ConfirmLocationViewController: BaseViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(32)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-    }
-
-    private func bind() {
-        button.rx.tap
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                UserDefaultHandler.shared.lat = self.latitude
-                UserDefaultHandler.shared.lon = self.longitude
-                UserDefaultHandler.shared.address = self.locality
-                
-                switch self.from {
-                case .default:
-                    NotificationCenterManager.reloadLocation.post()
-                    self.dismiss(animated: true)
-                case .onboarding:
-                    RootSwitcher.update(.main)
-                }
-
-            })
-            .disposed(by: disposeBag)
     }
 }

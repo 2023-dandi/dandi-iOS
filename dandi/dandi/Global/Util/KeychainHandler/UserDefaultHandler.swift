@@ -5,7 +5,6 @@
 //  Created by 김윤서 on 2023/03/03.
 //
 
-// TODO: - 고치기
 struct UserDefaultHandler {
     static var shared = UserDefaultHandler()
 

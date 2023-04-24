@@ -12,13 +12,13 @@ struct UserProfile {
     let profileImageURL: String
     let nickname: String
     let location: String
-    let closetCount: Int
+    let postCount: Int
 
-    init(profileImageURL: String, nickname: String, location: String, closetCount: Int) {
+    init(profileImageURL: String, nickname: String, location: String, postCount: Int) {
         self.profileImageURL = profileImageURL
         self.nickname = nickname
         self.location = location
-        self.closetCount = closetCount
+        self.postCount = postCount
     }
 
     init() {
@@ -26,7 +26,7 @@ struct UserProfile {
             profileImageURL: "",
             nickname: "",
             location: "",
-            closetCount: 0
+            postCount: 0
         )
     }
 }

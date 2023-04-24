@@ -36,7 +36,7 @@ final class Interceptor: RequestInterceptor {
         guard
             let statusCode = request.response?.statusCode,
             request.retryCount < retryLimit,
-            statusCode == 401
+            StatusCase(statusCode) == .unAuthorized
         else {
             return completion(.doNotRetry)
         }

@@ -43,7 +43,7 @@ final class ProfileView: UIView {
             $0.spacing = 8
         }
         imageView.do {
-            $0.size = .medium
+            $0.size = .small
         }
         nicknameLabel.do {
             $0.font = YDSFont.subtitle3

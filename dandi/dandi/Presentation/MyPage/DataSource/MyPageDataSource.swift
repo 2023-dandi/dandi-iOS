@@ -100,7 +100,7 @@ extension MyPageDataSource {
                 profileImageURL: profile.profileImageURL,
                 nickname: profile.nickname,
                 location: profile.location,
-                closetCount: profile.closetCount
+                closetCount: profile.postCount
             )
             cell.delegate = delegate
         }

@@ -124,6 +124,8 @@
 		DD66C03729D9590D00A262F2 /* DefaultClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */; };
 		DD797BBE29E7C4F5000FFA9A /* WeatherImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */; };
 		DD797BC029E80098000FFA9A /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */; };
+		DD8F0DBF29F651E8008F85DF /* ConfirmLocationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DBE29F651E8008F85DF /* ConfirmLocationReactor.swift */; };
+		DD8F0DC129F65593008F85DF /* DefaultLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -381,6 +383,8 @@
 		DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClosetUseCase.swift; sourceTree = "<group>"; };
 		DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageType.swift; sourceTree = "<group>"; };
 		DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD8F0DBE29F651E8008F85DF /* ConfirmLocationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationReactor.swift; sourceTree = "<group>"; };
+		DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationUseCase.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -859,6 +863,7 @@
 				DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */,
 				DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */,
 				DDC6E7DE29DC34AB00F8C14F /* DefaultCommentUseCase.swift */,
+				DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1147,6 +1152,7 @@
 				DDA390042966BE49006FBE00 /* LocationSettingViewController.swift */,
 				DDA390062966BE51006FBE00 /* LocationSettingView.swift */,
 				DD1E52D929D1F47B00550E02 /* ConfirmLocationViewController.swift */,
+				DD8F0DBE29F651E8008F85DF /* ConfirmLocationReactor.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -1519,6 +1525,7 @@
 				DDA38FFE2965B0BD006FBE00 /* FeedDataSource.swift in Sources */,
 				DD00E7F229C8223D001536D4 /* MemberService.swift in Sources */,
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
+				DD8F0DBF29F651E8008F85DF /* ConfirmLocationReactor.swift in Sources */,
 				DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */,
 				DDC6E7D529DC0E9800F8C14F /* ClothesDetailInfoDTO.swift in Sources */,
 				DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */,
@@ -1716,6 +1723,7 @@
 				DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */,
 				DD31234229B1EDDB00443FCE /* NetworkHandler.swift in Sources */,
 				DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */,
+				DD8F0DC129F65593008F85DF /* DefaultLocationUseCase.swift in Sources */,
 				DD66C03529D958A600A262F2 /* ClosetUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

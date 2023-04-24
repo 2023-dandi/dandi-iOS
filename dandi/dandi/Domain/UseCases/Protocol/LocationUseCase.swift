@@ -6,12 +6,15 @@
 //
 
 import Foundation
-import UIKit
 
-import RxCocoa
+import RxRelay
 import RxSwift
 
 protocol LocationUseCase {
-    var locationPublisher: PublishRelay<String> { get }
-    func fetchLocation()
+    var completionPublisher: PublishRelay<Bool?> { get }
+    func saveLocation(
+        latitude: Double,
+        longitude: Double,
+        address: String
+    )
 }

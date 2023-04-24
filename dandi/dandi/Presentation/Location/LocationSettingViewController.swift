@@ -107,7 +107,7 @@ extension LocationSettingViewController: UITableViewDelegate {
                 address += name
             }
             self.navigationController?.pushViewController(
-                ConfirmLocationViewController(
+                self.factory.makeConfirmLocationViewController(
                     locality: address,
                     latitude: placemark.coordinate.latitude,
                     longitude: placemark.coordinate.longitude,

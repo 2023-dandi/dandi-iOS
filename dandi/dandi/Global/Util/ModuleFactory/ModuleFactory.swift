@@ -38,7 +38,7 @@ extension ModuleFactory: ModuleFactoryInterface {
         let postRepository = DefaultPostRepository(interceptor: Interceptor())
         let weatherRepository = DefaultWeatherRepository(weatherService: DefaultWeatherService())
 
-        let postListUseCase = DefaultPostListUseCase(postRepository: postRepository)
+        let postListUseCase = MyTemperaturePostListUseCase(postRepository: postRepository)
         let temperatureUseCase = DefaultTemperatureUseCase(weatherRepository: weatherRepository)
         let postLikeUseCase = DefaultPostLikeUseCase(postRepository: postRepository)
         let hourlyWeatherUseCase = DefaultHourlyWeatherUseCase(weatherRepository: weatherRepository)
@@ -204,6 +204,25 @@ extension ModuleFactory: ModuleFactoryInterface {
     func makeLocationSettingViewController(from: LocationSettingViewController.From) -> LocationSettingViewController {
         let vc = LocationSettingViewController(from: from)
         vc.factory = self
+        return vc
+    }
+
+    func makeConfirmLocationViewController(
+        locality: String,
+        latitude: Double,
+        longitude: Double,
+        from: LocationSettingViewController.From
+    ) -> ConfirmLocationViewController {
+        let vc = ConfirmLocationViewController(
+            locality: locality,
+            latitude: latitude,
+            longitude: longitude,
+            from: from
+        )
+        vc.factory = self
+        let memberRepository = DefaultMemberRepository(interceptor: Interceptor())
+        let locationUseCase = DefaultLocationUseCase(memberRepository: memberRepository)
+        vc.reactor = ConfirmLocationReactor(locationUseCase: locationUseCase)
         return vc
     }
 

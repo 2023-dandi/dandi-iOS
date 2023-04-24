@@ -14,7 +14,7 @@ import YDS
 final class HomeView: UIView {
     private(set) lazy var notificationButton = YDSTopBarButton(image: YDSIcon.bellLine)
     private(set) lazy var bannerView = WeatherBannerView()
-    
+
     private(set) lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear

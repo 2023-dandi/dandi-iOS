@@ -16,7 +16,17 @@ enum URLConstant {
         return urlString
     }
 
+    /// 기상청 API
     static let weatherBaseURL: String = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
+    static var weatherToken: String {
+        guard
+            let token = Bundle.main.object(forInfoDictionaryKey: "Weather Token") as? String
+        else {
+            return ""
+        }
+        print(token)
+        return token
+    }
 
     /// 개인정보 처리방침
     static let policy = "https://github.com/2023-dandi/dandi-docs/wiki/개인정보-처리방침"
