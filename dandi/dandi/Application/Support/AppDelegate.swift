@@ -8,12 +8,25 @@
 import CoreData
 import UIKit
 
+import Firebase
+import FirebaseMessaging
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
-        _: UIApplication,
+        _ application: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+
+        FirebaseApp.configure()
+
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
+        application.registerForRemoteNotifications()
+
         return true
     }
 
@@ -60,6 +73,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+}
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        guard let fcmToken = fcmToken else { return }
+        UserDefaultHandler.shared.fcmToken = fcmToken
+        print("FCM TOKEN")
+        print(fcmToken)
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _: UNUserNotificationCenter,
+        didReceive _: UNNotificationResponse
+    ) async {
+        RootSwitcher.update(.main)
+    }
+
+    func userNotificationCenter(
+        _: UNUserNotificationCenter,
+        willPresent _: UNNotification
+    ) async -> UNNotificationPresentationOptions {
+        if #available(iOS 14.0, *) {
+            return [.banner, .list]
+        } else {
+            return [.alert]
         }
     }
 }

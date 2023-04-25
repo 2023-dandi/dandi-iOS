@@ -13,6 +13,7 @@ struct UserDefaultHandler {
     enum Key: String {
         case accessToken
         case refreshToken
+        case fcmToken
         case lon
         case lat
         case locality
@@ -23,6 +24,9 @@ struct UserDefaultHandler {
 
     @UserDefault(key: Key.refreshToken.rawValue, defaultValue: "")
     var refreshToken: String
+
+    @UserDefault(key: Key.fcmToken.rawValue, defaultValue: "")
+    var fcmToken: String
 
     @UserDefault(key: Key.lon.rawValue, defaultValue: 0.0)
     var lon: Double
