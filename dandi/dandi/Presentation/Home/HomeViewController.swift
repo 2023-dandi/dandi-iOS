@@ -96,7 +96,7 @@ final class HomeViewController: BaseViewController, View {
 
             guard let hourlyWeather = hourlyWeathers.first else { return }
             self.homeDataSource.update(
-                recommedationText: hourlyWeather.temperature + "도 에는 민소매를 입었어요.",
+                recommedationText: "요즘 날씨에 이런 옷은 어때요?",
                 temperature: hourlyWeather.temperature,
                 recommendation: [],
                 timeWeathers: hourlyWeathers,

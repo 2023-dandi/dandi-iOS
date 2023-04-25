@@ -50,7 +50,6 @@ final class PostDetailViewController: BaseViewController, View {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     override func viewDidLoad() {
