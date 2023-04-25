@@ -18,6 +18,30 @@ struct Post {
     let tag: [WeatherFeeling]
     let isLiked: Bool
     let isMine: Bool?
+
+    init(
+        id: Int,
+        mainImageURL: String,
+        profileImageURL: String?,
+        writerId: Int,
+        nickname: String,
+        date: String,
+        content: String,
+        tag: [WeatherFeeling],
+        isLiked: Bool,
+        isMine: Bool?
+    ) {
+        self.id = id
+        self.mainImageURL = mainImageURL
+        self.profileImageURL = profileImageURL
+        self.writerId = writerId
+        self.nickname = nickname
+        self.date = TimeConverter.shared.convertDate(date: date)
+        self.content = content
+        self.tag = tag
+        self.isLiked = isLiked
+        self.isMine = isMine
+    }
 }
 
 extension Post: Equatable, Hashable {

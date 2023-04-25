@@ -128,6 +128,7 @@
 		DD8F0DC129F65593008F85DF /* DefaultLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */; };
 		DD8F0DC329F663A8008F85DF /* ReportAndBlockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */; };
 		DD8F0DC529F668B7008F85DF /* DefaultReportAndBlockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */; };
+		DD8F0DC829F7B34A008F85DF /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC729F7B34A008F85DF /* DateParser.swift */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -389,6 +390,7 @@
 		DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationUseCase.swift; sourceTree = "<group>"; };
 		DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAndBlockUseCase.swift; sourceTree = "<group>"; };
 		DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReportAndBlockUseCase.swift; sourceTree = "<group>"; };
+		DD8F0DC729F7B34A008F85DF /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -940,6 +942,14 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		DD8F0DC629F7B33F008F85DF /* DateParser */ = {
+			isa = PBXGroup;
+			children = (
+				DD8F0DC729F7B34A008F85DF /* DateParser.swift */,
+			);
+			path = DateParser;
+			sourceTree = "<group>";
+		};
 		DD9B06D2295EC71900A98041 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,6 +1023,7 @@
 		DD9B06EB295ECF0100A98041 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				DD8F0DC629F7B33F008F85DF /* DateParser */,
 				DD030C3629D5751A005B36DA /* NetworkMonitor */,
 				DD61796E29CB7DFD005B7527 /* Alert */,
 				DD00E81129C8C8D7001536D4 /* NotificationHandler */,
@@ -1677,6 +1688,7 @@
 				DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */,
 				DD31232429B1BA8100443FCE /* UserDefaultHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
+				DD8F0DC829F7B34A008F85DF /* DateParser.swift in Sources */,
 				DDAEF5C929B748570018B577 /* String+.swift in Sources */,
 				DD1D6B2629D03F5400085FBE /* BackgroundTabViewController.swift in Sources */,
 				DD3D9A5229CC410800E298B1 /* MyPost.swift in Sources */,
