@@ -25,6 +25,7 @@ final class MainTabBarController: YDSBottomBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseService.shared.requestNotification()
         setViewControllers()
     }
 }

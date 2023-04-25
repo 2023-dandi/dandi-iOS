@@ -129,6 +129,14 @@
 		DD8F0DC329F663A8008F85DF /* ReportAndBlockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */; };
 		DD8F0DC529F668B7008F85DF /* DefaultReportAndBlockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */; };
 		DD8F0DC829F7B34A008F85DF /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DC729F7B34A008F85DF /* DateParser.swift */; };
+		DD8F0DCB29F7BE56008F85DF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DCA29F7BE56008F85DF /* FirebaseAnalytics */; };
+		DD8F0DCD29F7BE56008F85DF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DCC29F7BE56008F85DF /* FirebaseCrashlytics */; };
+		DD8F0DCF29F7BE56008F85DF /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DCE29F7BE56008F85DF /* FirebaseDynamicLinks */; };
+		DD8F0DD129F7BE56008F85DF /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DD029F7BE56008F85DF /* FirebaseMessaging */; };
+		DD8F0DD329F7BE56008F85DF /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DD229F7BE56008F85DF /* FirebasePerformance */; };
+		DD8F0DD529F7BE56008F85DF /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DD429F7BE56008F85DF /* FirebaseRemoteConfig */; };
+		DD8F0DD929F7C063008F85DF /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DD829F7C063008F85DF /* FirebaseService.swift */; };
+		DD8F0DDD29F7C0C5008F85DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD8F0DDC29F7C0C5008F85DF /* GoogleService-Info.plist */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -391,6 +399,8 @@
 		DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAndBlockUseCase.swift; sourceTree = "<group>"; };
 		DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReportAndBlockUseCase.swift; sourceTree = "<group>"; };
 		DD8F0DC729F7B34A008F85DF /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		DD8F0DD829F7C063008F85DF /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		DD8F0DDC29F7C0C5008F85DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -502,20 +512,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD8F0DD129F7BE56008F85DF /* FirebaseMessaging in Frameworks */,
 				DD9B06C1295EC63F00A98041 /* RxSwift in Frameworks */,
 				DD9B06CD295EC6B600A98041 /* YDS in Frameworks */,
 				DD9B06BF295EC63F00A98041 /* RxRelay in Frameworks */,
 				DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */,
 				DD9B06CA295EC67800A98041 /* Kingfisher in Frameworks */,
+				DD8F0DCF29F7BE56008F85DF /* FirebaseDynamicLinks in Frameworks */,
 				DD9B06C7295EC66500A98041 /* Then in Frameworks */,
 				DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */,
 				DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */,
+				DD8F0DCB29F7BE56008F85DF /* FirebaseAnalytics in Frameworks */,
 				DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */,
 				DD3D9A4B29CC204A00E298B1 /* Tabman in Frameworks */,
 				DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */,
+				DD8F0DD329F7BE56008F85DF /* FirebasePerformance in Frameworks */,
 				DD9B06D0295EC6E100A98041 /* RxGesture in Frameworks */,
+				DD8F0DCD29F7BE56008F85DF /* FirebaseCrashlytics in Frameworks */,
 				DD9B06BD295EC63F00A98041 /* RxCocoa in Frameworks */,
 				DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */,
+				DD8F0DD529F7BE56008F85DF /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +650,7 @@
 			children = (
 				DD9F6FCA29B31A54002BD4B4 /* dandi.entitlements */,
 				DD239913295D827E00A898B2 /* Application */,
+				DD8F0DD629F7C053008F85DF /* External */,
 				DD239917295D83CE00A898B2 /* Global */,
 				DD23991A295D86A700A898B2 /* Data */,
 				DD23991D295D86B600A898B2 /* Domain */,
@@ -948,6 +965,23 @@
 				DD8F0DC729F7B34A008F85DF /* DateParser.swift */,
 			);
 			path = DateParser;
+			sourceTree = "<group>";
+		};
+		DD8F0DD629F7C053008F85DF /* External */ = {
+			isa = PBXGroup;
+			children = (
+				DD8F0DD729F7C059008F85DF /* Firebase */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		DD8F0DD729F7C059008F85DF /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DD8F0DDC29F7C0C5008F85DF /* GoogleService-Info.plist */,
+				DD8F0DD829F7C063008F85DF /* FirebaseService.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		DD9B06D2295EC71900A98041 /* Home */ = {
@@ -1357,6 +1391,12 @@
 				DDA8166129ADAB3800963776 /* YPImagePicker */,
 				DDFF968029C060AE00996BD6 /* BackgroundRemoval */,
 				DD3D9A4A29CC204A00E298B1 /* Tabman */,
+				DD8F0DCA29F7BE56008F85DF /* FirebaseAnalytics */,
+				DD8F0DCC29F7BE56008F85DF /* FirebaseCrashlytics */,
+				DD8F0DCE29F7BE56008F85DF /* FirebaseDynamicLinks */,
+				DD8F0DD029F7BE56008F85DF /* FirebaseMessaging */,
+				DD8F0DD229F7BE56008F85DF /* FirebasePerformance */,
+				DD8F0DD429F7BE56008F85DF /* FirebaseRemoteConfig */,
 			);
 			productName = dandi;
 			productReference = DD2398DB295D7C8700A898B2 /* dandi.app */;
@@ -1442,6 +1482,7 @@
 				DDA8166029ADAB3800963776 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				DDFF967F29C060AE00996BD6 /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
 				DD3D9A4929CC204A00E298B1 /* XCRemoteSwiftPackageReference "Tabman" */,
+				DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = DD2398DC295D7C8700A898B2 /* Products */;
 			projectDirPath = "";
@@ -1461,6 +1502,7 @@
 			files = (
 				DD2398EE295D7C8800A898B2 /* LaunchScreen.storyboard in Resources */,
 				DD2398EB295D7C8800A898B2 /* Assets.xcassets in Resources */,
+				DD8F0DDD29F7C0C5008F85DF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1572,6 +1614,7 @@
 				DD31235129B2593D00443FCE /* AuthUseCase.swift in Sources */,
 				DD9F6FE129B4F869002BD4B4 /* DefaultHourlyWeatherUseCase.swift in Sources */,
 				DDF636FE2960457A007427BD /* UIStackView+.swift in Sources */,
+				DD8F0DD929F7C063008F85DF /* FirebaseService.swift in Sources */,
 				DDCDA16729C2DE5000BAB1CF /* Date+.swift in Sources */,
 				DD61795529C9B5DA005B7527 /* HomeButtonViewController.swift in Sources */,
 				DDCDA17D29C3121800BAB1CF /* UITableView+Reuseable.swift in Sources */,
@@ -2106,6 +2149,15 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 10.0.0;
+				minimumVersion = 9.0.0;
+			};
+		};
 		DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -2193,6 +2245,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD3D9A4929CC204A00E298B1 /* XCRemoteSwiftPackageReference "Tabman" */;
 			productName = Tabman;
+		};
+		DD8F0DCA29F7BE56008F85DF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		DD8F0DCC29F7BE56008F85DF /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		DD8F0DCE29F7BE56008F85DF /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDynamicLinks;
+		};
+		DD8F0DD029F7BE56008F85DF /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		DD8F0DD229F7BE56008F85DF /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		DD8F0DD429F7BE56008F85DF /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 		DD9B06B4295EC5DD00A98041 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
