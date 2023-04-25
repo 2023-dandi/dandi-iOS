@@ -35,18 +35,23 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeHomeViewController() -> HomeViewController {
         let vc = HomeViewController()
+
         let postRepository = DefaultPostRepository(interceptor: Interceptor())
         let weatherRepository = DefaultWeatherRepository(weatherService: DefaultWeatherService())
+        let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
 
         let postListUseCase = MyTemperaturePostListUseCase(postRepository: postRepository)
         let temperatureUseCase = DefaultTemperatureUseCase(weatherRepository: weatherRepository)
         let postLikeUseCase = DefaultPostLikeUseCase(postRepository: postRepository)
         let hourlyWeatherUseCase = DefaultHourlyWeatherUseCase(weatherRepository: weatherRepository)
+        let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
+
         vc.reactor = HomeReactor(
             postLikeUseCase: postLikeUseCase,
             hourlyWeatherUseCase: hourlyWeatherUseCase,
             postListUseCase: postListUseCase,
-            temperatureUseCase: temperatureUseCase
+            temperatureUseCase: temperatureUseCase,
+            closetUseCase: closetUseCase
         )
         vc.factory = self
         return vc

@@ -80,4 +80,16 @@ final class DefaultClosetUseCase: ClosetUseCase {
             }
         }
     }
+
+    func fetchRecommendedClothes() -> Single<[Clothes]> {
+        return clothesRepository.fetchRecommendedClothes(size: 500, page: 0)
+            .map { result in
+                switch result {
+                case let .success(listWithPage):
+                    return listWithPage.list
+                case .failure:
+                    return []
+                }
+            }
+    }
 }

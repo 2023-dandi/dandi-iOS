@@ -14,12 +14,14 @@ final class HomeReactor: Reactor {
     private let postListUseCase: PostListUseCase
     private let postLikeUseCase: LikeUseCase
     private let temperatureUseCase: TemperatureUseCase
+    private let closetUseCase: ClosetUseCase
 
     struct State {
         var isLoading: Bool = false
         var hourlyWeathers: [TimeWeatherInfo] = []
         var updateLocationSuccess: Bool = false
         var posts: [Post]?
+        var clothes: [Clothes]?
         var temperature: Temperatures?
         var likedPostID: Int?
     }
@@ -27,6 +29,7 @@ final class HomeReactor: Reactor {
     enum Action {
         case fetchWeatherInfo
         case fetchPostList(min: Int?, max: Int?)
+        case fetchClothesList
         case like(id: Int)
     }
 
@@ -36,19 +39,22 @@ final class HomeReactor: Reactor {
         case setUpdateLocationSuccess(Bool)
         case setPostList(posts: [Post])
         case setLikedPostID(postID: Int)
+        case setClothes(clothes: [Clothes])
     }
 
     init(
         postLikeUseCase: LikeUseCase,
         hourlyWeatherUseCase: HoulryWeatherUseCase,
         postListUseCase: PostListUseCase,
-        temperatureUseCase: TemperatureUseCase
+        temperatureUseCase: TemperatureUseCase,
+        closetUseCase: ClosetUseCase
     ) {
         self.initialState = State()
         self.hourlyWeatherUseCase = hourlyWeatherUseCase
         self.postListUseCase = postListUseCase
         self.temperatureUseCase = temperatureUseCase
         self.postLikeUseCase = postLikeUseCase
+        self.closetUseCase = closetUseCase
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -76,12 +82,18 @@ final class HomeReactor: Reactor {
                     .map { Mutation.setPostList(posts: $0) },
                 .just(.setLoading(isLoading: false))
             ])
+
         case let .like(id):
             postLikeUseCase.like(id: id)
             return postLikeUseCase.completionPublisher
                 .compactMap { $0 }
                 .filter { $0 }
                 .map { _ in Mutation.setLikedPostID(postID: id) }
+
+        case .fetchClothesList:
+            return closetUseCase.fetchRecommendedClothes()
+                .asObservable()
+                .map { Mutation.setClothes(clothes: $0) }
         }
     }
 
@@ -99,6 +111,8 @@ final class HomeReactor: Reactor {
             newState.posts = posts
         case let .setLikedPostID(postID):
             newState.likedPostID = postID
+        case let .setClothes(clothes):
+            newState.clothes = clothes
         }
         return newState
     }

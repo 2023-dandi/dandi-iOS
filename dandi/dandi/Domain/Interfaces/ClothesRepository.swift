@@ -37,4 +37,6 @@ protocol ClothesRepository {
     func fetchClothesDetail(id: Int) -> Single<NetworkResult<ClothesDetailInfo>>
 
     func fetchCategory() -> Single<NetworkResult<[CategoryInfo]>>
+
+    func fetchRecommendedClothes(size: Int, page: Int) -> Single<NetworkResult<ListWithPage<Clothes>>>
 }
