@@ -26,4 +26,5 @@ protocol ClosetUseCase {
         category: ClothesCategory,
         seasons: [Season]
     )
+    func fetchRecommendedClothes() -> Single<[Clothes]>
 }

@@ -19,7 +19,7 @@ final class HomeDataSource {
     typealias EmptyCell = EmptyCollectionViewCell
 
     typealias WeahterDetailCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, TimeWeatherInfo>
-    typealias ClothesCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, ClosetImage>
+    typealias ClothesCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Clothes>
     typealias CardCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, Int>
     typealias EmptyCellRegistration<Cell: UICollectionViewCell> = UICollectionView.CellRegistration<Cell, String>
 
@@ -46,7 +46,7 @@ final class HomeDataSource {
 
     enum Item: Hashable {
         case timeWeatherInfo(TimeWeatherInfo)
-        case recommendation(ClosetImage)
+        case recommendation(Clothes)
         case post(Int)
         case empty(String)
     }
@@ -59,7 +59,7 @@ final class HomeDataSource {
     func update(
         recommedationText: String,
         temperature: String,
-        recommendation: [ClosetImage],
+        recommendation: [Clothes],
         timeWeathers: [TimeWeatherInfo],
         posts: [Post]
     ) {
@@ -193,9 +193,9 @@ extension HomeDataSource {
     }
 
     private func configureRecommendationCellRegistration<Cell: ClothesCell>() -> ClothesCellRegistration<Cell> {
-        return ClothesCellRegistration<Cell> { cell, _, _ in
+        return ClothesCellRegistration<Cell> { cell, _, item in
             cell.type = .none
-            cell.configure(image: Image.background4)
+            cell.configure(imageURL: item.imageURL)
         }
     }
 

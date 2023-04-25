@@ -34,6 +34,16 @@ final class DetailClothesViewController: BaseViewController, View {
         setLayouts()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
     func bind(reactor: Reactor) {
         rx.viewWillAppear
             .map { _ in Reactor.Action.fetch }

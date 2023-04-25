@@ -78,6 +78,16 @@ final class ClosetMainViewController: BaseViewController, View {
         setLayouts()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
     func bind(reactor: Reactor) {
         bindAction(reactor)
         bindState(reactor)

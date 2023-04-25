@@ -76,21 +76,28 @@ final class HomeViewController: BaseViewController, View {
         let hourlyWeathers = reactor.state
             .compactMap { $0.hourlyWeathers }
             .distinctUntilChanged()
+            .share()
 
         let posts = reactor.state
             .compactMap { $0.posts }
             .distinctUntilChanged()
+            .share()
+
+        let clothes = reactor.state
+            .compactMap { $0.clothes }
+            .distinctUntilChanged()
+            .share()
 
         let temperatures = reactor.state
             .compactMap { $0.temperature }
             .distinctUntilChanged()
             .share()
 
-        Observable.combineLatest(hourlyWeathers, posts, temperatures) { hourlyWeathers, posts, temperatures in
-            (hourlyWeathers, posts, temperatures)
+        Observable.combineLatest(hourlyWeathers, posts, clothes, temperatures) { hourlyWeathers, posts, clothes, temperatures in
+            (hourlyWeathers, posts, clothes, temperatures)
         }
         .observe(on: MainScheduler.asyncInstance)
-        .subscribe(onNext: { [weak self] hourlyWeathers, posts, temperatures in
+        .subscribe(onNext: { [weak self] hourlyWeathers, posts, clothes, temperatures in
             guard let self = self else { return }
             self.homeView.bannerView.locationLabel.text = UserDefaultHandler.shared.address
 
@@ -98,7 +105,7 @@ final class HomeViewController: BaseViewController, View {
             self.homeDataSource.update(
                 recommedationText: "요즘 날씨에 이런 옷은 어때요?",
                 temperature: hourlyWeather.temperature,
-                recommendation: [],
+                recommendation: clothes,
                 timeWeathers: hourlyWeathers,
                 posts: posts
             )
@@ -158,8 +165,12 @@ final class HomeViewController: BaseViewController, View {
     }
 
     private func bindAction(_ reactor: Reactor) {
+        let viewWillAppear = rx.viewWillAppear.take(1)
+            .map { _ in }
+            .share()
+
         Observable.merge([
-            rx.viewWillAppear.take(1).map { _ in },
+            viewWillAppear,
             NotificationCenterManager.reloadLocation.addObserver().map { _ in }
         ])
         .map { _ in Reactor.Action.fetchWeatherInfo }
@@ -180,6 +191,14 @@ final class HomeViewController: BaseViewController, View {
             .map { Reactor.Action.like(id: $0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
+        Observable.merge([
+            NotificationCenterManager.reloadCloset.addObserver().map { _ in },
+            viewWillAppear
+        ])
+        .map { _ in Reactor.Action.fetchClothesList }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
     }
 
     private func setGradientColors() {
@@ -239,6 +258,11 @@ final class HomeViewController: BaseViewController, View {
                 case let .post(id):
                     owner.navigationController?.pushViewController(
                         owner.factory.makePostDetailViewController(postID: id),
+                        animated: true
+                    )
+                case let .recommendation(clothes):
+                    owner.navigationController?.pushViewController(
+                        owner.factory.makeDetailClothesViewController(id: clothes.id),
                         animated: true
                     )
                 default: break

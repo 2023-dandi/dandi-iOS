@@ -63,10 +63,10 @@ final class RegisterClothesViewController: BaseViewController, View {
             .map { $0.successUpload }
             .distinctUntilChanged()
             .compactMap { $0 }
-            .subscribe(onNext: { [weak self] isFinished in
-                if isFinished {
-                    self?.navigationController?.dismiss(animated: true)
-                }
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                NotificationCenterManager.reloadCloset.post()
+                self?.navigationController?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
     }

@@ -144,6 +144,8 @@ extension HomeView {
         )
         header.pinToVisibleBounds = true
         section.boundarySupplementaryItems = [header]
+        section.contentInsets = .init(top: .zero, leading: 20, bottom: .zero, trailing: 20)
+        header.contentInsets = .init(top: .zero, leading: -20, bottom: .zero, trailing: -20)
         return section
     }
 

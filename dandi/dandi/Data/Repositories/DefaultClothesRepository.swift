@@ -125,4 +125,19 @@ final class DefaultClothesRepository: ClothesRepository {
                 }
             }
     }
+
+    func fetchRecommendedClothes(size: Int, page: Int) -> RxSwift.Single<NetworkResult<ListWithPage<Clothes>>> {
+        return router.rx.request(.getRecommendedClothes(size: size, page: page))
+            .map { response in
+                let decodedResponse: NetworkResult<ClothesWithPageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(clothesDTO):
+                    return .success(clothesDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
+    }
 }

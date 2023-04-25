@@ -16,6 +16,7 @@ enum ClothesService {
     case getClothesList(size: Int, page: Int, category: String, seasons: [String])
     case getClothesCategory
     case getClothesDetail(clothesID: Int)
+    case getRecommendedClothes(size: Int, page: Int)
 }
 
 extension ClothesService: BaseTargetType {
@@ -57,6 +58,8 @@ extension ClothesService: BaseTargetType {
             return "/clothes/categories-seasons"
         case let .getClothesDetail(clothesID):
             return "/clothes/\(clothesID)"
+        case .getRecommendedClothes:
+            return "/clothes/today"
         }
     }
 
@@ -73,6 +76,8 @@ extension ClothesService: BaseTargetType {
         case .getClothesCategory:
             return .get
         case .getClothesDetail:
+            return .get
+        case .getRecommendedClothes:
             return .get
         }
     }
@@ -109,6 +114,12 @@ extension ClothesService: BaseTargetType {
 
         case .getClothesDetail:
             return .requestPlain
+
+        case let .getRecommendedClothes(size, page):
+            return .requestParameters(
+                parameters: ["size": size, "page": page, "sort": "createdAt,DESC"],
+                encoding: URLEncoding.queryString
+            )
         }
     }
 }
