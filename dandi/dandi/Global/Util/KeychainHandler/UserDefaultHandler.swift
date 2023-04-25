@@ -14,9 +14,11 @@ struct UserDefaultHandler {
         case accessToken
         case refreshToken
         case fcmToken
-        case lon
-        case lat
+        case longitude
+        case latitude
         case locality
+        case min
+        case max
     }
 
     @UserDefault(key: Key.accessToken.rawValue, defaultValue: "")
@@ -28,14 +30,20 @@ struct UserDefaultHandler {
     @UserDefault(key: Key.fcmToken.rawValue, defaultValue: "")
     var fcmToken: String
 
-    @UserDefault(key: Key.lon.rawValue, defaultValue: 0.0)
+    @UserDefault(key: Key.longitude.rawValue, defaultValue: 0.0)
     var lon: Double
 
-    @UserDefault(key: Key.lat.rawValue, defaultValue: 0.0)
+    @UserDefault(key: Key.latitude.rawValue, defaultValue: 0.0)
     var lat: Double
 
     @UserDefault(key: Key.locality.rawValue, defaultValue: "")
     var address: String
+
+    @UserDefault(key: Key.min.rawValue, defaultValue: -1000)
+    var min: Int
+
+    @UserDefault(key: Key.max.rawValue, defaultValue: -1000)
+    var max: Int
 
     func removeAll() {
         _accessToken.reset()

@@ -41,7 +41,6 @@ extension ModuleFactory: ModuleFactoryInterface {
         let clothesRepository = DefaultClothesRepository(interceptor: Interceptor())
 
         let postListUseCase = MyTemperaturePostListUseCase(postRepository: postRepository)
-        let temperatureUseCase = DefaultTemperatureUseCase(weatherRepository: weatherRepository)
         let postLikeUseCase = DefaultPostLikeUseCase(postRepository: postRepository)
         let hourlyWeatherUseCase = DefaultHourlyWeatherUseCase(weatherRepository: weatherRepository)
         let closetUseCase = DefaultClosetUseCase(clothesRepository: clothesRepository)
@@ -50,7 +49,6 @@ extension ModuleFactory: ModuleFactoryInterface {
             postLikeUseCase: postLikeUseCase,
             hourlyWeatherUseCase: hourlyWeatherUseCase,
             postListUseCase: postListUseCase,
-            temperatureUseCase: temperatureUseCase,
             closetUseCase: closetUseCase
         )
         vc.factory = self

@@ -16,6 +16,24 @@ struct Comment {
     let content: String
     let isMine: Bool
     let isPostWriter: Bool
+
+    init(
+        id: Int,
+        profileImageURL: String,
+        nickname: String,
+        date: String,
+        content: String,
+        isMine: Bool,
+        isPostWriter: Bool
+    ) {
+        self.id = id
+        self.profileImageURL = profileImageURL
+        self.nickname = nickname
+        self.date = TimeConverter.shared.convertDate(date: date)
+        self.content = content
+        self.isMine = isMine
+        self.isPostWriter = isPostWriter
+    }
 }
 
 extension Comment: Equatable, Hashable {

@@ -25,6 +25,19 @@ final class DefaultTemperatureUseCase: TemperatureUseCase {
         ny: Int,
         page: Int
     ) {
+        if UserDefaultHandler.shared.min != -1000, UserDefaultHandler.shared.max != -1000 {
+            DispatchQueue.main.async {
+                self.temperatureInfo.accept(
+                    Temperatures(
+                        min: UserDefaultHandler.shared.min,
+                        max: UserDefaultHandler.shared.max
+                    )
+                )
+            }
+
+            return
+        }
+
         let (base_date, baseTime) = TimeConverter.shared.getBaseDateAndBaseTime()
         weatherRepository.fetchWeather(
             numOfRows: 280,
@@ -36,6 +49,8 @@ final class DefaultTemperatureUseCase: TemperatureUseCase {
         ) { [weak self] result in
             switch result {
             case let .success(response):
+                UserDefaultHandler.shared.min = response.temperatures.min
+                UserDefaultHandler.shared.max = response.temperatures.max
                 self?.temperatureInfo.accept(response.temperatures)
             case .failure:
                 self?.temperatureInfo.accept(nil)
