@@ -25,7 +25,7 @@ final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
         ny: Int,
         page: Int
     ) {
-        let (base_date, baseTime) = TimeConverter().getBaseDateAndBaseTime()
+        let (base_date, baseTime) = TimeConverter.shared.getBaseDateAndBaseTime()
         weatherRepository.fetchWeather(
             numOfRows: 280,
             page: page,
