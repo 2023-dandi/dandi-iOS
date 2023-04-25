@@ -9,6 +9,8 @@ import Foundation
 
 struct TimeConverter {
     static let shared = TimeConverter()
+
+    private init() { }
     /*
      - Base_time : 0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회)
      - API 제공 시간(~이후) : 02:10, 05:10, 08:10, 11:10, 14:10, 17:10, 20:10, 23:10

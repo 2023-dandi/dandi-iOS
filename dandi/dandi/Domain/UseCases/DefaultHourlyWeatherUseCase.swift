@@ -36,7 +36,8 @@ final class DefaultHourlyWeatherUseCase: HoulryWeatherUseCase {
         ) { [weak self] result in
             switch result {
             case let .success(response):
-                dump(response.temperatures)
+                UserDefaultHandler.shared.min = response.temperatures.min
+                UserDefaultHandler.shared.max = response.temperatures.max
                 self?.hourlyWeather.accept(response)
                 self?.isCompleted.onNext(true)
             case .failure:

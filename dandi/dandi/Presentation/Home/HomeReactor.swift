@@ -13,7 +13,6 @@ final class HomeReactor: Reactor {
     private let hourlyWeatherUseCase: HoulryWeatherUseCase
     private let postListUseCase: PostListUseCase
     private let postLikeUseCase: LikeUseCase
-    private let temperatureUseCase: TemperatureUseCase
     private let closetUseCase: ClosetUseCase
 
     struct State {
@@ -46,13 +45,11 @@ final class HomeReactor: Reactor {
         postLikeUseCase: LikeUseCase,
         hourlyWeatherUseCase: HoulryWeatherUseCase,
         postListUseCase: PostListUseCase,
-        temperatureUseCase: TemperatureUseCase,
         closetUseCase: ClosetUseCase
     ) {
         self.initialState = State()
         self.hourlyWeatherUseCase = hourlyWeatherUseCase
         self.postListUseCase = postListUseCase
-        self.temperatureUseCase = temperatureUseCase
         self.postLikeUseCase = postLikeUseCase
         self.closetUseCase = closetUseCase
     }
@@ -60,7 +57,9 @@ final class HomeReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         let converter: LocationConverter = .init()
         let (nx, ny): (Int, Int) = converter.convertGrid(lon: UserDefaultHandler.shared.lon, lat: UserDefaultHandler.shared.lat)
-
+        print("dkjflakjfl'dkajf'lkd")
+        dump(nx)
+        dump(ny)
         switch action {
         case .fetchWeatherInfo:
             hourlyWeatherUseCase.fetchWeatherInfo(nx: nx, ny: ny, page: 1)
