@@ -14,18 +14,16 @@ import FirebaseMessaging
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
-        _ application: UIApplication,
+        _: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-
         FirebaseApp.configure()
+
+        FirebaseService.shared.start()
 
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-
-        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
-        application.registerForRemoteNotifications()
+        UIApplication.shared.registerForRemoteNotifications()
 
         return true
     }
@@ -81,8 +79,6 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         guard let fcmToken = fcmToken else { return }
         UserDefaultHandler.shared.fcmToken = fcmToken
-        print("FCM TOKEN")
-        print(fcmToken)
     }
 }
 

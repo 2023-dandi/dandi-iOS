@@ -31,7 +31,7 @@ extension Reactive where Base: UIViewController {
         title: String?,
         message: String? = nil,
         actions: [T],
-        closeAction: AlertType,
+        closeAction: AlertType? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Observable<T> {
@@ -49,10 +49,12 @@ extension Reactive where Base: UIViewController {
                 alertController.addAction(alertAction)
             }
 
-            let cancelAlertAction = UIAlertAction(title: closeAction.title, style: closeAction.style) { _ in
-                observer.onCompleted()
+            if let closeAction = closeAction {
+                let cancelAlertAction = UIAlertAction(title: closeAction.title, style: closeAction.style) { _ in
+                    observer.onCompleted()
+                }
+                alertController.addAction(cancelAlertAction)
             }
-            alertController.addAction(cancelAlertAction)
             base?.present(alertController, animated: animated, completion: completion)
             return Disposables.create {
                 alertController.dismiss(animated: animated)
