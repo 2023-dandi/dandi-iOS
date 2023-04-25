@@ -57,10 +57,7 @@ final class PostCommentTextView: UIView {
             $0.titleLabel?.font = YDSFont.button4
 
             $0.setTitleColor(YDSColor.buttonNormal, for: .normal)
-            $0.setBackgroundColor(YDSColor.buttonBG, for: .normal)
-
-            $0.setTitleColor(YDSColor.buttonNormal.withAlphaComponent(0.7), for: .highlighted)
-            $0.setBackgroundColor(YDSColor.buttonBG.withAlphaComponent(0.7), for: .highlighted)
+            $0.setBackgroundColor(UIColor(red: 236 / 255, green: 238 / 255, blue: 240 / 255, alpha: 1), for: .normal)
         }
     }
 

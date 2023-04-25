@@ -110,7 +110,7 @@ extension MyPageProfileCollectionViewCell {
         }
         buttonStackView.axis = .horizontal
         historyButton.configure(image: YDSIcon.heartLine, text: "좋아요 기록")
-        closetButton.configure(image: YDSIcon.bellLine, text: "내 옷장")
+        closetButton.configure(image: Image.closetLine, text: "내 옷장")
     }
 
     private func setLayouts() {
