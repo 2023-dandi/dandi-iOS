@@ -27,6 +27,7 @@ final class PhotoLibraryViewController: YPImagePicker {
         config.showsPhotoFilters = false
 
         config.library.skipSelectionsGallery = true
+        config.library.onlySquare = true
 
         config.colors.albumTintColor = YDSColor.buttonPoint
         config.colors.tintColor = YDSColor.buttonPoint

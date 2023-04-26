@@ -37,7 +37,6 @@ final class DefaultCommentRepository: CommentRepository {
     func postComment(postID: Int, content: String) -> Single<NetworkResult<StatusCase>> {
         return router.rx.request(.postComment(postID: postID, content: content))
             .map { response in
-                dump(response)
                 let decodedResponse: NetworkResult<StatusCase> = NetworkHandler.requestStatusCaseDecoded(by: response)
 
                 switch decodedResponse {

@@ -120,7 +120,6 @@ final class FeedDataSource {
             oldValue != item
         else { return }
         var currentSnapshot = dataSource.snapshot()
-        dump(item.id)
         currentSnapshot.reloadItems([Item.post(item.id)])
         dataSource.apply(currentSnapshot, animatingDifferences: false)
     }

@@ -57,9 +57,7 @@ final class HomeReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         let converter: LocationConverter = .init()
         let (nx, ny): (Int, Int) = converter.convertGrid(lon: UserDefaultHandler.shared.lon, lat: UserDefaultHandler.shared.lat)
-        print("dkjflakjfl'dkajf'lkd")
-        dump(nx)
-        dump(ny)
+
         switch action {
         case .fetchWeatherInfo:
             hourlyWeatherUseCase.fetchWeatherInfo(nx: nx, ny: ny, page: 1)
