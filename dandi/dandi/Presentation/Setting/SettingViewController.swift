@@ -8,16 +8,20 @@
 import UIKit
 
 import MessageUI
+import ReactorKit
 import RxSwift
 import SafariServices
 import SnapKit
 import YDS
 
-final class SettingViewController: BaseViewController {
+final class SettingViewController: BaseViewController, View {
     override var hidesBottomBarWhenPushed: Bool {
         get { navigationController?.topViewController == self }
         set { super.hidesBottomBarWhenPushed = newValue }
     }
+
+    private let shouldWithdrawPublisher = PublishSubject<Void>()
+    private let shouldLogoutPublisher = PublishSubject<Void>()
 
     private let tableView = UITableView()
 
@@ -90,6 +94,58 @@ final class SettingViewController: BaseViewController {
         setDelegation()
         setProperties()
         setLayouts()
+    }
+
+    func bind(reactor: SettingReactor) {
+        shouldWithdrawPublisher
+            .withUnretained(self)
+            .flatMapLatest { owner, _ -> Observable<WithdrawAlertType> in
+                let actions: [WithdrawAlertType] = [.withdraw]
+                return owner.rx.makeAlert(
+                    title: "정말로 탈퇴 하시겠어요?",
+                    message: "탈퇴하게 되면 내 옷 기록들을 영원히 다시 볼 수 없어요. 신중히 선택해주세요.",
+                    actions: actions,
+                    closeAction: WithdrawAlertType.cancel
+                )
+            }
+            .filter { $0 == .withdraw }
+            .map { _ in Reactor.Action.withdraw }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        shouldLogoutPublisher
+            .withUnretained(self)
+            .flatMapLatest { owner, _ -> Observable<LogoutAlertType> in
+                let actions: [LogoutAlertType] = [.logout]
+                return owner.rx.makeAlert(
+                    title: "정말로 로그아웃 하시겠어요?",
+                    message: "로그아웃 하게 되면 Dandi에서 내 기록들을 확인할 수 없어요. 돌아오실거죠?",
+                    actions: actions,
+                    closeAction: LogoutAlertType.cancel
+                )
+            }
+            .filter { $0 == .logout }
+            .map { _ in Reactor.Action.logout }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.isSuccessLogout }
+            .filter { $0 }
+            .subscribe(onNext: { _ in
+                UserDefaultHandler.shared.removeAll()
+                RootSwitcher.update(.splash)
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.isSuccessWithdraw }
+            .filter { $0 }
+            .subscribe(onNext: { _ in
+                UserDefaultHandler.shared.removeAll()
+                RootSwitcher.update(.splash)
+            })
+            .disposed(by: disposeBag)
     }
 
     @available(*, unavailable)
@@ -177,39 +233,12 @@ extension SettingViewController: UITableViewDelegate {
             }
         case .auth:
             switch AuthItem(rawValue: indexPath.item) {
-            case .logout:
-                let actions: [LogoutAlertType] = [.logout]
-                rx.makeAlert(
-                    title: "정말로 로그아웃 하시겠어요?",
-                    message: "로그아웃 하게 되면 Dandi에서 내 기록들을 확인할 수 없어요. 돌아오실거죠?",
-                    actions: actions,
-                    closeAction: LogoutAlertType.cancel
-                )
 
-                //                .flatMap { _ in NetworkService.shared.user.withdraw() }
-                //                .filter { $0.statusCase == .okay }
-                .bind { _ in
-                    UserDefaultHandler.shared.removeAll()
-                    RootSwitcher.update(.splash)
-                }
-                .disposed(by: disposeBag)
+            case .logout:
+                shouldLogoutPublisher.onNext(())
 
             case .withdraw:
-                let actions: [WithdrawAlertType] = [.withdraw]
-                rx.makeAlert(
-                    title: "정말로 탈퇴 하시겠어요?",
-                    message: "탈퇴하게 되면 내 옷 기록들을 영원히 다시 볼 수 없어요. 신중히 선택해주세요.",
-                    actions: actions,
-                    closeAction: WithdrawAlertType.cancel
-                )
-
-                //                .flatMap { _ in NetworkService.shared.user.withdraw() }
-                //                .filter { $0.statusCase == .okay }
-                .bind { _ in
-                    UserDefaultHandler.shared.removeAll()
-                    RootSwitcher.update(.splash)
-                }
-                .disposed(by: disposeBag)
+                shouldWithdrawPublisher.onNext(())
             }
         }
     }

@@ -248,6 +248,9 @@ extension ModuleFactory: ModuleFactoryInterface {
 
     func makeSettingViewController() -> SettingViewController {
         let vc = SettingViewController()
+        let authRepository = DefaultAuthRepository(interceptor: Interceptor())
+        let authUseCase = DefaultAuthUseCase(authRepository: authRepository)
+        vc.reactor = SettingReactor(authUseCase: authUseCase)
         vc.factory = self
         return vc
     }

@@ -14,4 +14,10 @@ protocol AuthUseCase {
 
     /// 로그인
     func login(fcmToken: String, idToken: String)
+
+    /// 로그아웃
+    func logout() -> Single<Bool?>
+
+    /// 탈퇴
+    func withdraw() -> Single<Bool?>
 }

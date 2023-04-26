@@ -33,4 +33,30 @@ final class DefaultAuthUseCase: AuthUseCase {
             }
             .disposed(by: disposeBag)
     }
+
+    func logout() -> Single<Bool?> {
+        return authRepository.logout()
+            .map { result in
+                switch result {
+                case let .success(statusCase):
+                    return statusCase == .noContent
+
+                case .failure:
+                    return false
+                }
+            }
+    }
+
+    func withdraw() -> Single<Bool?> {
+        return authRepository.withdraw()
+            .map { result in
+                switch result {
+                case let .success(statusCase):
+                    return statusCase == .noContent
+
+                case .failure:
+                    return false
+                }
+            }
+    }
 }

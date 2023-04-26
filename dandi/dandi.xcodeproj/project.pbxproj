@@ -47,6 +47,7 @@
 		DD0C094F29D5EED7002CAB37 /* ClothesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */; };
 		DD0C095329D5F0C6002CAB37 /* UploadClothesImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */; };
 		DD0C095929D60108002CAB37 /* ModuleFactoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C095829D60108002CAB37 /* ModuleFactoryInterface.swift */; };
+		DD0C353829F8E766004CF385 /* SettingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C353729F8E766004CF385 /* SettingReactor.swift */; };
 		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
@@ -313,6 +314,7 @@
 		DD0C094E29D5EED7002CAB37 /* ClothesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesInfo.swift; sourceTree = "<group>"; };
 		DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadClothesImageUseCase.swift; sourceTree = "<group>"; };
 		DD0C095829D60108002CAB37 /* ModuleFactoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryInterface.swift; sourceTree = "<group>"; };
+		DD0C353729F8E766004CF385 /* SettingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingReactor.swift; sourceTree = "<group>"; };
 		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
@@ -1298,6 +1300,7 @@
 			children = (
 				DDCC2AB529E6C57600D5C877 /* SettingViewController.swift */,
 				DDCC2AB729E6C5A700D5C877 /* SettingTableViewCell.swift */,
+				DD0C353729F8E766004CF385 /* SettingReactor.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1573,6 +1576,7 @@
 				DD3D9A5C29CCAE3A00E298B1 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				DDCC2AB629E6C57600D5C877 /* SettingViewController.swift in Sources */,
 				DDDBD44E2979338800452F01 /* ClosetImage.swift in Sources */,
+				DD0C353829F8E766004CF385 /* SettingReactor.swift in Sources */,
 				DD66C03329D951A100A262F2 /* ListWithPage.swift in Sources */,
 				DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */,
 				DD3D9A4D29CC243100E298B1 /* ClosetTabViewController.swift in Sources */,
@@ -1980,9 +1984,12 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezidayzi.dandi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2017,9 +2024,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezidayzi.dandi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

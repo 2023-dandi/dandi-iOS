@@ -19,4 +19,10 @@ protocol AuthRepository {
         fcmToken: String,
         idToken: String
     ) -> Single<NetworkResult<Token>>
+
+    /// 로그아웃
+    func logout() -> Single<NetworkResult<StatusCase>>
+
+    /// 탈퇴
+    func withdraw() -> Single<NetworkResult<StatusCase>>
 }

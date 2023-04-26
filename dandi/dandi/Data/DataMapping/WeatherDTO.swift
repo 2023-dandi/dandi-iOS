@@ -92,7 +92,7 @@ extension WeatherDTO {
                 let time = String(String(key).suffix(4))
                 let weatherInfo = TimeWeatherInfo(
                     image: WeatherImageType(SKY: sky ?? 0, PTY: pty ?? 0).image,
-                    time: TimeConverter().convert24hoursTo12hours(time: time.toInt() / 100),
+                    time: TimeConverter.shared.convert24hoursTo12hours(time: time.toInt() / 100),
                     temperature: tmp ?? "0"
                 )
                 timeWeahtherInfos.append(weatherInfo)
