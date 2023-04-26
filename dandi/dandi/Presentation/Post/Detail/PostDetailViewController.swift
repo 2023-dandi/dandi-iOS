@@ -122,6 +122,18 @@ extension PostDetailViewController {
             .share()
 
         moreButtonDidTap.filter { $0 == .delete }
+            .flatMapLatest { [weak self] _ -> Observable<DeleteAlertType> in
+                guard
+                    let self = self
+                else { return .empty() }
+
+                return self.rx.makeAlert(
+                    title: "삭제하시면 더 이상 기록된 날씨 옷을 볼 수 없어요.",
+                    message: "정말로 삭제하시겠어요?",
+                    actions: [DeleteAlertType.delete],
+                    closeAction: DeleteAlertType.cancel
+                )
+            }
             .map { _ in Reactor.Action.delete }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -134,6 +146,29 @@ extension PostDetailViewController {
             .compactMap { $0 }
             .map { Reactor.Action.blockUser(userID: $0) }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        moreButtonDidTap.filter { $0 == .share }
+            .flatMapLatest { [weak self] _ -> Observable<ImageSaveAlertType> in
+                guard
+                    let self = self,
+                    let sharingView = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? PostContentCollectionViewCell,
+                    let image = sharingView.mainImageView.image
+                else { return .empty() }
+                UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+
+                let actions: [ImageSaveAlertType] = [.photo]
+                return self.rx.makeAlert(
+                    title: "앨범에 코디를 저장했어요!",
+                    message: "앨범으로 이동해서 저장된 이미지를 확인하시겠어요?",
+                    actions: actions,
+                    closeAction: ImageSaveAlertType.close
+                )
+            }
+            .subscribe(onNext: { _ in
+                guard let url = URL(string: "photos-redirect://") else { return }
+                UIApplication.shared.open(url)
+            })
             .disposed(by: disposeBag)
 
         moreButtonDidTap.filter { $0 == .report }
@@ -201,6 +236,7 @@ extension PostDetailViewController {
             .filter { $0 }
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
+                NotificationCenterManager.reloadPosts.post()
                 owner.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
@@ -211,8 +247,8 @@ extension PostDetailViewController {
             .filter { $0 }
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.navigationController?.popViewController(animated: true)
                 NotificationCenterManager.reloadPosts.post()
+                owner.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
 

@@ -52,6 +52,7 @@
 		DD0C353D29F8F213004CF385 /* LikeHistoryReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C353C29F8F213004CF385 /* LikeHistoryReactor.swift */; };
 		DD0C353F29F8F5BB004CF385 /* LikeHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C353E29F8F5BB004CF385 /* LikeHistoryView.swift */; };
 		DD0C354329F8FB20004CF385 /* LikedPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C354229F8FB20004CF385 /* LikedPostsUseCase.swift */; };
+		DD0C354529F96359004CF385 /* DeleteAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C354429F96359004CF385 /* DeleteAlertType.swift */; };
 		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
@@ -323,6 +324,7 @@
 		DD0C353C29F8F213004CF385 /* LikeHistoryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeHistoryReactor.swift; sourceTree = "<group>"; };
 		DD0C353E29F8F5BB004CF385 /* LikeHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeHistoryView.swift; sourceTree = "<group>"; };
 		DD0C354229F8FB20004CF385 /* LikedPostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsUseCase.swift; sourceTree = "<group>"; };
+		DD0C354429F96359004CF385 /* DeleteAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertType.swift; sourceTree = "<group>"; };
 		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 				DDDF93DC29DAF2C600DEB027 /* ClothesDetailAlertType.swift */,
 				DDCC2AB929E6C6AF00D5C877 /* WithdrawAlertType.swift */,
 				DDCC2ABB29E6C73200D5C877 /* LogoutAlertType.swift */,
+				DD0C354429F96359004CF385 /* DeleteAlertType.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -1750,6 +1753,7 @@
 				DD9F6FD929B4EC7C002BD4B4 /* WeatherDTO.swift in Sources */,
 				DD00E7EA29C7766E001536D4 /* TemperatureUseCase.swift in Sources */,
 				DDC6E7D929DC30B900F8C14F /* DefaultCommentRepository.swift in Sources */,
+				DD0C354529F96359004CF385 /* DeleteAlertType.swift in Sources */,
 				DD31232E29B1D5D300443FCE /* AuthRepository.swift in Sources */,
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,

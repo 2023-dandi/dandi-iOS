@@ -16,7 +16,7 @@ enum PostDetailAlertType: AlertType {
     var title: String {
         switch self {
         case .share:
-            return "이미지 공유"
+            return "이미지 저장"
         case .delete:
             return "게시물 삭제"
         case .report:
@@ -33,5 +33,23 @@ enum PostDetailAlertType: AlertType {
         case .share:
             return .default
         }
+    }
+}
+
+enum ImageSaveAlertType: AlertType {
+    case photo
+    case close
+
+    var title: String {
+        switch self {
+        case .photo:
+            return "이동하기"
+        case .close:
+            return "닫기"
+        }
+    }
+
+    var style: UIAlertAction.Style {
+        return .default
     }
 }
