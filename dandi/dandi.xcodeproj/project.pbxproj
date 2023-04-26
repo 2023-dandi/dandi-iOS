@@ -48,6 +48,10 @@
 		DD0C095329D5F0C6002CAB37 /* UploadClothesImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */; };
 		DD0C095929D60108002CAB37 /* ModuleFactoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C095829D60108002CAB37 /* ModuleFactoryInterface.swift */; };
 		DD0C353829F8E766004CF385 /* SettingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C353729F8E766004CF385 /* SettingReactor.swift */; };
+		DD0C353B29F8F209004CF385 /* LikeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C353A29F8F209004CF385 /* LikeHistoryViewController.swift */; };
+		DD0C353D29F8F213004CF385 /* LikeHistoryReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C353C29F8F213004CF385 /* LikeHistoryReactor.swift */; };
+		DD0C353F29F8F5BB004CF385 /* LikeHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C353E29F8F5BB004CF385 /* LikeHistoryView.swift */; };
+		DD0C354329F8FB20004CF385 /* LikedPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C354229F8FB20004CF385 /* LikedPostsUseCase.swift */; };
 		DD1721D929B633EF00757C55 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721D829B633EF00757C55 /* RxViewController.swift */; };
 		DD1721DB29B6417D00757C55 /* LocationConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DA29B6417D00757C55 /* LocationConverter.swift */; };
 		DD1721DE29B6501F00757C55 /* TimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1721DD29B6501F00757C55 /* TimeConverter.swift */; };
@@ -315,6 +319,10 @@
 		DD0C095229D5F0C6002CAB37 /* UploadClothesImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadClothesImageUseCase.swift; sourceTree = "<group>"; };
 		DD0C095829D60108002CAB37 /* ModuleFactoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryInterface.swift; sourceTree = "<group>"; };
 		DD0C353729F8E766004CF385 /* SettingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingReactor.swift; sourceTree = "<group>"; };
+		DD0C353A29F8F209004CF385 /* LikeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeHistoryViewController.swift; sourceTree = "<group>"; };
+		DD0C353C29F8F213004CF385 /* LikeHistoryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeHistoryReactor.swift; sourceTree = "<group>"; };
+		DD0C353E29F8F5BB004CF385 /* LikeHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeHistoryView.swift; sourceTree = "<group>"; };
+		DD0C354229F8FB20004CF385 /* LikedPostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsUseCase.swift; sourceTree = "<group>"; };
 		DD1721D829B633EF00757C55 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		DD1721DA29B6417D00757C55 /* LocationConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConverter.swift; sourceTree = "<group>"; };
 		DD1721DD29B6501F00757C55 /* TimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConverter.swift; sourceTree = "<group>"; };
@@ -579,6 +587,16 @@
 			path = NetworkMonitor;
 			sourceTree = "<group>";
 		};
+		DD0C353929F8F1D5004CF385 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				DD0C353C29F8F213004CF385 /* LikeHistoryReactor.swift */,
+				DD0C353A29F8F209004CF385 /* LikeHistoryViewController.swift */,
+				DD0C353E29F8F5BB004CF385 /* LikeHistoryView.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
 		DD1721DC29B64FF000757C55 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +718,7 @@
 				DD9B06E1295EC81F00A98041 /* MyPage */,
 				DDA390032966BE2C006FBE00 /* Location */,
 				DDC522092995E69C00E2845F /* Post */,
+				DD0C353929F8F1D5004CF385 /* Like */,
 				DD61795B29CB53F1005B7527 /* Closet */,
 				DDDBD43E29740AE800452F01 /* Upload */,
 				DDCC2AB429E6C56500D5C877 /* Setting */,
@@ -890,6 +909,7 @@
 				DDC6E7DE29DC34AB00F8C14F /* DefaultCommentUseCase.swift */,
 				DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */,
 				DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */,
+				DD0C354229F8FB20004CF385 /* LikedPostsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1593,6 +1613,7 @@
 				DDC6E7D529DC0E9800F8C14F /* ClothesDetailInfoDTO.swift in Sources */,
 				DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */,
 				DD1E216729D4493800A249B1 /* MyTemperaturePostListUseCase.swift in Sources */,
+				DD0C353B29F8F209004CF385 /* LikeHistoryViewController.swift in Sources */,
 				DDA8165129ACBFDE00963776 /* PostCommentTextView.swift in Sources */,
 				DDCDA16E29C2EA9800BAB1CF /* UploadWeatherCollectionViewCell.swift in Sources */,
 				DD0C093F29D5C285002CAB37 /* ClothesService.swift in Sources */,
@@ -1638,6 +1659,7 @@
 				DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD797BC029E80098000FFA9A /* EmptyCollectionViewCell.swift in Sources */,
+				DD0C354329F8FB20004CF385 /* LikedPostsUseCase.swift in Sources */,
 				DDA59B4129D6C03700C085E1 /* Location.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
 				DD3D9A5829CC42D600E298B1 /* DefaultMyPostsUseCase.swift in Sources */,
@@ -1732,6 +1754,7 @@
 				DD9F6FD529B329DA002BD4B4 /* UIViewController+Reactive.swift in Sources */,
 				DD9F6FC629B308FE002BD4B4 /* NetworkResult.swift in Sources */,
 				DDE3E30829C37C70007BDBA7 /* UploadMainReactor.swift in Sources */,
+				DD0C353F29F8F5BB004CF385 /* LikeHistoryView.swift in Sources */,
 				DDE3E2FA29C3322C007BDBA7 /* UserDefault.swift in Sources */,
 				DD31232429B1BA8100443FCE /* UserDefaultHandler.swift in Sources */,
 				DDA8166B29AE0E3C00963776 /* NotificationListViewController.swift in Sources */,
@@ -1792,6 +1815,7 @@
 				DDE3E2F629C33087007BDBA7 /* SplashViewController.swift in Sources */,
 				DD8F0DC129F65593008F85DF /* DefaultLocationUseCase.swift in Sources */,
 				DD66C03529D958A600A262F2 /* ClosetUseCase.swift in Sources */,
+				DD0C353D29F8F213004CF385 /* LikeHistoryReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

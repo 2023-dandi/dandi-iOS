@@ -233,7 +233,6 @@ extension SettingViewController: UITableViewDelegate {
             }
         case .auth:
             switch AuthItem(rawValue: indexPath.item) {
-
             case .logout:
                 shouldLogoutPublisher.onNext(())
 

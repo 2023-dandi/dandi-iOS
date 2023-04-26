@@ -32,4 +32,5 @@ protocol ModuleFactoryInterface {
     func makeConfirmLocationViewController(locality: String, latitude: Double, longitude: Double, from: LocationSettingViewController.From) -> ConfirmLocationViewController
     func makeDetailClothesViewController(id: Int) -> DetailClothesViewController
     func makeSettingViewController() -> SettingViewController
+    func makeLikedHistoryViewController() -> LikeHistoryViewController
 }

@@ -203,4 +203,22 @@ final class DefaultPostRepository: PostRepository {
                 }
             }
     }
+
+    func fetchLikedPost(
+        size _: Int,
+        page _: Int
+    ) -> Single<NetworkResult<ListWithPage<Post>>> {
+        return router.rx.request(.likedPosts)
+            .map { response in
+                let decodedResponse: NetworkResult<PostsWithPageDTO> = NetworkHandler.requestDecoded(by: response)
+
+                switch decodedResponse {
+                case let .success(postDTO):
+                    return .success(postDTO.toDomain())
+
+                case let .failure(error):
+                    return .failure(error)
+                }
+            }
+    }
 }
