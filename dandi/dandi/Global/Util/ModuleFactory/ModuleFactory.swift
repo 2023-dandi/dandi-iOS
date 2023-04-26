@@ -254,4 +254,19 @@ extension ModuleFactory: ModuleFactoryInterface {
         vc.factory = self
         return vc
     }
+
+    func makeLikedHistoryViewController() -> LikeHistoryViewController {
+        let vc = LikeHistoryViewController()
+        let postRepository = DefaultPostRepository(interceptor: Interceptor())
+
+        let postListUseCase = LikedPostsUseCase(postRepository: postRepository)
+        let likeUseCase = DefaultPostLikeUseCase(postRepository: postRepository)
+
+        vc.reactor = LikeHistoryReactor(
+            postListUseCase: postListUseCase,
+            postLikeUseCase: likeUseCase
+        )
+        vc.factory = self
+        return vc
+    }
 }

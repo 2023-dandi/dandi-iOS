@@ -51,4 +51,9 @@ protocol PostRepository {
     ) -> Single<NetworkResult<ListWithPage<Post>>>
 
     func reportPost(id: Int) -> Single<NetworkResult<StatusCase>>
+
+    func fetchLikedPost(
+        size: Int,
+        page: Int
+    ) -> Single<NetworkResult<ListWithPage<Post>>>
 }

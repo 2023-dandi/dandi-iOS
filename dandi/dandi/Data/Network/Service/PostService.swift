@@ -19,6 +19,7 @@ enum PostService {
     case feed(min: Int, max: Int, size: Int, page: Int)
     case myFeed(min: Int, max: Int, size: Int, page: Int)
     case reportPost(id: Int)
+    case likedPosts
 }
 
 extension PostService: BaseTargetType {
@@ -57,6 +58,8 @@ extension PostService: BaseTargetType {
             return "/posts/my/temperature"
         case let .reportPost(id):
             return "/posts/\(id)/reports"
+        case .likedPosts:
+            return "/liking-posts"
         }
     }
 
@@ -78,6 +81,8 @@ extension PostService: BaseTargetType {
             return .get
         case .reportPost:
             return .post
+        case .likedPosts:
+            return .get
         }
     }
 
@@ -120,6 +125,9 @@ extension PostService: BaseTargetType {
             )
 
         case .reportPost:
+            return .requestPlain
+
+        case .likedPosts:
             return .requestPlain
         }
     }

@@ -139,7 +139,10 @@ extension MyPageViewController: MyPageProfileDelegate {
         navigationController?.pushViewController(factory.makeMyInformationViewController(userProfile: profile), animated: true)
     }
 
-    func historyButtonDidTap() {}
+    func historyButtonDidTap() {
+        let history = factory.makeLikedHistoryViewController()
+        navigationController?.pushViewController(history, animated: true)
+    }
 
     func closetButtonDidTap() {
         let closet = factory.makeClosetMainViewController()
