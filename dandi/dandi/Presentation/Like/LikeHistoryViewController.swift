@@ -99,6 +99,7 @@ final class LikeHistoryViewController: BaseViewController, View {
             .disposed(by: disposeBag)
 
         rx.viewWillAppear
+            .take(1)
             .map { _ in }
             .map { Reactor.Action.fetchPostList }
             .bind(to: reactor.action)

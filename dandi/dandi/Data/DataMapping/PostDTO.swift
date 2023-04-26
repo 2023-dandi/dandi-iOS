@@ -8,7 +8,7 @@
 struct PostDTO: Decodable {
     let id: Int?
     let writer: WriterDTO
-    let liked: Bool
+    let liked: Bool?
     let temperatures: TemperaturesDTO
     let feelingIndex: Int
     let postImageUrl: String
@@ -26,7 +26,7 @@ extension PostDTO {
             date: createdAt,
             content: "\(temperatures.min)도~\(temperatures.max)도에, \(ClothesFeeling(rawValue: feelingIndex)?.text ?? "").",
             tag: [],
-            isLiked: liked,
+            isLiked: liked ?? true,
             isMine: nil
         )
     }

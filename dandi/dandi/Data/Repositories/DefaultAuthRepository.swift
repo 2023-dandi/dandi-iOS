@@ -71,7 +71,6 @@ final class DefaultAuthRepository: AuthRepository {
     func withdraw() -> RxSwift.Single<NetworkResult<StatusCase>> {
         return router.rx.request(.witdraw)
             .map { response in
-                dump(response)
                 let decodedResponse: NetworkResult<StatusCase> = NetworkHandler.requestStatusCaseDecoded(by: response)
 
                 switch decodedResponse {
