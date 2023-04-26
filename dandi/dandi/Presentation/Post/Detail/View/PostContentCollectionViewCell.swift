@@ -19,7 +19,7 @@ final class PostContentCollectionViewCell: UICollectionViewCell {
     weak var heartButtonDelegate: HeartButtonDelegate?
 
     private let profileView: ProfileView = .init()
-    private let mainImageView: UIImageView = .init()
+    private(set) lazy var mainImageView: UIImageView = .init()
     private let dateLabel: UILabel = .init()
     private let temperatureLabel: UILabel = .init()
     private let contentStackView: UIStackView = .init()
