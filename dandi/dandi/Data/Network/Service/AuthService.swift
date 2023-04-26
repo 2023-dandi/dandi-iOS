@@ -10,6 +10,8 @@ import Moya
 enum AuthService {
     case refresh(refreshToken: String, accessToken: String)
     case login(idToken: String)
+    case logout
+    case witdraw
 }
 
 extension AuthService: BaseTargetType {
@@ -19,7 +21,7 @@ extension AuthService: BaseTargetType {
             return [
                 "Content-Type": "application/json"
             ]
-        case .refresh:
+        default:
             return [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(UserDefaultHandler.shared.accessToken)"
@@ -33,16 +35,15 @@ extension AuthService: BaseTargetType {
             return "/auth/refresh"
         case .login:
             return "/auth/login/oauth/apple"
+        case .logout:
+            return "/auth/logout"
+        case .witdraw:
+            return "/auth/withdraw"
         }
     }
 
     var method: Moya.Method {
-        switch self {
-        case .refresh:
-            return .post
-        case .login:
-            return .post
-        }
+        return .post
     }
 
     var task: Task {

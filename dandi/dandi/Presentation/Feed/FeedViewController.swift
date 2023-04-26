@@ -62,7 +62,7 @@ final class FeedViewController: BaseViewController, View {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] temperature in
                 guard let self = self else { return }
-                self.feedView.navigationTitleLabel.text = "\(UserDefaultHandler.shared.address)은 최고\(temperature.max)/최저\(temperature.min)도입니다."
+                self.feedView.navigationTitleLabel.text = "최고\(temperature.max)/최저\(temperature.min)에 다른 사람들은 어떤 옷을 입었는 지 둘러볼까요?"
                 self.temperaturePublisher.accept(temperature)
             })
             .disposed(by: disposeBag)

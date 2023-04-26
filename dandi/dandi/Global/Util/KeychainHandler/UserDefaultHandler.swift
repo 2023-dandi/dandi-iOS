@@ -50,6 +50,8 @@ struct UserDefaultHandler {
         _refreshToken.reset()
         _lon.reset()
         _lat.reset()
+        _min.reset()
+        _max.reset()
         _address.reset()
     }
 }
