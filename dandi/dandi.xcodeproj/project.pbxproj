@@ -128,6 +128,7 @@
 		DD66C03329D951A100A262F2 /* ListWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03229D951A100A262F2 /* ListWithPage.swift */; };
 		DD66C03529D958A600A262F2 /* ClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03429D958A600A262F2 /* ClosetUseCase.swift */; };
 		DD66C03729D9590D00A262F2 /* DefaultClosetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */; };
+		DD6E7C3C29FA3C7C0087466E /* NotificationsWithPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E7C3B29FA3C7C0087466E /* NotificationsWithPage.swift */; };
 		DD797BBE29E7C4F5000FFA9A /* WeatherImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */; };
 		DD797BC029E80098000FFA9A /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */; };
 		DD8F0DBF29F651E8008F85DF /* ConfirmLocationReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DBE29F651E8008F85DF /* ConfirmLocationReactor.swift */; };
@@ -404,6 +405,7 @@
 		DD66C03229D951A100A262F2 /* ListWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithPage.swift; sourceTree = "<group>"; };
 		DD66C03429D958A600A262F2 /* ClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetUseCase.swift; sourceTree = "<group>"; };
 		DD66C03629D9590D00A262F2 /* DefaultClosetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClosetUseCase.swift; sourceTree = "<group>"; };
+		DD6E7C3B29FA3C7C0087466E /* NotificationsWithPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsWithPage.swift; sourceTree = "<group>"; };
 		DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageType.swift; sourceTree = "<group>"; };
 		DD797BBF29E80098000FFA9A /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD8F0DBE29F651E8008F85DF /* ConfirmLocationReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationReactor.swift; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 				DDC6E7D229DBFEB400F8C14F /* ClothesCategoryDTO.swift */,
 				DDC6E7D429DC0E9800F8C14F /* ClothesDetailInfoDTO.swift */,
 				DDC6E7DA29DC316A00F8C14F /* CommentDTO.swift */,
+				DD6E7C3B29FA3C7C0087466E /* NotificationsWithPage.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1797,6 +1800,7 @@
 				DDCDA16929C2E05500BAB1CF /* Color.swift in Sources */,
 				DD0C094529D5D214002CAB37 /* RegisterClothesUseCase.swift in Sources */,
 				DDA8164F29ACAD6800963776 /* Comment.swift in Sources */,
+				DD6E7C3C29FA3C7C0087466E /* NotificationsWithPage.swift in Sources */,
 				DDA390002965BA33006FBE00 /* UIImage+.swift in Sources */,
 				DDCC2ABA29E6C6AF00D5C877 /* WithdrawAlertType.swift in Sources */,
 				DD00E80C29C8706B001536D4 /* DefaultNicknameUseCase.swift in Sources */,
