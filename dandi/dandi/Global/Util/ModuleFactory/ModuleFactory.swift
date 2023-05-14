@@ -270,8 +270,8 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
 
-    func makeChatViewController() -> ChatViewController {
-        let vc = ChatViewController()
+    func makeChatViewController() -> ChatMainViewController {
+        let vc = ChatMainViewController()
         let chatRepository = DefaultGPTRepository()
         let chatUseCase = DefaultChatUseCase(gptRepository: chatRepository)
         vc.reactor = ChatReactor(chatUseCase: chatUseCase)

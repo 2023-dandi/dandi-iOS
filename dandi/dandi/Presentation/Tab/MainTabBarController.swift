@@ -59,9 +59,19 @@ extension MainTabBarController {
             selectedImage: Tab.my.selectedImage
         )
 
+        let chatVC = factory.makeChatViewController()
+        let chatNavigationController = YDSNavigationController(rootViewController: chatVC)
+        chatNavigationController.title = "단디챗"
+        chatNavigationController.tabBarItem = UITabBarItem(
+            title: nil,
+            image: Tab.my.image,
+            selectedImage: Tab.my.selectedImage
+        )
+
         super.setViewControllers([
             homeNavigationController,
             feedNavigationController,
+            chatNavigationController,
             myPageNavigationController
         ], animated: true)
     }

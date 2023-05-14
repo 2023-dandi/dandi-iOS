@@ -79,8 +79,9 @@
 		DD1E68312A10FCF7003BB98E /* DefaultGPTRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68302A10FCF7003BB98E /* DefaultGPTRepository.swift */; };
 		DD1E68332A10FE6B003BB98E /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68322A10FE6B003BB98E /* ChatUseCase.swift */; };
 		DD1E68352A10FEEF003BB98E /* DefaultChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68342A10FEEF003BB98E /* DefaultChatUseCase.swift */; };
-		DD1E68382A10FFE4003BB98E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68372A10FFE4003BB98E /* ChatViewController.swift */; };
+		DD1E68382A10FFE4003BB98E /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68372A10FFE4003BB98E /* ChatMainViewController.swift */; };
 		DD1E683A2A1102D2003BB98E /* ChatReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68392A1102D2003BB98E /* ChatReactor.swift */; };
+		DD1E683C2A1113B4003BB98E /* DynamicHeightTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E683B2A1113B4003BB98E /* DynamicHeightTextView.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -269,6 +270,8 @@
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
 		DDF848A429D6D0F70003097A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A329D6D0F70003097A /* Token.swift */; };
 		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
+		DDFFFA102A11150A0094C734 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFFA0F2A11150A0094C734 /* PlaceholderTextView.swift */; };
+		DDFFFA122A1127F60094C734 /* ChatResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFFA112A1127F60094C734 /* ChatResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,8 +364,9 @@
 		DD1E68302A10FCF7003BB98E /* DefaultGPTRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGPTRepository.swift; sourceTree = "<group>"; };
 		DD1E68322A10FE6B003BB98E /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
 		DD1E68342A10FEEF003BB98E /* DefaultChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChatUseCase.swift; sourceTree = "<group>"; };
-		DD1E68372A10FFE4003BB98E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		DD1E68372A10FFE4003BB98E /* ChatMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainViewController.swift; sourceTree = "<group>"; };
 		DD1E68392A1102D2003BB98E /* ChatReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReactor.swift; sourceTree = "<group>"; };
+		DD1E683B2A1113B4003BB98E /* DynamicHeightTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTextView.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -537,6 +541,8 @@
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		DDF848A329D6D0F70003097A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DDFFFA0F2A11150A0094C734 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		DDFFFA112A1127F60094C734 /* ChatResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -670,8 +676,10 @@
 		DD1E68362A10FFC2003BB98E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				DD1E68372A10FFE4003BB98E /* ChatViewController.swift */,
+				DD1E68372A10FFE4003BB98E /* ChatMainViewController.swift */,
+				DDFFFA112A1127F60094C734 /* ChatResultViewController.swift */,
 				DD1E68392A1102D2003BB98E /* ChatReactor.swift */,
+				DDFFFA0F2A11150A0094C734 /* PlaceholderTextView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1163,6 +1171,7 @@
 		DD9B06F5295EDABD00A98041 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				DD1E683B2A1113B4003BB98E /* DynamicHeightTextView.swift */,
 				DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */,
 				DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */,
 				DDA8165829ACEA0000963776 /* PaddingLabel.swift */,
@@ -1665,6 +1674,7 @@
 				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
 				DD61795D29CB5407005B7527 /* RegisterClothesView.swift in Sources */,
 				DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */,
+				DD1E683C2A1113B4003BB98E /* DynamicHeightTextView.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
 				DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
@@ -1690,7 +1700,7 @@
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD0C093B29D57548002CAB37 /* NetworkMonitor.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
-				DD1E68382A10FFE4003BB98E /* ChatViewController.swift in Sources */,
+				DD1E68382A10FFE4003BB98E /* ChatMainViewController.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDC6E7DF29DC34AB00F8C14F /* DefaultCommentUseCase.swift in Sources */,
 				DD0C095929D60108002CAB37 /* ModuleFactoryInterface.swift in Sources */,
@@ -1718,6 +1728,7 @@
 				DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */,
 				DD00E80029C83DF0001536D4 /* DefaultMemberRepository.swift in Sources */,
 				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
+				DDFFFA122A1127F60094C734 /* ChatResultViewController.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DD00E81029C8A9BC001536D4 /* UploadProfileImageUseCase.swift in Sources */,
 				DD00E80629C8478E001536D4 /* MyPageReactor.swift in Sources */,
@@ -1756,6 +1767,7 @@
 				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
 				DDC6E7DB29DC316A00F8C14F /* CommentDTO.swift in Sources */,
 				DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */,
+				DDFFFA102A11150A0094C734 /* PlaceholderTextView.swift in Sources */,
 				DD8F0DC529F668B7008F85DF /* DefaultReportAndBlockUseCase.swift in Sources */,
 				DDDF93D629DAD85200DEB027 /* ClosetView.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
