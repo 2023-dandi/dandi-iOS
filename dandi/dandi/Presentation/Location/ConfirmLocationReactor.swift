@@ -31,6 +31,11 @@ final class ConfirmLocationReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .setLoaction(lat, lon, address):
+            UserDefaultHandler.shared.lat = lat
+            UserDefaultHandler.shared.lon = lon
+            UserDefaultHandler.shared.address = address
+            UserDefaultHandler.shared.max = -1000
+            UserDefaultHandler.shared.min = -1000
             locationUseCase.saveLocation(latitude: lat, longitude: lon, address: address)
             return locationUseCase.completionPublisher
                 .compactMap { $0 }
