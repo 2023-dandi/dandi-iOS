@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         startNetworkMonitoring(on: windowScene)
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        RootSwitcher.update(.splash)
+        RootSwitcher.update(.custom(ModuleFactory.shared.makeChatViewController()))
         if #available(iOS 13.0, *) {
             self.window?.overrideUserInterfaceStyle = .light
         }
