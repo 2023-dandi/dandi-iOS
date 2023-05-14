@@ -34,7 +34,7 @@ final class ChatResultViewController: BaseViewController {
             attributedText.addAttribute(
                 .paragraphStyle,
                 value: paragraphStyle,
-                range: NSMakeRange(0, attributedText.length)
+                range: NSRange(location: 0, length: attributedText.length)
             )
             answerLabel.attributedText = attributedText
         }
@@ -42,8 +42,8 @@ final class ChatResultViewController: BaseViewController {
 
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    private let questionLabel = PaddingLabel(padding: UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12))
-    private let answerLabel = PaddingLabel(padding: UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12))
+    private let questionLabel = PaddingLabel(padding: UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
+    private let answerLabel = PaddingLabel(padding: UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
 
     override init() {
         super.init()

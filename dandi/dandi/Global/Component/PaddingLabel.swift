@@ -7,23 +7,34 @@
 
 import UIKit
 
-final class PaddingLabel: UILabel {
-    private var padding = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
-
-    convenience init(padding: UIEdgeInsets) {
-        self.init()
-        self.padding = padding
+class PaddingLabel: UILabel {
+    private var padding: UIEdgeInsets = .zero {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
     }
 
-    override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: padding))
+    convenience init(padding: UIEdgeInsets) {
+        self.init(frame: .zero)
+        self.padding = padding
     }
 
     override var intrinsicContentSize: CGSize {
         var contentSize = super.intrinsicContentSize
-        contentSize.height += padding.top + padding.bottom
         contentSize.width += padding.left + padding.right
-
+        contentSize.height += padding.top + padding.bottom
         return contentSize
+    }
+
+    override func drawText(in rect: CGRect) {
+        let paddedRect = rect.inset(by: padding)
+        super.drawText(in: paddedRect)
+    }
+
+    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let paddedBounds = bounds.inset(by: padding)
+        let textRect = super.textRect(forBounds: paddedBounds, limitedToNumberOfLines: numberOfLines)
+        let unpaddedRect = textRect.insetBy(dx: -padding.left, dy: -padding.top)
+        return unpaddedRect
     }
 }

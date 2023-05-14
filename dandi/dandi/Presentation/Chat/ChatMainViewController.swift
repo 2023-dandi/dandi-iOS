@@ -98,7 +98,7 @@ extension ChatMainViewController: UITextViewDelegate {
 
         textView.resignFirstResponder()
         question = textView.text
-        textPublisher.onNext("현재 계절 초여름이며 최고\(UserDefaultHandler.shared.max)도/최저\(UserDefaultHandler.shared.min)도의 날씨야. " + textView.text)
+        textPublisher.onNext("현재 계절 초여름이며 최고\(UserDefaultHandler.shared.max)도/최저\(UserDefaultHandler.shared.min)도의 날씨야. 너는 패션 코디를 담당해주는 아이야. 패션에 관해서 답변해줘." + textView.text)
 
         return false
     }
