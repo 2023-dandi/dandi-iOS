@@ -50,6 +50,24 @@ extension MainTabBarController {
             selectedImage: Tab.feed.selectedImage
         )
 
+        let chatVC = factory.makeChatViewController()
+        let chatNavigationController = YDSNavigationController(rootViewController: chatVC)
+        chatNavigationController.title = "단디챗"
+        chatNavigationController.tabBarItem = UITabBarItem(
+            title: nil,
+            image: Tab.chat.image,
+            selectedImage: Tab.chat.selectedImage
+        )
+
+        let closetVC = factory.makeClosetMainViewController()
+        let closetNavigationController = YDSNavigationController(rootViewController: closetVC)
+        closetNavigationController.title = "내 옷장"
+        closetNavigationController.tabBarItem = UITabBarItem(
+            title: nil,
+            image: Tab.closet.image,
+            selectedImage: Tab.closet.selectedImage
+        )
+
         let myPageVC = factory.makeMyPageViewController()
         let myPageNavigationController = YDSNavigationController(rootViewController: myPageVC)
         myPageNavigationController.title = "마이페이지"
@@ -59,17 +77,9 @@ extension MainTabBarController {
             selectedImage: Tab.my.selectedImage
         )
 
-        let chatVC = factory.makeChatViewController()
-        let chatNavigationController = YDSNavigationController(rootViewController: chatVC)
-        chatNavigationController.title = "단디챗"
-        chatNavigationController.tabBarItem = UITabBarItem(
-            title: nil,
-            image: Tab.my.image,
-            selectedImage: Tab.my.selectedImage
-        )
-
         super.setViewControllers([
             homeNavigationController,
+            closetNavigationController,
             feedNavigationController,
             chatNavigationController,
             myPageNavigationController

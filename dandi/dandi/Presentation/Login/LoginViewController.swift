@@ -43,7 +43,12 @@ final class LoginViewController: BaseViewController, View {
             .disposed(by: disposeBag)
 
         tokenPublisher
-            .map { idToken in Reactor.Action.loginButtonDidTap(fcmToken: "", idToken: idToken) }
+            .map { idToken in
+                Reactor.Action.loginButtonDidTap(
+                    fcmToken: UserDefaultHandler.shared.fcmToken,
+                    idToken: idToken
+                )
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 

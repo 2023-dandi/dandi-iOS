@@ -17,6 +17,7 @@ struct Image {
     static let btnRotation = UIImage(named: "btnRotation")!
     static let settingLine = UIImage(named: "ic_setting_line")!
     static let closetLine = UIImage(named: "ic_closet_line")!
+    static let closetFilled = UIImage(named: "ic.closet.filled")!
 
     static let background1 = UIImage(named: "img.background1")!
     static let background2 = UIImage(named: "img.background2")!

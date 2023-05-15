@@ -36,10 +36,10 @@ final class DefaultAuthRepository: AuthRepository {
     }
 
     func fetchUserInfo(
-        fcmToken _: String,
+        fcmToken: String,
         idToken: String
     ) -> Single<NetworkResult<Token>> {
-        return router.rx.request(.login(idToken: idToken))
+        return router.rx.request(.login(idToken: idToken, fcmToken: fcmToken))
             .map { response in
                 let decodedResponse: NetworkResult<TokenDTO> = NetworkHandler.requestDecoded(by: response)
                 switch decodedResponse {

@@ -15,11 +15,6 @@ import YDS
 final class ClosetMainViewController: BaseViewController, View {
     typealias Reactor = ClosetTabReactor
 
-    override var hidesBottomBarWhenPushed: Bool {
-        get { navigationController?.topViewController == self }
-        set { super.hidesBottomBarWhenPushed = newValue }
-    }
-
     private var categoryList: [CategoryInfo] = [] {
         didSet {
             category = categoryList.map { $0.category }
@@ -73,19 +68,8 @@ final class ClosetMainViewController: BaseViewController, View {
 
     override init() {
         super.init()
-        setProperties()
         setCollectionView()
         setLayouts()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = true
     }
 
     func bind(reactor: Reactor) {
@@ -166,10 +150,6 @@ final class ClosetMainViewController: BaseViewController, View {
                 scrollPosition: []
             )
         }
-    }
-
-    private func setProperties() {
-        title = "옷장"
     }
 
     private func setLayouts() {

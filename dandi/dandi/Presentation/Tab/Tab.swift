@@ -11,8 +11,10 @@ import YDS
 
 enum Tab: Int, CaseIterable {
     case home = 0
-    case feed = 1
-    case my = 2
+    case closet = 1
+    case feed = 2
+    case chat = 3
+    case my = 4
 
     var image: UIImage {
         switch self {
@@ -22,6 +24,10 @@ enum Tab: Int, CaseIterable {
             return YDSIcon.feedLine
         case .my:
             return YDSIcon.personLine
+        case .closet:
+            return Image.closetLine.resize(newWidth: 21)
+        case .chat:
+            return YDSIcon.commentLine.resize(newWidth: 21)
         }
     }
 
@@ -33,6 +39,10 @@ enum Tab: Int, CaseIterable {
             return YDSIcon.feedFilled
         case .my:
             return YDSIcon.personFilled
+        case .closet:
+            return Image.closetFilled.resize(newWidth: 21)
+        case .chat:
+            return YDSIcon.commentFilled.resize(newWidth: 21)
         }
     }
 
