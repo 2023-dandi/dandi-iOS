@@ -113,7 +113,6 @@ final class HomeViewController: BaseViewController, View {
                 temperature: hourlyWeather.temperature,
                 description: "최고\(temperatures.max)/최저\(temperatures.min)"
             )
-
         })
         .disposed(by: disposeBag)
 
@@ -127,6 +126,7 @@ final class HomeViewController: BaseViewController, View {
 
         temperatures
             .withUnretained(self)
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { owner, temperature in
                 owner.temperaturePublisher.accept(temperature)
             })

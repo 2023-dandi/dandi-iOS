@@ -14,6 +14,7 @@ final class ChatReactor: Reactor {
 
     struct State {
         var content: String?
+        var isLoading: Bool = false
     }
 
     enum Action {
@@ -22,6 +23,7 @@ final class ChatReactor: Reactor {
 
     enum Mutation {
         case setContent(content: String?)
+        case setLoading(isLoading: Bool)
     }
 
     init(chatUseCase: ChatUseCase) {
@@ -32,8 +34,12 @@ final class ChatReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .chat(content):
-            return chatUseCase.chat(content: content)
-                .map { Mutation.setContent(content: $0?.message) }
+            return Observable.concat([
+                .just(.setLoading(isLoading: true)),
+                chatUseCase.chat(content: content)
+                    .map { Mutation.setContent(content: $0?.message) },
+                .just(.setLoading(isLoading: false))
+            ])
         }
     }
 
@@ -42,6 +48,8 @@ final class ChatReactor: Reactor {
         switch mutation {
         case let .setContent(content):
             newState.content = content
+        case let .setLoading(isLoading):
+            newState.isLoading = isLoading
         }
         return newState
     }

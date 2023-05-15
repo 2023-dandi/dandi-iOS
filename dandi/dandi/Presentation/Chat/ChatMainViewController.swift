@@ -46,6 +46,9 @@ final class ChatMainViewController: BaseViewController, View {
                 self?.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
+
+//        reactor.state
+//            .filter { $0 }
     }
 
     private func bindAction(_ reactor: ChatReactor) {
@@ -93,12 +96,12 @@ final class ChatMainViewController: BaseViewController, View {
         view.addSubview(textView)
         view.addSubview(contentStackView)
         logoImageView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.centerX.equalToSuperview()
-            $0.size.equalTo(62)
+            $0.size.equalTo(70)
         }
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(logoImageView.snp.bottom)
+            $0.top.equalTo(logoImageView.snp.bottom).offset(0)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         textView.snp.makeConstraints {
@@ -166,12 +169,24 @@ final class ChatMainViewController: BaseViewController, View {
 
     @objc
     private func keyboardWillShow(_: Notification) {
-        contentStackView.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.logoImageView.snp.updateConstraints {
+                $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(100)
+            }
+            self.view.layoutIfNeeded()
+            self.contentStackView.alpha = 0
+        }
     }
 
     @objc
     private func keyboardWillHide(_: Notification) {
-        contentStackView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.logoImageView.snp.updateConstraints {
+                $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(0)
+            }
+            self.view.layoutIfNeeded()
+            self.contentStackView.alpha = 1
+        }
     }
 }
 
