@@ -21,13 +21,13 @@ enum Tab: Int, CaseIterable {
         case .home:
             return YDSIcon.homeLine
         case .feed:
-            return YDSIcon.feedLine
+            return Image.feedLine
         case .my:
             return YDSIcon.personLine
         case .closet:
-            return Image.closetLine.resize(newWidth: 21)
+            return Image.closetLine
         case .chat:
-            return YDSIcon.commentLine.resize(newWidth: 21)
+            return Image.commentLine
         }
     }
 
@@ -36,13 +36,13 @@ enum Tab: Int, CaseIterable {
         case .home:
             return YDSIcon.homeFilled
         case .feed:
-            return YDSIcon.feedFilled
+            return Image.feedFilled
         case .my:
             return YDSIcon.personFilled
         case .closet:
-            return Image.closetFilled.resize(newWidth: 21)
+            return Image.closetFilled
         case .chat:
-            return YDSIcon.commentFilled.resize(newWidth: 21)
+            return Image.commentFilled
         }
     }
 

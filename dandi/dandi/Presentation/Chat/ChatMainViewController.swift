@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Lottie
 import Moya
 import ReactorKit
 import RxCocoa
@@ -19,6 +20,7 @@ final class ChatMainViewController: BaseViewController, View {
     private let titleLabel = UILabel()
     private let textView = PlaceholderTextView()
     private let textPublisher = PublishSubject<String>()
+    private let animationView = LottieAnimationView()
 
     private let contentStackView = UIStackView()
 
@@ -47,8 +49,17 @@ final class ChatMainViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
 
-//        reactor.state
-//            .filter { $0 }
+        reactor.state
+            .map { $0.isLoading }
+            .subscribe(onNext: { [weak self] isLoading in
+                self?.animationView.isHidden = !isLoading
+                if isLoading {
+                    self?.animationView.play()
+                    return
+                }
+                self?.animationView.stop()
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindAction(_ reactor: ChatReactor) {
@@ -75,6 +86,13 @@ final class ChatMainViewController: BaseViewController, View {
         contentStackView.axis = .vertical
         contentStackView.spacing = 16
         contentStackView.alignment = .center
+
+        animationView.animation = .named("loading_circle")
+        animationView.loopMode = .loop
+        animationView.contentMode = .scaleAspectFit
+        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        view.addSubview(animationView)
+        animationView.play()
 
         NotificationCenter.default.addObserver(
             self,

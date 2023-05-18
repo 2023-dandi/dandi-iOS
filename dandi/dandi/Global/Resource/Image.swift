@@ -18,6 +18,10 @@ struct Image {
     static let settingLine = UIImage(named: "ic_setting_line")!
     static let closetLine = UIImage(named: "ic_closet_line")!
     static let closetFilled = UIImage(named: "ic.closet.filled")!
+    static let commentLine = UIImage(named: "ic.comment.line")!
+    static let commentFilled = UIImage(named: "ic.comment.filled")!
+    static let feedLine = UIImage(named: "ic.feed.line")!
+    static let feedFilled = UIImage(named: "ic.feed.filled")!
 
     static let background1 = UIImage(named: "img.background1")!
     static let background2 = UIImage(named: "img.background2")!

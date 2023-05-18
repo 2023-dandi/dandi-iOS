@@ -154,6 +154,8 @@
 		DD8F0DD529F7BE56008F85DF /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DD429F7BE56008F85DF /* FirebaseRemoteConfig */; };
 		DD8F0DD929F7C063008F85DF /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DD829F7C063008F85DF /* FirebaseService.swift */; };
 		DD8F0DDD29F7C0C5008F85DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD8F0DDC29F7C0C5008F85DF /* GoogleService-Info.plist */; };
+		DD9134482A123FBF00D24D2A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DD9134472A123FBF00D24D2A /* Lottie */; };
+		DD91344A2A15E81000D24D2A /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DD9134492A15E81000D24D2A /* loading.json */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -437,6 +439,7 @@
 		DD8F0DC729F7B34A008F85DF /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		DD8F0DD829F7C063008F85DF /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		DD8F0DDC29F7C0C5008F85DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD9134492A15E81000D24D2A /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -558,6 +561,7 @@
 				DD9B06CA295EC67800A98041 /* Kingfisher in Frameworks */,
 				DD8F0DCF29F7BE56008F85DF /* FirebaseDynamicLinks in Frameworks */,
 				DD9B06C7295EC66500A98041 /* Then in Frameworks */,
+				DD9134482A123FBF00D24D2A /* Lottie in Frameworks */,
 				DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */,
 				DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */,
 				DD8F0DCB29F7BE56008F85DF /* FirebaseAnalytics in Frameworks */,
@@ -770,6 +774,7 @@
 		DD239915295D829300A898B2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				DD9134492A15E81000D24D2A /* loading.json */,
 				DD2398EC295D7C8800A898B2 /* LaunchScreen.storyboard */,
 				DD2398EA295D7C8800A898B2 /* Assets.xcassets */,
 				DDAEF5C629B721710018B577 /* Image.swift */,
@@ -1470,6 +1475,7 @@
 				DD8F0DD029F7BE56008F85DF /* FirebaseMessaging */,
 				DD8F0DD229F7BE56008F85DF /* FirebasePerformance */,
 				DD8F0DD429F7BE56008F85DF /* FirebaseRemoteConfig */,
+				DD9134472A123FBF00D24D2A /* Lottie */,
 			);
 			productName = dandi;
 			productReference = DD2398DB295D7C8700A898B2 /* dandi.app */;
@@ -1556,6 +1562,7 @@
 				DDFF967F29C060AE00996BD6 /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
 				DD3D9A4929CC204A00E298B1 /* XCRemoteSwiftPackageReference "Tabman" */,
 				DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DD9134462A123FBF00D24D2A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = DD2398DC295D7C8700A898B2 /* Products */;
 			projectDirPath = "";
@@ -1575,6 +1582,7 @@
 			files = (
 				DD2398EE295D7C8800A898B2 /* LaunchScreen.storyboard in Resources */,
 				DD2398EB295D7C8800A898B2 /* Assets.xcassets in Resources */,
+				DD91344A2A15E81000D24D2A /* loading.json in Resources */,
 				DD8F0DDD29F7C0C5008F85DF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2256,6 +2264,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		DD9134462A123FBF00D24D2A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -2373,6 +2389,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
+		};
+		DD9134472A123FBF00D24D2A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9134462A123FBF00D24D2A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		DD9B06B4295EC5DD00A98041 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
