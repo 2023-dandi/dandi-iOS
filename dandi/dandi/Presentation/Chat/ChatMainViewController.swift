@@ -41,6 +41,7 @@ final class ChatMainViewController: BaseViewController, View {
     private func bindState(_ reactor: ChatReactor) {
         reactor.state
             .compactMap { $0.content }
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] content in
                 let vc = ChatResultViewController()
                 vc.question = self?.question
@@ -50,9 +51,16 @@ final class ChatMainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
 
         reactor.state
-            .map { $0.isLoading }
+            .compactMap { $0.isLoading }
             .subscribe(onNext: { [weak self] isLoading in
-                self?.animationView.isHidden = !isLoading
+//                self?.animationView.isHidden = !isLoading
+                self?.view.isUserInteractionEnabled = !isLoading
+
+                UIView.animate(withDuration: 0.3) {
+                    self?.animationView.alpha = !isLoading ? 0 : 1
+                    self?.contentStackView.alpha = !isLoading ? 1 : 0
+                }
+
                 if isLoading {
                     self?.animationView.play()
                     return
@@ -87,12 +95,10 @@ final class ChatMainViewController: BaseViewController, View {
         contentStackView.spacing = 16
         contentStackView.alignment = .center
 
-        animationView.animation = .named("loading_circle")
+        animationView.animation = .named("loading")
         animationView.loopMode = .loop
         animationView.contentMode = .scaleAspectFit
-        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        view.addSubview(animationView)
-        animationView.play()
+        animationView.alpha = 0
 
         NotificationCenter.default.addObserver(
             self,
@@ -113,6 +119,7 @@ final class ChatMainViewController: BaseViewController, View {
         view.addSubview(titleLabel)
         view.addSubview(textView)
         view.addSubview(contentStackView)
+        view.addSubview(animationView)
         logoImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.centerX.equalToSuperview()
@@ -131,6 +138,10 @@ final class ChatMainViewController: BaseViewController, View {
             $0.top.equalTo(textView.snp.bottom).offset(60)
         }
         setContentStackView()
+        animationView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(100)
+        }
     }
 
     private let contents = [
@@ -168,7 +179,6 @@ final class ChatMainViewController: BaseViewController, View {
                 action: #selector(contentButtonDidTap),
                 for: .touchUpInside
             )
-
             contentStackView.addArrangedSubview(button)
         }
     }
@@ -176,7 +186,7 @@ final class ChatMainViewController: BaseViewController, View {
     private func setTextViewText(_ text: String) {
         textView.text = text
         question = text
-        textPublisher.onNext("현재 계절 초여름이며 최고\(UserDefaultHandler.shared.max)도/최저\(UserDefaultHandler.shared.min)도의 날씨야. 너는 패션 코디를 담당해주는 아이야. 패션에 관해서 답변해줘." + text)
+        textPublisher.onNext("현재 계절 초여름이며 최고\(UserDefaultHandler.shared.max)도/최저\(UserDefaultHandler.shared.min)도의 날씨야. 너는 패션 코디를 담당하는 사람이라 생각하고 패션에 관해서 답변해줘." + text)
     }
 
     @objc

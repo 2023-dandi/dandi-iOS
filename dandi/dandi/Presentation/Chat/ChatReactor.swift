@@ -14,7 +14,7 @@ final class ChatReactor: Reactor {
 
     struct State {
         var content: String?
-        var isLoading: Bool = false
+        var isLoading: Bool?
     }
 
     enum Action {

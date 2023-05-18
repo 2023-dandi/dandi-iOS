@@ -40,6 +40,7 @@ final class ClosetMainViewController: BaseViewController, View {
 
     private let closetView = ClosetView()
     private let emptyLabel = EmptyLabel(text: "아직 등록된 옷이 없어요.\n홈에서 '+' 아이콘을 눌러 옷을 등록할 수 있어요.")
+    private let addButton: UIButton = .init()
 
     /// DataSource
     private var category: [ClothesCategory] = [] {
@@ -69,7 +70,13 @@ final class ClosetMainViewController: BaseViewController, View {
     override init() {
         super.init()
         setCollectionView()
+        setProperties()
         setLayouts()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
 
     func bind(reactor: Reactor) {
@@ -104,6 +111,20 @@ final class ClosetMainViewController: BaseViewController, View {
             .distinctUntilChanged()
             .map { Reactor.Action.fetchClothes(category: $0.category, seasons: $0.seasons) }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        addButton.rx.tap
+            .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.asyncInstance)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.addButton.transform = CGAffineTransform(rotationAngle: 180)
+                let vc = owner.factory.makeHomeButtonViewController()
+                vc.modalPresentationStyle = .overFullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                vc.rotationDelegate = self
+                vc.controllerDelegate = self
+                owner.present(vc, animated: true, completion: nil)
+            })
             .disposed(by: disposeBag)
     }
 
@@ -152,10 +173,28 @@ final class ClosetMainViewController: BaseViewController, View {
         }
     }
 
+    private func setProperties() {
+        addButton.do {
+            $0.cornerRadius = 30
+            $0.backgroundColor = YDSColor.buttonPoint
+            $0.setImage(
+                YDSIcon.plusLine
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(.white),
+                for: .normal
+            )
+        }
+    }
+
     private func setLayouts() {
         view.addSubview(emptyLabel)
         emptyLabel.snp.makeConstraints { make in
             make.center.equalTo(view.safeAreaLayoutGuide)
+        }
+        view.addSubview(addButton)
+        addButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.size.equalTo(60)
         }
     }
 
@@ -319,5 +358,21 @@ extension ClosetMainViewController: UICollectionViewDelegate {
                 seasons: selectedTags
             )
         )
+    }
+}
+
+extension ClosetMainViewController: RotaionDelegate {
+    func rotate() {
+        addButton.transform = CGAffineTransform(rotationAngle: 0)
+    }
+}
+
+extension ClosetMainViewController: ViewControllerDelegate {
+    func presentViewController(_ viewController: UIViewController, animated: Bool) {
+        present(viewController, animated: animated)
+    }
+
+    func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        navigationController?.pushViewController(viewController, animated: animated)
     }
 }
