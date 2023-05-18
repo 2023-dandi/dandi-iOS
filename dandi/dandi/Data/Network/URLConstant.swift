@@ -34,4 +34,14 @@ enum URLConstant {
     static let eula = "https://github.com/2023-dandi/dandi-docs/wiki/EULA"
     /// 이용 약관
     static let term = "https://github.com/2023-dandi/dandi-docs/wiki/이용약관"
+
+    /// GPT
+    static var gptToken: String {
+        guard
+            let token = Bundle.main.object(forInfoDictionaryKey: "GPT Token") as? String
+        else {
+            return ""
+        }
+        return token
+    }
 }

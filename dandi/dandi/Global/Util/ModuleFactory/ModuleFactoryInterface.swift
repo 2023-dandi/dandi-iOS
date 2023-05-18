@@ -33,4 +33,5 @@ protocol ModuleFactoryInterface {
     func makeDetailClothesViewController(id: Int) -> DetailClothesViewController
     func makeSettingViewController() -> SettingViewController
     func makeLikedHistoryViewController() -> LikeHistoryViewController
+    func makeChatViewController() -> ChatMainViewController
 }

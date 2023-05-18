@@ -72,6 +72,16 @@
 		DD1E52D529D1B0D100550E02 /* ClosetMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */; };
 		DD1E52D729D1B2DE00550E02 /* ClosetTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D629D1B2DE00550E02 /* ClosetTabView.swift */; };
 		DD1E52DA29D1F47B00550E02 /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E52D929D1F47B00550E02 /* ConfirmLocationViewController.swift */; };
+		DD1E68292A10F660003BB98E /* GPTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68282A10F660003BB98E /* GPTService.swift */; };
+		DD1E682B2A10F95B003BB98E /* GPTRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E682A2A10F95B003BB98E /* GPTRepository.swift */; };
+		DD1E682D2A10FAE0003BB98E /* GPTChatCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E682C2A10FAE0003BB98E /* GPTChatCompletionResponse.swift */; };
+		DD1E682F2A10FBA3003BB98E /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E682E2A10FBA3003BB98E /* ChatMessage.swift */; };
+		DD1E68312A10FCF7003BB98E /* DefaultGPTRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68302A10FCF7003BB98E /* DefaultGPTRepository.swift */; };
+		DD1E68332A10FE6B003BB98E /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68322A10FE6B003BB98E /* ChatUseCase.swift */; };
+		DD1E68352A10FEEF003BB98E /* DefaultChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68342A10FEEF003BB98E /* DefaultChatUseCase.swift */; };
+		DD1E68382A10FFE4003BB98E /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68372A10FFE4003BB98E /* ChatMainViewController.swift */; };
+		DD1E683A2A1102D2003BB98E /* ChatReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E68392A1102D2003BB98E /* ChatReactor.swift */; };
+		DD1E683C2A1113B4003BB98E /* DynamicHeightTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E683B2A1113B4003BB98E /* DynamicHeightTextView.swift */; };
 		DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398DE295D7C8700A898B2 /* AppDelegate.swift */; };
 		DD2398E1295D7C8700A898B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */; };
 		DD2398E9295D7C8700A898B2 /* dandi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD2398E7295D7C8700A898B2 /* dandi.xcdatamodeld */; };
@@ -144,6 +154,8 @@
 		DD8F0DD529F7BE56008F85DF /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = DD8F0DD429F7BE56008F85DF /* FirebaseRemoteConfig */; };
 		DD8F0DD929F7C063008F85DF /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F0DD829F7C063008F85DF /* FirebaseService.swift */; };
 		DD8F0DDD29F7C0C5008F85DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD8F0DDC29F7C0C5008F85DF /* GoogleService-Info.plist */; };
+		DD9134482A123FBF00D24D2A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DD9134472A123FBF00D24D2A /* Lottie */; };
+		DD91344A2A15E81000D24D2A /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DD9134492A15E81000D24D2A /* loading.json */; };
 		DD9B06B5295EC5DD00A98041 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B4295EC5DD00A98041 /* Moya */; };
 		DD9B06B7295EC5DD00A98041 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B6295EC5DD00A98041 /* RxMoya */; };
 		DD9B06BA295EC5F300A98041 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD9B06B9295EC5F300A98041 /* ReactorKit */; };
@@ -260,6 +272,8 @@
 		DDF78D6C297CDC0700817925 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */; };
 		DDF848A429D6D0F70003097A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF848A329D6D0F70003097A /* Token.swift */; };
 		DDFF968129C060AE00996BD6 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = DDFF968029C060AE00996BD6 /* BackgroundRemoval */; };
+		DDFFFA102A11150A0094C734 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFFA0F2A11150A0094C734 /* PlaceholderTextView.swift */; };
+		DDFFFA122A1127F60094C734 /* ChatResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFFA112A1127F60094C734 /* ChatResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -345,6 +359,16 @@
 		DD1E52D429D1B0D100550E02 /* ClosetMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetMainViewController.swift; sourceTree = "<group>"; };
 		DD1E52D629D1B2DE00550E02 /* ClosetTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetTabView.swift; sourceTree = "<group>"; };
 		DD1E52D929D1F47B00550E02 /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
+		DD1E68282A10F660003BB98E /* GPTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTService.swift; sourceTree = "<group>"; };
+		DD1E682A2A10F95B003BB98E /* GPTRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTRepository.swift; sourceTree = "<group>"; };
+		DD1E682C2A10FAE0003BB98E /* GPTChatCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTChatCompletionResponse.swift; sourceTree = "<group>"; };
+		DD1E682E2A10FBA3003BB98E /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		DD1E68302A10FCF7003BB98E /* DefaultGPTRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGPTRepository.swift; sourceTree = "<group>"; };
+		DD1E68322A10FE6B003BB98E /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
+		DD1E68342A10FEEF003BB98E /* DefaultChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChatUseCase.swift; sourceTree = "<group>"; };
+		DD1E68372A10FFE4003BB98E /* ChatMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainViewController.swift; sourceTree = "<group>"; };
+		DD1E68392A1102D2003BB98E /* ChatReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReactor.swift; sourceTree = "<group>"; };
+		DD1E683B2A1113B4003BB98E /* DynamicHeightTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTextView.swift; sourceTree = "<group>"; };
 		DD2398DB295D7C8700A898B2 /* dandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2398DE295D7C8700A898B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2398E0295D7C8700A898B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -415,6 +439,7 @@
 		DD8F0DC729F7B34A008F85DF /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		DD8F0DD829F7C063008F85DF /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		DD8F0DDC29F7C0C5008F85DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD9134492A15E81000D24D2A /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		DD9B06D3295EC72E00A98041 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD9B06D6295EC75500A98041 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD9B06DF295EC80E00A98041 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -519,6 +544,8 @@
 		DDF636FF296048CE007427BD /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		DDF78D6B297CDC0700817925 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		DDF848A329D6D0F70003097A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DDFFFA0F2A11150A0094C734 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		DDFFFA112A1127F60094C734 /* ChatResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,6 +561,7 @@
 				DD9B06CA295EC67800A98041 /* Kingfisher in Frameworks */,
 				DD8F0DCF29F7BE56008F85DF /* FirebaseDynamicLinks in Frameworks */,
 				DD9B06C7295EC66500A98041 /* Then in Frameworks */,
+				DD9134482A123FBF00D24D2A /* Lottie in Frameworks */,
 				DD9B06C4295EC65500A98041 /* SnapKit in Frameworks */,
 				DDA8166229ADAB3800963776 /* YPImagePicker in Frameworks */,
 				DD8F0DCB29F7BE56008F85DF /* FirebaseAnalytics in Frameworks */,
@@ -649,6 +677,17 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		DD1E68362A10FFC2003BB98E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DD1E68372A10FFE4003BB98E /* ChatMainViewController.swift */,
+				DDFFFA112A1127F60094C734 /* ChatResultViewController.swift */,
+				DD1E68392A1102D2003BB98E /* ChatReactor.swift */,
+				DDFFFA0F2A11150A0094C734 /* PlaceholderTextView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		DD2398D2295D7C8700A898B2 = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +765,7 @@
 				DD61795B29CB53F1005B7527 /* Closet */,
 				DDDBD43E29740AE800452F01 /* Upload */,
 				DDCC2AB429E6C56500D5C877 /* Setting */,
+				DD1E68362A10FFC2003BB98E /* Chat */,
 				DD030C3529D574CE005B36DA /* NetworkError */,
 			);
 			path = Presentation;
@@ -734,6 +774,7 @@
 		DD239915295D829300A898B2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				DD9134492A15E81000D24D2A /* loading.json */,
 				DD2398EC295D7C8800A898B2 /* LaunchScreen.storyboard */,
 				DD2398EA295D7C8800A898B2 /* Assets.xcassets */,
 				DDAEF5C629B721710018B577 /* Image.swift */,
@@ -825,6 +866,7 @@
 				DD00E7FF29C83DF0001536D4 /* DefaultMemberRepository.swift */,
 				DD0C094229D5CCB9002CAB37 /* DefaultClothesRepository.swift */,
 				DDC6E7D829DC30B900F8C14F /* DefaultCommentRepository.swift */,
+				DD1E68302A10FCF7003BB98E /* DefaultGPTRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -838,6 +880,7 @@
 				DD00E7F329C82B1B001536D4 /* MemberRepository.swift */,
 				DD0C094029D5CC4F002CAB37 /* ClothesRepository.swift */,
 				DDC6E7DC29DC349000F8C14F /* CommentRepository.swift */,
+				DD1E682A2A10F95B003BB98E /* GPTRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -865,6 +908,7 @@
 				DDC6E7D429DC0E9800F8C14F /* ClothesDetailInfoDTO.swift */,
 				DDC6E7DA29DC316A00F8C14F /* CommentDTO.swift */,
 				DD6E7C3B29FA3C7C0087466E /* NotificationsWithPage.swift */,
+				DD1E682C2A10FAE0003BB98E /* GPTChatCompletionResponse.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -878,6 +922,7 @@
 				DD00E7F129C8223D001536D4 /* MemberService.swift */,
 				DD0C093E29D5C285002CAB37 /* ClothesService.swift */,
 				DDC6E7D629DC1E4D00F8C14F /* CommentService.swift */,
+				DD1E68282A10F660003BB98E /* GPTService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -915,6 +960,7 @@
 				DD8F0DC029F65593008F85DF /* DefaultLocationUseCase.swift */,
 				DD8F0DC429F668B7008F85DF /* DefaultReportAndBlockUseCase.swift */,
 				DD0C354229F8FB20004CF385 /* LikedPostsUseCase.swift */,
+				DD1E68342A10FEEF003BB98E /* DefaultChatUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -936,6 +982,7 @@
 				DD3D9A5929CCAC0100E298B1 /* LocationUseCase.swift */,
 				DD0C094429D5D214002CAB37 /* RegisterClothesUseCase.swift */,
 				DD66C03429D958A600A262F2 /* ClosetUseCase.swift */,
+				DD1E68322A10FE6B003BB98E /* ChatUseCase.swift */,
 				DDC6E7E029DC364B00F8C14F /* CommentUseCase.swift */,
 				DD8F0DC229F663A8008F85DF /* ReportAndBlockUseCase.swift */,
 			);
@@ -1129,6 +1176,7 @@
 		DD9B06F5295EDABD00A98041 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				DD1E683B2A1113B4003BB98E /* DynamicHeightTextView.swift */,
 				DDA38FEA2965514D006FBE00 /* CardHeaderView.swift */,
 				DD9B06F6295EDACE00A98041 /* CardCollectionViewCell.swift */,
 				DDA8165829ACEA0000963776 /* PaddingLabel.swift */,
@@ -1187,6 +1235,7 @@
 				DD66C03229D951A100A262F2 /* ListWithPage.swift */,
 				DDA2A02F29DA710900685AE3 /* CategoryList.swift */,
 				DD797BBD29E7C4F5000FFA9A /* WeatherImageType.swift */,
+				DD1E682E2A10FBA3003BB98E /* ChatMessage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1426,6 +1475,7 @@
 				DD8F0DD029F7BE56008F85DF /* FirebaseMessaging */,
 				DD8F0DD229F7BE56008F85DF /* FirebasePerformance */,
 				DD8F0DD429F7BE56008F85DF /* FirebaseRemoteConfig */,
+				DD9134472A123FBF00D24D2A /* Lottie */,
 			);
 			productName = dandi;
 			productReference = DD2398DB295D7C8700A898B2 /* dandi.app */;
@@ -1512,6 +1562,7 @@
 				DDFF967F29C060AE00996BD6 /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
 				DD3D9A4929CC204A00E298B1 /* XCRemoteSwiftPackageReference "Tabman" */,
 				DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DD9134462A123FBF00D24D2A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = DD2398DC295D7C8700A898B2 /* Products */;
 			projectDirPath = "";
@@ -1531,6 +1582,7 @@
 			files = (
 				DD2398EE295D7C8800A898B2 /* LaunchScreen.storyboard in Resources */,
 				DD2398EB295D7C8800A898B2 /* Assets.xcassets in Resources */,
+				DD91344A2A15E81000D24D2A /* loading.json in Resources */,
 				DD8F0DDD29F7C0C5008F85DF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1616,6 +1668,7 @@
 				DD239919295D83E400A898B2 /* RootSwitcher.swift in Sources */,
 				DD8F0DBF29F651E8008F85DF /* ConfirmLocationReactor.swift in Sources */,
 				DD00E7FE29C82FA1001536D4 /* DuplicationDTO.swift in Sources */,
+				DD1E68332A10FE6B003BB98E /* ChatUseCase.swift in Sources */,
 				DDC6E7D529DC0E9800F8C14F /* ClothesDetailInfoDTO.swift in Sources */,
 				DD3D9A5429CC411C00E298B1 /* MyPostDTO.swift in Sources */,
 				DD1E216729D4493800A249B1 /* MyTemperaturePostListUseCase.swift in Sources */,
@@ -1629,9 +1682,11 @@
 				DD9F6FDD29B4F573002BD4B4 /* WeatherRepository.swift in Sources */,
 				DD61795D29CB5407005B7527 /* RegisterClothesView.swift in Sources */,
 				DD00E80A29C87047001536D4 /* NicknameUseCase.swift in Sources */,
+				DD1E683C2A1113B4003BB98E /* DynamicHeightTextView.swift in Sources */,
 				DD31234429B1EFFC00443FCE /* NetworkError.swift in Sources */,
 				DD31234E29B2592B00443FCE /* DefaultAuthUseCase.swift in Sources */,
 				DDA38FF829657E92006FBE00 /* TimeWeatherInfo.swift in Sources */,
+				DD1E68292A10F660003BB98E /* GPTService.swift in Sources */,
 				DDA38FE429641AFF006FBE00 /* HomeReactor.swift in Sources */,
 				DD1E52D729D1B2DE00550E02 /* ClosetTabView.swift in Sources */,
 				DDC52215299A28DA00E2845F /* PostDetailDataSource.swift in Sources */,
@@ -1653,6 +1708,7 @@
 				DDA38FEB2965514D006FBE00 /* CardHeaderView.swift in Sources */,
 				DD0C093B29D57548002CAB37 /* NetworkMonitor.swift in Sources */,
 				DD9F6FC829B30A23002BD4B4 /* TokenDTO.swift in Sources */,
+				DD1E68382A10FFE4003BB98E /* ChatMainViewController.swift in Sources */,
 				DD9B06E0295EC80E00A98041 /* FeedViewController.swift in Sources */,
 				DDC6E7DF29DC34AB00F8C14F /* DefaultCommentUseCase.swift in Sources */,
 				DD0C095929D60108002CAB37 /* ModuleFactoryInterface.swift in Sources */,
@@ -1665,6 +1721,7 @@
 				DDCDFA9929D6AF820016E582 /* UploadPostContent.swift in Sources */,
 				DDE3E30429C37AA8007BDBA7 /* ImageDTO.swift in Sources */,
 				DD797BC029E80098000FFA9A /* EmptyCollectionViewCell.swift in Sources */,
+				DD1E68312A10FCF7003BB98E /* DefaultGPTRepository.swift in Sources */,
 				DD0C354329F8FB20004CF385 /* LikedPostsUseCase.swift in Sources */,
 				DDA59B4129D6C03700C085E1 /* Location.swift in Sources */,
 				DD00E7EE29C77712001536D4 /* PostDetailUseCase.swift in Sources */,
@@ -1679,6 +1736,7 @@
 				DD0B685929C75C63000A0E24 /* PostDetailReactor.swift in Sources */,
 				DD00E80029C83DF0001536D4 /* DefaultMemberRepository.swift in Sources */,
 				DDCDA17929C311E900BAB1CF /* ReusableView.swift in Sources */,
+				DDFFFA122A1127F60094C734 /* ChatResultViewController.swift in Sources */,
 				DDA390072966BE51006FBE00 /* LocationSettingView.swift in Sources */,
 				DD00E81029C8A9BC001536D4 /* UploadProfileImageUseCase.swift in Sources */,
 				DD00E80629C8478E001536D4 /* MyPageReactor.swift in Sources */,
@@ -1706,6 +1764,7 @@
 				DD00E7EC29C776F9001536D4 /* UploadPostUseCase.swift in Sources */,
 				DD9F6FDF29B4F613002BD4B4 /* DefaultWeatherRepository.swift in Sources */,
 				DD31489829D4028F009B2BA4 /* PostsWithPageDTO.swift in Sources */,
+				DD1E682D2A10FAE0003BB98E /* GPTChatCompletionResponse.swift in Sources */,
 				DDA8165329ACD42800963776 /* UIViewController+.swift in Sources */,
 				DD9B06D4295EC72E00A98041 /* HomeViewController.swift in Sources */,
 				DD00E80E29C8A9B0001536D4 /* ImageUseCase.swift in Sources */,
@@ -1716,11 +1775,13 @@
 				DDCDA17B29C3120100BAB1CF /* UICollection+ReusableView.swift in Sources */,
 				DDC6E7DB29DC316A00F8C14F /* CommentDTO.swift in Sources */,
 				DDE3E2FC29C36F39007BDBA7 /* PostService.swift in Sources */,
+				DDFFFA102A11150A0094C734 /* PlaceholderTextView.swift in Sources */,
 				DD8F0DC529F668B7008F85DF /* DefaultReportAndBlockUseCase.swift in Sources */,
 				DDDF93D629DAD85200DEB027 /* ClosetView.swift in Sources */,
 				DDA8164D29AC9FAE00963776 /* PostCommentCollectionViewCell.swift in Sources */,
 				DDA8165729ACDA1900963776 /* MyInformationViewController.swift in Sources */,
 				DDC5220E2995E6EE00E2845F /* PostDetailViewController.swift in Sources */,
+				DD1E682F2A10FBA3003BB98E /* ChatMessage.swift in Sources */,
 				DDA8165529ACD5B000963776 /* UIButton+.swift in Sources */,
 				DDA8167329AE26DB00963776 /* NotificationDataSource.swift in Sources */,
 				DD1E52D529D1B0D100550E02 /* ClosetMainViewController.swift in Sources */,
@@ -1743,6 +1804,7 @@
 				DD9B06F7295EDACE00A98041 /* CardCollectionViewCell.swift in Sources */,
 				DDE3E30629C37B2B007BDBA7 /* PostRepository.swift in Sources */,
 				DD0B685F29C764B2000A0E24 /* DefaultPostDetailUseCase.swift in Sources */,
+				DD1E68352A10FEEF003BB98E /* DefaultChatUseCase.swift in Sources */,
 				DDA390052966BE49006FBE00 /* LocationSettingViewController.swift in Sources */,
 				DD41E74D29D31FCE00893431 /* DefaultPostListUseCase.swift in Sources */,
 				DDDF93DD29DAF2C600DEB027 /* ClothesDetailAlertType.swift in Sources */,
@@ -1782,6 +1844,7 @@
 				DD2398DF295D7C8700A898B2 /* AppDelegate.swift in Sources */,
 				DDCDA17429C2F5D600BAB1CF /* ClothesFeeling.swift in Sources */,
 				DD9B06ED295ECF4F00A98041 /* DandiLog.swift in Sources */,
+				DD1E683A2A1102D2003BB98E /* ChatReactor.swift in Sources */,
 				DD00E80829C86E02001536D4 /* MyInformationReactor.swift in Sources */,
 				DD0C093D29D5768C002CAB37 /* NetworkErrorView.swift in Sources */,
 				DDB23BA42993954A000735FB /* MyPageView.swift in Sources */,
@@ -1789,6 +1852,7 @@
 				DDB23BAB29939B73000735FB /* MyPageProfileCollectionView.swift in Sources */,
 				DD9B06F2295ED31100A98041 /* Tab.swift in Sources */,
 				DDC6E7DD29DC349000F8C14F /* CommentRepository.swift in Sources */,
+				DD1E682B2A10F95B003BB98E /* GPTRepository.swift in Sources */,
 				DDA8166F29AE0E6200963776 /* NotificationCollectionViewCell.swift in Sources */,
 				DD31234929B2519900443FCE /* LoginViewController.swift in Sources */,
 				DDCDA17229C2EF8600BAB1CF /* TagCollectionViewCell.swift in Sources */,
@@ -2200,6 +2264,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		DD9134462A123FBF00D24D2A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		DD9B06B3295EC5DD00A98041 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -2317,6 +2389,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD8F0DC929F7BE56008F85DF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
+		};
+		DD9134472A123FBF00D24D2A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9134462A123FBF00D24D2A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		DD9B06B4295EC5DD00A98041 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;

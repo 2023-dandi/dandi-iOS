@@ -9,7 +9,7 @@ import Moya
 
 enum AuthService {
     case refresh(refreshToken: String, accessToken: String)
-    case login(idToken: String)
+    case login(idToken: String, fcmToken: String)
     case logout
     case witdraw
 }
@@ -48,9 +48,12 @@ extension AuthService: BaseTargetType {
 
     var task: Task {
         switch self {
-        case let .login(idToken):
+        case let .login(idToken, fcmToken):
             return .requestParameters(
-                parameters: ["idToken": idToken],
+                parameters: [
+                    "idToken": idToken,
+                    "pushNotificationToken": fcmToken
+                ],
                 encoding: JSONEncoding.default
             )
         default:
