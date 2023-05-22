@@ -29,8 +29,12 @@ final class MyInformationViewController: BaseViewController, View {
 
     private let contentStackView = UIStackView()
     private let textFieldView = YDSSimpleTextFieldView()
-    private let locationTitleLabel = PaddingLabel()
+
+    private let locationTitleLabel = UILabel()
     private let locationItem = ListItem()
+
+    private let likeHistoryTitleLabel = UILabel()
+    private let likeHistoryItem = ListItem()
 
     private var isNicknameChanged: Bool = false
     private var isProfileChanged: Bool = false
@@ -121,6 +125,14 @@ final class MyInformationViewController: BaseViewController, View {
                 owner.present(YDSNavigationController(rootViewController: vc), animated: true)
             })
             .disposed(by: disposeBag)
+
+        likeHistoryItem.rx.tapGesture
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                let vc = owner.factory.makeLikedHistoryViewController()
+                owner.present(YDSNavigationController(rootViewController: vc), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindTapAction() {
@@ -189,10 +201,16 @@ final class MyInformationViewController: BaseViewController, View {
         }
         locationTitleLabel.do {
             $0.textColor = YDSColor.textSecondary
-            $0.font = YDSFont.subtitle2
+            $0.font = YDSFont.subtitle3
             $0.text = "위치"
         }
         locationItem.text = UserDefaultHandler.shared.address
+        likeHistoryTitleLabel.do {
+            $0.textColor = YDSColor.textSecondary
+            $0.font = YDSFont.subtitle3
+            $0.text = "기록"
+        }
+        likeHistoryItem.text = "좋아요 기록"
     }
 
     private func setLayouts() {
@@ -202,7 +220,9 @@ final class MyInformationViewController: BaseViewController, View {
         view.addSubviews(profileImageView, cameraIconView, textFieldView, contentStackView)
         contentStackView.addArrangedSubviews(
             locationTitleLabel,
-            locationItem
+            locationItem,
+            likeHistoryTitleLabel,
+            likeHistoryItem
         )
         profileImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(32)
@@ -212,7 +232,6 @@ final class MyInformationViewController: BaseViewController, View {
             $0.size.equalTo(40)
             $0.bottom.trailing.equalTo(profileImageView)
         }
-        // TODO: - 레이아웃 에러 고치기
         textFieldView.snp.makeConstraints {
             $0.top.equalTo(profileImageView.snp.bottom).offset(32)
             $0.leading.trailing.equalToSuperview().inset(20)
@@ -220,12 +239,18 @@ final class MyInformationViewController: BaseViewController, View {
         }
         contentStackView.snp.makeConstraints {
             $0.top.equalTo(textFieldView.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(20)
         }
         locationTitleLabel.snp.makeConstraints {
             $0.height.equalTo(42).priority(.high)
         }
         locationItem.snp.makeConstraints {
+            $0.height.equalTo(48).priority(.high)
+        }
+        likeHistoryTitleLabel.snp.makeConstraints {
+            $0.height.equalTo(42).priority(.high)
+        }
+        likeHistoryItem.snp.makeConstraints {
             $0.height.equalTo(48).priority(.high)
         }
     }
@@ -252,6 +277,8 @@ private class ListItem: UIView {
         let icon = UIImageView()
         icon.tintColor = YDSColor.buttonNormal
         icon.image = YDSIcon.arrowRightLine
+            .withRenderingMode(.alwaysTemplate)
+            .withTintColor(YDSColor.buttonNormal)
         return icon
     }()
 
@@ -264,14 +291,14 @@ private class ListItem: UIView {
         addSubview(titleLabel)
         addSubview(nextIconView)
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(20)
+            $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.trailing.equalTo(nextIconView.snp.leading).inset(20)
+            $0.trailing.equalTo(nextIconView.snp.leading)
         }
         nextIconView.snp.makeConstraints {
             $0.size.equalTo(24).priority(.high)
             $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview()
         }
     }
 

@@ -15,8 +15,6 @@ import YDS
 
 protocol MyPageProfileDelegate: AnyObject {
     func profileViewDidTap()
-    func historyButtonDidTap()
-    func closetButtonDidTap()
 }
 
 final class MyPageProfileCollectionViewCell: UICollectionViewCell {
@@ -32,10 +30,6 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell {
     private let closetLabel: UILabel = .init()
     private let locationLabel: UILabel = .init()
     private let arrowImageView: UIImageView = .init()
-
-    private let buttonStackView: UIStackView = .init()
-    private let historyButton: MyPageIconButton = .init()
-    private let closetButton: MyPageIconButton = .init()
 
     private let separatorView: UIView = .init()
 
@@ -58,18 +52,7 @@ final class MyPageProfileCollectionViewCell: UICollectionViewCell {
         profileImageView.image(url: profileImageURL, defaultImage: Image.defaultProfile)
     }
 
-    // TODO: - Rx 제거
     private func setTapGesture() {
-        closetButton.rx.tapGesture
-            .bind(onNext: { [weak self] _ in
-                self?.delegate?.closetButtonDidTap()
-            })
-            .disposed(by: disposeBag)
-        historyButton.rx.tapGesture
-            .bind(onNext: { [weak self] _ in
-                self?.delegate?.historyButtonDidTap()
-            })
-            .disposed(by: disposeBag)
         profileView.rx.tapGesture
             .bind(onNext: { [weak self] _ in
                 self?.delegate?.profileViewDidTap()
@@ -108,13 +91,10 @@ extension MyPageProfileCollectionViewCell {
         separatorView.do {
             $0.backgroundColor = YDSColor.borderNormal
         }
-        buttonStackView.axis = .horizontal
-        historyButton.configure(image: YDSIcon.heartLine, text: "좋아요 기록")
-        closetButton.configure(image: Image.closetLine, text: "내 옷장")
     }
 
     private func setLayouts() {
-        contentView.addSubviews(profileView, buttonStackView, separatorView)
+        contentView.addSubviews(profileView, separatorView)
         profileView.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()
             make.height.equalTo(108)
@@ -143,20 +123,9 @@ extension MyPageProfileCollectionViewCell {
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(8)
         }
-        buttonStackView.addArrangedSubviews(historyButton, UIView(), closetButton)
-        buttonStackView.snp.makeConstraints { make in
-            make.top.equalTo(profileView.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(72)
-            make.bottom.equalTo(separatorView.snp.top).offset(-12)
-        }
         separatorView.snp.makeConstraints { make in
             make.height.equalTo(8)
             make.leading.bottom.trailing.equalToSuperview()
-        }
-        [historyButton, closetButton].forEach {
-            $0.snp.makeConstraints { make in
-                make.width.equalTo(85)
-            }
         }
     }
 }

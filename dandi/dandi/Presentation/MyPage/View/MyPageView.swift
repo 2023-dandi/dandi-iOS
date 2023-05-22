@@ -62,7 +62,7 @@ extension MyPageView {
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(187)
+            heightDimension: .absolute(116)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,

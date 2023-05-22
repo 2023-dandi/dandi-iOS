@@ -39,7 +39,7 @@ final class ClosetMainViewController: BaseViewController, View {
     private var shouledLoadClothesPublisher = PublishSubject<Bool>()
 
     private let closetView = ClosetView()
-    private let emptyLabel = EmptyLabel(text: "아직 등록된 옷이 없어요.\n홈에서 '+' 아이콘을 눌러 옷을 등록할 수 있어요.")
+    private let emptyLabel = EmptyLabel(text: "아직 등록된 옷이 없어요.\n'+' 아이콘을 눌러 옷을 등록할 수 있어요.")
     private let addButton: UIButton = .init()
 
     /// DataSource

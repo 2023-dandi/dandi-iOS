@@ -138,14 +138,4 @@ extension MyPageViewController: MyPageProfileDelegate {
         guard let profile = reactor?.currentState.profile else { return }
         navigationController?.pushViewController(factory.makeMyInformationViewController(userProfile: profile), animated: true)
     }
-
-    func historyButtonDidTap() {
-        let history = factory.makeLikedHistoryViewController()
-        navigationController?.pushViewController(history, animated: true)
-    }
-
-    func closetButtonDidTap() {
-        let closet = factory.makeClosetMainViewController()
-        navigationController?.pushViewController(closet, animated: true)
-    }
 }
