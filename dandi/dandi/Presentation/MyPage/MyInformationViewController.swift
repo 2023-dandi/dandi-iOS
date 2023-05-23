@@ -153,6 +153,7 @@ final class MyInformationViewController: BaseViewController, View {
                     switch firstItem {
                     case let .photo(item):
                         owner.isProfileChanged = true
+                        owner.doneButton.isEnabled = true
                         owner.profileImageView.image = item.image
                     default:
                         break

@@ -224,7 +224,7 @@ final class UploadMainViewController: BaseViewController, View {
     }
 
     private func setButtonEnabled() {
-        uploadButton.isDisabled = clothesFeeling == nil || weatherFeelings.isEmpty
+        uploadButton.isDisabled = clothesFeeling == nil
     }
 }
 

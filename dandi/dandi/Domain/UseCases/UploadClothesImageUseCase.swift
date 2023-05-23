@@ -26,26 +26,7 @@ final class UploadClothesImageUseCase: ImageUseCase {
             return
         }
 
-        var compressedPngImageData: Data?
-
-        if let source = CGImageSourceCreateWithData(imageData as CFData, nil) {
-            let maxDimension: CGFloat = 1024
-            let options = [
-                kCGImageSourceThumbnailMaxPixelSize: maxDimension,
-                kCGImageSourceCreateThumbnailFromImageAlways: true
-            ] as CFDictionary
-
-            if let thumbnail = CGImageSourceCreateThumbnailAtIndex(source, 0, options) {
-                compressedPngImageData = UIImage(cgImage: thumbnail).pngData()
-            }
-        }
-
-        guard let compressedData = compressedPngImageData else {
-            imagePublisher.accept(nil)
-            return
-        }
-
-        clothesRepository.uploadImage(imageData: compressedData) { [weak self] result in
+        clothesRepository.uploadImage(imageData: imageData) { [weak self] result in
             switch result {
             case let .success(clothesImageUrl):
                 self?.imagePublisher.accept(clothesImageUrl)
