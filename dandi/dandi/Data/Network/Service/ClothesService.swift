@@ -117,7 +117,7 @@ extension ClothesService: BaseTargetType {
 
         case let .getRecommendedClothes(size, page):
             return .requestParameters(
-                parameters: ["size": size, "page": page, "sort": "createdAt,DESC"],
+                parameters: ["size": size, "page": page],
                 encoding: URLEncoding.queryString
             )
         }
